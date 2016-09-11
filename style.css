@@ -1,3 +1,14 @@
+@media only screen and (max-width: 760px) {
+  ul, li {
+    /*display: block;  Agregar desde JS cuando se loguea el usuario */
+    display: none;
+    text-align: left;
+	}
+  h1 {
+    font-size: 20;
+  }
+}
+
 ul, li {
     display: none;
     text-align: left;
@@ -18,8 +29,8 @@ ul, li {
   border-color:#003366;
   border-radius: 15%;
   border-style: solid;
-  border-width:1px; 
-  font-family: 'Merriweather', serif; 
+  border-width:1px;
+  font-family: 'Merriweather', serif;
 }
 
 .formLogin input{
@@ -33,7 +44,7 @@ ul, li {
   border-bottom-right-radius:15px;
   border-top-left-radius:15px;
   border-bottom-left-radius:15px;
-} 
+}
 input[type="submit"]{
   width: 40%;
   height: 2.8em;
@@ -54,8 +65,8 @@ input[type="submit"]{
   border-top-left-radius:0px;
   border-bottom-left-radius:0px;
   font-family: 'Bitstream Vera Sans 'Mono;
-  font-weight:bold; 
-} 
+  font-weight:bold;
+}
 input[type="submit"]:hover {
   background: white;
   color: #003366;
@@ -80,13 +91,6 @@ a {
   color: #003366;
 }
 
-@media only screen and (max-width: 500px) {
-  ul, li {
-    display: block;
-    text-align: left;
-	}
-}
-
 header, footer {
     padding: 1em;
     color: white;
@@ -99,16 +103,25 @@ nav {
 }
 
 section {
+  margin: 1%;
+  color: #e1d8d8;
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
   word-wrap: break-word;
-  margin: 0 1.5%;
-  width: 20%;
+  background-color: #5c8dbd;
+  display: block;
+  padding: 20px 15px 20px 15px;
+  width: 40%;
+  border-bottom: 4px solid #497198;
 }
 
 footer {
    position:absolute;
    bottom:0;
-   width:100%;
-   height:40px;   
+   width:96.5%;
+   height:40px;
 }
 
 img {
