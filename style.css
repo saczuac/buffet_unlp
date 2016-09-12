@@ -326,9 +326,9 @@ tr:hover {
 }
 
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 800px) {
   header {
-    font-size: 10;
+    font: 10px 'Merriweather', serif;
   }
   section {
     width:94%;
