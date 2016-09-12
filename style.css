@@ -326,7 +326,7 @@ tr:hover {
 }
 
 
-@media only screen and (max-width: 1081px) {
+@media only screen and (max-width: 1081px) and (min-width: 908px) {
     section {
       width:94%;
     }
@@ -341,12 +341,21 @@ tr:hover {
     }
 }
 
-@media only screen and (max-width: 721px) {
+@media only screen and (max-width: 907px) and (min-width: 721px) {
   section {
     width:94%;
   }
   h1 {
-    font: 10px 'Merriweather', serif;
+    font: 30px 'Merriweather', serif;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  section {
+    width:94%;
+  }
+  h1 {
+    font: 25px 'Merriweather', serif;
   }
 }
 /* Modal Content */
