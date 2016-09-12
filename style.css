@@ -327,11 +327,26 @@ tr:hover {
 
 
 @media only screen and (max-width: 1081px) {
-  header {
-    font: 10px 'Merriweather', serif;
-  }
+    section {
+      width:94%;
+    }
+    header h1 {
+      font: 40px 'Merriweather', serif;
+    }
+    section h1 {
+    	font: 60px 'Amatic SC', cursive;
+    }
+    section p {
+    	font: 13px 'Merriweather', serif;
+    }
+}
+
+@media only screen and (max-width: 721px) {
   section {
     width:94%;
+  }
+  h1 {
+    font: 10px 'Merriweather', serif;
   }
 }
 /* Modal Content */
