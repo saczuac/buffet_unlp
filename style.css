@@ -271,10 +271,6 @@ td {
     vertical-align: bottom;
 }
 
-tr:hover {
-  background-color: #497198;
-}
-
 .selected {
   background-color: #497198;
 }
@@ -325,6 +321,134 @@ tr:hover {
   text-shadow: 0px -2px grey;
 }
 
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+}
+
+.modal h3 {
+  margin-top: 0em;
+  font-family: 'Amatic SC', cursive;
+  font-size: 35px;
+}
+
+.modal label {
+  font-family: 'Merriweather', serif;
+  font-size: 15px;
+}
+
+.modal-content {
+  margin-top: 15%;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  opacity: 0.97;
+  border-radius: 16px;
+  background-color: #5c8dbd;
+  border-bottom: 4px solid #497198;
+  padding: 1em;
+  margin-bottom: 2em;
+}
+
+.login-content {
+    width: 25%;
+}
+
+.prod-content {
+  width: 40%;
+}
+
+.prod-content label {
+  float: left;
+  clear: left;
+  width: 120px;
+  text-align: right;
+}
+
+.prod-content input, select {
+  width: 50%;
+  height: 2.1em;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  text-align: left;
+  display: inline-block;
+  margin-right: 10%;
+  border: solid 1px #dcdcdc;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+
+.prod-content input[type="submit"] {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-content input{
+  height: 2.1em;
+  border-radius: 4px;
+  width: 80%;
+  margin-left:auto;
+  margin-right:auto;
+  text-align: left;
+  display: block;
+  border: solid 1px #dcdcdc;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+
+.modal-content input[type="text"]:focus,input[type="password"]:focus{
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
+}
+
+.modal-content input[type="submit"]{
+  text-align: center;
+  width: 100px;
+  height: 2.8em;
+  display: inline-block;
+  border-radius: 5px;
+  position: relative;
+  background: #003366;
+  color: white;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.4s;
+  border:none;
+  box-shadow: 2.5px 2.5px 2.5px #888888;
+  font-family: 'Bitstream Vera Sans 'Mono;
+  font-weight:bold;
+}
+
+.modal-content input[type="submit"]:hover {
+  background: white;
+  color: #003366;
+}
+
+.login-content input{
+  align:left;
+  vertical-align: bottom;
+  position: relative;
+  padding: 0;
+}
+
+.close {
+    color: #aaaaaa;
+    float:right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 @media only screen and (max-width: 1081px) and (min-width: 908px) {
     section {
@@ -348,6 +472,15 @@ tr:hover {
   h1 {
     font: 30px 'Merriweather', serif;
   }
+  input {
+    width: 80%;
+    height: 1em;
+    margin-bottom: 0px;
+  }
+  label {
+      visibility: hidden;
+      display: none;
+  }
 }
 
 @media only screen and (max-width: 720px) {
@@ -357,106 +490,13 @@ tr:hover {
   h1 {
     font: 25px 'Merriweather', serif;
   }
+  input {
+    width: 80%;
+    height: 1em;
+    margin-bottom: 0px;
+  }
+  label {
+    visibility: hidden;
+    display: none;
+  }
 }
-/* Modal Content */
-.modalLogin {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-
-
-
-}
-.modalLogin-content {
-  margin-top: 15%;
-  margin: 0 auto;
-  width: 300px;
-  height: 300px;
-  background-color:#99ADC1;
-  text-align: center;
-  font-family: 'Merriweather', serif;
-  opacity: 0.97;
-  border-radius: 16px;
-  background-color: #5c8dbd;
-  border-bottom: 4px solid #497198;
-  width: 25%;
-  margin-bottom: 40px;
-  padding: 5px;
-
-
-}
-.modalLogin-content input{
-  height: 1.3em;
-  width: 80%;
-  margin-left:10%;
-  margin-right:10%;
-  text-align: center;
-  display: block;
-  text-align: left;
-  margin-top:5px;
-  margin-bottom: 5px;
-}
-.modalLogin-content h3 {
-  text-decoration: underline;
-}
-.modalLogin-content input[type="text"]:focus,input[type="password"]:focus{
-  border-width: 2px;
-  border-color:#2A3268;
-
-}
-
-
-
-
-.modalLogin-content input[type="submit"]{
-  text-align: center;
-  width: 40%;
-  height: 2.8em;
-  display: inline-block;
-  position: relative;
-  background: #003366;
-  color: white;
-  cursor: pointer;
-  -webkit-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -ms-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  transition: all 0.4s;
-  border:none;
-  box-shadow: 2.5px 2.5px 2.5px #888888;
-  border-top-right-radius:0px;
-  border-bottom-right-radius:0px;
-  border-top-left-radius:0px;
-  border-bottom-left-radius:0px;
-  font-family: 'Bitstream Vera Sans 'Mono;
-  font-weight:bold;
-}
-
-.modalLogin-content input[type="submit"]:hover {
-  background: white;
-  color: #003366;
-}
-.modalLogin-content input{
-  align:left;
-  vertical-align: bottom;
-  position: relative;
-  padding: 0;
-}
-/* The Close Button */
-.closeLogin {
-    color: #aaaaaa;
-    float:right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.closeLogin:hover,.closeLogin:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-/*fin del modal*/

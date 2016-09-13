@@ -5,16 +5,47 @@
         <title>Buffet de la Facultad de Informática UNLP</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <script type="text/javascript" src="productos.js"></script>
+        <script type="text/javascript" src="modal.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
     </head>
     <body>
-    <header><h1>Buffet de la Facultad de Informática UNLP</h1><a href="login.html" class="login">Login</a></header>
+    <header>
+      <h1>Buffet de la Facultad de Informática UNLP</h1>
+      <a href="#" class="login">Logout</a>
+    </header>
+    <div id="newProduct" class="modal">
+      <form method="post" class="modal-content prod-content">
+        <span class="close" onclick="cerrar()">×</span>
+        <h3>Nuevo producto</h3>
+        <label for="productName">Nombre: </label>
+        <input type="text" id="productName" maxlength="20" required="true" placeholder="Nombre"></input>
+        <label for="markName">Marca: </label>
+        <input type="text" id="markName" maxlength="20" required="true" placeholder="Marca"></input>
+        <label for="barcode">Código: </label>
+        <input type="text" id="barcode" maxlength="20" required="true" placeholder="Código"></input>
+        <label for="stockAct">Stock actual: </label>
+        <input type="number" id="stockAct" maxlength="20" value="0" placeholder="Stock actual"></input>
+        <label for="stockMin">Stock mínimo: </label>
+        <input type="number" id="stockMIn" maxlength="20" required="true" placeholder="Stock mínimo"></input>
+        <label for="category">Categoría: </label>
+        <select id="category" required="true">
+         <option value="" selected="selected">Seleccione</option>
+         <option value="food">Alimento</option>
+         <option value="drink" selected>Bebida</option>
+         <option value="library">Librería</option>
+        </select>
+        <label for="providerName">Proovedor: </label>
+        <input type="text" id="providerName" maxlength="20" required="true" placeholder="Proovedor"></input>
+        <label for="price">Precio venta: </label>
+        <input type="number" id="price" maxlength="20" required="true" min="0" step="0.5" placeholder="Precio de venta unitaria"></input>
+        <input type="submit" value="Agregar"/>
+      </form>
+    </div>
     <nav>
         <ul>
            <li class="first" ><a href="index.html">Inicio</a></li>
-           <li><a href="">Logout</a></li>
            <li><a href="#listado">Productos</a> </li>
            <li class="last"><a href="">Acerca de</a> </li>
        </ul>
@@ -23,7 +54,7 @@
   <h1 class="title" id="listado">listado de Productos</h1>
   <a id="eliminar" href="#" class="action-button shadow animate disabled" disabled='disabled'>Eliminar</a>
   <a id="editar" href="#" class="action-button shadow animate disabled" disabled='disabled'>Editar</a>
-  <a id="nuevo" href="#" class="action-button shadow animate green active">Nuevo</a>
+  <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('newProduct')">Nuevo</a>
   <table>
   <tr>
     <th>Nombre</th>
