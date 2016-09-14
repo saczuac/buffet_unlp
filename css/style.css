@@ -92,12 +92,11 @@ header {
 
 body {
   margin-top: 0;
-  background-image: url("fondo.jpeg");
+  background-image: url("img/fondo.jpeg");
 	background-repeat: no-repeat;
   background-attachment: fixed;
  	background-position: center;
 	background-size: cover;
-  cursor: url("https://image.jimcdn.com/app/cms/image/transf/dimension=300x10000:format=png/path/sd866a03388cbedd6/image/id6dc124cc2b781e8/version/1279917654/image.png");
 }
 
 a {
