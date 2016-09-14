@@ -1,6 +1,7 @@
 *{
   cursor: url("http://tusimagenesde.com/wp-content/uploads/2015/01/cursor-4.png");
 }
+
 ul, li {
     text-align: center;
 }
@@ -44,17 +45,16 @@ ul, li {
   margin-top:5px;
   margin-bottom: 5px;
 }
+
 .formLogin h3 {
   text-decoration: underline;
 }
+
 .formLogin input[type="text"]:focus,input[type="password"]:focus{
   border-width: 2px;
   border-color:#2A3268;
 
 }
-
-
-
 
 .formLogin input[type="submit"]{
   text-align: center;
@@ -84,21 +84,17 @@ ul, li {
   background: white;
   color: #003366;
 }
-@media only screen and (max-width: 800px) {
-  .formLogin{
-    margin-left:0;
-    width: 80%;
-  }
-}
+
 header {
    height: 60px;
+   margin-top: 0;
 }
 
 body {
   margin-top: 0;
-    background-image: url("fondo.jpeg");
+  background-image: url("fondo.jpeg");
 	background-repeat: no-repeat;
-    background-attachment: fixed;
+  background-attachment: fixed;
  	background-position: center;
 	background-size: cover;
   cursor: url("https://image.jimcdn.com/app/cms/image/transf/dimension=300x10000:format=png/path/sd866a03388cbedd6/image/id6dc124cc2b781e8/version/1279917654/image.png");
@@ -110,7 +106,6 @@ a {
 }
 
 header, footer {
-    margin-top: 0;
     opacity: 0.95;
     padding: 1em;
     color: white;
@@ -178,9 +173,10 @@ p {
   color: white;
   font-family: 'Merriweather', serif;
 }
+
 footer {
    position:relative;
-   bottom:0;
+   bottom: 0;
    width:96.5%;
    height:40px;
 }
@@ -359,18 +355,18 @@ td {
     width: 25%;
 }
 
-.prod-content {
+.abm-content {
   width: 40%;
 }
 
-.prod-content label {
+.abm-content label {
   float: left;
   clear: left;
-  width: 120px;
+  width: 150px;
   text-align: right;
 }
 
-.prod-content input, select {
+.abm-content input, select {
   width: 50%;
   height: 2.1em;
   margin-bottom: 10px;
@@ -382,7 +378,7 @@ td {
   transition: box-shadow 0.3s, border 0.3s;
 }
 
-.prod-content input[type="submit"] {
+.abm-content input[type="submit"] {
   margin-left: auto;
   margin-right: auto;
 }
