@@ -19,35 +19,41 @@
     <div id="new" class="modal">
       <form method="post" class="modal-content abm-content">
         <span class="close" onclick="cerrar()">×</span>
-        <h3>Nuevo Usuario</h3>
-        <label for="newUsername">Nombre de usuario: </label>
-        <input type="text" id="newUsername" maxlength="20" required="true" placeholder="Nombre de usuario"></input>
-        <label for="newPassword">Contraseña: </label>
-        <input type="password" id="newPassword" maxlength="20" required="true" placeholder="Contraseña"></input>
-        <label for="newPassword2">Repita Contraseña: </label>
-        <input type="password" id="newPassword2" maxlength="20" required="true" placeholder="Repita contraseña"></input>
-         <br><br>
+        <h3>Nueva venta</h3>
+        <label for="newSpendingName">Nombre: </label>
+        <input type="text" id="newSpendingName" maxlength="20" required="true" placeholder="Nombre" required></input>
+        <label for="newSpendingDescription">Descripcion: </label>
+        <input type="text" id="newSpendingDescription" maxlength="20" required="true" placeholder="Descripcion" required></input>
+        <label for="newSpendingProvider">Proveedor: </label>
+        <input type="text" id="newSpendingProvider" maxlength="20" required="true" placeholder="Proveedor" required></input>
+        <label for="newSpendingMount">Monto: </label>
+        <input type="number" id="newSpendingMount" maxlength="20" value="0" placeholder="Monto" required></input>
+        <label for="newSpendingDate">Fecha: </label>
+        <input type="date" id="newSpendingDate" maxlength="20" required="true" placeholder="Fecha" required></input>
         <input type="submit" value="Agregar"/>
       </form>
     </div>
     <div id="edit" class="modal">
       <form method="post" class="modal-content abm-content">
         <span class="close" onclick="cerrar()">×</span>
-        <h3>Editar Usuario</h3>
-        <label for="editUsername">Nombre de usuario: </label>
-        <input type="text" id="editUsername" maxlength="20" required="true" placeholder="Nombre de usuario" value="admin"></input>
-        <label for="editPassword">Nueva contraseña: </label>
-        <input type="password" id="editPassword" maxlength="20" required="true" placeholder="Contraseña"></input>
-        <label for="editPassword2">Repita contraseña: </label>
-        <input type="password" id="editPassword2" maxlength="20" required="true" placeholder="Repita contraseña"></input>
-        <br><br>
+        <h3>Editar venta</h3>
+        <label for="editSpendingName">Nombre: </label>
+        <input type="text" id="newSpendingName" maxlength="20" required="true" placeholder="Nombre" value="Productos" required></input>
+        <label for="editSpendingDescription">Descripcion: </label>
+        <input type="text" id="editSpendingDescription" maxlength="20" required="true" placeholder="Descripcion" value="Don saturn" required></input>
+        <label for="editSpendingProvider">Proveedor: </label>
+        <input type="text" id="editSpendingProvider" maxlength="20" required="true" placeholder="Proveedor" value="Mayorista de galletitas" required></input>
+        <label for="editSpendingMount">Monto: </label>
+        <input type="number" id="editSpendingMount" maxlength="20" value="500" placeholder="Monto" required></input>
+        <label for="editSpendingDate">Fecha: </label>
+        <input type="date" id="editSpendingDate" maxlength="20" required="true" placeholder="Fecha" value="14/06/2018" required></input>
         <input type="submit" value="Modificar"/>
       </form>
     </div>
     <div id="delete" class="modal">
       <form method="post" class="modal-content abm-content">
         <span class="close" onclick="cerrar()">×</span>
-          <h4> ¿Realmente desea eliminar este usuario?</h4><br>
+          <h4> ¿Realmente desea eliminar este gasto?</h4><br>
         <input type="submit" value="Confirmar"/>
       </form>
     </div>
@@ -59,30 +65,39 @@
            <li><a href="menu.html">Menú</a> </li>
            <li><a href="pedidos.html">Pedidos</a> </li>
            <li><a href="ventas.html">Ventas</a> </li>
+           <li><a href="gastos.html">Gastos</a> </li>
            <li class="last"><a href="">Acerca de</a> </li>
        </ul>
     </nav>
     <br>
-  <h1 class="title" id="listado">Usuarios</h1>
+  <h1 class="title" id="listado">listado de Gastos</h1>
   <a id="eliminar" href="#" class="action-button shadow animate disabled" disabled='disabled'>Eliminar</a>
   <a id="editar" href="#" class="action-button shadow animate disabled" disabled='disabled'>Editar</a>
   <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')">Nuevo</a>
   <table>
   <tr>
-    <th>Nombre</th>
-    <th>Miembro desde</th>
+    <th>Gasto</th>
+    <th>Descripcion</th>
+    <th>Fecha</th>
+    <th>Monto</th>
   </tr>
   <tr>
-    <td>admin</td>
-    <td>12/09/2016</td>
+    <td>Productos</td>
+    <td>Don saturn</td>
+    <td>14/06/2018</td>
+    <td>$500</td>
   </tr>
   <tr>
-    <td>seba</td>
-    <td>10/09/2016</td>
+    <td>Panificacion</td>
+    <td>Panes y bizcochitos</td>
+    <td>16/06/2018</td>
+    <td>$800</td>
   </tr>
   <tr>
-    <td>sacha</td>
-    <td>09/09/2016</td>
+    <td>Bebida</td> 
+    <td>Puro sol</td>
+    <td>05/10/2016o</td> 
+    <td>$400</td>
   </tr>
   </table>
     <footer>Facultad de Informática UNLP<img src="img/info.png" width="30px" height="30px"></img></footer>

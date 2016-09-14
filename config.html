@@ -49,9 +49,19 @@
         <p>Posee, asimismo, becas para estudiantes (exclusivamente de la FI) que necesiten trabajar. Aquellos interesados concurrir al directamente al Buffet.</p>
     </section>
     <section>
-        <h1>Menú del día</h1>
-        <img src="img/menu.jpg"/>
-        <h2><br>Ñoquis con salsa</h2>
+        <form method="post" class="config">
+            <h1>Cambiar men&uacute;</h1>
+            <label for="menuTitle">Titulo: </label>
+            <input type="text" id="menuTitle" maxlength="50" required="true" placeholder="Titulo" value="Milanesa napolitana con fritas"></input>
+            <br>
+            <br>
+            <textarea class="estilotextarea" rows="17" cols="30"> Riquisima milanesa al horno con salsa de tomate y queso acompañado de papas baston fritas</textarea>
+            <img src=""/>
+            <input type="file" id="myFile" accept="image/*">
+            <br>
+            <br>
+            <input type="submit" value="Agregar"/>
+        </form>
     </section>
     <footer>Facultad de Informática UNLP<img src="img/info.png" width="30px" height="30px"></img></footer>
     </body>

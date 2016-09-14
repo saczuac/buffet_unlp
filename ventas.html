@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Buffet de la Facultad de Informática UNLP</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script type="text/javascript" src="js/abm.js"></script>
+        <script type="text/javascript" src="js/modal.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+        <link rel="icon" type="image/png" href="img/icon.png" />
+    </head>
+    <body>
+    <header>
+      <h1>Buffet de la Facultad de Informática UNLP</h1>
+      <a href="#" class="login">Logout</a>
+    </header>
+    <div id="new" class="modal">
+      <form method="post" class="modal-content abm-content">
+        <span class="close" onclick="cerrar()">×</span>
+        <h3>Nueva venta</h3>
+        <label for="newSellProductName">Nombre: </label>
+        <input type="text" id="newSellProductName" maxlength="20" required="true" placeholder="Nombre" required></input>
+        <label for="newSellMarkName">Marca: </label>
+        <input type="text" id="newSellMarkName" maxlength="20" required="true" placeholder="Marca" required></input>
+        <label for="newSellBarcode">Código: </label>
+        <input type="text" id="newSellBarcode" maxlength="20" required="true" placeholder="Código" required></input>
+        <label for="newSellQuantity">Cantidad: </label>
+        <input type="number" id="newSellQuantity" maxlength="20" value="0" placeholder="Cantidad" required></input>
+        <label for="newSellMount">Monto: </label>
+        <input type="number" id="newSellMount" maxlength="20" value="0" placeholder="Monto" required></input>
+        <label for="newSellDate">Fecha: </label>
+        <input type="date" id="newSellDate" maxlength="20" required="true" placeholder="Fecha" required></input>
+        <input type="submit" value="Agregar"/>
+      </form>
+    </div>
+    <div id="edit" class="modal">
+      <form method="post" class="modal-content abm-content">
+        <span class="close" onclick="cerrar()">×</span>
+        <h3>Editar venta</h3>
+        <label for="editSellProductName">Nombre: </label>
+        <input type="text" id="editSellProductName" maxlength="20" required="true" placeholder="Nombre" value="Bizcochos"></input>
+        <label for="editSellMarkName">Marca: </label>
+        <input type="text" id="editSellMarkName" maxlength="20" required="true" placeholder="Marca" value="Don Saturn"></input>
+        <label for="editSellBarcode">Código: </label>
+        <input type="text" id="editSellBarcode" maxlength="20" required="true" placeholder="Código" value="10010011"></input>
+        <label for="editSellQuantity">Cantidad: </label>
+        <input type="number" id="editSellQuantity" maxlength="20" value="3" placeholder="Cantidad"></input>
+        <label for="editSellMount">Monto: </label>
+        <input type="number" id="editSellQuantity" maxlength="20" value="30" placeholder="Monto"></input>
+        <label for="editSellDate">Fecha: </label>
+        <input type="date" id="editSellDate" maxlength="20" required="true" placeholder="Fecha"></input>
+        <input type="submit" value="Modificar"/>
+      </form>
+    </div>
+    <div id="delete" class="modal">
+      <form method="post" class="modal-content abm-content">
+        <span class="close" onclick="cerrar()">×</span>
+          <h4> ¿Realmente desea eliminar esta venta?</h4><br>
+        <input type="submit" value="Confirmar"/>
+      </form>
+    </div>
+    <nav>
+        <ul>
+           <li class="first" ><a href="">Inicio</a></li>
+           <li><a href="productos.html">Productos</a> </li>
+           <li><a href="usuarios.html">Usuarios</a> </li>
+           <li><a href="menu.html">Menú</a> </li>
+           <li><a href="pedidos.html">Pedidos</a> </li>
+           <li><a href="ventas.html">Ventas</a> </li>
+           <li class="last"><a href="">Acerca de</a> </li>
+       </ul>
+    </nav>
+    <br>
+  <h1 class="title" id="listado">listado de Ventas</h1>
+  <a id="eliminar" href="#" class="action-button shadow animate disabled" disabled='disabled'>Eliminar</a>
+  <a id="editar" href="#" class="action-button shadow animate disabled" disabled='disabled'>Editar</a>
+  <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')">Nuevo</a>
+  <table>
+  <tr>
+    <th>Producto</th>
+    <th>Cantidad</th>
+    <th>Fecha</th>
+    <th>Monto</th>
+  </tr>
+  <tr>
+    <td>Caf&eacute;</td>
+    <td>1</td>
+    <td>14/06/2018</td>
+    <td>$15</td>
+  </tr>
+  <tr>
+    <td>Bizcochos Don Satur</td>
+    <td>3</td>
+    <td>16/06/2018</td>
+    <td>$30</td>
+  </tr>
+  <tr>
+    <td>Alfajor</td> 
+    <td>2</td>
+    <td>05/10/2016o</td> 
+    <td>$20</td>
+  </tr>
+  <tr>
+    <td>Chocolate Aguila</td>
+    <td>2</td>
+    <td>05/10/2016</td>
+    <td>$25</td>
+  </tr>
+  </table>
+    <footer>Facultad de Informática UNLP<img src="img/info.png" width="30px" height="30px"></img></footer>
+    </body>
+</html>
