@@ -19,41 +19,35 @@
     <div id="new" class="modal">
       <form method="post" class="modal-content abm-content">
         <span class="close" onclick="cerrar()">×</span>
-        <h3>Nueva venta</h3>
-        <label for="newSpendingName">Nombre: </label>
-        <input type="text" id="newSpendingName" maxlength="20" required="true" placeholder="Nombre" required></input>
-        <label for="newSpendingDescription">Descripcion: </label>
-        <input type="text" id="newSpendingDescription" maxlength="20" required="true" placeholder="Descripcion" required></input>
-        <label for="newSpendingProvider">Proveedor: </label>
-        <input type="text" id="newSpendingProvider" maxlength="20" required="true" placeholder="Proveedor" required></input>
-        <label for="newSpendingMount">Monto: </label>
-        <input type="number" id="newSpendingMount" maxlength="20" value="0" placeholder="Monto" required></input>
-        <label for="newSpendingDate">Fecha: </label>
-        <input type="date" id="newSpendingDate" maxlength="20" required="true" placeholder="Fecha" required></input>
+        <h3>Nuevo Pedido</h3>
+        <label for="newPedido">Producto: </label>
+        <input type="text" id="newPedido" maxlength="20" required="true" placeholder="Producto"></input>
+        <label for="newQuantity">Cantidad: </label>
+        <input type="number" id="newQuantity" maxlength="20" min="0" step="1" required="true" placeholder="Cantidad pedida"></input>
+        <label for="newHour">Hora de entrega: </label>
+        <input type="time" id="newHour" required="true"></input>
+         <br><br>
         <input type="submit" value="Agregar"/>
       </form>
     </div>
     <div id="edit" class="modal">
       <form method="post" class="modal-content abm-content">
         <span class="close" onclick="cerrar()">×</span>
-        <h3>Editar venta</h3>
-        <label for="editSpendingName">Nombre: </label>
-        <input type="text" id="newSpendingName" maxlength="20" required="true" placeholder="Nombre" value="Productos" required></input>
-        <label for="editSpendingDescription">Descripcion: </label>
-        <input type="text" id="editSpendingDescription" maxlength="20" required="true" placeholder="Descripcion" value="Don saturn" required></input>
-        <label for="editSpendingProvider">Proveedor: </label>
-        <input type="text" id="editSpendingProvider" maxlength="20" required="true" placeholder="Proveedor" value="Mayorista de galletitas" required></input>
-        <label for="editSpendingMount">Monto: </label>
-        <input type="number" id="editSpendingMount" maxlength="20" value="500" placeholder="Monto" required></input>
-        <label for="editSpendingDate">Fecha: </label>
-        <input type="date" id="editSpendingDate" maxlength="20" required="true" placeholder="Fecha" value="14/06/2018" required></input>
+        <h3>Editar Pedido</h3>
+        <label for="editPedido">Producto: </label>
+        <input type="text" id="editPedido" maxlength="20" required="true" value="Sanguche de bondiola"></input>
+        <label for="editQuantity">Cantidad: </label>
+        <input type="number" id="editQuantity" maxlength="20" min="0" step="1" required="true" value="4"></input>
+        <label for="editHour">Hora de entrega: </label>
+        <input type="time" id="editHour" required="true" value="13:00"></input>
+        <br><br>
         <input type="submit" value="Modificar"/>
       </form>
     </div>
     <div id="delete" class="modal">
       <form method="post" class="modal-content abm-content">
         <span class="close" onclick="cerrar()">×</span>
-          <h4> ¿Realmente desea eliminar este gasto?</h4><br>
+          <h4> ¿Realmente desea eliminar este pedido?</h4><br>
         <input type="submit" value="Confirmar"/>
       </form>
     </div>
@@ -69,34 +63,30 @@
        </ul>
     </nav>
     <br>
-  <h1 class="title" id="listado">listado de Gastos</h1>
+  <h1 class="title" id="listado">Pedidos</h1>
   <a id="eliminar" href="#" class="action-button shadow animate disabled" disabled='disabled'>Eliminar</a>
   <a id="editar" href="#" class="action-button shadow animate disabled" disabled='disabled'>Editar</a>
   <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')">Nuevo</a>
   <table>
   <tr>
-    <th>Gasto</th>
-    <th>Descripcion</th>
-    <th>Fecha</th>
-    <th>Monto</th>
+    <th>Producto</th>
+    <th>Cantidad</th>
+    <th>Hora de entrega</th>
   </tr>
   <tr>
-    <td>Productos</td>
-    <td>Don saturn</td>
-    <td>14/06/2018</td>
-    <td>$500</td>
+    <td>Menú del día</td>
+    <td>14</td>
+    <td>12:00</td>
   </tr>
   <tr>
-    <td>Panificacion</td>
-    <td>Panes y bizcochitos</td>
-    <td>16/06/2018</td>
-    <td>$800</td>
+    <td>Sanguche de bondiola</td>
+    <td>5</td>
+    <td>13:30</td>
   </tr>
   <tr>
-    <td>Bebida</td>
-    <td>Puro sol</td>
-    <td>05/10/2016o</td>
-    <td>$400</td>
+    <td>Tostado de JyQ</td>
+    <td>7</td>
+    <td>13:00</td>
   </tr>
   </table>
     <footer>Facultad de Informática UNLP<img src="img/info.png" width="30px" height="30px"></img></footer>

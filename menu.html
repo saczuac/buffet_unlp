@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Buffet - FI</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script type="text/javascript" src="js/abm.js"></script>
+        <script type="text/javascript" src="js/modal.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+        <link rel="icon" type="image/png" href="img/icon.png" />
+    </head>
+    <body>
+    <header>
+      <h1>Buffet de la Facultad de Informática UNLP</h1>
+      <a href="#" class="login">Logout</a>
+    </header>
+    <div id="edit" class="modal">
+      <form method="post" class="modal-content abm-content">
+        <span class="close" onclick="cerrar()">×</span>
+        <h3>Editar men&uacute</h3>
+        <label for="editDay">D&iacute;a </label>
+        <select id="editDay" required="true">
+         <option value="" selected="selected">Seleccione</option>
+         <option>Lunes</option>
+         <option>Martes</option>
+         <option>Mi&eacute;rcoles</option>
+         <option>Jueves</option>
+         <option>Viernes</option>
+        </select>
+        <br>
+        <label for="editMenu">Men&uacute; </label>
+        <input type="text" id="editMenu" maxlength="50" required="true" placeholder="Men&uacute;"></input>
+        <br><br>
+        <input type="submit" value="Modificar"/>
+      </form>
+    </div>
+    <nav>
+        <ul>
+           <li class="first" ><a href="index.html">Inicio</a></li>
+           <li><a href="productos.html">Productos</a> </li>
+           <li><a href="usuarios.html">Usuarios</a> </li>
+           <li><a href="menu.html">Menú</a> </li>
+           <li><a href="pedidos.html">Pedidos</a> </li>
+           <li><a href="ventas.html">Ventas</a> </li>
+           <li class="last"><a href="">Acerca de</a> </li>
+       </ul>
+    </nav>
+    <br>
+  <h1 class="title" id="listado">Men&uacute; semanal</h1>
+  <a id="editar" href="#" class="action-button shadow animate disabled" disabled='disabled'>Editar</a>
+  <table>
+  <tr>
+    <th>D&iacute;a</th>
+    <th>Men&uacute;</th>
+  </tr>
+  <tr>
+    <td>Lunes</td>
+    <td>Milanesa con papas fritas</td>
+  </tr>
+  <tr>
+    <td>Martes</td>
+    <td>Sopa</td>
+  </tr>
+  <tr>
+    <td>Miércoles</td>
+    <td>Filet de Merluza con pur&eacute;</td>
+  </tr>
+  <tr>
+    <td>Jueves</td>
+    <td>Ensalada mixta</td>
+  </tr>
+  <tr>
+    <td>Viernes</td>
+    <td>Sanguche de bondiola</td>
+  </tr>
+  </table>
+    <footer>Facultad de Informática UNLP<img src="img/info.png" width="30px" height="30px"></img></footer>
+    </body>
+</html>

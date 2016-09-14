@@ -274,8 +274,8 @@ td {
 {
 	position: relative;
 	padding: 5px 20px;
-  margin: 0px 10px 10px 0px;
-  float: right;
+    margin: 0px 10px 10px 0px;
+    float: right;
 	border-radius: 10px;
 	font-family: 'Merriweather', serif;
 	font-size: 15px;
@@ -335,6 +335,8 @@ td {
 .modal label {
   font-family: 'Merriweather', serif;
   font-size: 15px;
+  height: 2.1em;
+  margin-bottom: 10px;
 }
 
 .modal-content {
@@ -444,9 +446,11 @@ td {
     text-decoration: none;
     cursor: pointer;
 }
+
 .config input[type="text"],input[type="img"]{
   display: inline-block;
 }
+
 .config input[type="text"]{
   width: 50%;
   height: 2.1em;
@@ -458,16 +462,19 @@ td {
   border: solid 1px #dcdcdc;
   transition: box-shadow 0.3s, border 0.3s;
 }
-.config .estilotextarea {border: 2px solid #003366;
-  border-radius: 15px;}
 
-.config input[type="file"]{
+.config .estilotextarea {border: 2px solid #003366;
+  border-radius: 15px;
+}
+
+.config input[type="file"] {
   border: 2px solid #003366;
   box-shadow: 2.5px 2.5px 2.5px #888888;
   font-family: 'Bitstream Vera Sans 'Mono;
   font-weight:bold;
 
 }
+
 .config input[type="submit"]{
   text-align: center;
   width: 100px;

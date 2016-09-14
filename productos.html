@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Buffet de la Facultad de Informática UNLP</title>
+        <title>Buffet - FI</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <script type="text/javascript" src="js/abm.js"></script>
         <script type="text/javascript" src="js/modal.js"></script>
@@ -20,27 +20,28 @@
       <form method="post" class="modal-content abm-content">
         <span class="close" onclick="cerrar()">×</span>
         <h3>Nuevo producto</h3>
-        <label for="productName">Nombre: </label>
+        <label for="newProductName">Nombre: </label>
         <input type="text" id="newProductName" maxlength="20" required="true" placeholder="Nombre"></input>
-        <label for="markName">Marca: </label>
+        <label for="newMarkName">Marca: </label>
         <input type="text" id="newMarkName" maxlength="20" required="true" placeholder="Marca"></input>
-        <label for="barcode">Código: </label>
+        <label for="newBarcode">Código: </label>
         <input type="text" id="newBarcode" maxlength="20" required="true" placeholder="Código"></input>
-        <label for="stockAct">Stock actual: </label>
+        <label for="newStockAct">Stock actual: </label>
         <input type="number" id="newStockAct" maxlength="20" value="0" placeholder="Stock actual"></input>
-        <label for="stockMin">Stock mínimo: </label>
+        <label for="newStockMin">Stock mínimo: </label>
         <input type="number" id="newStockMIn" maxlength="20" required="true" placeholder="Stock mínimo"></input>
-        <label for="category">Categoría: </label>
+        <label for="newCategory">Categoría: </label>
         <select id="newCategory" required="true">
          <option value="" selected="selected">Seleccione</option>
          <option value="food">Alimento</option>
          <option value="drink" selected>Bebida</option>
          <option value="library">Librería</option>
         </select>
-        <label for="providerName">Proovedor: </label>
+        <label for="newPoviderName">Proovedor: </label>
         <input type="text" id="newProviderName" maxlength="20" required="true" placeholder="Proovedor"></input>
         <label for="price">Precio venta: </label>
         <input type="number" id="newPrice" maxlength="20" required="true" min="0" step="0.5" placeholder="Precio de venta unitaria"></input>
+        <br>
         <input type="submit" value="Agregar"/>
       </form>
     </div>
@@ -69,6 +70,7 @@
         <input type="text" id="editProviderName" maxlength="20" required="true" placeholder="Proovedor" value="Arcor"></input>
         <label for="price">Precio venta: </label>
         <input type="number" id="editPrice" maxlength="20" required="true" min="0" step="0.5" placeholder="Precio de venta unitaria" value="55"></input>
+        <br>
         <input type="submit" value="Modificar"/>
       </form>
     </div>
@@ -81,7 +83,7 @@
     </div>
     <nav>
         <ul>
-           <li class="first" ><a href="">Inicio</a></li>
+           <li class="first" ><a href="index.html">Inicio</a></li>
            <li><a href="productos.html">Productos</a> </li>
            <li><a href="usuarios.html">Usuarios</a> </li>
            <li><a href="menu.html">Menú</a> </li>
