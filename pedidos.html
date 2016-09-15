@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="utf-8">
         <title>Buffet - FI</title>
@@ -21,11 +21,11 @@
         <span class="close" onclick="cerrar()">×</span>
         <h3>Nuevo Pedido</h3>
         <label for="newPedido">Producto: </label>
-        <input type="text" id="newPedido" maxlength="20" required="true" placeholder="Producto"></input>
+        <input type="text" id="newPedido" maxlength="20" placeholder="Producto" required/>
         <label for="newQuantity">Cantidad: </label>
-        <input type="number" id="newQuantity" maxlength="20" min="0" step="1" required="true" placeholder="Cantidad pedida"></input>
+        <input type="number" id="newQuantity" min="0" step="1" placeholder="Cantidad pedida" required />
         <label for="newHour">Hora de entrega: </label>
-        <input type="time" id="newHour" required="true"></input>
+        <input type="time" id="newHour" required />
          <br><br>
         <input type="submit" value="Agregar"/>
       </form>
@@ -35,11 +35,11 @@
         <span class="close" onclick="cerrar()">×</span>
         <h3>Editar Pedido</h3>
         <label for="editPedido">Producto: </label>
-        <input type="text" id="editPedido" maxlength="20" required="true" value="Sanguche de bondiola"></input>
+        <input type="text" id="editPedido" maxlength="20" value="Sanguche de bondiola" required/>
         <label for="editQuantity">Cantidad: </label>
-        <input type="number" id="editQuantity" maxlength="20" min="0" step="1" required="true" value="4"></input>
+        <input type="number" id="editQuantity" min="0" step="1" value="4" required />
         <label for="editHour">Hora de entrega: </label>
-        <input type="time" id="editHour" required="true" value="13:00"></input>
+        <input type="time" id="editHour" value="13:00" required  />
         <br><br>
         <input type="submit" value="Modificar"/>
       </form>
@@ -64,8 +64,8 @@
     </nav>
     <br>
   <h1 class="title" id="listado">Pedidos</h1>
-  <a id="eliminar" href="#" class="action-button shadow animate disabled" disabled='disabled'>Eliminar</a>
-  <a id="editar" href="#" class="action-button shadow animate disabled" disabled='disabled'>Editar</a>
+  <a id="eliminar" href="#" class="action-button shadow animate disabled">Eliminar</a>
+  <a id="editar" href="#" class="action-button shadow animate disabled">Editar</a>
   <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')">Nuevo</a>
   <table>
   <tr>
@@ -89,6 +89,6 @@
     <td>13:00</td>
   </tr>
   </table>
-    <footer>Facultad de Informática UNLP<img src="img/info.png" width="30px" height="30px"></img></footer>
+    <footer>Facultad de Informática UNLP<img src="img/info.png" width="30" height="30" alt="Icono facultad de Informática" /></footer>
     </body>
 </html>

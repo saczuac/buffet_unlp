@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="utf-8">
         <title>Buffet - FI</title>
@@ -19,9 +19,9 @@
     <div id="edit" class="modal">
       <form method="post" class="modal-content abm-content">
         <span class="close" onclick="cerrar()">×</span>
-        <h3>Editar men&uacute</h3>
+        <h3>Editar men&uacute;</h3>
         <label for="editDay">D&iacute;a </label>
-        <select id="editDay" required="true">
+        <select id="editDay" required>
          <option value="" selected="selected">Seleccione</option>
          <option>Lunes</option>
          <option>Martes</option>
@@ -31,7 +31,7 @@
         </select>
         <br>
         <label for="editMenu">Men&uacute; </label>
-        <input type="text" id="editMenu" maxlength="50" required="true" placeholder="Men&uacute;"></input>
+        <input type="text" id="editMenu" maxlength="50" placeholder="Men&uacute;" required />
         <br><br>
         <input type="submit" value="Modificar"/>
       </form>
@@ -49,7 +49,7 @@
     </nav>
     <br>
   <h1 class="title" id="listado">Men&uacute; semanal</h1>
-  <a id="editar" href="#" class="action-button shadow animate disabled" disabled='disabled'>Editar</a>
+  <a id="editar" href="#" class="action-button shadow animate disabled">Editar</a>
   <table>
   <tr>
     <th>D&iacute;a</th>
@@ -76,6 +76,6 @@
     <td>Sanguche de bondiola</td>
   </tr>
   </table>
-    <footer>Facultad de Informática UNLP<img src="img/info.png" width="30px" height="30px"></img></footer>
+    <footer>Facultad de Informática UNLP<img src="img/info.png" width="30" height="30" alt="Icono facultad de Informática"/></footer>
     </body>
 </html>

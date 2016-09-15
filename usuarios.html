@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="utf-8">
         <title>Buffet - FI</title>
@@ -21,11 +21,11 @@
         <span class="close" onclick="cerrar()">×</span>
         <h3>Nuevo Usuario</h3>
         <label for="newUsername">Nombre de usuario: </label>
-        <input type="text" id="newUsername" maxlength="20" required="true" placeholder="Nombre de usuario"></input>
+        <input type="text" id="newUsername" maxlength="20" placeholder="Nombre de usuario" required/>
         <label for="newPassword">Contraseña: </label>
-        <input type="password" id="newPassword" maxlength="20" required="true" placeholder="Contraseña"></input>
+        <input type="password" id="newPassword" maxlength="20" placeholder="Contraseña" required/>
         <label for="newPassword2">Repita Contraseña: </label>
-        <input type="password" id="newPassword2" maxlength="20" required="true" placeholder="Repita contraseña"></input>
+        <input type="password" id="newPassword2" maxlength="20" placeholder="Repita contraseña" required />
          <br><br>
         <input type="submit" value="Agregar"/>
       </form>
@@ -35,11 +35,11 @@
         <span class="close" onclick="cerrar()">×</span>
         <h3>Editar Usuario</h3>
         <label for="editUsername">Nombre de usuario: </label>
-        <input type="text" id="editUsername" maxlength="20" required="true" placeholder="Nombre de usuario" value="admin"></input>
+        <input type="text" id="editUsername" maxlength="20" placeholder="Nombre de usuario" value="admin" required />
         <label for="editPassword">Nueva contraseña: </label>
-        <input type="password" id="editPassword" maxlength="20" required="true" placeholder="Contraseña"></input>
+        <input type="password" id="editPassword" maxlength="20" placeholder="Contraseña" required />
         <label for="editPassword2">Repita contraseña: </label>
-        <input type="password" id="editPassword2" maxlength="20" required="true" placeholder="Repita contraseña"></input>
+        <input type="password" id="editPassword2" maxlength="20" placeholder="Repita contraseña" required />
         <br><br>
         <input type="submit" value="Modificar"/>
       </form>
@@ -64,8 +64,8 @@
     </nav>
     <br>
   <h1 class="title" id="listado">Usuarios</h1>
-  <a id="eliminar" href="#" class="action-button shadow animate disabled" disabled='disabled'>Eliminar</a>
-  <a id="editar" href="#" class="action-button shadow animate disabled" disabled='disabled'>Editar</a>
+  <a id="eliminar" href="#" class="action-button shadow animate disabled">Eliminar</a>
+  <a id="editar" href="#" class="action-button shadow animate disabled">Editar</a>
   <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')">Nuevo</a>
   <table>
   <tr>
@@ -85,6 +85,6 @@
     <td>09/09/2016</td>
   </tr>
   </table>
-    <footer>Facultad de Informática UNLP<img src="img/info.png" width="30px" height="30px"></img></footer>
+    <footer>Facultad de Informática UNLP<img src="img/info.png" width="30" height="30" alt="Icono facultad de Informática" /></footer>
     </body>
 </html>
