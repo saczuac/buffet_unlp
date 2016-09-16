@@ -16,26 +16,6 @@
       <h1>Buffet de la Facultad de Informática UNLP</h1>
       <a href="#" class="login">Logout</a>
     </header>
-    <div id="edit" class="modal">
-      <form method="post" class="modal-content abm-content">
-        <span class="close" onclick="cerrar()">×</span>
-        <h3>Editar men&uacute;</h3>
-        <label for="editDay">D&iacute;a </label>
-        <select id="editDay" required>
-         <option value="" selected="selected">Seleccione</option>
-         <option>Lunes</option>
-         <option>Martes</option>
-         <option>Mi&eacute;rcoles</option>
-         <option>Jueves</option>
-         <option>Viernes</option>
-        </select>
-        <br>
-        <label for="editMenu">Men&uacute; </label>
-        <input type="text" id="editMenu" maxlength="50" placeholder="Men&uacute;" required />
-        <br><br>
-        <input type="submit" value="Modificar"/>
-      </form>
-    </div>
     <nav>
         <ul>
            <li class="first" ><a href="index.html">Inicio</a></li>
@@ -55,34 +35,29 @@
        </ul>
     </nav>
     <br>
-  <h1 class="title" id="listado">Men&uacute; semanal</h1>
-  <a id="editar" href="#" class="action-button shadow animate disabled">Editar</a>
+  <h1 class="title" id="listado">listado de Stock Minimo</h1>
   <table>
   <tr>
-    <th>D&iacute;a</th>
-    <th>Men&uacute;</th>
+    <th>Producto</th>
+    <th>Stock minimo</th>
   </tr>
   <tr>
-    <td>Lunes</td>
-    <td>Milanesa con papas fritas</td>
+    <td>Caf&eacute;</td>
+    <td>20</td>
   </tr>
   <tr>
-    <td>Martes</td>
-    <td>Sopa</td>
+    <td>Bizcochos</td>
+    <td>30</td>
   </tr>
   <tr>
-    <td>Miércoles</td>
-    <td>Filet de Merluza con pur&eacute;</td>
+    <td>Alfajor</td>
+    <td>40</td>
   </tr>
   <tr>
-    <td>Jueves</td>
-    <td>Ensalada mixta</td>
-  </tr>
-  <tr>
-    <td>Viernes</td>
-    <td>Sanguche de bondiola</td>
+    <td>Chocolate</td>
+    <td>10</td>
   </tr>
   </table>
-    <footer>Facultad de Informática UNLP<img src="img/info.png" width="30" height="30" alt="Icono facultad de Informática"/></footer>
+    <footer>Facultad de Informática UNLP<img src="img/info.png" width="30" height="30" alt="Icono facultad de Informática" /></footer>
     </body>
 </html>

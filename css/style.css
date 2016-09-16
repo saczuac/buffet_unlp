@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+
+=======
+>>>>>>> a911a84e2665a1fa96634cb70b63e36f05b8a741
 ul, li {
     text-align: center;
 }
@@ -121,6 +125,8 @@ nav {
     text-align: center;
 }
 
+
+
 .title {
   text-align: center;
   height: auto;
@@ -182,7 +188,7 @@ img {
    padding:0.5em;
 }
 
-ul {
+nav ul {
   margin: 0;
   padding: 15px 4px 17px 0;
   list-style: none;
@@ -191,11 +197,10 @@ ul {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 }
 
-ul li {
-  display: inline-block;
+nav ul li {
+  display:inline-block;
   margin-right: -4px;
   position: relative;
-  padding: 15px 20px;
   background: #fff;
   cursor: pointer;
   -webkit-transition: all 0.2s;
@@ -205,7 +210,92 @@ ul li {
   transition: all 0.2s;
 }
 
-ul li:hover {
+
+/*------------------------------*/
+/*Sub-menu*/
+nav > ul > li:hover > ul {
+  display:block;
+  height:470%;
+  width: auto;
+  background: #FFF;
+}
+nav > ul > li:hover > ul li{
+  background: #FFF;
+  color: #003366;
+}
+ 
+ nav > ul > li:hover > ul li a {
+  color: #003366;
+}
+nav ul li ul li:hover {
+  background: #003366;
+  color: #FFF;
+}
+
+nav ul li ul li:hover a {
+  color: white;
+  background-color:#003366; 
+}
+nav > ul > li > ul {
+  display:block;
+  position:absolute;
+  left:0;
+  right:0;
+  overflow:hidden;
+  height:0%;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
+nav ul li ul{
+  background-color: #fff;
+  z-index: 500;
+  padding: 0;
+}
+nav ul li ul li{
+width: 100%;
+}
+
+nav > ul li a {
+  display:block;
+  line-height:20px;
+  padding:20px;
+  position: relative;
+  text-align:center;
+  text-decoration:none;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
+ 
+nav > ul > li > a span {
+  display:block;
+  height:100%;
+  width:100%;
+  left:0;
+  position:absolute;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
+ 
+nav > ul > li > a span .icon {
+  display:block;
+  line-height:60px;
+}
+ 
+nav > ul > li > a:hover > span {
+  top:0;
+  background-color: #003366;
+}
+ /*---------------------*/
+ ul li:hover {
   background: #003366;
   color: #FFF;
 }
@@ -214,16 +304,15 @@ ul li:hover a {
   color: white;
 }
 
-li.first{
+nav li.first{
    border-top-left-radius:15px;
    border-bottom-left-radius:15px;
 }
 
-li.last{
+nav li.last{
     border-top-right-radius:15px;
    border-bottom-right-radius:15px;
 }
-
 
 table {
     overflow-x:auto;
@@ -537,4 +626,6 @@ td {
     visibility: hidden;
     display: none;
   }
+
+
 }
