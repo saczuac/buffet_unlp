@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> a911a84e2665a1fa96634cb70b63e36f05b8a741
 ul, li {
     text-align: center;
 }
@@ -124,7 +121,16 @@ section img {
 nav {
     text-align: center;
 }
-
+header h1 a {
+  margin-top: 0;
+  float: right;
+  z-index: 500;
+}
+header h1 a i{
+  margin-top: 0;
+  float: right;
+  z-index: 500;
+}
 
 
 .title {

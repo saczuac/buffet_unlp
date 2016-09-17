@@ -17,6 +17,17 @@
       <h1>Buffet de la Facultad de Informática UNLP</h1>
       <a href="#" class="login">Logout</a>
     </header>
+    <div id="filter" class="modal">
+      <form method="post" class="modal-content abm-content">
+        <span class="close" onclick="cerrar()">×</span>
+        <h3>Nueva venta</h3>
+        <label for="filterFrom">Fecha desde: </label>
+        <input type="date" id="filterFrom" maxlength="20" placeholder="Nombre" required />
+        <label for="filterUntil">Fecha hasta: </label>
+        <input type="date" id="filterUntil" maxlength="20" placeholder="Descripcion" required />
+        <input type="submit" value="Filtrar"/>
+      </form>
+    </div>
     <nav>
         <ul>
            <li class="first" ><a href="index.html">Inicio</a></li>
@@ -36,28 +47,34 @@
        </ul>
     </nav>
     <br>
-  <h1 class="title" id="listado">listado de Stock Minimo</h1>
+  <h1 class="title" id="listado">listado de Ingresos</h1>
+  <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('filter')"><i class="fa fa-filter" aria-hidden="true"></i> Filtro</a>
   <table>
-  <tr>
-    <th>Producto</th>
-    <th>Stock minimo</th>
+  <t r>
+    <th>Ingreso</th>
+    <th>Descripcion</th>
+    <th>Fecha</th>
+    <th>Monto</th>
   </tr>
   <tr>
-    <td>Caf&eacute;</td>
-    <td>20</td>
+    <td>Productos</td>
+    <td>Venta de productos</td>
+    <td>14/06/2018</td>
+    <td>$5000</td>
   </tr>
   <tr>
-    <td>Bizcochos</td>
-    <td>30</td>
+    <td>Productos</td>
+    <td>Venta de productos</td>
+    <td>15/06/2018</td>
+    <td>$3000</td>
   </tr>
   <tr>
-    <td>Alfajor</td>
-    <td>40</td>
+    <td>Productos</td>
+    <td>Venta de productos</td>
+    <td>16/06/2018</td>
+    <td>$5500</td>
   </tr>
-  <tr>
-    <td>Chocolate</td>
-    <td>10</td>
-  </tr>
+
   </table>
     <footer>Facultad de Informática UNLP<img src="img/info.png" width="30" height="30" alt="Icono facultad de Informática" /></footer>
     </body>
