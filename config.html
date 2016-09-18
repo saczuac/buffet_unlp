@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="utf-8">
         <title>Buffet - FI</title>
@@ -17,16 +17,7 @@
       <h1>Buffet de la Facultad de Informática UNLP</h1>
       <a href="index.html" class="login">Login</a>
     </header>
-    <div id="modelLogin" class="modal">
-    <form method="post" class="modal-content login-content">
-    <span class="close" onclick="cerrar()">×</span>
-    <h3>Login</h3>
-    <input type="text" placeholder="Ingresar Usuario" name="user" required>
-    <input type="password" placeholder="Ingresar password" name="password" required>
-    <br><br>
-    <input type="submit" name="submit" value="Ingresar" onclick="loguear()">
-    </form>
-    </div>
+    <a href="index.html" class="login">Logout</a>
     <nav>
         <ul>
            <li class="first" ><a href="logedIndex.html">Inicio</a></li>
@@ -48,13 +39,13 @@
     <br>
     <section>
         <form method="post" class="config">
-            <h1>Cambiar Informac&iacute;</h1>
+            <h2>Cambiar Informac&iacute;on</h2>
             <label for="menuTitleInfo">Titulo: </label>
             <input type="text" id="menuTitleInfo" maxlength="50" placeholder="Titulo" value="Informacion sobre la facultad de informatica" required/>
             <br>
             <br>
-            <textarea class="estilotextarea" rows="17" cols="30">informacion ampliada sobre la facltad de informatica</textarea>
-            <img src="img/empty.jpg" alt="imagen subida" />
+            <textarea class="estilotextarea" rows="17" cols="30" id="textarea-info" title="textarea-menu">informacion ampliada sobre la facltad de informatica</textarea>
+            <img src="img/empty.jpg" alt="retrato a poner en la portada" />
             <input type="file" id="myFileInfo" accept="image/*">
             <br>
             <br>
@@ -63,13 +54,13 @@
     </section>
     <section>
         <form method="post" class="config">
-            <h1>Cambiar men&uacute;</h1>
+            <h2>Cambiar men&uacute;</h2>
             <label for="menuTitleMenu">Titulo: </label>
             <input type="text" id="menuTitleMenu" maxlength="50" placeholder="Titulo" value="Milanesa napolitana con fritas" required/>
             <br>
             <br>
-            <textarea class="estilotextarea" rows="17" cols="30"> Riquisima milanesa al horno con salsa de tomate y queso acompañado de papas baston fritas</textarea>
-            <img src="img/empty.jpg" alt="imagen subida" />
+            <textarea class="estilotextarea" rows="17" cols="30" id="textarea-menu" title="textarea-menu"> Riquisima milanesa al horno con salsa de tomate y queso acompañado de papas baston fritas</textarea>
+            <img src="img/empty.jpg" alt="representacion del plato subioa" />
             <input type="file" id="myFileMenu" accept="image/*">
             <br>
             <br>

@@ -19,7 +19,7 @@
     </header>
     <div id="new" class="modal">
       <form method="post" class="modal-content abm-content">
-        <span class="close" onclick="cerrar()">×</span>
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
         <h3>Nuevo Pedido</h3>
         <label for="newPedido">Producto: </label>
         <input type="text" id="newPedido" maxlength="20" placeholder="Producto" required/>
@@ -33,7 +33,7 @@
     </div>
     <div id="edit" class="modal">
       <form method="post" class="modal-content abm-content">
-        <span class="close" onclick="cerrar()">×</span>
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
         <h3>Editar Pedido</h3>
         <label for="editPedido">Producto: </label>
         <input type="text" id="editPedido" maxlength="20" value="Sanguche de bondiola" required/>
@@ -47,7 +47,7 @@
     </div>
     <div id="delete" class="modal">
       <form method="post" class="modal-content abm-content">
-        <span class="close" onclick="cerrar()">×</span>
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
           <h4> ¿Realmente desea eliminar este pedido?</h4><br>
         <input type="submit" value="Confirmar"/>
       </form>
@@ -74,12 +74,12 @@
   <h1 class="title" id="listado">Pedidos</h1>
   <a id="eliminar" href="#" class="action-button shadow animate disabled">Eliminar</a>
   <a id="editar" href="#" class="action-button shadow animate disabled">Editar</a>
-  <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')">Nuevo</a>
-  <table>
+  <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')" onkeypress="mostrar('new')" role="button">Nuevo</a>
+  <table summary="Tabla de pedidos del buffet">
   <tr>
-    <th>Producto</th>
-    <th>Cantidad</th>
-    <th>Hora de entrega</th>
+    <th id="Producto">Producto</th>
+    <th id="Cantidad">Cantidad</th>
+    <th id="entrega">Hora de entrega</th>
   </tr>
   <tr>
     <td>Menú del día</td>

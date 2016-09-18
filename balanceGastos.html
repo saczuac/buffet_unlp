@@ -19,7 +19,7 @@
     </header>
     <div id="filter" class="modal">
       <form method="post" class="modal-content abm-content">
-        <span class="close" onclick="cerrar()">×</span>
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()">×</a>
         <h3>Nueva venta</h3>
         <label for="filterFrom">Fecha desde: </label>
         <input type="date" id="filterFrom" required />
@@ -48,13 +48,13 @@
     </nav>
     <br>
   <h1 class="title" id="listado">listado de Gastos</h1>
-  <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('filter')"><i class="fa fa-filter" aria-hidden="true"></i> Filtro</a>
-  <table>
-  <t r>
-    <th>Gasto</th>
-    <th>Descripcion</th>
-    <th>Fecha</th>
-    <th>Monto</th>
+  <a id="filter" href="#" class="action-button shadow animate green active" onclick ="mostrar('filter')" onkeypress="mostrar('filter')" role="button" ><i class="fa fa-filter" aria-hidden="true"></i> Filtro</a>
+  <table summary="Tabla de gastos del buffet">
+  <tr>
+    <th id="Gastos">Gasto</th>
+    <th id="Descripcion">Descripcion</th>
+    <th id="Fecha">Fecha</th>
+    <th id="Monto">Monto</th>
   </tr>
   <tr>
     <td>Productos</td>
@@ -74,6 +74,7 @@
     <td>05/10/2016o</td>
     <td>$400</td>
   </tr>
+
   </table>
     <footer>Facultad de Informática UNLP<img src="img/info.png" width="30" height="30" alt="Icono facultad de Informática" /></footer>
     </body>

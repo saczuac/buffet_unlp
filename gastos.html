@@ -19,7 +19,7 @@
     </header>
     <div id="new" class="modal">
       <form method="post" class="modal-content abm-content">
-        <span class="close" onclick="cerrar()">×</span>
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
         <h3>Nueva venta</h3>
         <label for="newSpendingName">Nombre: </label>
         <input type="text" id="newSpendingName" maxlength="20" placeholder="Nombre" required />
@@ -36,7 +36,7 @@
     </div>
     <div id="edit" class="modal">
       <form method="post" class="modal-content abm-content">
-        <span class="close" onclick="cerrar()">×</span>
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
         <h3>Editar venta</h3>
         <label for="editSpendingName">Nombre: </label>
         <input type="text" id="editSpendingName" maxlength="20" placeholder="Nombre" value="Productos" required/>
@@ -53,7 +53,7 @@
     </div>
     <div id="delete" class="modal">
       <form method="post" class="modal-content abm-content">
-        <span class="close" onclick="cerrar()">×</span>
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
           <h4> ¿Realmente desea eliminar este gasto?</h4><br>
         <input type="submit" value="Confirmar"/>
       </form>
@@ -80,13 +80,13 @@
   <h1 class="title" id="listado">listado de Gastos</h1>
   <a id="eliminar" href="#" class="action-button shadow animate disabled">Eliminar</a>
   <a id="editar" href="#" class="action-button shadow animate disabled">Editar</a>
-  <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')">Nuevo</a>
-  <table>
+  <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')" onkeypress="mostrar('new')">Nuevo</a>
+  <table summary="Tabla de gastos del buffet">
   <tr>
-    <th>Gasto</th>
-    <th>Descripcion</th>
-    <th>Fecha</th>
-    <th>Monto</th>
+    <th id="Gasto">Gasto</th>
+    <th id="Descripcion">Descripcion</th>
+    <th id="Fecha">Fecha</th>
+    <th id="Monto">Monto</th>
   </tr>
   <tr>
     <td>Productos</td>

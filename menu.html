@@ -19,7 +19,7 @@
     </header>
     <div id="edit" class="modal">
       <form method="post" class="modal-content abm-content">
-        <span class="close" onclick="cerrar()">×</span>
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
         <h3>Editar men&uacute;</h3>
         <label for="editDay">D&iacute;a </label>
         <select id="editDay" required>
@@ -58,10 +58,10 @@
   <br>
   <h1 class="title" id="listado">Men&uacute; semanal</h1>
   <a id="editar" href="#" class="action-button shadow animate disabled">Editar</a>
-  <table>
+  <table summary="Tabla de menus del buffet">
   <tr>
-    <th>D&iacute;a</th>
-    <th>Men&uacute;</th>
+    <th id="dia">D&iacute;a</th>
+    <th id="menu">Men&uacute;</th>
   </tr>
   <tr>
     <td>Lunes</td>

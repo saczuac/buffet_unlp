@@ -19,7 +19,7 @@
     </header>
     <div id="new" class="modal">
       <form method="post" class="modal-content abm-content">
-        <span class="close" onclick="cerrar()">×</span>
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
         <h3>Nueva venta</h3>
         <label for="newSellProductName">Nombre: </label>
         <input type="text" id="newSellProductName" maxlength="20" placeholder="Nombre" required />
@@ -38,7 +38,7 @@
     </div>
     <div id="edit" class="modal">
       <form method="post" class="modal-content abm-content">
-        <span class="close" onclick="cerrar()">×</span>
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
         <h3>Editar venta</h3>
         <label for="editSellProductName">Nombre: </label>
         <input type="text" id="editSellProductName" maxlength="20" placeholder="Nombre" value="Bizcochos" required />
@@ -57,7 +57,7 @@
     </div>
     <div id="delete" class="modal">
       <form method="post" class="modal-content abm-content">
-        <span class="close" onclick="cerrar()">×</span>
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
           <h4> ¿Realmente desea eliminar esta venta?</h4><br>
         <input type="submit" value="Confirmar"/>
       </form>
@@ -84,13 +84,13 @@
   <h1 class="title" id="listado">listado de Ventas</h1>
   <a id="eliminar" href="#" class="action-button shadow animate disabled">Eliminar</a>
   <a id="editar" href="#" class="action-button shadow animate disabled">Editar</a>
-  <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')">Nuevo</a>
-  <table>
+  <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')" onkeypress="mostrar('new')" role="button">Nuevo</a>
+  <table summary="Tabla de usuarios del buffet">
   <tr>
-    <th>Producto</th>
-    <th>Cantidad</th>
-    <th>Fecha</th>
-    <th>Monto</th>
+    <th id="Producto">Producto</th>
+    <th id="Cantidad">Cantidad</th>
+    <th id="Fecha">Fecha</th>
+    <th id="Monto">Monto</th>
   </tr>
   <tr>
     <td>Caf&eacute;</td>
