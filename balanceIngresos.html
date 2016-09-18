@@ -9,12 +9,12 @@
         <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
-        <link rel="stylesheet" href="css\font-awesome-4.6.3\css\font-awesome.min.css">
+        <link rel="stylesheet" href="css/font-awesome-4.6.3/css/font-awesome.min.css">
         <link rel="icon" type="image/png" href="img/icon.png" />
     </head>
     <body>
     <header>
-      <h1>Buffet de la Facultad de Informática UNLP <a href="config.html"><i class="fa fa-cog" aria-hidden="true" color="white"></i></a></h1>
+      <h1>Buffet de la Facultad de Informática UNLP <a href="config.html"><i class="fa fa-cog" aria-hidden="true"></i></a></h1>
       <a href="index.html" class="login">Logout</a>
     </header>
     <div id="filter" class="modal">
@@ -22,9 +22,9 @@
         <span class="close" onclick="cerrar()">×</span>
         <h3>Nueva venta</h3>
         <label for="filterFrom">Fecha desde: </label>
-        <input type="date" id="filterFrom" maxlength="20" placeholder="Nombre" required />
+        <input type="date" id="filterFrom" required />
         <label for="filterUntil">Fecha hasta: </label>
-        <input type="date" id="filterUntil" maxlength="20" placeholder="Descripcion" required />
+        <input type="date" id="filterUntil" required />
         <input type="submit" value="Filtrar"/>
       </form>
     </div>
@@ -50,7 +50,7 @@
   <h1 class="title" id="listado">listado de Ingresos</h1>
   <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('filter')"><i class="fa fa-filter" aria-hidden="true"></i> Filtro</a>
   <table>
-  <t r>
+  <tr>
     <th>Ingreso</th>
     <th>Descripcion</th>
     <th>Fecha</th>
