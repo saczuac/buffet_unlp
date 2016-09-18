@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="utf-8">
         <title>Buffet - FI</title>
@@ -9,13 +9,12 @@
         <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
         <link rel="stylesheet" href="css\font-awesome-4.6.3\css\font-awesome.min.css">
-        <link rel="icon" type="image/png" href="img/icon.png" />
-
+        <link rel="icon" type="image/png" href="img/icon.png"/>
     </head>
     <body>
     <header>
-      <h1>Buffet de la Facultad de Informática UNLP</h1>
-      <a href="index.html" class="login">Login</a>
+      <h1>Buffet de la Facultad de Informática UNLP <a href=""><i class="fa fa-cog" aria-hidden="true"></i></a></h1>
+      <a href="index.html" class="login">Logout</a>
     </header>
     <div id="modelLogin" class="modal">
     <form method="post" class="modal-content login-content">
@@ -47,36 +46,19 @@
     </nav>
     <br>
     <section>
-        <form method="post" class="config">
-            <h1>Cambiar Informac&iacute;</h1>
-            <label for="menuTitle">Titulo: </label>
-            <input type="text" id="menuTitle" maxlength="50" required="true" placeholder="Titulo" value="Informacion sobre la facultad de informatica"></input>
-            <br>
-            <br>
-            <textarea class="estilotextarea" rows="17" cols="30">informacion ampliada sobre la facltad de informatica</textarea>
-            <img src=""/>
-            <input type="file" id="myFile" accept="image/*">
-            <br>
-            <br>
-            <input type="submit" value="Guardar"/>
-        </form>
+        <h1>Información</h1>
+        <p>El buffet de la Facultad de Informática está pensado como un espacio de esparcimiento para los estudiantes. Cuenta con ambiente climatizado (aire frío-calor, calefactores, ventiladores) y con las prestaciones de conexiones de red de la Facultad. Tiene metegoles para los tiempos libres, pero también puede constituirse en una cálida sala de estudios.</p>
+        <br><br>
+        <img src="img/buffet.jpg" alt="imagen de fondo del buffet"/>
+        <p>El buffet es gestionado por el Centro de Estudiantes y está abierto de 8 a 20 hs. Tiene servicio de cafetería y matería (facilitan el préstamo de equipos de mate), así como agua caliente gratuita.</p>
+        <br><br>
+        <p>Posee, asimismo, becas para estudiantes (exclusivamente de la FI) que necesiten trabajar. Aquellos interesados concurrir al directamente al Buffet.</p>
     </section>
     <section>
-        <form method="post" class="config">
-            <h1>Cambiar men&uacute;</h1>
-            <label for="menuTitle">Titulo: </label>
-            <input type="text" id="menuTitle" maxlength="50" required="true" placeholder="Titulo" value="Milanesa napolitana con fritas"></input>
-            <br>
-            <br>
-            <textarea class="estilotextarea" rows="17" cols="30"> Riquisima milanesa al horno con salsa de tomate y queso acompañado de papas baston fritas</textarea>
-            <img src=""/>
-            <input type="file" id="myFile" accept="image/*">
-            <br>
-            <br>
-            <input type="submit" value="Guardar"/>
-        </form>
+        <h1>Menú del día</h1>
+        <img src="img/menu.jpg" alt="menu del dia"/>
+        <h2><br>Ñoquis con salsa</h2>
     </section>
-    <footer>Facultad de Informática UNLP<img src="img/info.png" width="30px" height="30px"></img></footer>
+    <footer>Facultad de Informática UNLP<img src="img/info.png" width="30" height="30" alt="Icono facultad de Informática" /></footer>
     </body>
 </html>
- 

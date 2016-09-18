@@ -17,33 +17,15 @@
       <a href="#" onclick ="mostrar('modelLogin')" class="login">Login</a>
     </header>
     <div id="modelLogin" class="modal">
-    <form method="post" class="modal-content login-content">
-    <span class="close" onclick="cerrar()">×</span>
-    <h3>Login</h3>
-    <input type="text" placeholder="Ingresar Usuario" name="user" required>
-    <input type="password" placeholder="Ingresar password" name="password" required>
-    <br><br>
-    <input type="submit" name="submit" value="Ingresar" onclick="loguear()">
+    <form method="post" action="logedIndex.html" class="modal-content login-content">
+      <span class="close" onclick="cerrar()">×</span>
+      <h3>Login</h3>
+      <input type="text" placeholder="Ingresar Usuario" name="user" id="user" required>
+      <input type="password" placeholder="Ingresar password" name="password" id="password" required>
+      <br><br>
+      <input type="submit" name="submit" value="Ingresar" onclick="logued()">
     </form>
     </div>
-    <nav>
-        <ul>
-           <li class="first" ><a href="index.html">Inicio</a></li>
-           <li><a href="productos.html">Productos</a> </li>
-           <li><a href="usuarios.html">Usuarios</a> </li>
-           <li><a href="menu.html">Menú</a> </li>
-           <li><a href="pedidos.html">Pedidos</a> </li>
-           <li><a href="ventas.html">Ventas</a> </li>
-           <li><a href="#">Balance</a> 
-                <ul>
-                   <li><a href="productosFaltantes.html">Productos Faltantes</a> </li>
-                   <li><a href="stockMinimo.html">Stock Minimo</a> </li>
-                   <li><a href="balanceIngresos.html">Ingresos</a> </li>
-                   <li><a href="balanceGastos.html">Gastos</a> </li>
-                </ul></li>
-           <li class="last"><a href="">Acerca de</a> </li>
-       </ul>
-    </nav>
     <br>
     <section>
         <h1>Información</h1>
