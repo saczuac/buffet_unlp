@@ -121,15 +121,16 @@ section img {
 nav {
     text-align: center;
 }
-header h1 a {
+header i {
   margin-top: 0;
-  float: right;
+  float: left;
   z-index: 500;
 }
-header h1 a i{
+header h1  a i{
   margin-top: 0;
   float: right;
   z-index: 500;
+  color: white;
 }
 
 
