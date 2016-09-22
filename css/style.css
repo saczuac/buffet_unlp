@@ -137,12 +137,12 @@ header h1  a i{
 .title {
   text-align: center;
   height: auto;
-  background-color: black;
+  background-color: #003366;
   color: white;
   margin-left: auto;
   margin-right: auto;
   font-family: 'Amatic SC', cursive;
-  font-size: 40px;
+  font-size: 35px;
   width: 350px;
   text-decoration: underline;
   border-radius: 25px;
@@ -230,7 +230,7 @@ nav > ul > li:hover > ul li{
   background: #FFF;
   color: #003366;
 }
- 
+
  nav > ul > li:hover > ul li a {
   color: #003366;
 }
@@ -241,7 +241,7 @@ nav ul li ul li:hover {
 
 nav ul li ul li:hover a {
   color: white;
-  background-color:#003366; 
+  background-color:#003366;
 }
 nav > ul > li > ul {
   display:block;
@@ -278,7 +278,7 @@ nav > ul li a {
   -o-transition: all .3s ease;
   transition: all .3s ease;
 }
- 
+
 nav > ul > li > a span {
   display:block;
   height:100%;
@@ -291,12 +291,12 @@ nav > ul > li > a span {
   -o-transition: all .3s ease;
   transition: all .3s ease;
 }
- 
+
 nav > ul > li > a span .icon {
   display:block;
   line-height:60px;
 }
- 
+
 nav > ul > li > a:hover > span {
   top:0;
   background-color: #003366;
@@ -322,10 +322,15 @@ nav li.last{
 }
 
 table {
-    overflow-x:auto;
-    border-collapse: collapse;
-    width: 100%;
+    font-family: "Lato","sans-serif";
+    margin: 0 auto;
     background-color: #f5f5f5;
+    margin-bottom: 3em;
+    border-collapse:collapse;
+}
+
+table caption {
+  padding-bottom: 1em;
 }
 
 table, th, td {
@@ -338,35 +343,32 @@ th, td {
 }
 
 th {
-  font-family: 'Amatic SC', cursive;
-  height: 50px;
-  width: 25%;
-  font-size: 35px;
-  font-weight: bolder;
+  padding: 1em;
   text-align: center;
-  background-color:  #5c8dbd;
+  background-color: #003366;
   color: white;
 }
 
 td {
-    text-align: left;
-    height: 50px;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: 'Merriweather', serif;
-    vertical-align: bottom;
+    text-align: center;
+    width: 10em;
+    border: 0.1em #c2c2c2 solid;
+    padding: 1em;
+}
+
+tr {
+  height: 1em;
 }
 
 .selected {
-  background-color: #497198;
+  background-color: #e1dddd;
 }
 
 .action-button
 {
-	position: relative;
 	padding: 5px 20px;
-    margin: 0px 10px 10px 0px;
-    float: right;
+  margin-left: 1em;
+  margin-right: 1em;
 	border-radius: 10px;
 	font-family: 'Merriweather', serif;
 	font-size: 15px;
@@ -378,7 +380,12 @@ td {
 {
 	background-color: #E74C3C;
 	border-bottom: 5px solid #BD3E31;
-	text-shadow: 0px -2px #BD3E31;
+}
+
+.centered {
+  padding-top: 1em;
+  padding-bottom: 2em;
+  text-align: center;
 }
 
 .green

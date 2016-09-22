@@ -8,6 +8,7 @@
         <script type="text/javascript" src="js/modal.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
         <link rel="stylesheet" href="css/font-awesome-4.6.3/css/font-awesome.min.css">
         <link rel="icon" type="image/png" href="img/icon.png" />
@@ -90,7 +91,7 @@
            <li><a href="menu.html">Menú</a> </li>
            <li><a href="pedidos.html">Pedidos</a> </li>
            <li><a href="ventas.html">Ventas</a> </li>
-           <li><a href="#">Balance</a> 
+           <li><a href="#">Balance</a>
                 <ul>
                    <li><a href="productosFaltantes.html">Productos Faltantes</a> </li>
                    <li><a href="stockMinimo.html">Stock Minimo</a> </li>
@@ -102,15 +103,17 @@
     </nav>
     <br>
   <h1 class="title" id="listado">listado de Productos</h1>
+    <div class="centered">
   <a id="eliminar" href="#" class="action-button shadow animate disabled">Eliminar</a>
   <a id="editar" href="#" class="action-button shadow animate disabled">Editar</a>
   <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')" onkeypress="mostrar('new')" role="button">Nuevo</a>
+</div>
   <table summary="Tabla de productos del buffet">
   <tr>
-    <th id="Nombre">Nombre</th>
-    <th id="Marca">Marca</th>
-    <th id="Stock">Stock</th>
-    <th id="Vencimiento">Fecha de Vencimiento</th>
+    <th id="Nombre">NOMBRE</th>
+    <th id="Marca">MARCA</th>
+    <th id="Stock">STOCK</th>
+    <th id="Vencimiento">FECHA DE VENCIMIENTO</th>
   </tr>
   <tr>
     <td>Caf&eacute;</td>
