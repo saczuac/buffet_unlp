@@ -608,6 +608,9 @@ tr {
     section p {
     	font: 13px 'Merriweather', serif;
     }
+    footer {
+        position: relative;
+    }
 }
 
 @media only screen and (max-width: 907px) and (min-width: 721px) {
@@ -650,5 +653,4 @@ tr {
   footer {
       position: relative;
   }
-
 }
