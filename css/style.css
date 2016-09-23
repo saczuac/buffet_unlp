@@ -14,71 +14,9 @@ ul, li {
   text-decoration: underline;
 }
 
-.formLogin{
-  margin-top: 15%;
-  margin: 0 auto;
-  width: 300px;
-  height: 300px;
-  background-color:#99ADC1;
-  text-align: center;
-  font-family: "Lato","sans-serif";
-  opacity: 0.97;
-  border-radius: 16px;
-  background-color: #5c8dbd;
-  border-bottom: 4px solid #497198;
-  width: 25%;
-  margin-bottom: 40px;
-  padding: 5px;
-}
-
-.formLogin input{
-  height: 1.3em;
-  width: 80%;
-  margin-left:10%;
-  margin-right:10%;
-  text-align: center;
-  display: block;
+#login-title {
   text-align: left;
-  margin-top:5px;
-  margin-bottom: 5px;
-}
-
-.formLogin h3 {
-  text-decoration: underline;
-}
-
-.formLogin input[type="text"]:focus,input[type="password"]:focus{
-  border-width: 2px;
-  border-color:#2A3268;
-
-}
-
-.formLogin input[type="submit"]{
-  text-align: center;
-  width: 40%;
-  height: 2.8em;
-  display: inline-block;
-  position: relative;
-  background: #003366;
-  color: white;
-  cursor: pointer;
-  -webkit-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -ms-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  transition: all 0.4s;
-  border:none;
-  box-shadow: 2.5px 2.5px 2.5px #888888;
-  border-top-right-radius:0px;
-  border-bottom-right-radius:0px;
-  border-top-left-radius:0px;
-  border-bottom-left-radius:0px;
-  font-weight:bold;
-}
-
-.formLogin input[type="submit"]:hover {
-  background: white;
-  color: #003366;
+  margin-left: 0.6em;
 }
 
 header {
@@ -140,15 +78,15 @@ header h1  a i{
 .title {
   text-align: center;
   height: auto;
-  box-shadow: 10px 10px 5px #b2cce5;
-  background-color: #003366;
   color: white;
+  font-weight: 100;
+  background-color: #003366;
   margin-left: auto;
   margin-right: auto;
   font-family: "Lato","sans-serif";
   font-size: 35px;
   width: 350px;
-  border-radius: 25px;
+  border-radius: 10px;
 }
 
 h2 {
@@ -171,6 +109,8 @@ section h1 {
 }
 
 .menuday {
+    font-size: 28px;
+    text-decoration: underline;
     text-shadow: 2px 2px #497198;
 }
 
@@ -438,6 +378,7 @@ tr {
 
 .modal h3 {
   font-weight: 200;
+  color: #003366;
   -webkit-font-smoothing: antialiased;
   margin-top: 0em;
   font-family: "Lato","sans-serif";
@@ -451,15 +392,32 @@ tr {
   margin-bottom: 10px;
 }
 
+.modal input {
+  border: 1px solid #CCC;
+  font-size: 0.9em;
+}
+
+#login-submit {
+  margin-left: 1em;
+  margin-top: 1em;
+}
+
+.forgot {
+  color: #3084BB;
+  text-decoration: none;
+  padding-top: 1em;
+  padding-left: 1em;
+  float: left !important;
+}
+
 .modal-content {
   margin-top: 15%;
   margin: 0 auto;
   text-align: center;
   font-family: "Lato","sans-serif";
-  opacity: 0.97;
+  box-shadow: 0px 0px 2px #CCC;
   border-radius: 16px;
-  background-color: #5c8dbd;
-  border-bottom: 4px solid #497198;
+  background-color: #fff;
   padding: 1em;
   margin-bottom: 2em;
 }
@@ -499,9 +457,10 @@ tr {
 .login-content input{
   height: 2.1em;
   border-radius: 4px;
-  width: 80%;
+  width: 90%;
   margin-left:auto;
   margin-right:auto;
+  margin-top: 2px;
   text-align: left;
   display: block;
   border: solid 1px #dcdcdc;
@@ -509,14 +468,17 @@ tr {
 }
 
 .modal-content input[type="text"]:focus,input[type="password"]:focus{
-  border: solid 1px #707070;
-  box-shadow: 0 0 5px 1px #969696;
+  border-color:#3aabf0;
+  outline:0;
+  -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(58,171,240,0.6);
+  box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(58,171,240,0.6)
 }
 
 .modal-content input[type="submit"]{
   text-align: center;
   width: 100px;
   height: 2.8em;
+  margin: 0 auto;
   display: inline-block;
   border-radius: 5px;
   position: relative;

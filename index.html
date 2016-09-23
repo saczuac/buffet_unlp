@@ -20,11 +20,11 @@
     <div id="modelLogin" class="modal">
     <form method="post" action="logedIndex.html" class="modal-content login-content">
       <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
-      <h3>Login</h3>
+      <h3 id="login-title">Login</h3>
       <input type="text" placeholder="Ingresar Usuario" name="user" id="user" title="Usuario" required>
       <input type="password" placeholder="Ingresar password" name="password" id="password" title="Password" required>
-      <br><br>
-      <input type="submit" name="submit" value="Ingresar" onclick="logued()" onkeypress="logued()" role="button" >
+      <a href="#" class="forgot">¿Olvidaste tu contraseña?</a>
+      <input type="submit" id="login-submit" name="submit" value="Ingresar" onclick="logued()" onkeypress="logued()" role="button" >
     </form>
     </div>
     <br>
@@ -40,7 +40,7 @@
     <section>
         <h2>Menú del día</h2>
         <img src="img/menu.jpg" alt="menu del dia"/>
-        <h3><br>Ñoquis con salsa</h3>
+        <h2 class="menuday"><br>Ñoquis con salsa</h2>
     </section>
     <footer>Facultad de Informática UNLP<img src="img/info.png" width="30" height="30" alt="Icono facultad de Informática" /></footer>
     </body>
