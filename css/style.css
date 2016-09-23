@@ -140,7 +140,7 @@ header h1  a i{
 .title {
   text-align: center;
   height: auto;
-  box-shadow: 10px 10px 5px #b2cce5; 
+  box-shadow: 10px 10px 5px #b2cce5;
   background-color: #003366;
   color: white;
   margin-left: auto;
@@ -606,7 +606,13 @@ tr {
   font-weight:bold;
 }
 
-@media only screen and (max-width: 1081px) and (min-width: 908px) {
+@media only screen and (max-width: 1400px) and (min-width: 1082px) {
+  footer {
+      position: relative;
+  }
+}
+
+@media only screen and (max-width: 1082px) and (min-width: 908px) {
     section {
       width:94%;
     }
