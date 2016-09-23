@@ -184,7 +184,9 @@ p {
 }
 
 footer {
-   position:relative;
+   position:absolute;
+   right: 0;
+   left: 0;
    bottom: 0;
    width:96.5%;
    height:40px;
@@ -624,6 +626,9 @@ tr {
       visibility: hidden;
       display: none;
   }
+  footer {
+      position: relative;
+  }
 }
 
 @media only screen and (max-width: 720px) {
@@ -642,6 +647,8 @@ tr {
     visibility: hidden;
     display: none;
   }
-
+  footer {
+      position: relative;
+  }
 
 }
