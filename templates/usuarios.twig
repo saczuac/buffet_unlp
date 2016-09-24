@@ -1,3 +1,4 @@
+
 {% extends "layout.twig" %}
 
 {% block contenido %}
@@ -38,15 +39,18 @@
         <input type="submit" value="Confirmar"/>
       </form>
     </div>
+
     <br>
   <h1 class="title" id="listado">Usuarios</h1>
+    <div class="centered">
   <a id="eliminar" href="#" class="action-button shadow animate disabled">Eliminar</a>
   <a id="editar" href="#" class="action-button shadow animate disabled">Editar</a>
   <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')" onkeypress="mostrar('new')" role="button">Nuevo</a>
+</div>
   <table summary="Tabla de usuarios del buffet">
   <tr>
-    <th id="Nombre">Nombre</th>
-    <th id="MiembroDesde">Miembro desde</th>
+    <th id="Nombre">NOMBRE</th>
+    <th id="MiembroDesde">MIEMBRO DESDE</th>
   </tr>
   <tr>
     <td>admin</td>

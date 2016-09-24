@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Buffet - FI</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script type="text/javascript" src="js/abm.js"></script>
+        <script type="text/javascript" src="js/modal.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+        <link rel="stylesheet" href="css/font-awesome-4.6.3/css/font-awesome.min.css">
+        <link rel="icon" type="image/png" href="img/icon.png" />
+    </head>
+    <body>
+    <header>
+      <h1>Buffet de la Facultad de Informática UNLP <a href="config.html"><i class="fa fa-cog" aria-hidden="true"></i></a></h1>
+      <a href="index.html" class="login">Logout</a>
+    </header>
+    <div id="edit" class="modal">
+      <form method="post" class="modal-content abm-content">
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+        <h3>Editar men&uacute;</h3>
+        <label for="editDay">D&iacute;a </label>
+        <select id="editDay" required>
+         <option value="" selected="selected">Seleccione</option>
+         <option>Lunes</option>
+         <option>Martes</option>
+         <option>Mi&eacute;rcoles</option>
+         <option>Jueves</option>
+         <option>Viernes</option>
+        </select>
+        <br>
+        <label for="editMenu">Men&uacute; </label>
+        <input type="text" id="editMenu" maxlength="50" placeholder="Men&uacute;" required />
+        <br><br>
+        <input type="submit" value="Modificar"/>
+      </form>
+    </div>
+    <nav>
+        <ul>
+           <li class="first" ><a href="logedIndex.html">Inicio</a></li>
+           <li><a href="productos.html">Productos</a> </li>
+           <li><a href="usuarios.html">Usuarios</a> </li>
+           <li><a href="menu.html">Menú</a> </li>
+           <li><a href="pedidos.html">Pedidos</a> </li>
+           <li><a href="ventas.html">Ventas</a> </li>
+           <li><a href="#">Balance</a>
+                <ul>
+                   <li><a href="productosFaltantes.html">Faltantes</a> </li>
+                   <li><a href="stockMinimo.html">Stock Minimo</a> </li>
+                   <li><a href="balanceIngresos.html">Ingresos</a> </li>
+                   <li><a href="balanceGastos.html">Gastos</a> </li>
+                </ul></li>
+           <li class="last"><a href="">Acerca de</a> </li>
+       </ul>
+    </nav>
+  <br>
+  <h1 class="title" id="listado">Men&uacute; semanal</h1>
+    <div class="centered">
+  <a id="editar" href="#" class="action-button shadow animate disabled">Editar</a>
+</div>
+  <table summary="Tabla de menus del buffet">
+  <tr>
+    <th id="dia">DÍA</th>
+    <th id="menu">MENÚ</th>
+  </tr>
+  <tr>
+    <td>Lunes</td>
+    <td>Milanesa con papas fritas</td>
+  </tr>
+  <tr>
+    <td>Martes</td>
+    <td>Sopa</td>
+  </tr>
+  <tr>
+    <td>Miércoles</td>
+    <td>Filet de Merluza con pur&eacute;</td>
+  </tr>
+  <tr>
+    <td>Jueves</td>
+    <td>Ensalada mixta</td>
+  </tr>
+  <tr>
+    <td>Viernes</td>
+    <td>Sanguche de bondiola</td>
+  </tr>
+  </table>
+    <footer>Facultad de Informática UNLP<img src="img/info.png" width="30" height="30" alt="Icono facultad de Informática"/></footer>
+    </body>
+</html>

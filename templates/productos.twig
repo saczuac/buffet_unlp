@@ -1,7 +1,7 @@
+
 {% extends "layout.twig" %}
 
 {% block contenido %}
-
     <div id="new" class="modal">
       <form method="post" class="modal-content abm-content">
         <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
@@ -27,7 +27,7 @@
         <input type="text" id="newProviderName" maxlength="20" placeholder="Proovedor" required />
         <label for="newPrice">Precio venta: </label>
         <input type="number" id="newPrice" min="0" step="0.5" placeholder="Precio de venta unitaria" required />
-        <br>
+        <br><br>
         <input type="submit" value="Agregar"/>
       </form>
     </div>
@@ -56,7 +56,7 @@
         <input type="text" id="editProviderName" placeholder="Proovedor" value="Arcor" required />
         <label for="editPrice">Precio venta: </label>
         <input type="number" id="editPrice" min="0" step="0.5" placeholder="Precio de venta unitaria" value="55" required />
-        <br>
+        <br><br>
         <input type="submit" value="Modificar"/>
       </form>
     </div>
@@ -68,18 +68,20 @@
       </form>
     </div>
     <br>
+
     <br>
-    <br>
-  <h1 class="title" id="listado">listado de Productos</h1>
+  <h1 class="title" id="listado">Listado de Productos</h1>
+    <div class="centered">
   <a id="eliminar" href="#" class="action-button shadow animate disabled">Eliminar</a>
   <a id="editar" href="#" class="action-button shadow animate disabled">Editar</a>
   <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')" onkeypress="mostrar('new')" role="button">Nuevo</a>
+</div>
   <table summary="Tabla de productos del buffet">
   <tr>
-    <th id="Nombre">Nombre</th>
-    <th id="Marca">Marca</th>
-    <th id="Stock">Stock</th>
-    <th id="Vencimiento">Fecha de Vencimiento</th>
+    <th id="Nombre">NOMBRE</th>
+    <th id="Marca">MARCA</th>
+    <th id="Stock">STOCK</th>
+    <th id="Vencimiento">FECHA DE VENCIMIENTO</th>
   </tr>
   <tr>
     <td>Caf&eacute;</td>

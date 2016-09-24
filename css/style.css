@@ -14,71 +14,9 @@ ul, li {
   text-decoration: underline;
 }
 
-.formLogin{
-  margin-top: 15%;
-  margin: 0 auto;
-  width: 300px;
-  height: 300px;
-  background-color:#99ADC1;
-  text-align: center;
-  font-family: 'Merriweather', serif;
-  opacity: 0.97;
-  border-radius: 16px;
-  background-color: #5c8dbd;
-  border-bottom: 4px solid #497198;
-  width: 25%;
-  margin-bottom: 40px;
-  padding: 5px;
-}
-
-.formLogin input{
-  height: 1.3em;
-  width: 80%;
-  margin-left:10%;
-  margin-right:10%;
-  text-align: center;
-  display: block;
+#login-title {
   text-align: left;
-  margin-top:5px;
-  margin-bottom: 5px;
-}
-
-.formLogin h3 {
-  text-decoration: underline;
-}
-
-.formLogin input[type="text"]:focus,input[type="password"]:focus{
-  border-width: 2px;
-  border-color:#2A3268;
-
-}
-
-.formLogin input[type="submit"]{
-  text-align: center;
-  width: 40%;
-  height: 2.8em;
-  display: inline-block;
-  position: relative;
-  background: #003366;
-  color: white;
-  cursor: pointer;
-  -webkit-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -ms-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  transition: all 0.4s;
-  border:none;
-  box-shadow: 2.5px 2.5px 2.5px #888888;
-  border-top-right-radius:0px;
-  border-bottom-right-radius:0px;
-  border-top-left-radius:0px;
-  border-bottom-left-radius:0px;
-  font-weight:bold;
-}
-
-.formLogin input[type="submit"]:hover {
-  background: white;
-  color: #003366;
+  margin-left: 0.6em;
 }
 
 header {
@@ -106,7 +44,7 @@ header, footer {
     color: white;
     background-color: #003366;
     text-align: center;
-    font-family: 'Merriweather', serif;
+    font-family: "Lato","sans-serif";
 }
 
 section img {
@@ -120,7 +58,10 @@ section img {
 
 nav {
     text-align: center;
+    font-weight: 500;
+    font-family: "Lato","sans-serif";
 }
+
 header i {
   margin-top: 0;
   float: left;
@@ -137,30 +78,40 @@ header h1  a i{
 .title {
   text-align: center;
   height: auto;
-  background-color: black;
   color: white;
+  font-weight: 100;
+  background-color: #003366;
   margin-left: auto;
   margin-right: auto;
-  font-family: 'Amatic SC', cursive;
-  font-size: 40px;
+  font-family: "Lato","sans-serif";
+  font-size: 35px;
   width: 350px;
-  text-decoration: underline;
-  border-radius: 25px;
+  border-radius: 10px;
 }
 
-section h1, h2 {
+h2 {
+   font-size: 35px;
+   font-weight: 200;
    text-align: center;
    height: auto;
    color: black;
    margin-left: auto;
    margin-right: auto;
-   font-family: 'Amatic SC', cursive;
+   font-family: "Lato","sans-serif";
 }
 
+h1 {
+    font-weight: bolder;
+}
 section h1 {
-  font-size: 40px;
   width: 250px;
   text-decoration: underline;
+}
+
+.menuday {
+    font-size: 28px;
+    text-decoration: underline;
+    text-shadow: 2px 2px #497198;
 }
 
 section {
@@ -178,11 +129,15 @@ section {
 p {
   display: inline;
   color: white;
-  font-family: 'Merriweather', serif;
+  font-family: "Lato","sans-serif";
+  font-size: 17px;
+  line-height: 1.6;
 }
 
 footer {
-   position:relative;
+   position:absolute;
+   right: 0;
+   left: 0;
    bottom: 0;
    width:96.5%;
    height:40px;
@@ -230,7 +185,7 @@ nav > ul > li:hover > ul li{
   background: #FFF;
   color: #003366;
 }
- 
+
  nav > ul > li:hover > ul li a {
   color: #003366;
 }
@@ -241,7 +196,7 @@ nav ul li ul li:hover {
 
 nav ul li ul li:hover a {
   color: white;
-  background-color:#003366; 
+  background-color:#003366;
 }
 nav > ul > li > ul {
   display:block;
@@ -278,7 +233,7 @@ nav > ul li a {
   -o-transition: all .3s ease;
   transition: all .3s ease;
 }
- 
+
 nav > ul > li > a span {
   display:block;
   height:100%;
@@ -291,12 +246,12 @@ nav > ul > li > a span {
   -o-transition: all .3s ease;
   transition: all .3s ease;
 }
- 
+
 nav > ul > li > a span .icon {
   display:block;
   line-height:60px;
 }
- 
+
 nav > ul > li > a:hover > span {
   top:0;
   background-color: #003366;
@@ -322,10 +277,15 @@ nav li.last{
 }
 
 table {
-    overflow-x:auto;
-    border-collapse: collapse;
-    width: 100%;
+    font-family: "Lato","sans-serif";
+    margin: 0 auto;
     background-color: #f5f5f5;
+    margin-bottom: 3em;
+    border-collapse:collapse;
+}
+
+table caption {
+  padding-bottom: 1em;
 }
 
 table, th, td {
@@ -338,37 +298,34 @@ th, td {
 }
 
 th {
-  font-family: 'Amatic SC', cursive;
-  height: 50px;
-  width: 25%;
-  font-size: 35px;
-  font-weight: bolder;
+  padding: 1em;
   text-align: center;
-  background-color:  #5c8dbd;
+  background-color: #003366;
   color: white;
 }
 
 td {
-    text-align: left;
-    height: 50px;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: 'Merriweather', serif;
-    vertical-align: bottom;
+    text-align: center;
+    width: 10em;
+    border: 0.1em #c2c2c2 solid;
+    padding: 1em;
+}
+
+tr {
+  height: 1em;
 }
 
 .selected {
-  background-color: #497198;
+  background-color: #e1dddd;
 }
 
 .action-button
 {
-	position: relative;
 	padding: 5px 20px;
-    margin: 0px 10px 10px 0px;
-    float: right;
+  margin-left: 1em;
+  margin-right: 1em;
 	border-radius: 10px;
-	font-family: 'Merriweather', serif;
+	font-family: "Lato","sans-serif";
 	font-size: 15px;
 	color: #FFF;
 	text-decoration: none;
@@ -378,21 +335,24 @@ td {
 {
 	background-color: #E74C3C;
 	border-bottom: 5px solid #BD3E31;
-	text-shadow: 0px -2px #BD3E31;
+}
+
+.centered {
+  padding-top: 1em;
+  padding-bottom: 2em;
+  text-align: center;
 }
 
 .green
 {
 	background-color: #82BF56;
 	border-bottom: 5px solid #669644;
-	text-shadow: 0px -2px #669644;
 }
 
 .yellow
 {
 	background-color: #F2CF66;
 	border-bottom: 5px solid #D1B358;
-	text-shadow: 0px -2px #D1B358;
 }
 
 .active:hover
@@ -417,27 +377,47 @@ td {
 }
 
 .modal h3 {
+  font-weight: 200;
+  color: #003366;
+  -webkit-font-smoothing: antialiased;
   margin-top: 0em;
-  font-family: 'Amatic SC', cursive;
-  font-size: 35px;
+  font-family: "Lato","sans-serif";
+  font-size: 30px;
 }
 
 .modal label {
-  font-family: 'Merriweather', serif;
+  font-family: "Lato","sans-serif";
   font-size: 15px;
   height: 2.1em;
   margin-bottom: 10px;
+}
+
+.modal input {
+  border: 1px solid #CCC;
+  font-size: 0.9em;
+}
+
+#login-submit {
+  margin-left: 1em;
+  margin-top: 1em;
+}
+
+.forgot {
+  color: #3084BB;
+  text-decoration: none;
+  padding-top: 1em;
+  padding-left: 1em;
+  float: left !important;
 }
 
 .modal-content {
   margin-top: 15%;
   margin: 0 auto;
   text-align: center;
-  font-family: 'Merriweather', serif;
-  opacity: 0.97;
+  font-family: "Lato","sans-serif";
+  box-shadow: 0px 0px 2px #CCC;
   border-radius: 16px;
-  background-color: #5c8dbd;
-  border-bottom: 4px solid #497198;
+  background-color: #fff;
   padding: 1em;
   margin-bottom: 2em;
 }
@@ -477,9 +457,10 @@ td {
 .login-content input{
   height: 2.1em;
   border-radius: 4px;
-  width: 80%;
+  width: 90%;
   margin-left:auto;
   margin-right:auto;
+  margin-top: 2px;
   text-align: left;
   display: block;
   border: solid 1px #dcdcdc;
@@ -487,14 +468,17 @@ td {
 }
 
 .modal-content input[type="text"]:focus,input[type="password"]:focus{
-  border: solid 1px #707070;
-  box-shadow: 0 0 5px 1px #969696;
+  border-color:#3aabf0;
+  outline:0;
+  -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(58,171,240,0.6);
+  box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(58,171,240,0.6)
 }
 
 .modal-content input[type="submit"]{
   text-align: center;
   width: 100px;
   height: 2.8em;
+  margin: 0 auto;
   display: inline-block;
   border-radius: 5px;
   position: relative;
@@ -584,18 +568,28 @@ td {
   font-weight:bold;
 }
 
-@media only screen and (max-width: 1081px) and (min-width: 908px) {
+@media only screen and (max-width: 1400px) and (min-width: 1082px) {
+  footer {
+      position: relative;
+  }
+}
+
+@media only screen and (max-width: 1082px) and (min-width: 908px) {
     section {
       width:94%;
     }
     header h1 {
-      font: 40px 'Merriweather', serif;
+      font: 40px "Lato","sans-serif";
     }
     section h1 {
-    	font: 60px 'Amatic SC', cursive;
+    	font: 60px "Lato","sans-serif";
     }
     section p {
-    	font: 13px 'Merriweather', serif;
+    	font: 13px "Lato","sans-serif";
+        line-height: 1.6;
+    }
+    footer {
+        position: relative;
     }
 }
 
@@ -604,7 +598,7 @@ td {
     width:94%;
   }
   h1 {
-    font: 30px 'Merriweather', serif;
+    font: 30px "Lato","sans-serif";
   }
   input {
     width: 80%;
@@ -615,6 +609,9 @@ td {
       visibility: hidden;
       display: none;
   }
+  footer {
+      position: relative;
+  }
 }
 
 @media only screen and (max-width: 720px) {
@@ -622,7 +619,7 @@ td {
     width:94%;
   }
   h1 {
-    font: 25px 'Merriweather', serif;
+    font: 25px "Lato","sans-serif";
   }
   input {
     width: 80%;
@@ -633,6 +630,7 @@ td {
     visibility: hidden;
     display: none;
   }
-
-
+  footer {
+      position: relative;
+  }
 }

@@ -1,3 +1,4 @@
+
 {% extends "layout.twig" %}
 
 {% block contenido %}
@@ -38,14 +39,16 @@
     </div>
     <br>
   <h1 class="title" id="listado">Pedidos</h1>
+    <div class="centered">
   <a id="eliminar" href="#" class="action-button shadow animate disabled">Eliminar</a>
   <a id="editar" href="#" class="action-button shadow animate disabled">Editar</a>
   <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')" onkeypress="mostrar('new')" role="button">Nuevo</a>
+</div>
   <table summary="Tabla de pedidos del buffet">
   <tr>
-    <th id="Producto">Producto</th>
-    <th id="Cantidad">Cantidad</th>
-    <th id="entrega">Hora de entrega</th>
+    <th id="Producto">PRODUCTO</th>
+    <th id="Cantidad">CANTIDAD</th>
+    <th id="entrega">HORA DE ENTREGA</th>
   </tr>
   <tr>
     <td>Menú del día</td>

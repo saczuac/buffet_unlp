@@ -1,9 +1,7 @@
+
 {% extends "layout.twig" %}
 
 {% block contenido %}
-
-
-
     <div id="new" class="modal">
       <form method="post" class="modal-content abm-content">
         <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
@@ -46,16 +44,18 @@
       </form>
     </div>
     <br>
-  <h1 class="title" id="listado">listado de Gastos</h1>
+  <h1 class="title" id="listado">Listado de Gastos</h1>
+    <div class="centered">
   <a id="eliminar" href="#" class="action-button shadow animate disabled">Eliminar</a>
   <a id="editar" href="#" class="action-button shadow animate disabled">Editar</a>
   <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')" onkeypress="mostrar('new')">Nuevo</a>
+  <div/>
   <table summary="Tabla de gastos del buffet">
   <tr>
-    <th id="Gasto">Gasto</th>
-    <th id="Descripcion">Descripcion</th>
-    <th id="Fecha">Fecha</th>
-    <th id="Monto">Monto</th>
+    <th id="Gasto">GASTO</th>
+    <th id="Descripcion">DESCRIPCIÓN</th>
+    <th id="Fecha">FECHA</th>
+    <th id="Monto">MONTO</th>
   </tr>
   <tr>
     <td>Productos</td>

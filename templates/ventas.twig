@@ -1,7 +1,7 @@
+
 {% extends "layout.twig" %}
 
 {% block contenido %}
-
 
     <div id="new" class="modal">
       <form method="post" class="modal-content abm-content">
@@ -49,16 +49,18 @@
       </form>
     </div>
     <br>
-  <h1 class="title" id="listado">listado de Ventas</h1>
+  <h1 class="title" id="listado">Listado de Ventas</h1>
+  <div class="centered">
   <a id="eliminar" href="#" class="action-button shadow animate disabled">Eliminar</a>
   <a id="editar" href="#" class="action-button shadow animate disabled">Editar</a>
   <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')" onkeypress="mostrar('new')" role="button">Nuevo</a>
+</div>
   <table summary="Tabla de usuarios del buffet">
   <tr>
-    <th id="Producto">Producto</th>
-    <th id="Cantidad">Cantidad</th>
-    <th id="Fecha">Fecha</th>
-    <th id="Monto">Monto</th>
+    <th id="Producto">PRODUCTO</th>
+    <th id="Cantidad">CANTIDAD</th>
+    <th id="Fecha">FECHA</th>
+    <th id="Monto">MONTO</th>
   </tr>
   <tr>
     <td>Caf&eacute;</td>
