@@ -1,0 +1,88 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+
+
+    <div id="new" class="modal">
+      <form method="post" class="modal-content abm-content">
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+        <h3>Nueva venta</h3>
+        <label for="newSellProductName">Nombre: </label>
+        <input type="text" id="newSellProductName" maxlength="20" placeholder="Nombre" required />
+        <label for="newSellMarkName">Marca: </label>
+        <input type="text" id="newSellMarkName" maxlength="20"  placeholder="Marca" required />
+        <label for="newSellBarcode">Código: </label>
+        <input type="text" id="newSellBarcode" maxlength="20" placeholder="Código" required />
+        <label for="newSellQuantity">Cantidad: </label>
+        <input type="number" id="newSellQuantity" value="0" placeholder="Cantidad" required />
+        <label for="newSellMount">Monto: </label>
+        <input type="number" id="newSellMount" value="0" placeholder="Monto" required />
+        <label for="newSellDate">Fecha: </label>
+        <input type="date" id="newSellDate" required />
+        <input type="submit" value="Agregar"/>
+      </form>
+    </div>
+    <div id="edit" class="modal">
+      <form method="post" class="modal-content abm-content">
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+        <h3>Editar venta</h3>
+        <label for="editSellProductName">Nombre: </label>
+        <input type="text" id="editSellProductName" maxlength="20" placeholder="Nombre" value="Bizcochos" required />
+        <label for="editSellMarkName">Marca: </label>
+        <input type="text" id="editSellMarkName" maxlength="20" placeholder="Marca" value="Don Saturn" required/>
+        <label for="editSellBarcode">Código: </label>
+        <input type="text" id="editSellBarcode" maxlength="20" placeholder="Código" value="10010011" required />
+        <label for="editSellQuantity">Cantidad: </label>
+        <input type="number" id="editSellQuantity" value="3" placeholder="Cantidad" required/>
+        <label for="editSellMount">Monto: </label>
+        <input type="number" id="editSellMount" value="30" placeholder="Monto" required/>
+        <label for="editSellDate">Fecha: </label>
+        <input type="date" id="editSellDate" required/>
+        <input type="submit" value="Modificar"/>
+      </form>
+    </div>
+    <div id="delete" class="modal">
+      <form method="post" class="modal-content abm-content">
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+          <h4> ¿Realmente desea eliminar esta venta?</h4><br>
+        <input type="submit" value="Confirmar"/>
+      </form>
+    </div>
+    <br>
+  <h1 class="title" id="listado">listado de Ventas</h1>
+  <a id="eliminar" href="#" class="action-button shadow animate disabled">Eliminar</a>
+  <a id="editar" href="#" class="action-button shadow animate disabled">Editar</a>
+  <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')" onkeypress="mostrar('new')" role="button">Nuevo</a>
+  <table summary="Tabla de usuarios del buffet">
+  <tr>
+    <th id="Producto">Producto</th>
+    <th id="Cantidad">Cantidad</th>
+    <th id="Fecha">Fecha</th>
+    <th id="Monto">Monto</th>
+  </tr>
+  <tr>
+    <td>Caf&eacute;</td>
+    <td>1</td>
+    <td>14/06/2018</td>
+    <td>$15</td>
+  </tr>
+  <tr>
+    <td>Bizcochos Don Satur</td>
+    <td>3</td>
+    <td>16/06/2018</td>
+    <td>$30</td>
+  </tr>
+  <tr>
+    <td>Alfajor</td>
+    <td>2</td>
+    <td>05/10/2016o</td>
+    <td>$20</td>
+  </tr>
+  <tr>
+    <td>Chocolate Aguila</td>
+    <td>2</td>
+    <td>05/10/2016</td>
+    <td>$25</td>
+  </tr>
+  </table>
+{% endblock %}

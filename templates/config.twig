@@ -1,0 +1,35 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+    <br>
+    <section>
+        <form method="post" class="config">
+            <h2>Cambiar Informac&iacute;on</h2>
+            <label for="menuTitleInfo">Titulo: </label>
+            <input type="text" id="menuTitleInfo" maxlength="50" placeholder="Titulo" value="Informacion sobre la facultad de informatica" required/>
+            <br>
+            <br>
+            <textarea class="estilotextarea" rows="17" cols="30" id="textarea-info" title="textarea-menu">informacion ampliada sobre la facltad de informatica</textarea>
+            <img src="img/empty.jpg" alt="retrato a poner en la portada" />
+            <input type="file" id="myFileInfo" accept="image/*">
+            <br>
+            <br>
+            <input type="submit" value="Guardar"/>
+        </form>
+    </section>
+    <section>
+        <form method="post" class="config">
+            <h2>Cambiar men&uacute;</h2>
+            <label for="menuTitleMenu">Titulo: </label>
+            <input type="text" id="menuTitleMenu" maxlength="50" placeholder="Titulo" value="Milanesa napolitana con fritas" required/>
+            <br>
+            <br>
+            <textarea class="estilotextarea" rows="17" cols="30" id="textarea-menu" title="textarea-menu"> Riquisima milanesa al horno con salsa de tomate y queso acompañado de papas baston fritas</textarea>
+            <img src="img/empty.jpg" alt="representacion del plato subioa" />
+            <input type="file" id="myFileMenu" accept="image/*">
+            <br>
+            <br>
+            <input type="submit" value="Guardar"/>
+        </form>
+    </section>
+    {% endblock %}

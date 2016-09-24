@@ -1,0 +1,82 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+
+
+
+    <div id="new" class="modal">
+      <form method="post" class="modal-content abm-content">
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+        <h3>Nueva venta</h3>
+        <label for="newSpendingName">Nombre: </label>
+        <input type="text" id="newSpendingName" maxlength="20" placeholder="Nombre" required />
+        <label for="newSpendingDescription">Descripcion: </label>
+        <input type="text" id="newSpendingDescription" maxlength="20" placeholder="Descripcion" required />
+        <label for="newSpendingProvider">Proveedor: </label>
+        <input type="text" id="newSpendingProvider" maxlength="20" placeholder="Proveedor" required />
+        <label for="newSpendingMount">Monto: </label>
+        <input type="number" id="newSpendingMount" value="0" placeholder="Monto" required/>
+        <label for="newSpendingDate">Fecha: </label>
+        <input type="date" id="newSpendingDate" required/>
+        <input type="submit" value="Agregar"/>
+      </form>
+    </div>
+    <div id="edit" class="modal">
+      <form method="post" class="modal-content abm-content">
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+        <h3>Editar venta</h3>
+        <label for="editSpendingName">Nombre: </label>
+        <input type="text" id="editSpendingName" maxlength="20" placeholder="Nombre" value="Productos" required/>
+        <label for="editSpendingDescription">Descripcion: </label>
+        <input type="text" id="editSpendingDescription" maxlength="20" placeholder="Descripcion" value="Don saturn" required/>
+        <label for="editSpendingProvider">Proveedor: </label>
+        <input type="text" id="editSpendingProvider" maxlength="20" placeholder="Proveedor" value="Mayorista de galletitas" required/>
+        <label for="editSpendingMount">Monto: </label>
+        <input type="number" id="editSpendingMount" value="500" placeholder="Monto" required/>
+        <label for="editSpendingDate">Fecha: </label>
+        <input type="date" id="editSpendingDate" required/>
+        <input type="submit" value="Modificar"/>
+      </form>
+    </div>
+    <div id="delete" class="modal">
+      <form method="post" class="modal-content abm-content">
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+          <h4> ¿Realmente desea eliminar este gasto?</h4><br>
+        <input type="submit" value="Confirmar"/>
+      </form>
+    </div>
+    <br>
+  <h1 class="title" id="listado">listado de Gastos</h1>
+  <a id="eliminar" href="#" class="action-button shadow animate disabled">Eliminar</a>
+  <a id="editar" href="#" class="action-button shadow animate disabled">Editar</a>
+  <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')" onkeypress="mostrar('new')">Nuevo</a>
+  <table summary="Tabla de gastos del buffet">
+  <tr>
+    <th id="Gasto">Gasto</th>
+    <th id="Descripcion">Descripcion</th>
+    <th id="Fecha">Fecha</th>
+    <th id="Monto">Monto</th>
+  </tr>
+  <tr>
+    <td>Productos</td>
+    <td>Don saturn</td>
+    <td>14/06/2018</td>
+    <td>$500</td>
+  </tr>
+  <tr>
+    <td>Panificacion</td>
+    <td>Panes y bizcochitos</td>
+    <td>16/06/2018</td>
+    <td>$800</td>
+  </tr>
+  <tr>
+    <td>Bebida</td>
+    <td>Puro sol</td>
+    <td>05/10/2016o</td>
+    <td>$400</td>
+  </tr>
+  </table>
+    <footer>Facultad de Informática UNLP<img src="img/info.png" width="30" height="30" alt="Icono facultad de Informática" /></footer>
+    </body>
+</html>
+{% endblock %}

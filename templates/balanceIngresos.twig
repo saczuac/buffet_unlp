@@ -1,0 +1,48 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+
+
+
+    <div id="filter" class="modal">
+      <form method="post" class="modal-content abm-content">
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+        <h3>Nueva venta</h3>
+        <label for="filterFrom">Fecha desde: </label>
+        <input type="date" id="filterFrom" required />
+        <label for="filterUntil">Fecha hasta: </label>
+        <input type="date" id="filterUntil" required />
+        <input type="submit" value="Filtrar"/>
+      </form>
+    </div>
+    <br>
+  <h1 class="title" id="listado">listado de Ingresos</h1>
+  <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('filter')" onkeypress="mostrar('filter')" role="button"><i class="fa fa-filter" aria-hidden="true"></i> Filtro</a>
+  <table summary="Tabla de ingresos del buffet">
+  <tr>
+    <th id="Ingreso">Ingreso</th>
+    <th id="Descripcion">Descripcion</th>
+    <th id="Fecha">Fecha</th>
+    <th id="Monto">Monto</th>
+  </tr>
+  <tr>
+    <td>Productos</td>
+    <td>Venta de productos</td>
+    <td>14/06/2018</td>
+    <td>$5000</td>
+  </tr>
+  <tr>
+    <td>Productos</td>
+    <td>Venta de productos</td>
+    <td>15/06/2018</td>
+    <td>$3000</td>
+  </tr>
+  <tr>
+    <td>Productos</td>
+    <td>Venta de productos</td>
+    <td>16/06/2018</td>
+    <td>$5500</td>
+  </tr>
+
+  </table>
+{% endblock %}
