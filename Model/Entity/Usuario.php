@@ -51,11 +51,6 @@ class Usuario
     protected $ubicacion_id;
     /**
      * @var integer
-     * @Column(type="integer")
-     */
-    protected $ubicacion_id;
-    /**
-     * @var integer
      * @Column(type="integer", length=8)
      */
     protected $documento;
