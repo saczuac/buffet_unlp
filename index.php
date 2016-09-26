@@ -110,7 +110,7 @@ $app->group('/usuarios', function() use ($app, $userResource) {
               $app->request->post('documento'),
               $app->request->post('telefono'),
               $app->request->post('rol_id'),
-              $app->request->post('email')),
+              $app->request->post('email'),
               $app->request->post('ubicacion_id'));
       $app->redirect('/usuarios');
     });
