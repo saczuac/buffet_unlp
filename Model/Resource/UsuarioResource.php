@@ -50,7 +50,7 @@ class UsuarioResource extends AbstractResource {
         $this->getEntityManager()->flush();
         return $this->get();
     }
-    public function Nuevo ($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email){
+    public function Nuevo ($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id){
         $usuario = new Usuario();
         $usuario->setUsuario($user);
         $usuario->setClave($pass);
@@ -60,6 +60,7 @@ class UsuarioResource extends AbstractResource {
         $usuario->setTelefono($telefono);
         $usuario->setDocumento($documento);
         $usuario->setApellido($apellido);
+        $usuario->setUbicacion_Id($ubicacion_id);
         return $usuario;
     }
     public function insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email){

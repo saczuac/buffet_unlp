@@ -51,6 +51,11 @@ class Usuario
     protected $ubicacion_id;
     /**
      * @var integer
+     * @Column(type="integer")
+     */
+    protected $ubicacion_id;
+    /**
+     * @var integer
      * @Column(type="integer", length=8)
      */
     protected $documento;
@@ -76,6 +81,9 @@ class Usuario
     }
     public function getRol_Id() {
         return $this->rol_id;
+    }
+    public function getUbicacion_Id() {
+        return $this->ubicacion_id;
     }
     public function getNombre() {
         return $this->nombre;
@@ -106,6 +114,9 @@ class Usuario
     }
     public function setRol_Id($rol_id) {
         $this->rol_id = $rol_id;
+    }
+    public function setUbicacion_Id($ubicacion_id) {
+        $this->ubicacion_id = $ubicacion_id;
     }
     public function setNombre($nombre) {
     	$this->nombre = $nombre;
