@@ -60,16 +60,6 @@ class Usuario
      */
     protected $telefono;
     /**
-     * @OneToMany(targetEntity="pedido", mappedBy="usuario")
-     **/
-    protected $pedidos;
-
-    public function __construct()
-    {
-        $this->pedidos = new ArrayCollection();
-    }
-
-    /**
      * @var string
      * @Column(type="string", length=255)
      */
@@ -77,9 +67,6 @@ class Usuario
 
     public function getId() {
     	return $this->id;
-    }
-    public function getPedidos() {
-        return $this->pedidos;
     }
     public function getUsername() {
     	return $this->username;
@@ -122,12 +109,6 @@ class Usuario
     }
     public function setEmail($email) {
     	$this->email = $email;
-    }
-    public function addPedido(Pedido $pedido) {
-          $this->pedido->add($pedido);
-    }
-    public function removePedido($pedido) {
-        return $this->getPedidos()->removeElement($pedido);
     }
 }
  ?>
