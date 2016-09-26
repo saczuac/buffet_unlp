@@ -25,6 +25,10 @@ $app->get('/', function () use ($app) {
     $app->render('index.twig');
 });
 
+$app->post('/', function() use($app, $userResource){
+     $app->render('logedIndex.twig');
+});
+
 $app->get('/logedIndex', function () use ($app) {
     $app->render('logedIndex.twig');
 });
