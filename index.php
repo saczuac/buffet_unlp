@@ -23,6 +23,7 @@ $view->parserExtensions = [new \Slim\Views\TwigExtension()];
 
 // <------ END SLIM CONFIGURATION---------->
 
+$userResource = new \Model\Resource\UsuarioResource();
 
 $app->get('/', function () use ($app) {
     $app->render('index.twig');
