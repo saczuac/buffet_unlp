@@ -368,8 +368,8 @@ tr {
 
 .modal {
     display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    position: absolute; /* Stay in place */
+    margin-top: 0;
     left: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
@@ -412,7 +412,8 @@ tr {
 
 .modal-content {
   margin-top: 15%;
-  overflow-y: scroll;
+  overflow: auto;
+  height: 500px;
   margin: 0 auto;
   text-align: center;
   font-family: "Lato","sans-serif";
