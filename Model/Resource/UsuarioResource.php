@@ -63,8 +63,8 @@ class UsuarioResource extends AbstractResource {
         $usuario->setUbicacion_Id($ubicacion_id);
         return $usuario;
     }
-    public function insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email){
-        $this->getEntityManager()->persist($this->Nuevo($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email));
+    public function insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id){
+        $this->getEntityManager()->persist($this->Nuevo($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id));
         $this->getEntityManager()->flush();
         return $this->get();
     }
