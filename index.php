@@ -3,9 +3,9 @@
 require_once 'vendor/autoload.php';
 use Model\Entity\Usuario;
 use Model\Resource\UsuarioResource;
+use Controller\UsuarioController;
 
-$userResource = new \Model\Resource\UsuarioResource();
-
+// <------ SLIM CONFIGURATION ---------->
 
 $app = new \Slim\Slim([
         'debug' => true,
@@ -20,6 +20,9 @@ $app->view->setTemplatesDirectory("templates");
 $view = $app->view();
 $view->parserOptions = ['debug' => true];
 $view->parserExtensions = [new \Slim\Views\TwigExtension()];
+
+// <------ END SLIM CONFIGURATION---------->
+
 
 $app->get('/', function () use ($app) {
     $app->render('index.twig');
@@ -96,15 +99,9 @@ $app->group('/stockMinimo', function() use($app) {
 	});
 });
 
-
 $app->group('/usuarios', function() use ($app, $userResource) {
 
-		$app->get('/', function() use($app, $userResource) {
-			echo $app->view->render(
-				"usuarios/index.twig",
-				array('usuarios' => ($userResource->get()))
-			);
-		});
+    $app->get('/', '\Controller\UsuarioController:listUsuarios')->setParams(array($app));
 
     $app->post('/', function() use($app, $userResource){
       $userResource->insert($app->request->post('user'),
