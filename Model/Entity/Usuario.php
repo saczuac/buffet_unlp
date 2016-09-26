@@ -38,7 +38,7 @@ class Usuario
       * @var string
       * @Column(type="string", length=62)
       */
-     protected $username;
+     protected $usuario;
     /**
      * @var integer
      * @Column(type="integer")
@@ -68,8 +68,8 @@ class Usuario
     public function getId() {
     	return $this->id;
     }
-    public function getUsername() {
-    	return $this->username;
+    public function getUsuario() {
+    	return $this->usuario;
     }
     public function getClave() {
         return $this->clave;
@@ -86,8 +86,8 @@ class Usuario
     public function setId($id) {
         $this->id = $id;
     }
-    public function setUsername($username) {
-        $this->username = $username;
+    public function setUsuario($usuario) {
+        $this->usuario = $usuario;
     }
     public function setApellido($apellido) {
         $this->apellido = $apellido;
