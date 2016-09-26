@@ -1,0 +1,12 @@
+<table summary="Tabla de usuarios del buffet">
+	<tr>
+		<th id="Nombre">NOMBRE</th>
+		<th id="MiembroDesde">DOCUMENTO</th>
+	</tr>
+		{% for usuario in usuarios %}
+		  <tr>
+				<td>{{ usuario.nombre }}</td>
+				<td>{{ usuario.documento }}</td>
+			</tr>
+		{% endfor %}
+	</table>

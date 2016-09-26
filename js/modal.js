@@ -12,3 +12,7 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+function logued() {
+  window.location.assign("loguedIndex");
+}
