@@ -2,7 +2,7 @@
 
 {% block contenido %}
 
-    <div id="new" class="modal">
+    <div id="new" class="modal" overflow-y: scroll;>
       <form method="POST" class="modal-content abm-content">
         <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
         <h3>Nuevo Usuario</h3>
@@ -32,7 +32,7 @@
         <input type="submit" value="Agregar"/>
       </form>
     </div>
-    <div id="edit" class="modal">
+    <div id="edit" class="modal" overflow-y: scroll;>
       <form method="PUT" class="modal-content abm-content">
         <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
         <h3>Editar Usuario</h3>
