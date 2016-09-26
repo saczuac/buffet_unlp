@@ -83,6 +83,9 @@ class Usuario
     public function getEmail() {
         return $this->email;
     }
+    public function getDocumento(){
+      return $this->documento;
+    }
     public function setId($id) {
         $this->id = $id;
     }
