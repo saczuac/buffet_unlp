@@ -2,7 +2,7 @@
 
 namespace Controller;
 use Model\Entity\Usuario;
-require_once('Model/UsuarioResource.php');
+require_once('Model/Resource/UsuarioResource.php');
 
 class UsuarioController {
 
