@@ -16,6 +16,11 @@ class ComposerStaticInit7d8e59127c8db5c46d1b71101ecdaa02
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\Console\\' => 26,
             'Slim\\Views\\' => 11,
+            'Slim\\Flash\\' => 11,
+        ),
+        'P' => 
+        array (
+            'Psr\\Http\\Message\\' => 17,
         ),
         'M' => 
         array (
@@ -45,6 +50,15 @@ class ComposerStaticInit7d8e59127c8db5c46d1b71101ecdaa02
         'Slim\\Views\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/views',
+            1 => __DIR__ . '/..' . '/slim/twig-view/src',
+        ),
+        'Slim\\Flash\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/slim/flash/src',
+        ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Model\\' => 
         array (
