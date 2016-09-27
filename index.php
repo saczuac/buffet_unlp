@@ -16,11 +16,6 @@ $app = new \Slim\Slim([
 // and define the engine used for the view @see http://twig.sensiolabs.org
 $app->view = new \Slim\Views\Twig();
 $app->view->setTemplatesDirectory("templates");
-$container = $app->getContainer();
-// Register provider
-$container['flash'] = function () {
-    return new \Slim\Flash\Messages();
-};
 // Twig configuration
 $view = $app->view();
 $view->parserOptions = ['debug' => true];
