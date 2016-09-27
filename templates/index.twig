@@ -45,3 +45,6 @@
     <footer>Facultad de Informática UNLP<img src="img/info.png" width="30" height="30" alt="Icono facultad de Informática" /></footer>
     </body>
 </html>
+{% if flash is not empty %}
+  {% include 'components/messages.twig' %}
+{% endif %}

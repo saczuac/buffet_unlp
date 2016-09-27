@@ -36,3 +36,6 @@
            <li class="last"><a href="">Acerca de</a> </li>
        </ul>
     </nav>
+    {% if flash is not empty %}
+      {% include 'components/messages.twig' %}
+    {% endif %}
