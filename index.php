@@ -48,7 +48,7 @@ $app->post('/', function() use ($app, $userResource) {
     	$app->redirect('/logedIndex');
     } else {
     	$app->flash('error', 'Usuario o contraseña incorrecto');
-		  //echo $app->view->render("index.twig");
+		  echo $app->view->render("index.twig");
 	}
 });
 
