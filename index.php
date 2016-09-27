@@ -1,6 +1,7 @@
 <?php
 // Initialize Slim (the router/micro framework used)
 require_once 'vendor/autoload.php';
+require_once('Model/UsuarioResource.php');
 use Model\Entity\Usuario;
 use Model\Resource\UsuarioResource;
 use Controller\UsuarioController;
@@ -24,7 +25,7 @@ $view->getEnvironment()->addGlobal('session', $_SESSION);
 $view->getEnvironment()->addGlobal('server', $_SERVER);
 // <------ END SLIM CONFIGURATION---------->
 
-$userResource = new \Model\Resource\UsuarioResource();
+$userResource = UsuarioResource::getInstance();
 require_once 'permissions.php';
 
 $app->get('/', function () use ($app) {
