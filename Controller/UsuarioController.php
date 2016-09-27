@@ -23,7 +23,7 @@ class UsuarioController {
 
   public function registrarUsuario($app,$user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id = 2,$email,$ubicacion ) {
     if (UsuarioResource::getInstance()->insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion)){
-       $app->flash('success', 'Registro exitoso!');
+       $app->flash('success', 'El registro se ha realizado con éxito');
     } else {
       $app->flash('error', 'No se pudo dar de alta el usuario');
     }

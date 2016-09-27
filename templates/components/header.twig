@@ -44,7 +44,7 @@
     </nav>
     <br>
      {% else %}
-       <a href="#" onclick ="mostrar('modelLogin')" class="login" role="button">Login |</a>
+       <a href="#" onclick ="mostrar('modelLogin')" class="login" role="button">Login </a>
        <a href="#" onclick ="mostrar('new')" class="login" role="button">Registrarse |</a>
      </header>
      <div id="new" class="modal">
@@ -81,7 +81,7 @@
        <input type="submit" id="login-submit" name="submit" value="Ingresar" onkeypress="logued()" role="button" >
      </form>
      </div>
-     <br>
+     <br><br><br>
     {% endif %}
     {% if flash is not empty %}
       {% include 'components/messages.twig' %}
