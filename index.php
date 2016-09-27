@@ -1,6 +1,7 @@
 <?php
 // Initialize Slim (the router/micro framework used)
 require_once 'vendor/autoload.php';
+require_once 'permissions.php';
 use Model\Entity\Usuario;
 use Model\Resource\UsuarioResource;
 use Controller\UsuarioController;
@@ -37,6 +38,7 @@ $app->get('/logout', function() use ($app, $userResource) {
     $app->redirect('/');
 });
 
+// login...
 $app->post('/', function() use ($app, $userResource) {
 	  $name = $app->request->post('username');
     $pass = $app->request->post('pass');
