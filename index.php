@@ -46,7 +46,7 @@ $app->post('/', function() use ($app, $userResource) {
     	$_SESSION['user']=$user->getUsuario();
     	$_SESSION['rol']=$user->getRol_Id();
     	$app->flash('success', 'Usuario logueado correctamente como '. $user->getUsuario());
-    	$app->redirect('/logedIndex');
+    	$app->redirect('/');
     } else {
       $app->flash('error', 'Usuario o contraseña incorrecto');
       $app->redirect('/');
