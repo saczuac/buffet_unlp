@@ -9,8 +9,8 @@
 				<td>{{ usuario.usuario }}</td>
 				<td>{{ usuario.documento }}</td>
 				<td>
-					<a href="usuarios/{{ usuario.id }}/edit" title="Editar"><i class="fa fa-pencil"></i></a>
-					<a href="usuarios/{{ usuario.id }}/delete" title="Eliminar"><i class="fa fa-trash-o"></i></a>
+					<a href="usuarios/edit/{{ usuario.id }}" title="Editar"><i class="fa fa-pencil"></i></a>
+					<a href="usuarios/delete/{{ usuario.id }}" title="Eliminar"><i class="fa fa-trash-o"></i></a>
 				</td>
 			</tr>
 		{% endfor %}
