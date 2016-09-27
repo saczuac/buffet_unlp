@@ -1,7 +1,7 @@
 <?php
 // Initialize Slim (the router/micro framework used)
 require_once 'vendor/autoload.php';
-require_once('/Model/UsuarioResource.php');
+require_once('../Model/UsuarioResource.php');
 use Model\Entity\Usuario;
 use Model\Resource\UsuarioResource;
 use Controller\UsuarioController;
