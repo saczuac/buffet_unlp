@@ -144,8 +144,7 @@ $app->group('/usuarios', function() use ($app, $userResource) {
             $app->request->post('ubicacion_id'))
     );
    // Baja
-    $app->delete('/', '\Controller\UsuarioController:deleteUsuario')->setParams(array($app));
-
+    $app->get('/eliminar(/(:id)(/))', '\Controller\UsuarioController:deleteUsuario')->setParams(array($app, $id));
 });
 
 $app->group('/ventas', function() use($app) {

@@ -17,13 +17,11 @@ class UsuarioController {
     echo $app->redirect('/usuarios');
   }
 
-  public function deleteUsuario($app) {
+  public function deleteUsuario($app, $id) {
     $app->applyHook('must.be.administrador');
-    $id = $_SESSION["element_id"];
-    UsuarioResource::getInstance()->delete((int)$id);
-    unset($_SESSION['element_id']);
+    UsuarioResource::getInstance()->delete($id);
     $app->flash('success', 'El usuario ha sido eliminado exitosamente.');
-    header("Refresh:0");
+    $app->redirect('/usuarios');
   }
 
 }
