@@ -20,7 +20,8 @@ $app->view->setTemplatesDirectory("templates");
 $view = $app->view();
 $view->parserOptions = ['debug' => true];
 $view->parserExtensions = [new \Slim\Views\TwigExtension()];
-
+$view->getEnvironment()->addGlobal('session', $_SESSION);
+$view->getEnvironment()->addGlobal('server', $_SERVER);
 // <------ END SLIM CONFIGURATION---------->
 
 $userResource = new \Model\Resource\UsuarioResource();
