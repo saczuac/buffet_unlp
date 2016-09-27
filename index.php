@@ -56,6 +56,7 @@ $app->post('/', function() use ($app, $userResource) {
 });
 
 $app->group('/balanceGastos', function() use($app) {
+  $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
 		echo $app->view->render('balanceGastos.twig');
 	});
@@ -63,6 +64,7 @@ $app->group('/balanceGastos', function() use($app) {
 
 
 $app->group('/balanceIngresos', function() use($app) {
+  $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
 		echo $app->view->render('balanceIngresos.twig');
 	});
@@ -70,6 +72,7 @@ $app->group('/balanceIngresos', function() use($app) {
 
 
 $app->group('/config', function() use($app) {
+  $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
 		echo $app->view->render('config.twig');
 	});
@@ -77,6 +80,7 @@ $app->group('/config', function() use($app) {
 
 
 $app->group('/gastos', function() use($app) {
+  $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
 		echo $app->view->render('gastos.twig');
 	});
@@ -84,6 +88,7 @@ $app->group('/gastos', function() use($app) {
 
 
 $app->group('/menu', function() use($app) {
+  $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
 		echo $app->view->render('menu.twig');
 	});
@@ -91,6 +96,7 @@ $app->group('/menu', function() use($app) {
 
 
 $app->group('/pedidos', function() use($app) {
+  $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
 		echo $app->view->render('pedidos.twig');
 	});
@@ -98,6 +104,7 @@ $app->group('/pedidos', function() use($app) {
 
 
 $app->group('/productos', function() use($app) {
+  $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
 		echo $app->view->render('productos.twig');
 	});
@@ -105,6 +112,7 @@ $app->group('/productos', function() use($app) {
 
 
 $app->group('/productosFaltantes', function() use($app) {
+  $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
 		echo $app->view->render('productosFaltantes.twig');
 	});
@@ -112,14 +120,17 @@ $app->group('/productosFaltantes', function() use($app) {
 
 
 $app->group('/stockMinimo', function() use($app) {
+  $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
 		echo $app->view->render('stockMinimo.twig');
 	});
 });
 
 $app->group('/usuarios', function() use ($app, $userResource) {
-
+    $app->applyHook('must.be.logueado');
+    // Listar
     $app->get('/', '\Controller\UsuarioController:listUsuarios')->setParams(array($app));
+    // Alta
     $app->post('/', '\Controller\UsuarioController:newUsuario')->setParams(
             array($app, $app->request->post('user'),
             $app->request->post('pass'),
@@ -129,10 +140,15 @@ $app->group('/usuarios', function() use ($app, $userResource) {
             $app->request->post('telefono'),
             $app->request->post('rol_id'),
             $app->request->post('email'),
-            $app->request->post('ubicacion_id')));
+            $app->request->post('ubicacion_id'))
+    );
+   // Baja
+    $app->delete('/', '\Controller\UsuarioController:deleteUsuario')->setParams(array($app));
+
 });
 
 $app->group('/ventas', function() use($app) {
+  $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
 		echo $app->view->render('ventas.twig');
 	});

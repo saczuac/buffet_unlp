@@ -4,7 +4,7 @@
 		<th id="MiembroDesde">DOCUMENTO</th>
 	</tr>
 		{% for usuario in usuarios %}
-		  <tr>
+		  <tr id="{{ usuario.id }}" onclick="setId()">
 				<td>{{ usuario.usuario }}</td>
 				<td>{{ usuario.documento }}</td>
 			</tr>
