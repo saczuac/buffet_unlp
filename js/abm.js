@@ -1,7 +1,5 @@
-function setId() {
-  var tr = document.getElementsByClassName('selected');
-  var id = String(tr[0].id);
-  jQuery('#div_session_write').load('session_write.php?element_id='. id);
+function setId(id) {
+  jQuery('#div_session_write').load('session_write.php?element_id=' + String(id));
 }
 
 
@@ -30,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             document.getElementById(act.id).className = "";
         }
         this.className = "selected";
+        setId(this.id);
         document.getElementById("editar").className = "action-button shadow animate yellow active";
         document.getElementById("editar").addEventListener("click", mostrarEdit);
         document.getElementById("eliminar").className += "action-button shadow animate red active";
