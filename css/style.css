@@ -572,9 +572,8 @@ tr {
 .flash {
 	padding:	.3em .4em;
 	margin: 0 auto .5em;
-	min-height: 50px;
+	min-height: 40px;
 	text-align: center;
-	width: 100%;
 	border-bottom: 3px solid;
 }
 
