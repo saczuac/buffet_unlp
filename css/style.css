@@ -569,6 +569,38 @@ tr {
   font-weight:bold;
 }
 
+.flash {
+	padding:	.3em .4em;
+	margin: 0 auto .5em;
+	min-height: 50px;
+	text-align: center;
+	width: 100%;
+	border-bottom: 3px solid;
+}
+
+.flash.success {
+	background-color: #159906;
+	border-bottom-color: #158109;
+}
+
+.flash.error {
+	background-color: #D32F2F;
+	border-bottom-color: #961F1F;
+}
+
+.flash > p {
+	color: white;
+}
+
+.flash .close {
+    float:	right;
+}
+
+.flash .close a {
+    color:				#f00;
+    text-decoration:	none;
+}
+
 @media only screen and (max-width: 1400px) and (min-width: 1082px) {
   footer {
       position: relative;
