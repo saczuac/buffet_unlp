@@ -48,8 +48,8 @@ $app->post('/', function() use ($app, $userResource) {
     	$app->flash('success', 'Usuario logueado correctamente como '. $user->getUsuario());
     	$app->redirect('/logedIndex');
     } else {
-    	$app->flash('error', 'Usuario o contraseña incorrecto');
 		  echo $app->view->render("index.twig");
+      $app->flash('error', 'Usuario o contraseña incorrecto');
 	}
 });
 
