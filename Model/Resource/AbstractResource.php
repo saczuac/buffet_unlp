@@ -11,7 +11,6 @@ abstract class AbstractResource
      * @var \Doctrine\ORM\EntityManager
      */
     private static $entityManager = null;
-    private static $instance;
     /**
      * @return \Doctrine\ORM\EntityManager
      */
@@ -46,14 +45,6 @@ abstract class AbstractResource
         return EntityManager::create($connectionOptions, $config);
     }
 
-    public static function getInstance() {
-        if (!isset(self::$instance)) {
-          self::$instance = new self();
-        }
-        return self::$instance;
-    }
-
-    private function __construct() {}
 }
 
  ?>

@@ -8,11 +8,23 @@ use Model\Entity\Usuario;
  * @package Model
  */
 class UsuarioResource extends AbstractResource {
-    /**
-     * @param $id
-     *
-     * @return string
-     */
+
+     private static $instance;
+
+     public static function getInstance() {
+         if (!isset(self::$instance)) {
+           self::$instance = new self();
+         }
+         return self::$instance;
+     }
+
+    private function __construct() {}
+      
+      /**
+       * @param $id
+       *
+       * @return string
+       */
     public function get($id = null)
     {
         if ($id === null) {
@@ -79,7 +91,7 @@ class UsuarioResource extends AbstractResource {
         }
         else return false;
     }
-    
+
 }
 
 ?>
