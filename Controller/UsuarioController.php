@@ -20,7 +20,7 @@ class UsuarioController {
   public function deleteUsuario($app) {
     $app->applyHook('must.be.administrador');
     $id = $_SESSION["element_id"];
-    UsuarioResource::getInstance()->delete($id);
+    UsuarioResource::getInstance()->delete((int)$id);
     unset($_SESSION['element_id']);
     $app->flash('success', 'El usuario ha sido eliminado exitosamente.');
     header("Refresh:0");
