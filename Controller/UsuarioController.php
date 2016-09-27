@@ -40,4 +40,9 @@ class UsuarioController {
     $app->redirect('/usuarios');
   }
 
+  public function showUsuario($app, $id){
+    $app->applyHook('must.be.administrador');
+    echo $app->view->render( "usuarios/show.twig", 'usuario' => (UsuarioResource::getInstance()->get()));
+  }
+
 }

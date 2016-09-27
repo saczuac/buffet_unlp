@@ -159,6 +159,9 @@ $app->group('/usuarios', function() use ($app, $userResource) {
     );
    // Baja
     $app->get('/delete', '\Controller\UsuarioController:deleteUsuario')->setParams(array($app, $app->request->get('id')));
+   // Show
+   $app->get('/show', '\Controller\UsuarioController:editUsuario')->setParams(array($app, $app->request->get('id')));
+
 });
 
 $app->group('/ventas', function() use($app) {
