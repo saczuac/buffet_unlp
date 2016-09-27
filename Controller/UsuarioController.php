@@ -3,7 +3,6 @@
 namespace Controller;
 use Model\Entity\Usuario;
 use Model\Resource\UsuarioResource;
-require_once '../permissions.php';
 
 class UsuarioController {
 
