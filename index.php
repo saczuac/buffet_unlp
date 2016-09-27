@@ -27,7 +27,7 @@ $view->getEnvironment()->addGlobal('server', $_SERVER);
 $userResource = new \Model\Resource\UsuarioResource();
 
 $app->get('/', function () use ($app) {
-    $app->render('index.twig');
+    $app->render('home.twig');
 });
 
 $app->get('/logout', function() use ($app, $userResource) {
@@ -52,11 +52,6 @@ $app->post('/', function() use ($app, $userResource) {
       $app->redirect('/');
 	}
 });
-
-$app->get('/logedIndex', function () use ($app) {
-    $app->render('logedIndex.twig');
-});
-
 
 $app->group('/balanceGastos', function() use($app) {
 	$app->get('/', function() use($app){

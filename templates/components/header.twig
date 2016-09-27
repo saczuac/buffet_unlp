@@ -14,8 +14,9 @@
         <link rel="icon" type="image/png" href="img/Icon.ico"/>
     </head>
     <body>
-    <header>
-      <h1>Buffet de la Facultad de Informática UNLP <a href="config"><i class="fa fa-cog" aria-hidden="true"></i></a></h1>
+      <header>
+        <h1>Buffet de la Facultad de Informática UNLP <a href="config"><i class="fa fa-cog" aria-hidden="true"></i></a></h1>
+    {% if session.user is not null %}
       <a href="/logout" class="login">Logout</a>
     </header>
     <nav>
@@ -36,6 +37,21 @@
            <li class="last"><a href="">Acerca de</a> </li>
        </ul>
     </nav>
+     {% else %}
+       <a href="#" onclick ="mostrar('modelLogin')" onkeypress="mostrar('modelLogin')" class="login" role="button">Login</a>
+     </header>
+     <div id="modelLogin" class="modal">
+     <form method="post" action="index.php" class="modal-content login-content">
+       <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+       <h3 id="login-title">Login</h3>
+       <input type="text" placeholder="Ingresar Usuario" name="username" id="user" title="Usuario" required>
+       <input type="password" placeholder="Ingresar password" name="pass" id="password" title="Password" required>
+       <a href="#" class="forgot">¿Olvidaste tu contraseña?</a>
+       <input type="submit" id="login-submit" name="submit" value="Ingresar" onkeypress="logued()" role="button" >
+     </form>
+     </div>
+     <br>
+    {% endif %}
     {% if flash is not empty %}
       {% include 'components/messages.twig' %}
     {% endif %}
