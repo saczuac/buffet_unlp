@@ -17,6 +17,9 @@
       <h1>Buffet de la Facultad de Informática UNLP</h1>
       <a href="#" onclick ="mostrar('modelLogin')" onkeypress="mostrar('modelLogin')" class="login" role="button">Login</a>
     </header>
+    {% if flash is not empty %}
+      {% include 'components/messages.twig' %}
+    {% endif %}
     <div id="modelLogin" class="modal">
     <form method="post" action="index.php" class="modal-content login-content">
       <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
@@ -45,6 +48,3 @@
     <footer>Facultad de Informática UNLP<img src="img/info.png" width="30" height="30" alt="Icono facultad de Informática" /></footer>
     </body>
 </html>
-{% if flash is not empty %}
-  {% include 'components/messages.twig' %}
-{% endif %}
