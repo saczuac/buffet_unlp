@@ -19,7 +19,7 @@ class UsuarioController {
 
   public function deleteUsuario($app, $id) {
     $app->applyHook('must.be.administrador');
-    UsuarioResource::getInstance()->delete($id);
+    UsuarioResource::getInstance()->delete((int)$id);
     $app->flash('success', 'El usuario ha sido eliminado exitosamente.');
     $app->redirect('/usuarios');
   }
