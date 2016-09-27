@@ -118,19 +118,16 @@ $app->group('/stockMinimo', function() use($app) {
 $app->group('/usuarios', function() use ($app, $userResource) {
 
     $app->get('/', '\Controller\UsuarioController:listUsuarios')->setParams(array($app));
-
-    $app->post('/', function() use($app, $userResource){
-      $userResource->insert($app->request->post('user'),
-              $app->request->post('pass'),
-              $app->request->post('nombre'),
-              $app->request->post('apellido'),
-              $app->request->post('documento'),
-              $app->request->post('telefono'),
-              $app->request->post('rol_id'),
-              $app->request->post('email'),
-              $app->request->post('ubicacion_id'));
-      $app->redirect('/usuarios');
-    });
+    $app->post('/', '\Controller\UsuarioController:newUsuario')->setParams(
+            array($app, $app->request->post('user'),
+            $app->request->post('pass'),
+            $app->request->post('nombre'),
+            $app->request->post('apellido'),
+            $app->request->post('documento'),
+            $app->request->post('telefono'),
+            $app->request->post('rol_id'),
+            $app->request->post('email'),
+            $app->request->post('ubicacion_id')));
 });
 
 $app->group('/ventas', function() use($app) {
