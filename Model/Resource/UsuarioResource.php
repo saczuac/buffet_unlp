@@ -19,7 +19,7 @@ class UsuarioResource extends AbstractResource {
      }
 
     private function __construct() {}
-      
+
       /**
        * @param $id
        *
@@ -62,7 +62,7 @@ class UsuarioResource extends AbstractResource {
         $this->getEntityManager()->flush();
         return $this->get();
     }
-    public function Nuevo ($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id){
+    public function Nuevo ($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion){
         $usuario = new Usuario();
         $usuario->setUsuario($user);
         $usuario->setClave($pass);
@@ -72,12 +72,12 @@ class UsuarioResource extends AbstractResource {
         $usuario->setTelefono($telefono);
         $usuario->setDocumento($documento);
         $usuario->setApellido($apellido);
-        $usuario->setUbicacion_Id($ubicacion_id);
+        $usuario->setUbicacion($ubicacion);
         return $usuario;
     }
 
-    public function insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id){
-        $this->getEntityManager()->persist($this->Nuevo($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id));
+    public function insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion){
+        $this->getEntityManager()->persist($this->Nuevo($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion));
         $this->getEntityManager()->flush();
         return $this->get();
     }

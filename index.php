@@ -56,6 +56,20 @@ $app->post('/', function() use ($app, $userResource) {
 	}
 });
 
+// register
+
+$app->post('/registrar', '\Controller\UsuarioController:registrarUsuario')->setParams(
+        array($app, $app->request->post('user'),
+        $app->request->post('pass'),
+        $app->request->post('nombre'),
+        $app->request->post('apellido'),
+        $app->request->post('documento'),
+        $app->request->post('telefono'),
+        2,
+        $app->request->post('email'),
+        $app->request->post('ubicacion'))
+);
+
 $app->group('/balanceGastos', function() use($app) {
   $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
@@ -141,7 +155,7 @@ $app->group('/usuarios', function() use ($app, $userResource) {
             $app->request->post('telefono'),
             $app->request->post('rol_id'),
             $app->request->post('email'),
-            $app->request->post('ubicacion_id'))
+            $app->request->post('ubicacion'))
     );
    // Baja
     $app->get('/delete', '\Controller\UsuarioController:deleteUsuario')->setParams(array($app, $app->request->get('id')));

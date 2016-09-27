@@ -11,10 +11,23 @@ class UsuarioController {
     echo $app->view->render( "usuarios/index.twig", array('usuarios' => (UsuarioResource::getInstance()->get())));
   }
 
-  public function newUsuario($app,$user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id ) {
+  public function newUsuario($app,$user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion ) {
     $app->applyHook('must.be.administrador');
-    UsuarioResource::getInstance()->insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id);
+    if (UsuarioResource::getInstance()->insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion)){
+       $app->flash('success', 'El usuario ha sido dado de alta exitosamente');
+    } else {
+      $app->flash('error', 'No se pudo dar de alta el usuario');
+    }
     echo $app->redirect('/usuarios');
+  }
+
+  public function registrarUsuario($app,$user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id = 2,$email,$ubicacion ) {
+    if (UsuarioResource::getInstance()->insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion)){
+       $app->flash('success', 'Registro exitoso!');
+    } else {
+      $app->flash('error', 'No se pudo dar de alta el usuario');
+    }
+    echo $app->redirect('/');
   }
 
   public function deleteUsuario($app, $id) {
@@ -22,7 +35,7 @@ class UsuarioController {
     if (UsuarioResource::getInstance()->delete($id)) {
       $app->flash('success', 'El usuario ha sido eliminado exitosamente.');
     } else {
-      $app->flash('error', 'No se puede borrar');
+      $app->flash('error', 'No se pudo eliminar el usuario');
     }
     $app->redirect('/usuarios');
   }

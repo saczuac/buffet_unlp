@@ -5,12 +5,12 @@ ul, li {
 
 .login {
     float:right;
+    background-color: #282A36 ;
     text-align: right;
     color: white;
 }
 
 .login:hover {
-  color: #497198;
   text-decoration: underline;
 }
 
