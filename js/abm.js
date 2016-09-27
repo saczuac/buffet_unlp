@@ -1,7 +1,6 @@
 function setId() {
   var tr = document.getElementsByClassName('selected');
-  var id = String(tr.id);
-  alert(id);
+  var id = String(tr[0].id);
   jQuery('#div_session_write').load('session_write.php?element_id='. id);
 }
 
