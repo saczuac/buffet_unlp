@@ -2,6 +2,7 @@
 
 namespace Controller;
 use Model\Entity\Usuario;
+use Model\Resource\UsuarioResource;
 require_once('Model/Resource/UsuarioResource.php');
 
 class UsuarioController {
