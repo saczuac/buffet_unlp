@@ -63,20 +63,23 @@ class UsuarioResource extends AbstractResource {
         $usuario->setUbicacion_Id($ubicacion_id);
         return $usuario;
     }
+
     public function insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id){
         $this->getEntityManager()->persist($this->Nuevo($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id));
         $this->getEntityManager()->flush();
         return $this->get();
     }
+
     public function login($username, $pass)
     {
-        $data = $this->getEntityManager()->getRepository('Model\Entity\Usuario')->findOneBy(array('username' => $username));
+        $data = $this->getEntityManager()->getRepository('Model\Entity\Usuario')->findOneBy(array('usuario' => $username));
         if ($data != null) {
           if (($data->getClave() == $pass)) return $data;
           else return false;
         }
         else return false;
     }
+    
 }
 
 ?>

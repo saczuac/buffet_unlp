@@ -5,6 +5,7 @@ use Model\Entity\Usuario;
 use Model\Resource\UsuarioResource;
 use Controller\UsuarioController;
 
+session_start();
 // <------ SLIM CONFIGURATION ---------->
 
 $app = new \Slim\Slim([
@@ -29,8 +30,27 @@ $app->get('/', function () use ($app) {
     $app->render('index.twig');
 });
 
-$app->post('/', function() use($app, $userResource){
-     $app->render('logedIndex.twig');
+$app->get('/logout', function() use ($app, $userResource) {
+    session_destroy();
+    $app->view->getEnvironment()->addGlobal('session',$_SESSION);
+    $app->flash('success', 'Sesión cerrada correctamente');
+    $app->redirect('/');
+});
+
+$app->post('/login', function() use ($app, $userResource) {
+	  $name = $app->request->post('username');
+    $pass = $app->request->post('pass');
+    $user = $userResource->login($name, $pass);
+    if ($user) {
+    	$_SESSION['id']=$user->getId();
+    	$_SESSION['user']=$user->getUsuario();
+    	$_SESSION['rol']=$user->getRol_Id();
+    	$app->flash('success', 'Usuario logueado correctamente como '. $user->getUsuario());
+    	$app->redirect('/logedIndex');
+    } else {
+    	$app->flash('error', 'Usuario o contraseña incorrecto');
+		  echo $app->view->render("index.twig");
+	}
 });
 
 $app->get('/logedIndex', function () use ($app) {
