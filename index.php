@@ -36,7 +36,7 @@ $app->get('/logout', function() use ($app, $userResource) {
     $app->redirect('/');
 });
 
-$app->post('/login', function() use ($app, $userResource) {
+$app->post('/', function() use ($app, $userResource) {
 	  $name = $app->request->post('username');
     $pass = $app->request->post('pass');
     $user = $userResource->login($name, $pass);
@@ -48,7 +48,7 @@ $app->post('/login', function() use ($app, $userResource) {
     	$app->redirect('/logedIndex');
     } else {
     	$app->flash('error', 'Usuario o contraseña incorrecto');
-		  echo $app->view->render("index.twig");
+		  //echo $app->view->render("index.twig");
 	}
 });
 
