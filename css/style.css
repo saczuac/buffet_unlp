@@ -91,19 +91,21 @@ ul, li {
 	float: right;
 }
 
+.container {
+	margin: 2.5% auto;
+	padding: 1%;
+	width: 80%;
+	min-height: 30%;
+	border-radius: 5px;
+}
+
 .field {
   font-family: "Lato","sans-serif";
   font-size: 17px;
   line-height: 1.6;
   display: inline-block;
 	font-weight: bold;
-  margin: 2.5% auto;
 	margin-right: 10px;
-  margin-left: 10px;
-  padding: 1%;
-  width: 80%;
-  min-height: 30%;
-  border-radius: 5px;
 }
 
 .user-data {
