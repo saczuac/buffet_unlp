@@ -45,10 +45,10 @@ class Usuario
      */
     protected $rol_id;
     /**
-     * @var integer
-     * @Column(type="integer")
+     * @var string
+     * @Column(type="string", length=255)
      */
-    protected $ubicacion_id;
+    protected $ubicacion;
     /**
      * @var integer
      * @Column(type="integer", length=8)
