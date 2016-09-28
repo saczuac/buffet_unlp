@@ -96,9 +96,16 @@ ul, li {
   font-size: 17px;
 }
 
+.set {
+  width: 80%;
+}
+
 .field {
   font-family: "Lato","sans-serif";
-  width: 80%;
+  float: left;
+  clear: left;
+  width: 150px;
+  text-align: right;
   padding: 1em;
   margin-left: auto;
   margin-right: auto;
