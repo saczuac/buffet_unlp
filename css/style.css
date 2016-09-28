@@ -5,13 +5,20 @@ ul, li {
 
 .login {
     float:right;
+    padding: 1em;
     background-color: #282A36 ;
     text-align: right;
     color: white;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+     transition: all 0.2s;
 }
 
 .login:hover {
-  text-decoration: underline;
+  color: #282A36;
+  background-color: white ;
 }
 
 #login-title {
@@ -100,6 +107,7 @@ ul, li {
 header {
    height: 60px;
    margin-top: 0;
+   margin-bottom: 1em;
 }
 
 body {
@@ -117,7 +125,6 @@ a {
 }
 
 header, footer {
-    opacity: 0.95;
     padding: 1em;
     color: white;
     background-color: #003366;
@@ -215,6 +222,7 @@ p {
 footer {
    position:absolute;
    right: 0;
+   opacity: 0.95;
    left: 0;
    bottom: 0;
    width:96.5%;
@@ -247,7 +255,7 @@ nav ul li {
   -moz-transition: all 0.2s;
   -ms-transition: all 0.2s;
   -o-transition: all 0.2s;
-  transition: all 0.2s;
+   transition: all 0.2s;
 }
 
 
