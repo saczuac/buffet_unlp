@@ -92,6 +92,9 @@ class Usuario
     public function getDocumento(){
       return $this->documento;
     }
+    public function getTelefono() {
+        return $this->telefono;
+    }
     public function setId($id) {
         $this->id = $id;
     }
