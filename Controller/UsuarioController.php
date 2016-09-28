@@ -1,5 +1,6 @@
 <?php
 
+
 namespace Controller;
 use Model\Entity\Usuario;
 use Model\Resource\UsuarioResource;
