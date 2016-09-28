@@ -2,7 +2,7 @@
 
 namespace Controller;
 use Model\Entity\Usuario;
-use Model\Resource\configuracionResource;
+use Model\Resource\ConfiguracionResource;
 
 class ConfigController {
 
