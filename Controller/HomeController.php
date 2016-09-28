@@ -7,7 +7,7 @@ use Model\Resource\configuracionResource;
 class HomeController {
 
    public function showHome($app){
-    $configResource = new \Model\Resource\ConfiguracionResource();
+    $configResource = ConfiguracionResource::getInstance();
     echo $app->view->render( "home.twig",
      array('tituloDescripcion' => ($configResource->get('tituloDescripcion')),
       'infoDescripcion' => ($configResource->get('infoDescripcion')),

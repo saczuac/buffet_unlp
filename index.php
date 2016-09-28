@@ -27,11 +27,10 @@ $view->getEnvironment()->addGlobal('server', $_SERVER);
 // <------ END SLIM CONFIGURATION---------->
 
 $userResource = UsuarioResource::getInstance();
+
 require_once 'permissions.php';
 
-$app->get('/', function () use ($app) {
-    $app->render('home.twig');
-});
+$app->get('/', '\Controller\HomeController:showHome')->setParams(array($app));
 
 $app->get('/logout', function() use ($app, $userResource) {
     session_destroy();
