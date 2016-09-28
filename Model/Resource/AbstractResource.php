@@ -11,6 +11,7 @@ abstract class AbstractResource
      * @var \Doctrine\ORM\EntityManager
      */
     private static $entityManager = null;
+
     /**
      * @return \Doctrine\ORM\EntityManager
      */
@@ -44,7 +45,6 @@ abstract class AbstractResource
 
         return EntityManager::create($connectionOptions, $config);
     }
-
 }
 
  ?>

@@ -3,30 +3,40 @@
 {% block contenido %}
     <br>
     <section>
-        <form method="post" class="config">
+        <form method="post" action="config/setDescripcion" class="config" enctype="multipart/form-data">
             <h2>Cambiar Informac&iacute;on</h2>
-            <label for="menuTitleInfo">Titulo: </label>
-            <input type="text" id="menuTitleInfo" maxlength="50" placeholder="Titulo" value="Informacion sobre la facultad de informatica" required/>
+            <label for="titleInfo">Titulo: </label>
+            <input type="text" id="menuTitleInfo" name="titleInfo" maxlength="50" placeholder="Titulo" value="{{tituloDescripcion.valor}}" required/>
             <br>
             <br>
-            <textarea class="estilotextarea" rows="17" cols="30" id="textarea-info" title="textarea-menu">informacion ampliada sobre la facltad de informatica</textarea>
-            <img src="img/empty.jpg" alt="retrato a poner en la portada" />
-            <input type="file" id="myFileInfo" accept="image/*">
+            <textarea class="estilotextarea" rows="17" cols="30" id="textarea-info" name="descInfo" title="textarea-menu">{{infoDescripcion.valor}}</textarea>
+            <img src="{{imgDescripcion.valor}}" alt="retrato a poner en la portada" />
+            <input type="file" id="myFileInfo" name="myFileInfo" accept="image/*" value="img/empty.jpg">
             <br>
             <br>
             <input type="submit" value="Guardar"/>
         </form>
     </section>
     <section>
-        <form method="post" class="config">
+        <form method="post" action="config/setMenu" class="config" enctype="multipart/form-data">
             <h2>Cambiar men&uacute;</h2>
             <label for="menuTitleMenu">Titulo: </label>
-            <input type="text" id="menuTitleMenu" maxlength="50" placeholder="Titulo" value="Milanesa napolitana con fritas" required/>
+            <input type="text" id="menuTitleMenu" maxlength="50" placeholder="Titulo" name="menuTitulo" value="{{tituloMenu.valor}}" required/>
             <br>
             <br>
-            <textarea class="estilotextarea" rows="17" cols="30" id="textarea-menu" title="textarea-menu"> Riquisima milanesa al horno con salsa de tomate y queso acompañado de papas baston fritas</textarea>
-            <img src="img/empty.jpg" alt="representacion del plato subioa" />
-            <input type="file" id="myFileMenu" accept="image/*">
+            <textarea class="estilotextarea" rows="17" cols="30" id="textarea-menu" name="menuInfo" title="textarea-menu"> {{infoMenu.valor}}</textarea>
+            <img src="{{imgMenu.valor}}" alt="representacion del plato subioa" />
+            <input type="file" id="myFileMenu" name="myFileMenu" accept="image/*">
+            <br>
+            <br>
+            <input type="submit" value="Guardar"/>
+        </form>
+    </section>
+    <section>
+        <form method="post" action="config/setPaginacion" class="config">
+            <h2>Paginaci&oacute;n</h2>
+            <label for="paginacionInt">Paginaci&oacute;n: </label>
+            <input type="number" id="paginacionInt" name="paginacionInt" maxlength="50" step=1 placeholder="Paginaci&oacute;n" value="10" required/>
             <br>
             <br>
             <input type="submit" value="Guardar"/>

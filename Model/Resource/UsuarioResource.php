@@ -8,23 +8,11 @@ use Model\Entity\Usuario;
  * @package Model
  */
 class UsuarioResource extends AbstractResource {
-
-     private static $instance;
-
-     public static function getInstance() {
-         if (!isset(self::$instance)) {
-           self::$instance = new self();
-         }
-         return self::$instance;
-     }
-
-    private function __construct() {}
-
-      /**
-       * @param $id
-       *
-       * @return string
-       */
+    /**
+     * @param $id
+     *
+     * @return string
+     */
     public function get($id = null)
     {
         if ($id === null) {
@@ -62,7 +50,7 @@ class UsuarioResource extends AbstractResource {
         $this->getEntityManager()->flush();
         return $this->get();
     }
-    public function Nuevo ($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion){
+    public function Nuevo ($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id){
         $usuario = new Usuario();
         $usuario->setUsuario($user);
         $usuario->setClave($pass);
@@ -72,12 +60,12 @@ class UsuarioResource extends AbstractResource {
         $usuario->setTelefono($telefono);
         $usuario->setDocumento($documento);
         $usuario->setApellido($apellido);
-        $usuario->setUbicacion($ubicacion);
+        $usuario->setUbicacion_Id($ubicacion_id);
         return $usuario;
     }
 
-    public function insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion){
-        $this->getEntityManager()->persist($this->Nuevo($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion));
+    public function insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id){
+        $this->getEntityManager()->persist($this->Nuevo($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id));
         $this->getEntityManager()->flush();
         return $this->get();
     }
@@ -91,7 +79,7 @@ class UsuarioResource extends AbstractResource {
         }
         else return false;
     }
-
+    
 }
 
 ?>
