@@ -26,14 +26,6 @@ ul, li {
   margin-left: 80px;
 }
 
-.container {
-	margin: 2.5% auto;
-	padding: 1%;
-	width: 80%;
-	min-height: 30%;
-	border-radius: 5px;
-}
-
 .card {
 	padding: 20px 15px 20px 15px;
 	background-color: white;
@@ -43,7 +35,6 @@ ul, li {
 
 .col {
 	text-align: center;
-	display: inline-block;
 	float: left;
 	margin: 0.5%;s
 }
