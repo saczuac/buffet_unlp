@@ -14,6 +14,16 @@
 				{{ usuario.documento }}
 				<span class="field">Email: </span>
 				<a href="mailto: {{ usuario.email }}">{{ usuario.email }}</a>
+				<span class="field">Nombre: </span>
+				{{ usuario.nombre }}
+				<span class="field">Apellido: </span>
+				{{ usuario.apellido }}
+				<span class="field">Ubicación: </span>
+				{{ usuario.ubicacion }}
+				<span class="field">Rol: </span>
+				{{ usuario.rol_id }}
+				<span class="field">Teléfono: </span>
+				{{ usuario.telefono }}
 		</div>
 		<div class="right">
 			<a href="usuarios/edit?id={{ usuario.id }} class="action-button shadow animate green active">

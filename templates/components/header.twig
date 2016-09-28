@@ -26,17 +26,17 @@
     <nav>
         <ul>
            <li class="first" ><a href="/">Inicio</a></li>
-           <li><a href="productos">Productos</a> </li>
-           <li><a href="usuarios">Usuarios</a> </li>
-           <li><a href="menu">Menú</a> </li>
-           <li><a href="pedidos">Pedidos</a> </li>
-           <li><a href="ventas">Ventas</a> </li>
+           <li><a href="{{ baseUrl() }}/productos">Productos</a> </li>
+           <li><a href="{{ baseUrl() }}/usuarios">Usuarios</a> </li>
+           <li><a href="{{ baseUrl() }}/menu">Menú</a> </li>
+           <li><a href="{{ baseUrl() }}/pedidos">Pedidos</a> </li>
+           <li><a href="{{ baseUrl() }}/ventas">Ventas</a> </li>
            <li><a href="#">Balance</a>
                 <ul>
-                   <li><a href="productosFaltantes">Productos Faltantes</a> </li>
-                   <li><a href="stockMinimo">Stock Minimo</a> </li>
-                   <li><a href="balanceIngresos">Ingresos</a> </li>
-                   <li><a href="balanceGastos">Gastos</a> </li>
+                   <li><a href="{{ baseUrl() }}/productosFaltantes">Productos Faltantes</a> </li>
+                   <li><a href="{{ baseUrl() }}/stockMinimo">Stock Minimo</a> </li>
+                   <li><a href="{{ baseUrl() }}/balanceIngresos">Ingresos</a> </li>
+                   <li><a href="{{ baseUrl() }}/balanceGastos">Gastos</a> </li>
                 </ul></li>
            <li class="last"><a href="">Acerca de</a> </li>
        </ul>
