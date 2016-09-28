@@ -61,7 +61,7 @@ public function setTituloDescripcion($app,$value) {
 
 public function setImgMenu($app) {
     if (isset($_FILES["myFileMenu"])) {
-  	$target_dir = "https://grupo17.proyecto2016.linti.unlp.edu.ar/img/";
+  	$target_dir = "img/";
 	$target_file = $target_dir .  basename( $_FILES["myFileMenu"]["name"]);
     move_uploaded_file($_FILES["myFileMenu"]["tmp_name"], $target_file);
     ConfiguracionResource::getInstance()->edit('imgMenu',$target_file);
