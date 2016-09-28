@@ -5,11 +5,11 @@
     <h2>{{tituloDescripcion.valor}}</h2>
     <p>{{infoDescripcion.valor}}</p>
 
-    <img src="{{imgDescripcion.valor}}" alt="fondo del buffet"/>
+    <img src="{{ baseUrl() }}{{imgDescripcion.valor}}" alt="fondo del buffet"/>
 </section>
 <section>
     <h2>Menú del día</h2>
-    <img src="{{imgMenu.valor}}" alt="menu del dia"/>
+    <img src="{{ baseUrl() }}{{imgMenu.valor}}" alt="menu del dia"/>
     <h2 class="menuday"><br>{{tituloMenu.valor}}</h2>
     <p>{{infoMenu.valor}}</p>
 </section>
