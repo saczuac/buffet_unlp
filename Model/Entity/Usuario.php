@@ -45,8 +45,8 @@ class Usuario
      */
     protected $rol_id;
     /**
-     * @var string
-     * @Column(type="string", length=255)
+    * @var string
+    * @Column(type="string", length=255)
      */
     protected $ubicacion;
     /**
@@ -83,11 +83,17 @@ class Usuario
     public function getNombre() {
         return $this->nombre;
     }
+    public function getApellido() {
+        return $this->apellido;
+    }
     public function getEmail() {
         return $this->email;
     }
     public function getDocumento(){
       return $this->documento;
+    }
+    public function getTelefono() {
+        return $this->telefono;
     }
     public function setId($id) {
         $this->id = $id;
@@ -110,8 +116,8 @@ class Usuario
     public function setRol_Id($rol_id) {
         $this->rol_id = $rol_id;
     }
-    public function setUbicacion($ubicacion_id) {
-        $this->ubicacion = $ubicacion_id;
+    public function setUbicacion($ubicacion) {
+        $this->ubicacion = $ubicacion;
     }
     public function setNombre($nombre) {
     	$this->nombre = $nombre;

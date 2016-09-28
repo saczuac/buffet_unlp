@@ -1,13 +1,11 @@
 <?php
 // Initialize Slim (the router/micro framework used)
 require_once 'vendor/autoload.php';
+require_once 'Model/Resource/UsuarioResource.php';
 use Model\Entity\Usuario;
 use Model\Resource\UsuarioResource;
-use Model\Resource\ConfiguracionResource;
-
-$userResource = new \Model\Resource\UsuarioResource();
-$configuracionResource = new \Model\Resource\ConfiguracionResource();
 use Controller\UsuarioController;
+use Model\Resource\ConfiguracionResource;
 
 session_start();
 // <------ SLIM CONFIGURATION ---------->
@@ -28,9 +26,12 @@ $view->getEnvironment()->addGlobal('session', $_SESSION);
 $view->getEnvironment()->addGlobal('server', $_SERVER);
 // <------ END SLIM CONFIGURATION---------->
 
-$userResource = new \Model\Resource\UsuarioResource();
+$userResource = UsuarioResource::getInstance();
+require_once 'permissions.php';
 
-$app->get('/', '\Controller\HomeController:showHome')->setParams(array($app));
+$app->get('/', function () use ($app) {
+    $app->render('home.twig');
+});
 
 $app->get('/logout', function() use ($app, $userResource) {
     session_destroy();
@@ -39,8 +40,9 @@ $app->get('/logout', function() use ($app, $userResource) {
     $app->redirect('/');
 });
 
+// login...
 $app->post('/', function() use ($app, $userResource) {
-	$name = $app->request->post('username');
+	  $name = $app->request->post('username');
     $pass = $app->request->post('pass');
     $user = $userResource->login($name, $pass);
     if ($user) {
@@ -55,7 +57,22 @@ $app->post('/', function() use ($app, $userResource) {
 	}
 });
 
+// register
+
+$app->post('/registrar', '\Controller\UsuarioController:registrarUsuario')->setParams(
+        array($app, $app->request->post('user'),
+        $app->request->post('pass'),
+        $app->request->post('nombre'),
+        $app->request->post('apellido'),
+        $app->request->post('documento'),
+        $app->request->post('telefono'),
+        2,
+        $app->request->post('email'),
+        $app->request->post('ubicacion'))
+);
+
 $app->group('/balanceGastos', function() use($app) {
+  $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
 		echo $app->view->render('balanceGastos.twig');
 	});
@@ -63,6 +80,7 @@ $app->group('/balanceGastos', function() use($app) {
 
 
 $app->group('/balanceIngresos', function() use($app) {
+  $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
 		echo $app->view->render('balanceIngresos.twig');
 	});
@@ -70,18 +88,21 @@ $app->group('/balanceIngresos', function() use($app) {
 
 
 $app->group('/config', function() use($app) {
-	 $app->get('/', '\Controller\ConfigController:showConfig')->setParams(array($app));
+  $app->applyHook('must.be.logueado');
+  $app->get('/', '\Controller\ConfigController:showConfig')->setParams(array($app));
 
-	 $app->post('/setPaginacion', '\Controller\ConfigController:setPaginacion')->setParams(
-            array($app, $app->request->post('paginacionInt')));
- 	 $app->post('/setDescripcion', '\Controller\ConfigController:setDescripcion')->setParams(
-            array($app, $app->request->post('titleInfo'),$app->request->post('descInfo')));
- 	 $app->post('/setMenu', '\Controller\ConfigController:setMenu')->setParams(
-            array($app, $app->request->post('menuTitulo'),$app->request->post('menuInfo')));
+  $app->post('/setPaginacion', '\Controller\ConfigController:setPaginacion')->setParams(
+           array($app, $app->request->post('paginacionInt')));
+  $app->post('/setDescripcion', '\Controller\ConfigController:setDescripcion')->setParams(
+           array($app, $app->request->post('titleInfo'),$app->request->post('descInfo')));
+  $app->post('/setMenu', '\Controller\ConfigController:setMenu')->setParams(
+           array($app, $app->request->post('menuTitulo'),$app->request->post('menuInfo')));
 });
 
 
+
 $app->group('/gastos', function() use($app) {
+  $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
 		echo $app->view->render('gastos.twig');
 	});
@@ -89,6 +110,7 @@ $app->group('/gastos', function() use($app) {
 
 
 $app->group('/menu', function() use($app) {
+  $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
 		echo $app->view->render('menu.twig');
 	});
@@ -96,6 +118,7 @@ $app->group('/menu', function() use($app) {
 
 
 $app->group('/pedidos', function() use($app) {
+  $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
 		echo $app->view->render('pedidos.twig');
 	});
@@ -103,6 +126,7 @@ $app->group('/pedidos', function() use($app) {
 
 
 $app->group('/productos', function() use($app) {
+  $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
 		echo $app->view->render('productos.twig');
 	});
@@ -110,6 +134,7 @@ $app->group('/productos', function() use($app) {
 
 
 $app->group('/productosFaltantes', function() use($app) {
+  $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
 		echo $app->view->render('productosFaltantes.twig');
 	});
@@ -117,14 +142,17 @@ $app->group('/productosFaltantes', function() use($app) {
 
 
 $app->group('/stockMinimo', function() use($app) {
+  $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
 		echo $app->view->render('stockMinimo.twig');
 	});
 });
 
 $app->group('/usuarios', function() use ($app, $userResource) {
-
+    $app->applyHook('must.be.logueado');
+    // Listar
     $app->get('/', '\Controller\UsuarioController:listUsuarios')->setParams(array($app));
+    // Alta
     $app->post('/', '\Controller\UsuarioController:newUsuario')->setParams(
             array($app, $app->request->post('user'),
             $app->request->post('pass'),
@@ -134,10 +162,17 @@ $app->group('/usuarios', function() use ($app, $userResource) {
             $app->request->post('telefono'),
             $app->request->post('rol_id'),
             $app->request->post('email'),
-            $app->request->post('ubicacion_id')));
+            $app->request->post('ubicacion'))
+    );
+   // Baja
+    $app->get('/delete', '\Controller\UsuarioController:deleteUsuario')->setParams(array($app, $app->request->get('id')));
+   // Show
+   $app->get('/show', '\Controller\UsuarioController:showUsuario')->setParams(array($app, $app->request->get('id')));
+
 });
 
 $app->group('/ventas', function() use($app) {
+  $app->applyHook('must.be.logueado');
 	$app->get('/', function() use($app){
 		echo $app->view->render('ventas.twig');
 	});

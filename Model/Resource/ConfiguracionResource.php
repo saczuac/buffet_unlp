@@ -13,6 +13,17 @@ class ConfiguracionResource extends AbstractResource {
      *
      * @return string
      */
+     private static $instance;
+
+     public static function getInstance() {
+         if (!isset(self::$instance)) {
+           self::$instance = new self();
+         }
+         return self::$instance;
+     }
+
+    private function __construct() {}
+
     public function get($clave = null)
     {
         if ($clave === null) {
