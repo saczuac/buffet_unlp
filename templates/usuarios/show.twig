@@ -7,18 +7,13 @@
 			<span class="icon">
 				<i class="fa fa-user"></i>
 			</span>
-			{{ usuario.nombre }} {{ usuario.apellido }}
+			{{ usuario.usuario }}
 		</h2>
 		<div class="user-data">
-			<p>
 				<span class="field">Documento: </span>
 				{{ usuario.documento }}
-			</p>
-			<p>
-			<p>
 				<span class="field">Email: </span>
 				<a href="mailto: {{ usuario.email }}">{{ usuario.email }}</a>
-			</p>
 		</div>
 		<div class="right">
 			<a href="usuarios/edit?id={{ usuario.id }} class="action-button shadow animate green active">

@@ -83,6 +83,9 @@ class Usuario
     public function getNombre() {
         return $this->nombre;
     }
+    public function getApellido() {
+        return $this->apellido;
+    }
     public function getEmail() {
         return $this->email;
     }

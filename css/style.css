@@ -36,6 +36,7 @@ ul, li {
 .card {
 	padding: 20px 15px 20px 15px;
 	background-color: white;
+  color: black;
   display: inline-block;
 	border-bottom: 4px solid #B6B6B6;
 	border-radius: 2px;
@@ -91,6 +92,7 @@ ul, li {
 }
 
 .field {
+  display: block;
 	font-weight: bold;
 	margin-right: 10px;
 }
@@ -121,6 +123,7 @@ body {
 
 a {
   text-decoration: none;
+  font-family: "Lato","sans-serif";
   color: #003366;
 }
 
