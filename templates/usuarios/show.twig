@@ -11,29 +11,14 @@
 			{{ usuario.usuario }}
 		</h2>
 		<div class="user-data">
-		   <div class="set">
-				<span class="field">Documento: </span>
-				{{ usuario.documento }}
-				</div>
-				<div class="set">
+				<span class="field">Documento: {{ usuario.documento }}</span>
 				<span class="field">Email: </span>
 				<a href="mailto: {{ usuario.email }}">{{ usuario.email }}</a>
-				</div><div class="set">
-				<span class="field">Nombre: </span>
-				{{ usuario.nombre }}
-				</div><div class="set">
-				<span class="field">Apellido: </span>
-				{{ usuario.apellido }}
-				</div><div class="set">
-				<span class="field">Ubicación: </span>
-				{{ usuario.ubicacion }}
-				</div><div class="set">
-				<span class="field">Rol: </span>
-				{{ usuario.rol_id }}
-				</div><div class="set">
-				<span class="field">Teléfono: </span>
-				{{ usuario.telefono }}
-				</div>
+				<span class="field">Nombre:	{{ usuario.nombre }}</span>
+				<span class="field">Apellido:	{{ usuario.apellido }} </span>
+				<span class="field">Ubicación: {{ usuario.ubicacion }} </span
+				<span class="field">Rol: {{ usuario.rol_id }} </span>
+				<span class="field">Teléfono: {{ usuario.telefono }} </span>
 		</div>
 		<div class="right">
 			<a href="usuarios/edit?id={{ usuario.id }} class="action-button shadow animate green active">
