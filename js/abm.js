@@ -5,6 +5,16 @@ function mostrarDelete() {
   mostrar('delete');
 }
 
+$(document).ready(function () {
+    $('#newRol').change(function() {
+        if ($('#newRol option:selected').text() == 2) {
+            document.getElementById("labelUbicacion").style.display = "inline-block";
+            document.getElementById("newUbicacion").style.display = "inline-block";
+            $('#newUbicacion').prop('required',true);
+        }
+    });
+});
+
 document.addEventListener("DOMContentLoaded", function(event) {
     var trs = document.querySelectorAll("tr");
     for(var i = 1; i < trs.length; i++){
@@ -30,14 +40,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }
     });
    };
-});
-
-$(document).ready(function () {
-    $('#newRol').change(function() {
-        if ($('#newRol option:selected').text() == 2) {
-            document.getElementById("labelUbicacion").style.display = "inline-block";
-            document.getElementById("newUbicacion").style.display = "inline-block";
-            $('#newUbicacion').prop('required',true);
-        }
-    });
 });
