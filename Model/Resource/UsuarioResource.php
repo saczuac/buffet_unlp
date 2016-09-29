@@ -68,7 +68,7 @@ class UsuarioResource extends AbstractResource {
     public function Nuevo ($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id = null){
         $usuario = new Usuario();
         $ubicacionResource = new UbicacionResource();
-        $ubicacion = $ubicacionResource->get($ubicacion_id)
+        $ubicacion = $ubicacionResource->get($ubicacion_id);
         $usuario->setUsuario($user);
         $usuario->setClave($pass);
         $usuario->setNombre($nombre);
