@@ -20,7 +20,12 @@
          <option value="3">Gestión</option>
         </select>
         <label for="newUbicacion">Ubicación: </label>
-        <input type="text" name="ubicacion" id="newUbicacion" maxlength="255" placeholder="Oficina de Alumnos" required/>
+        <select id="newUbicacion" name="ubicacion_id" required>
+         <option value="null" selected="selected">Seleccione</option>
+         {% for ubicacion in ubicaciones %}
+         <option value="{{ ubicacion.id }}">{{ ubicacion.nombre }} | {{ ubicacion.descripcion }}</option>
+         {% endfor %}
+        </select>
         <label for="newMail">Mail: </label>
         <input type="email" name="email" id="newMail" placeholder="Email.." required/>
         <label for="newDocumento">Documento: </label>
