@@ -46,7 +46,7 @@ class Usuario
     protected $rol_id;
     /**
      * @ORM\ManyToOne(targetEntity="Ubicacion", inversedBy="users")
-     * @ORM\JoinColumn(name="ubicacion_id", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="ubicacion_id", referencedColumnName="id")
      */
     protected $ubicacion_id;
     /**
