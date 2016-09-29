@@ -38,8 +38,7 @@ public function setTituloDescripcion($app,$value) {
     $app->applyHook('must.be.administrador');
   	if (isset($_FILES["myFileInfo"])) {
   	     $target_path = "img/";
-	        $target_path = $target_path . basename( $_FILES["myFileInfo"]['name']);
-           move_uploaded_file($_FILES["myFileInfo"]['name'], $target_path);
+	        $target_path = $target_path . basename( $_FILES["myFileInfo"]['name']); move_uploaded_file($_FILES["myFileInfo"]['tmp_name'], $target_path);
             ConfiguracionResource::getInstance()->edit('imgDescripcion',$target_path);
     }
   }
@@ -64,7 +63,7 @@ public function setImgMenu($app) {
     if (isset($_FILES["myFileMenu"])) {
   	$target_dir = "img/";
 	$target_file = $target_dir .  basename( $_FILES["myFileMenu"]["name"]);
-    move_uploaded_file($_FILES["myFileMenu"]["name"], $target_file);
+    move_uploaded_file($_FILES["myFileMenu"]["tmp_name"], $target_file);
     ConfiguracionResource::getInstance()->edit('imgMenu',$target_file);
 	}
   }

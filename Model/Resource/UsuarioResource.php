@@ -92,6 +92,18 @@ class UsuarioResource extends AbstractResource {
         else return false;
     }
 
+    public function ubicacion($id) {
+      $query_string = "
+          SELECT u.nombre, u.descripcion
+          FROM Model\Entity\Ubicacion u
+          INNER JOIN Model\Entity\Usuario user
+          WHERE user.id = :idUser
+          WHERE u.id = user.ubicacion_id";
+      $query = $this->getEntityManager()->createQuery($query_string);
+      $query->setParameter('idUser',$id);
+      return $query->getResult();
+  }
+
 }
 
 ?>
