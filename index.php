@@ -152,6 +152,10 @@ $app->group('/usuarios', function() use ($app, $userResource) {
     // Listar
     $app->get('/', '\Controller\UsuarioController:listUsuarios')->setParams(array($app));
     // Alta
+    echo '<script language="javascript">';
+    $message = $app->request->post('ubicacion_id');
+    echo 'alert(' . $message . ')';
+    echo '</script>';
     $app->post('/', '\Controller\UsuarioController:newUsuario')->setParams(
             array($app, $app->request->post('user'),
             $app->request->post('pass'),
