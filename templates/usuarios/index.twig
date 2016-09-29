@@ -21,7 +21,7 @@
         </select>
         <label for="newUbicacion" id="labelUbicacion">Ubicación: </label>
         <select id="newUbicacion" name="ubicacion_id">
-         <option value="null" selected="selected">Seleccione</option>
+         <option value="" selected="selected">Seleccione</option>
          {% for ubicacion in ubicaciones %}
          <option value="{{ ubicacion.id }}">{{ ubicacion.nombre }} | {{ ubicacion.descripcion }}</option>
          {% endfor %}
