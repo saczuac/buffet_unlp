@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping;
 /**
  *
  * @Entity
- * @Table(name="Ubicacion")
+ * @Table(name="ubicacion")
  */
 class Ubicacion
 {
