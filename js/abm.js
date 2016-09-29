@@ -11,6 +11,10 @@ $(document).ready(function () {
             document.getElementById("labelUbicacion").style.display = "inline-block";
             document.getElementById("newUbicacion").style.display = "inline-block";
             $('#newUbicacion').prop('required',true);
+        } else {
+            document.getElementById("labelUbicacion").style.display = "none";
+            document.getElementById("newUbicacion").style.display = "none";
+            $('#newUbicacion').prop('required',false);
         }
     });
 });
