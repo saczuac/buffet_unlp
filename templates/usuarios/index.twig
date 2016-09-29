@@ -12,7 +12,7 @@
         <input type="text" name="apellido" id="newApellido" maxlength="45" placeholder="Apellido" required/>
         <label for="newTelefono">Teléfono: </label>
         <input type="number" name="telefono" id="newTelefono" maxlength="25" placeholder="Tel.." required/>
-        <label for="newRol">Rol: </label>
+        <label for="newRol" id="labelRol">Rol: </label>
         <select id="newRol" name="rol_id" required>
          <option value="" selected="selected">Seleccione</option>
          <option value="1">Administrador</option>
@@ -20,7 +20,7 @@
          <option value="3">Gestión</option>
         </select>
         <label for="newUbicacion">Ubicación: </label>
-        <select id="newUbicacion" name="ubicacion_id" required>
+        <select id="newUbicacion" name="ubicacion_id">
          <option value="null" selected="selected">Seleccione</option>
          {% for ubicacion in ubicaciones %}
          <option value="{{ ubicacion.id }}">{{ ubicacion.nombre }} | {{ ubicacion.descripcion }}</option>

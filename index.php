@@ -67,7 +67,7 @@ $app->post('/registrar', '\Controller\UsuarioController:registrarUsuario')->setP
         $app->request->post('telefono'),
         2,
         $app->request->post('email'),
-        $app->request->post('ubicacion'))
+        $app->request->post('ubicacion_id'))
 );
 
 $app->group('/balanceGastos', function() use($app) {
@@ -161,7 +161,7 @@ $app->group('/usuarios', function() use ($app, $userResource) {
             $app->request->post('telefono'),
             $app->request->post('rol_id'),
             $app->request->post('email'),
-            $app->request->post('ubicacion'))
+            $app->request->post('ubicacion_id'))
     );
    // Baja
     $app->get('/delete', '\Controller\UsuarioController:deleteUsuario')->setParams(array($app, $app->request->get('id')));

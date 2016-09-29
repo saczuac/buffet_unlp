@@ -31,3 +31,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
    };
 });
+
+ document.getElementById("labelRol").style.display = "none";
+ document.getElementById("newRol").style.display = "none";
+
+$('#newRol').change(function(){
+    if ($('#newRol option:selected').text() == 2) {
+        document.getElementById("labelRol").style.display = "inline-block";
+        document.getElementById("newRol").style.display = "inline-block";
+        $('#newRol').prop('required',true);
+    }
+});
