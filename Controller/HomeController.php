@@ -3,6 +3,8 @@
 namespace Controller;
 use Model\Entity\Usuario;
 use Model\Resource\ConfiguracionResource;
+use Model\Entity\Ubicacion;
+use Model\Resource\UbicacionResource;
 
 class HomeController {
 
