@@ -33,6 +33,14 @@ ul, li {
   margin-left: 80px;
 }
 
+#labelRol {
+    display: inline-block;
+}
+
+#newRol {
+    display: inline-block;
+}
+
 .card {
 	padding: 20px 15px 20px 15px;
 	background-color: white;
