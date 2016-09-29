@@ -57,8 +57,8 @@
          <input type="text" name="apellido" id="newApellido" maxlength="45" placeholder="Apellido" required/>
          <label for="newTelefono">Teléfono: </label>
          <input type="number" name="telefono" id="newTelefono" maxlength="25" placeholder="Tel.." required/>
-         <label for="newUbicacion" id="labelUbicacion">Ubicación: </label>
-         <select id="newUbicacion" name="ubicacion_id">
+         <label for="newUbicacion2" id="labelUbicacion2">Ubicación: </label>
+         <select id="newUbicacion2" name="ubicacion_id">
           <option value="" selected="selected">Seleccione</option>
           {% for ubicacion in ubicaciones %}
           <option value="{{ ubicacion.id }}">{{ ubicacion.nombre }} | {{ ubicacion.descripcion }}</option>
