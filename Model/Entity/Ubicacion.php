@@ -23,7 +23,11 @@ class Ubicacion
      * @Column(type="string", length=45)
      */
     protected $nombre;
-    /**
+     /**
+      * @ORM\OneToMany(targetEntity="Usuario", mappedBy="ubicacion_id")
+     */
+      protected $users;
+      /**
       * @var string
       * @Column(type="string", length=255)
       */

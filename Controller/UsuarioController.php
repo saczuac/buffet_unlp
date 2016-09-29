@@ -13,7 +13,7 @@ class UsuarioController {
     echo $app->view->render( "usuarios/index.twig", array('usuarios' => (UsuarioResource::getInstance()->get()), 'ubicaciones' => (UbicacionResource::getInstance()->get())));
   }
 
-  public function newUsuario($app,$user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id = null) {
+  public function newUsuario($app,$user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id) {
     $app->applyHook('must.be.administrador');
     if (UsuarioResource::getInstance()->insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id)){
        $app->flash('success', 'El usuario ha sido dado de alta exitosamente');
@@ -44,7 +44,8 @@ class UsuarioController {
 
   public function showUsuario($app, $id){
     $app->applyHook('must.be.administrador');
-    echo $app->view->render( "usuarios/show.twig", array('usuario' => (UsuarioResource::getInstance()->get($id))));
+    $user = UsuarioResource::getInstance()->get($id);
+    echo $app->view->render( "usuarios/show.twig", array('usuario' => ($user), (UbicacionResource::getInstance()->get($user[id]))));
   }
 
 }

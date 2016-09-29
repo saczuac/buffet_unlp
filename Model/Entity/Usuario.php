@@ -45,8 +45,8 @@ class Usuario
      */
     protected $rol_id;
     /**
-    * @var integer
-    * @Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="Ubicacion", inversedBy="users")
+     * @ORM\JoinColumn(name="ubicacion_id", referencedColumnName="id", nullable=true)
      */
     protected $ubicacion_id;
     /**
