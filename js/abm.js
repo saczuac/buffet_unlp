@@ -35,9 +35,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 $(document).ready(function () {
     $('#newRol').change(function() {
         if ($('#newRol option:selected').text() == 2) {
-            document.getElementById("labelRol").style.display = "inline-block";
-            document.getElementById("newRol").style.display = "inline-block";
-            $('#newRol').prop('required',true);
+            document.getElementById("labelUbicacion").style.display = "inline-block";
+            document.getElementById("newUbicacion").style.display = "inline-block";
+            $('#newUbicacion').prop('required',true);
         }
     });
 });
