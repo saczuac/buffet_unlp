@@ -14,9 +14,6 @@ class UsuarioController {
   }
 
   public function newUsuario($app,$user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id) {
-    echo '<script language="javascript">';
-    echo 'alert(' . $ubicacion_id . ')';
-    echo '</script>';
     $app->applyHook('must.be.administrador');
     if (UsuarioResource::getInstance()->insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id)){
        $app->flash('success', 'El usuario ha sido dado de alta exitosamente');

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping;
 /**
  *
  * @Entity
- * @Table(name="usuario")
+ * @Table(name="Usuario")
  */
 class Usuario
 {
@@ -45,8 +45,8 @@ class Usuario
      */
     protected $rol_id;
     /**
-     * @ORM\ManyToOne(targetEntity="Ubicacion", inversedBy="users")
-     * @ORM\JoinColumn(name="ubicacion_id", referencedColumnName="id")
+     * @ManyToOne(targetEntity="Ubicacion", inversedBy="users")
+     * @JoinColumn(name="address_id", referencedColumnName="id")
      */
     protected $ubicacion_id;
     /**

@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping;
 /**
  *
  * @Entity
- * @Table(name="ubicacion")
+ * @Table(name="Ubicacion")
  */
 class Ubicacion
 {
@@ -24,7 +24,7 @@ class Ubicacion
      */
     protected $nombre;
      /**
-      * @ORM\OneToMany(targetEntity="Usuario", mappedBy="ubicacion_id")
+      * @OneToMany(targetEntity="Usuario", mappedBy="ubicacion_id")
      */
       protected $users;
       /**
