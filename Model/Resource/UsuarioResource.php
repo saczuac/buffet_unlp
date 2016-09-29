@@ -2,6 +2,9 @@
 
 namespace Model\Resource;
 use Model\Resource\AbstractResource;
+use vendor\doctrine\common\lib\Doctrine\Common\Persistence\ManagerRegistry;
+use App\Resource\ItemResource;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Model\Entity\Usuario;
 /**
  * Class Resource
@@ -64,6 +67,8 @@ class UsuarioResource extends AbstractResource {
     }
     public function Nuevo ($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id = null){
         $usuario = new Usuario();
+        $ubicacionResource = new UbicacionResource();
+        $ubicacion = $ubicacionResource->get($ubicacion_id)
         $usuario->setUsuario($user);
         $usuario->setClave($pass);
         $usuario->setNombre($nombre);
@@ -72,7 +77,7 @@ class UsuarioResource extends AbstractResource {
         $usuario->setTelefono($telefono);
         $usuario->setDocumento($documento);
         $usuario->setApellido($apellido);
-        $usuario->setUbicacion_Id($ubicacion_id);
+        $usuario->setUbicacion_Id($ubicacion);
         return $usuario;
     }
 
