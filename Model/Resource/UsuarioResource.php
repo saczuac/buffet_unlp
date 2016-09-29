@@ -97,11 +97,13 @@ class UsuarioResource extends AbstractResource {
     }
 
     public function ubicacion($id) {
+      $usuario = $this->getEntityManager()->getReference('Model\Entity\Usuario', $id);
       $query_string = "
           SELECT u.nombre, u.descripcion FROM Model\Entity\Ubicacion u
           WHERE u.id = :idUser";
       $query = $this->getEntityManager()->createQuery($query_string);
-      $query->setParameter('idUser',$id);
+      $idUb = $usuario->getUbicacion_Id();
+      $query->setParameter('idUser',$idUb);
       return $query->getResult();
   }
 
