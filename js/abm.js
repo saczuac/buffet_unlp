@@ -32,10 +32,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
    };
 });
 
-$('#newRol').change(function(){
-    if ($('#newRol option:selected').text() == 2) {
-        document.getElementById("labelRol").style.display = "inline-block";
-        document.getElementById("newRol").style.display = "inline-block";
-        $('#newRol').prop('required',true);
-    }
+$(document).ready(function () {
+    $('#newRol').change(function() {
+        if ($('#newRol option:selected').text() == 2) {
+            document.getElementById("labelRol").style.display = "inline-block";
+            document.getElementById("newRol").style.display = "inline-block";
+            $('#newRol').prop('required',true);
+        }
+    });
 });
