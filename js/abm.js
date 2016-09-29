@@ -7,7 +7,7 @@ function mostrarDelete() {
 
 $(document).ready(function () {
     $('#newRol').change(function() {
-        if ($('#newRol option:selected').text() == 2) {
+        if ($('#newRol option:selected').val() == 2) {
             document.getElementById("labelUbicacion").style.display = "inline-block";
             document.getElementById("newUbicacion").style.display = "inline-block";
             $('#newUbicacion').prop('required',true);
