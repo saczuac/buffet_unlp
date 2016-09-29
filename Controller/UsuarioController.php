@@ -46,7 +46,7 @@ class UsuarioController {
     $app->applyHook('must.be.administrador');
     $user = UsuarioResource::getInstance()->get($id);
     $ubicacion = UsuarioResource::getInstance()->ubicacion($id);
-    echo $app->view->render( "usuarios/show.twig", array('usuario' => ($user), 'ubicacion' => ($ubicacion)));
+    echo $app->view->render( "usuarios/show.twig", array('usuario' => ($user), 'ubicaciones' => ($ubicacion)));
   }
 
 }
