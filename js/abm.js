@@ -17,9 +17,6 @@ $(document).ready(function () {
             $('#newUbicacion').prop('required',false);
         }
     });
-    $( "#editar" ).click(function() {
-      mostrar('edit');
-    });
 });
 
 document.addEventListener("DOMContentLoaded", function(event) {
