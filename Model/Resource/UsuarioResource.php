@@ -54,6 +54,7 @@ class UsuarioResource extends AbstractResource {
         $usuario->setUbicacion_Id($ubicacion);
         $this->getEntityManager()->persist($usuario);
         $this->getEntityManager()->flush();
+        return $this->get();
     }
 
    public function cambiarPass($id,$pass)
