@@ -1,0 +1,62 @@
+{% extends "layout.twig" %}
+
+ <-----------------TODO: HACER SHOW PRODUCTO ----------------->
+
+{% block contenido %}
+
+<div class="container">
+	<div class="col col-6-center card">
+		<h2 class="title">
+			<span class="icon">
+				<i class="fa fa-user"></i>
+			</span>
+			{{ usuario.usuario }}
+		</h2>
+		<div class="user-data">
+				<span class="field">Documento: {{ usuario.documento }}</span>
+				<span class="field">Email: {{ usuario.email }} </span>
+				<span class="field">Nombre:	{{ usuario.nombre }}</span>
+				<span class="field">Apellido:	{{ usuario.apellido }} </span>
+				{% for ubicacion in ubicacionUser %}
+				<span class="field">Ubicación: {{ ubicacion.nombre }} | {{ ubicacion.descripcion }} </span>
+				{% endfor %}
+				<span class="field">Rol del Usuario: {{ usuario.rol_id }} </span>
+				<span class="field">Teléfono: {{ usuario.telefono }} </span>
+		</div>
+		<div id="edit" class="modal">
+      <form method="post" class="modal-content abm-content">
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+        <h3>Editar producto</h3>
+        <label for="editProductName">Nombre: </label>
+        <input type="text" id="editProductName" maxlength="20" placeholder="Nombre" value="Café" required />
+        <label for="editMarkName">Marca: </label>
+        <input type="text" id="editMarkName" maxlength="20" placeholder="Marca" value="Nescafé" required />
+        <label for="editBarcode">Código: </label>
+        <input type="text" id="editBarcode" maxlength="20" placeholder="Código" value="2392310" required />
+        <label for="editStockAct">Stock actual: </label>
+        <input type="number" id="editStockAct" placeholder="Stock actual" value="12" required />
+        <label for="editStockMin">Stock mínimo: </label>
+        <input type="number" id="editStockMin" placeholder="Stock mínimo" value="3" required />
+        <label for="editCategory">Categoría: </label>
+        <select id="editCategory" required>
+         <option value="" selected="selected">Seleccione</option>
+         <option value="food">Alimento</option>
+         <option value="drink">Bebida</option>
+         <option value="library">Librería</option>
+        </select>
+        <label for="editProviderName">Proovedor: </label>
+        <input type="text" id="editProviderName" placeholder="Proovedor" value="Arcor" required />
+        <label for="editPrice">Precio venta: </label>
+        <input type="number" id="editPrice" min="0" step="0.5" placeholder="Precio de venta unitaria" value="55" required />
+        <br><br>
+        <input type="submit" value="Modificar"/>
+      </form>
+    </div>
+		<div class="right">
+			<a href="#" class="action-button shadow animate green active" onclick ="mostrar('edit')" role="button">
+				<i class="fa fa-pencil"></i>Modificar
+			</a>
+		</div>
+	</div>
+</div>
+{% endblock %}
