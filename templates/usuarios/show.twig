@@ -15,7 +15,7 @@
 				<span class="field">Email: {{ usuario.email }} </span>
 				<span class="field">Nombre:	{{ usuario.nombre }}</span>
 				<span class="field">Apellido:	{{ usuario.apellido }} </span>
-				{% for ubicacion in ubicacionuser %}
+				{% for ubicacion in ubicacionUser %}
 				<span class="field">Ubicación: {{ ubicacion.nombre }} | {{ ubicacion.descripcion }} </span>
 				{% endfor %}
 				<span class="field">Rol del Usuario: {{ usuario.rol_id }} </span>
