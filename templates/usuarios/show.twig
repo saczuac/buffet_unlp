@@ -26,11 +26,11 @@
 				<a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
 				<h3>Editar Usuario</h3>
 				<label for="editName">Nombre: </label>
-				<input type="text" name="nombre" id="editName" maxlength="45" placeholder="{{ usuario.nombre }}" required/>
+				<input type="text" name="nombre" id="editName" maxlength="45" value="{{ usuario.nombre }}" required/>
 				<label for="editApellido">Apellido: </label>
-				<input type="text" name="apellido" id="editApellido" maxlength="45" placeholder="{{ usuario.apellido }}" required/>
+				<input type="text" name="apellido" id="editApellido" maxlength="45" value="{{ usuario.apellido }}" required/>
 				<label for="editTelefono">Teléfono: </label>
-				<input type="number" name="telefono" id="editTelefono" maxlength="25" placeholder="{{ usuario.telefono }}" required/>
+				<input type="number" name="telefono" id="editTelefono" maxlength="25" value="{{ usuario.telefono }}" required/>
 				<label for="newRol">Rol: </label>
 				<select id="newRol" name="rol_id" required>
 				 <option value="" selected="selected">Seleccione</option>
@@ -46,11 +46,11 @@
 				 {% endfor %}
 				</select>
 				<label for="editMail">Mail: </label>
-				<input type="email" name="email" id="editMail" placeholder="{{ usuario.email }}" required/>
+				<input type="email" name="email" id="editMail" value="{{ usuario.email }}" required/>
 				<label for="editDocumento">Documento: </label>
-				<input type="number" name="documento" id="editDocumento" maxlength="8" placeholder="{{ usuario.documento }}" required/>
+				<input type="number" name="documento" id="editDocumento" maxlength="8" value="{{ usuario.documento }}" required/>
 				<label for="editUsername">Nombre de usuario: </label>
-				<input type="text" name="user" id="editUsername" maxlength="20" placeholder="{{ usuario.usuario }}" required/>
+				<input type="text" name="user" id="editUsername" maxlength="20" value="{{ usuario.usuario }}" required/>
 				<label for="editPassword">Contraseña: </label>
 				<input type="password" name="pass" id="editPassword" maxlength="20" placeholder="Contraseña" required/>
 				 <br><br>
