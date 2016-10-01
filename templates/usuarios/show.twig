@@ -21,8 +21,44 @@
 				<span class="field">Rol del Usuario: {{ usuario.rol_id }} </span>
 				<span class="field">Teléfono: {{ usuario.telefono }} </span>
 		</div>
+		<div id="edit" class="modal">
+			<form method="POST" class="modal-content abm-content">
+				<a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+				<h3>Editar Usuario</h3>
+				<label for="editName">Nombre: </label>
+				<input type="text" name="nombre" id="editName" maxlength="45" placeholder="{{ usuario.nombre }}" required/>
+				<label for="editApellido">Apellido: </label>
+				<input type="text" name="apellido" id="editApellido" maxlength="45" placeholder="{{ usuario.apellido }}" required/>
+				<label for="editTelefono">Teléfono: </label>
+				<input type="number" name="telefono" id="editTelefono" maxlength="25" placeholder="{{ usuario.telefono }}" required/>
+				<label for="newRol">Rol: </label>
+				<select id="newRol" name="rol_id" required>
+				 <option value="" selected="selected">Seleccione</option>
+				 <option value="1">Administrador</option>
+				 <option value="2">Usuario Online</option>
+				 <option value="3">Gestión</option>
+				</select>
+				<label for="newUbicacion" id="labelUbicacion">Ubicación: </label>
+				<select id="newUbicacion" name="ubicacion_id">
+				 <option value="" selected="selected">Seleccione</option>
+				 {% for ubicacion in ubicaciones %}
+				 <option value="{{ ubicacion.id }}">{{ ubicacion.nombre }} | {{ ubicacion.descripcion }}</option>
+				 {% endfor %}
+				</select>
+				<label for="editMail">Mail: </label>
+				<input type="email" name="email" id="editMail" placeholder="{{ usuario.email }}" required/>
+				<label for="editDocumento">Documento: </label>
+				<input type="number" name="documento" id="editDocumento" maxlength="8" placeholder="{{ usuario.documento }}" required/>
+				<label for="editUsername">Nombre de usuario: </label>
+				<input type="text" name="user" id="editUsername" maxlength="20" placeholder="{{ usuario.usuario }}" required/>
+				<label for="editPassword">Contraseña: </label>
+				<input type="password" name="pass" id="editPassword" maxlength="20" placeholder="Contraseña" required/>
+				 <br><br>
+				<input type="submit" value="Modificar"/>
+			</form>
+		</div>
 		<div class="right">
-			<a href="usuarios/edit?id={{ usuario.id }} class="action-button shadow animate green active">
+			<a href="" class="action-button shadow animate green active" id="editar">
 				<i class="fa fa-pencil"></i>Modificar
 			</a>
 		</div>
