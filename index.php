@@ -167,7 +167,18 @@ $app->group('/usuarios', function() use ($app, $userResource) {
     $app->get('/delete', '\Controller\UsuarioController:deleteUsuario')->setParams(array($app, $app->request->get('id')));
    // Show
    $app->get('/show', '\Controller\UsuarioController:showUsuario')->setParams(array($app, $app->request->get('id')));
-
+   $app->post('/show', '\Controller\UsuarioController:editUsuario')->setParams(
+           array($app, $app->request->post('user'),
+           $app->request->post('pass'),
+           $app->request->post('nombre'),
+           $app->request->post('apellido'),
+           $app->request->post('documento'),
+           $app->request->post('telefono'),
+           $app->request->post('rol_id'),
+           $app->request->post('email'),
+           $app->request->post('ubicacion_id'),
+           $app->request->post('userid'))
+   );
 });
 
 $app->group('/ventas', function() use($app) {

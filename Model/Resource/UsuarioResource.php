@@ -39,15 +39,21 @@ class UsuarioResource extends AbstractResource {
         return $data;
     }
 
-   public function edit($id,$nombre,$email,$rol_id)
+   public function edit($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id = null, $id)
     {
         $usuario = $this->getEntityManager()->getReference('Model\Entity\Usuario', $id);
-        $usuario->setName($nombre);
-        $usuario->setEmail($email);
+        $ubicacion = UbicacionResource::getInstance()->get($ubicacion_id);
+        $usuario->setUsuario($user);
+        $usuario->setClave(md5($pass));
+        $usuario->setNombre($nombre);
         $usuario->setRol_Id($rol_id);
+        $usuario->setEmail($email);
+        $usuario->setTelefono($telefono);
+        $usuario->setDocumento($documento);
+        $usuario->setApellido($apellido);
+        $usuario->setUbicacion_Id($ubicacion);
         $this->getEntityManager()->persist($usuario);
         $this->getEntityManager()->flush();
-        return $this->get();
     }
 
    public function cambiarPass($id,$pass)

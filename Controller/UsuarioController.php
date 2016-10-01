@@ -23,6 +23,16 @@ class UsuarioController {
     echo $app->redirect('/usuarios');
   }
 
+  public function editUsuario($app,$user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id = null,$id) {
+    $app->applyHook('must.be.administrador');
+    if (UsuarioResource::getInstance()->edit($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id,$id)){
+       $app->flash('success', 'El usuario ha sido modificado exitosamente');
+    } else {
+      $app->flash('error', 'No se pudo modificar el usuario');
+    }
+    echo $app->redirect('/usuarios');
+  }
+
   public function registrarUsuario($app,$user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id = 2,$email,$ubicacion_id = null ) {
     if (UsuarioResource::getInstance()->insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id)){
        $app->flash('success', 'El registro se ha realizado con éxito');

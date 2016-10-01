@@ -53,6 +53,7 @@
 				<input type="text" name="user" id="editUsername" maxlength="20" value="{{ usuario.usuario }}" required/>
 				<label for="editPassword">Contraseña: </label>
 				<input type="password" name="pass" id="editPassword" maxlength="20" placeholder="Contraseña" required/>
+				<input type="hidden" name="userid" value="{{ usuario.id }}"/>
 				 <br><br>
 				<input type="submit" value="Modificar"/>
 			</form>
