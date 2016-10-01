@@ -69,7 +69,7 @@ class UsuarioResource extends AbstractResource {
         $usuario = new Usuario();
         $ubicacion = UbicacionResource::getInstance()->get($ubicacion_id);
         $usuario->setUsuario($user);
-        $usuario->setClave($pass);
+        $usuario->setClave(md5($pass));
         $usuario->setNombre($nombre);
         $usuario->setRol_Id($rol_id);
         $usuario->setEmail($email);
@@ -90,7 +90,7 @@ class UsuarioResource extends AbstractResource {
     {
         $data = $this->getEntityManager()->getRepository('Model\Entity\Usuario')->findOneBy(array('usuario' => $username));
         if ($data != null) {
-          if (($data->getClave() == $pass)) return $data;
+          if ((md5($data->getClave()) == $pass)) return $data;
           else return false;
         }
         else return false;
