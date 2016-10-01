@@ -90,7 +90,7 @@ class UsuarioResource extends AbstractResource {
     {
         $data = $this->getEntityManager()->getRepository('Model\Entity\Usuario')->findOneBy(array('usuario' => $username));
         if ($data != null) {
-          if ((md5($data->getClave()) == $pass)) return $data;
+          if (($data->getClave() == md5($pass))) return $data;
           else return false;
         }
         else return false;
