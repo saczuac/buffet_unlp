@@ -63,7 +63,7 @@ class ProductoResource extends AbstractResource {
         return $this->get();
     }
 
-    public function Nuevo ($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion,$fecha_alta){
+    public function Nuevo ($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion){
         $producto = new Producto();
         $categoria = CategoriaResource::getInstance()->get($categoria_id);
         $producto->setNombre($nombre);
@@ -74,12 +74,11 @@ class ProductoResource extends AbstractResource {
         $producto->setPrecio_Venta_Unitario($precio_venta_unitario);
         $producto->setCategoria_Id($categoria);
         $producto->setDescripcion($descripcion);
-        $producto->setFecha_Alta($fecha_alta);
         return $producto;
     }
 
-    public function insert($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion,$fecha_alta){
-        $this->getEntityManager()->persist($this->Nuevo($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id,$descripcion,$fecha_alta));
+    public function insert($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion){
+        $this->getEntityManager()->persist($this->Nuevo($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id,$descripcion));
         $this->getEntityManager()->flush();
         return $this->get();
     }

@@ -138,8 +138,7 @@ $app->group('/productos', function() use ($app, $userResource) {
             $app->request->post('proovedor'),
             $app->request->post('precio_venta_unitario'),
             $app->request->post('categoria_id'),
-            $app->request->post('descripcion'),
-            date('Y-m-d H:i:s'))
+            $app->request->post('descripcion'))
     );
    // Baja
     $app->get('/delete', '\Controller\ProductoController:deleteProducto')->setParams(array($app, $app->request->get('id')));

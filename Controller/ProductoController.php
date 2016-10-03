@@ -13,9 +13,9 @@ class ProductoController {
     echo $app->view->render( "productos/index.twig", array('productos' => (ProductoResource::getInstance()->get()), 'categorias' => (CategoriaResource::getInstance()->get())));
   }
 
-  public function newProducto($app,$nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion,$fecha_alta) {
+  public function newProducto($app,$nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion) {
     $app->applyHook('must.be.administrador.or.gestion');
-    if (ProductoResource::getInstance()->insert($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id,$descripcion,$fecha_alta)){
+    if (ProductoResource::getInstance()->insert($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id,$descripcion)){
        $app->flash('success', 'El producto ha sido dado de alta exitosamente');
     } else {
       $app->flash('error', 'No se pudo dar de alta el producto');
