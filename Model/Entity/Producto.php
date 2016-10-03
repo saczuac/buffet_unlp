@@ -152,7 +152,7 @@ class Producto
 
     public function __construct()
     {
-        $this->setFecha_Alta = date('Y-m-d H:i:s');
+        $this->setFecha_Alta = new \DateTime();
     }
 }
 
