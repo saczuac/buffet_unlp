@@ -6,14 +6,17 @@ use Model\Entity;
 use Doctrine\ORM\Mapping;
 
 /**
- * @Entity @Table(name="categoria")
+ * @Entity @Table(name="Categoria")
  **/
 class Categoria
 {
     /**
-      * @Id @Column(name="id", type="integer") @GeneratedValue(strategy="AUTO")
      * @var integer
-    */
+     *
+     * @Id
+     * @Column(name="id", type="integer")
+     * @GeneratedValue(strategy="AUTO")
+     */
     protected $id;
     /**
      * @Column(type="string", length=45)
@@ -25,6 +28,10 @@ class Categoria
      * @JoinColumn(name="categoria_padre_id", referencedColumnName="id")
      **/
     protected $categoria_padre_id;
+    /**
+     * @OneToMany(targetEntity="Producto", mappedBy="categoria_id")
+    */
+     protected $productos;
 
     public function getId()
     {

@@ -3,7 +3,6 @@
 namespace Model\Resource;
 use Model\Resource\AbstractResource;
 use vendor\doctrine\common\lib\Doctrine\Common\Persistence\ManagerRegistry;
-use App\Resource\ItemResource;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Model\Entity\Usuario;
 /**

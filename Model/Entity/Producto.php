@@ -1,38 +1,41 @@
 <?php
 /**
- * @Entity @Table(name="producto")
+ * @Entity @Table(name="Producto")
  **/
 class Producto
 {
     /**
-      * @Id @Column(type="integer") @GeneratedValue
-     * @var int
-    */
+     * @var integer
+     *
+     * @Id
+     * @Column(name="id", type="integer")
+     * @GeneratedValue(strategy="AUTO")
+     */
     protected $id;
     /**
-     * @Column(type="string")
+     * @Column(type="string", length=45)
      * @var string
     */
     protected $nombre;
     /**
-    * @Column(type="string")
+    * @Column(type="string", length=45)
     * @var string
     */
     protected $marca;
     /**
     * @Column(type="integer")
-    * @var int
+    * @var integer
     */
     protected $stock;
     /**
     * @Column(type="integer")
-    * @var int
+    * @var integer
     */
     protected $stock_minimo;
     /**
-    * @Column(type="integer")
-    * @var int
-    *//
+    * @Column(type="string", length=45)
+    * @var string
+    */
     protected $proovedor;
     /**
     * @Column(type="float")
@@ -40,12 +43,12 @@ class Producto
     */
     protected $precio_venta_unitario;
     /**
-    * @Column(type="integer")
-    * @var int
-    */
+     * @ManyToOne(targetEntity="Categoria", inversedBy="productos")
+     * @JoinColumn(name="categoria_id", referencedColumnName="id")
+     */
     protected $categoria_id;
     /**
-    * @Column(type="string")
+    * @Column(type="string", length=255)
     * @var string
     */
     protected $descripcion;
