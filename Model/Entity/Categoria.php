@@ -6,7 +6,7 @@ use Model\Entity;
 use Doctrine\ORM\Mapping;
 
 /**
- * @Entity @Table(name="Categoria")
+ * @Entity @Table(name="categoria")
  **/
 class Categoria
 {
