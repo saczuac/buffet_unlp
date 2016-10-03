@@ -1,9 +1,10 @@
 <?php
-date_default_timezone_set('America/Argentina/Buenos_Aires');
 namespace Model\Entity;
 
 use Model\Entity;
 use Doctrine\ORM\Mapping;
+
+date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 class Producto
 {
