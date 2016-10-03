@@ -153,7 +153,7 @@ class Producto
     /**
     *  @PrePersist
     */
-    public function doStuffOnPrePersist()
+    public function __construct()
     {
         $this->setFecha_Alta = date('Y-m-d H:i:s');
     }
