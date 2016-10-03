@@ -154,7 +154,7 @@ $app->group('/productos', function() use ($app, $userResource) {
             $app->request->post('precio_venta_unitario'),
             $app->request->post('categoria_id'),
             $app->request->post('descripcion'),
-            $app->request->post('producto_id'))
+            $app->request->post('prodid'))
    );
 });
 

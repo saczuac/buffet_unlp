@@ -47,6 +47,7 @@
         <label for="editPrice">Precio venta: </label>
         <input type="number" name="precio_venta_unitario" id="editPrice" min="0" step="0.5" placeholder="Precio de venta unitaria" required />
         <br><br>
+		<input type="hidden" name="prodid" value="{{ producto.id }}"/>
         <input type="submit" value="Modificar"/>
       </form>
     </div>
