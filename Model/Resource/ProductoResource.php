@@ -79,7 +79,7 @@ class ProductoResource extends AbstractResource {
     }
 
     public function insert($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion,$fecha_alta){
-        $this->getEntityManager()->persist($this->Nuevo($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion,$fecha_alta));
+        $this->getEntityManager()->persist($this->Nuevo($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id,$descripcion,$fecha_alta));
         $this->getEntityManager()->flush();
         return $this->get();
     }
