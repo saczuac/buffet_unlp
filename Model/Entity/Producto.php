@@ -3,9 +3,11 @@ namespace Model\Entity;
 
 use Model\Entity;
 use Doctrine\ORM\Mapping;
-
 date_default_timezone_set('America/Argentina/Buenos_Aires');
 
+/**
+ * @Entity @Table(name="producto")
+ **/
 class Producto
 {
     /**
@@ -152,7 +154,7 @@ class Producto
 
     public function __construct()
     {
-        $this->setFecha_Alta = new \DateTime();
+        $this->setFecha_Alta = date('Y-m-d H:i:s');
     }
 }
 
