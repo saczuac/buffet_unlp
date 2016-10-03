@@ -25,7 +25,7 @@ class ProductoController {
 
   public function editProducto($app,$nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion,$id) {
     $app->applyHook('must.be.administrador.or.gestion');
-    if (ProductoResource::getInstance()->edit($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion,$id)){
+    if (ProductoResource::getInstance()->edit($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id,$descripcion,$id)){
        $app->flash('success', 'El producto ha sido modificado exitosamente');
     } else {
       $app->flash('error', 'No se pudo modificar el producto');
