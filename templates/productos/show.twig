@@ -26,13 +26,13 @@
         <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
         <h3>Editar producto</h3>
         <label for="editProductName">Nombre: </label>
-        <input type="text" name="nombre" id="editProductName" maxlength="20" placeholder="Nombre" required />
+        <input type="text" name="nombre" id="editProductName" maxlength="20" value="{{ producto.nombre }}"  required />
         <label for="editMarkName">Marca: </label>
-        <input type="text" name="marca" id="editMarkName" maxlength="20" placeholder="Marca" required />
+        <input type="text" name="marca" id="editMarkName" maxlength="20" value="{{ producto.marca }}" required />
         <label for="editStockAct">Stock actual: </label>
-        <input type="number" name="stock" id="editStockAct" value="0" placeholder="Stock actual" required/>
+        <input type="number" name="stock" id="editStockAct" value="0" value="{{ producto.stock }}" required/>
         <label for="editStockMin">Stock mínimo: </label>
-        <input type="number" name="stock_minimo" id="editStockMin" placeholder="Stock mínimo" required />
+        <input type="number" name="stock_minimo" id="editStockMin" value="{{ producto.stock_minimo }}" required />
         <label for="editCategory">Categoría: </label>
         <select id="editCategory" name="categoria_id" required>
          <option value="" selected="selected">Seleccione</option>
@@ -41,11 +41,11 @@
          {% endfor %}
         </select>
         <label for="editProviderName">Proovedor: </label>
-        <input type="text" id="editProviderName" maxlength="20" placeholder="Proovedor" name="proovedor" required />
+        <input type="text" id="editProviderName" maxlength="20" value="{{ producto.proovedor }}" name="proovedor" required />
         <label for="editDescription">Descripción: </label>
-        <input type="text" id="editDescription" maxlength="255" placeholder="Descripción" name="descripcion" required />
+        <input type="text" id="editDescription" maxlength="255" value="{{ producto.descripcion }}" name="descripcion" required />
         <label for="editPrice">Precio venta: </label>
-        <input type="number" name="precio_venta_unitario" id="editPrice" min="0" step="0.5" placeholder="Precio de venta unitaria" required />
+        <input type="number" name="precio_venta_unitario" id="editPrice" min="0" step="0.5" value="{{ producto.precio_venta_unitario }}" required />
         <br><br>
 		<input type="hidden" name="prodid" value="{{ producto.id }}"/>
         <input type="submit" value="Modificar"/>
