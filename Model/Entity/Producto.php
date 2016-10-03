@@ -5,6 +5,7 @@ use Model\Entity;
 use Doctrine\ORM\Mapping;
 /**
  * @Entity @Table(name="producto")
+ *  @HasLifecycleCallbacks
  **/
 class Producto
 {
@@ -148,6 +149,13 @@ class Producto
     public function setFecha_Alta($fecha_alta)
     {
             $this->fecha_alta = $fecha_alta;
+    }
+    /**
+    *  @PrePersist
+    */
+    public function doStuffOnPrePersist()
+    {
+        $this->setFecha_Alta = date('Y-m-d H:i:s');
     }
 }
 
