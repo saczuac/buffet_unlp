@@ -1,6 +1,10 @@
 <?php
+namespace Model\Entity;
+
+use Model\Entity;
+use Doctrine\ORM\Mapping;
 /**
- * @Entity @Table(name="Producto")
+ * @Entity @Table(name="producto")
  **/
 class Producto
 {
