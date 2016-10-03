@@ -152,9 +152,9 @@ class Producto
             $this->fecha_alta = $fecha_alta;
     }
 
-    public function __construct()
+    public function setFecha()
     {
-        $this->setFecha_Alta = date('Y-m-d H:i:s');
+        $this->fecha_alta = date('Y-m-d H:i:s');
     }
 }
 

@@ -72,6 +72,7 @@ class ProductoResource extends AbstractResource {
         $producto->setStock_Minimo($stock_minimo);
         $producto->setProovedor($proovedor);
         $producto->setPrecio_Venta_Unitario($precio_venta_unitario);
+        $producto->setFecha();
         $producto->setCategoria_Id($categoria);
         $producto->setDescripcion($descripcion);
         return $producto;
