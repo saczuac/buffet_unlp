@@ -50,6 +50,7 @@ class ProductoResource extends AbstractResource {
         $producto->setPrecio_Venta_Unitario($precio_venta_unitario);
         $producto->setCategoria_Id($categoria);
         $producto->setDescripcion($descripcion);
+        $producto->setFecha_Alta(null);
         $this->getEntityManager()->persist($producto);
         $this->getEntityManager()->flush();
         return $this->get();
@@ -73,6 +74,7 @@ class ProductoResource extends AbstractResource {
         $producto->setProovedor($proovedor);
         $producto->setPrecio_Venta_Unitario($precio_venta_unitario);
         $producto->setCategoria_Id($categoria);
+        $producto->setFecha_Alta(null);
         $producto->setDescripcion($descripcion);
         return $producto;
     }
