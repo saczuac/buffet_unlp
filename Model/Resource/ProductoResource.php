@@ -38,7 +38,7 @@ class ProductoResource extends AbstractResource {
         return $data;
     }
 
-   public function edit($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion,$fecha_alta, $id)
+   public function edit($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion,$id)
     {
         $producto = $this->getEntityManager()->getReference('Model\Entity\Producto', $id);
         $categoria = CategoriaResource::getInstance()->get($categoria_id);
@@ -50,7 +50,6 @@ class ProductoResource extends AbstractResource {
         $producto->setPrecio_Venta_Unitario($precio_venta_unitario);
         $producto->setCategoria_Id($categoria);
         $producto->setDescripcion($descripcion);
-        $producto->setFecha_Alta($fecha_alta);
         $this->getEntityManager()->persist($producto);
         $this->getEntityManager()->flush();
         return $this->get();

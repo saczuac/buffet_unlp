@@ -8,6 +8,7 @@ use Controller\UsuarioController;
 use Model\Resource\ConfiguracionResource;
 
 session_start();
+date_default_timezone_set('America/Argentina/Buenos_Aires');
 // <------ SLIM CONFIGURATION ---------->
 
 $app = new \Slim\Slim([
@@ -124,11 +125,38 @@ $app->group('/pedidos', function() use($app) {
 });
 
 
-$app->group('/productos', function() use($app) {
-  $app->applyHook('must.be.logueado');
-	$app->get('/', function() use($app){
-		echo $app->view->render('productos.twig');
-	});
+$app->group('/productos', function() use ($app, $userResource) {
+    $app->applyHook('must.be.logueado');
+    // Listar
+    $app->get('/', '\Controller\ProductoController:listProductos')->setParams(array($app));
+    // Alta
+    $app->post('/', '\Controller\ProductoController:newProducto')->setParams(
+            array($app, $app->request->post('nombre'),
+            $app->request->post('marca'),
+            $app->request->post('stock'),
+            $app->request->post('stock_minimo'),
+            $app->request->post('proovedor'),
+            $app->request->post('precio_venta_unitario'),
+            $app->request->post('categoria_id'),
+            $app->request->post('descripcion'),
+            date('Y-m-d H:i:s'))
+    );
+   // Baja
+    $app->get('/delete', '\Controller\ProductoController:deleteProducto')->setParams(array($app, $app->request->get('id')));
+   // Show
+   $app->get('/show', '\Controller\ProductoController:showProducto')->setParams(array($app, $app->request->get('id')));
+   // Editar
+   $app->post('/show', '\Controller\ProductoController:editProducto')->setParams(
+        array($app, $app->request->post('nombre'),
+            $app->request->post('marca'),
+            $app->request->post('stock'),
+            $app->request->post('stock_minimo'),
+            $app->request->post('proovedor'),
+            $app->request->post('precio_venta_unitario'),
+            $app->request->post('categoria_id'),
+            $app->request->post('descripcion'),
+            $app->request->post('producto_id'))
+   );
 });
 
 
@@ -167,6 +195,7 @@ $app->group('/usuarios', function() use ($app, $userResource) {
     $app->get('/delete', '\Controller\UsuarioController:deleteUsuario')->setParams(array($app, $app->request->get('id')));
    // Show
    $app->get('/show', '\Controller\UsuarioController:showUsuario')->setParams(array($app, $app->request->get('id')));
+   // Editar
    $app->post('/show', '\Controller\UsuarioController:editUsuario')->setParams(
            array($app, $app->request->post('user'),
            $app->request->post('pass'),

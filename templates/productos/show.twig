@@ -1,7 +1,5 @@
 {% extends "layout.twig" %}
 
- <-----------------TODO: HACER SHOW PRODUCTO ----------------->
-
 {% block contenido %}
 
 <div class="container">
@@ -10,44 +8,45 @@
 			<span class="icon">
 				<i class="fa fa-user"></i>
 			</span>
-			{{ usuario.usuario }}
+			{{ producto.nombre }}
 		</h2>
 		<div class="user-data">
-				<span class="field">Documento: {{ usuario.documento }}</span>
-				<span class="field">Email: {{ usuario.email }} </span>
-				<span class="field">Nombre:	{{ usuario.nombre }}</span>
-				<span class="field">Apellido:	{{ usuario.apellido }} </span>
-				{% for ubicacion in ubicacionUser %}
-				<span class="field">Ubicación: {{ ubicacion.nombre }} | {{ ubicacion.descripcion }} </span>
+				<span class="field">Marca: {{ producto.marca }}</span>
+				<span class="field">Stock: {{ producto.stock }} </span>
+				<span class="field">Stock mínimo:	{{ producto.stock_minimo }}</span>
+				<span class="field">Proovedor:	{{ producto.proovedor }} </span>
+				{% for categoria in categoriaProd %}
+				<span class="field">Categoría: {{ categoria.nombre }} </span>
 				{% endfor %}
-				<span class="field">Rol del Usuario: {{ usuario.rol_id }} </span>
-				<span class="field">Teléfono: {{ usuario.telefono }} </span>
+				<span class="field">Precio de venta unitario: {{ producto.precio_venta_unitario }} </span>
+				<span class="field">Descripcion: {{ producto.descripcion }} </span>
+                <span class="field">Fecha Alta: {{ producto.fecha_alta }} </span>
 		</div>
 		<div id="edit" class="modal">
       <form method="post" class="modal-content abm-content">
         <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
         <h3>Editar producto</h3>
         <label for="editProductName">Nombre: </label>
-        <input type="text" id="editProductName" maxlength="20" placeholder="Nombre" value="Café" required />
+        <input type="text" name="nombre" id="editProductName" maxlength="20" placeholder="Nombre" required />
         <label for="editMarkName">Marca: </label>
-        <input type="text" id="editMarkName" maxlength="20" placeholder="Marca" value="Nescafé" required />
-        <label for="editBarcode">Código: </label>
-        <input type="text" id="editBarcode" maxlength="20" placeholder="Código" value="2392310" required />
+        <input type="text" name="marca" id="editMarkName" maxlength="20" placeholder="Marca" required />
         <label for="editStockAct">Stock actual: </label>
-        <input type="number" id="editStockAct" placeholder="Stock actual" value="12" required />
+        <input type="number" name="stock" id="editStockAct" value="0" placeholder="Stock actual" required/>
         <label for="editStockMin">Stock mínimo: </label>
-        <input type="number" id="editStockMin" placeholder="Stock mínimo" value="3" required />
+        <input type="number" name="stock_minimo" id="editStockMin" placeholder="Stock mínimo" required />
         <label for="editCategory">Categoría: </label>
-        <select id="editCategory" required>
+        <select id="editCategory" name="categoria_id" required>
          <option value="" selected="selected">Seleccione</option>
-         <option value="food">Alimento</option>
-         <option value="drink">Bebida</option>
-         <option value="library">Librería</option>
+         {% for categoria in categorias %}
+            <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+         {% endfor %}
         </select>
         <label for="editProviderName">Proovedor: </label>
-        <input type="text" id="editProviderName" placeholder="Proovedor" value="Arcor" required />
+        <input type="text" id="editProviderName" maxlength="20" placeholder="Proovedor" name="proovedor" required />
+        <label for="editDescription">Descripción: </label>
+        <input type="text" id="editDescription" maxlength="255" placeholder="Descripción" name="descripcion" required />
         <label for="editPrice">Precio venta: </label>
-        <input type="number" id="editPrice" min="0" step="0.5" placeholder="Precio de venta unitaria" value="55" required />
+        <input type="number" name="precio_venta_unitario" id="editPrice" min="0" step="0.5" placeholder="Precio de venta unitaria" required />
         <br><br>
         <input type="submit" value="Modificar"/>
       </form>
