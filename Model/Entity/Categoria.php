@@ -25,9 +25,9 @@ class Categoria
     protected $nombre;
     /**
      * @OneToOne(targetEntity="Categoria")
-     * @JoinColumn(name="categoria_padre_id", referencedColumnName="id")
+     * @JoinColumn(name="categoria_padre", referencedColumnName="id")
      **/
-    protected $categoria_padre_id;
+    protected $categoria_padre;
     /**
      * @OneToMany(targetEntity="Producto", mappedBy="categoria_id")
     */
