@@ -104,6 +104,14 @@ class ProductoResource extends AbstractResource {
       return $paginator;
   }
 
+  public function getPaginateFaltantes($pageSize,$currentPage){
+      $em = $this->getEntityManager();
+      $dql = "SELECT p FROM Model\Entity\Producto p WHERE p.stock = 0";
+      $query = $em->createQuery($dql)->setFirstResult($pageSize * (intval($currentPage) - 1))->setMaxResults($pageSize);
+      $paginator = new Paginator($query, $fetchJoinCollection = true);
+      return $paginator;
+  }
+
 }
 
 ?>

@@ -158,12 +158,10 @@ $app->group('/productos', function() use ($app, $userResource) {
    );
 });
 
-
 $app->group('/productosFaltantes', function() use($app) {
   $app->applyHook('must.be.logueado');
-	$app->get('/', function() use($app){
-		echo $app->view->render('productosFaltantes.twig');
-	});
+  $app->get('/', '\Controller\ListadoController:indexActionFaltantes')->setParams(array($app));
+  $app->get('/page', '\Controller\ListadoController:indexActionFaltantes')->setParams(array($app, $app->request->get('id')));
 });
 
 
