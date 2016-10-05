@@ -5,6 +5,7 @@ use Model\Resource\AbstractResource;
 use vendor\doctrine\common\lib\Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Model\Entity\Producto;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 /**
  * Class Resource
  * @package Model
@@ -93,6 +94,14 @@ class ProductoResource extends AbstractResource {
       $idCat = $producto->getCategoria_Id();
       $query->setParameter('idProd',$idCat);
       return $query->getResult();
+  }
+
+  public function getPaginateStockMin($pageSize,$currentPage){
+      $em = $this->getEntityManager();
+      $dql = "SELECT p FROM Model\Entity\Producto p WHERE p.stock <= p.stock_minimo";
+      $query = $em->createQuery($dql)->setFirstResult($pageSize * (intval($currentPage) - 1))->setMaxResults($pageSize);
+      $paginator = new Paginator($query, $fetchJoinCollection = true);
+      return $paginator;
   }
 
 }

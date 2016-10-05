@@ -36,7 +36,7 @@ abstract class AbstractResource
         // define credentials...
         $connectionOptions = array(
             'driver'   => 'pdo_mysql',
-            'host'     => 'localhost',
+            'host'     => '127.0.0.1',
             'dbname'   => 'grupo17',
             'user'     => 'grupo17',
             'password' => 'Reev5Pho8o'

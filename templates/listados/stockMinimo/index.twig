@@ -1,0 +1,15 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+    <h1 class="title" id="listado">Productos con Stock Minimo</h1>
+{% include 'listados/stockMinimo/_index.twig' with {'productos' : productos} %}
+<div class="centered">
+<ul class="pagination">
+  <li><a href="#">&laquo;</a></li>
+    {% for i in 1..pagesCount %}
+        <li><a href="{{ baseUrl() }}/stockMinimo/page?id={{i}}">{{ i }}</a></li>
+    {% endfor %}
+  <li><a href="#">&raquo;</a></li>
+</ul>
+</div>
+{% endblock %}

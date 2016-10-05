@@ -18,15 +18,15 @@
       <header>
         <h1>Buffet de la Facultad de Informática UNLP
           {% if session.user is not null %}
-            <a href="config"><i class="fa fa-cog" aria-hidden="true"></i></a>
+            <a href="{{ baseUrl() }}/config"><i class="fa fa-cog" aria-hidden="true"></i></a>
           {% endif %}
        </h1>
     {% if session.user is not null %}
-      <a href="/logout" class="login">Logout</a>
+      <a href="{{ baseUrl() }}/logout" class="login">Logout</a>
     </header>
     <nav>
         <ul>
-           <li class="first" ><a href="/">Inicio</a></li>
+           <li class="first" ><a href="{{ baseUrl() }}/">Inicio</a></li>
            <li><a href="{{ baseUrl() }}/productos">Productos</a> </li>
            <li><a href="{{ baseUrl() }}/usuarios">Usuarios</a> </li>
            <li><a href="{{ baseUrl() }}/menu">Menú</a> </li>

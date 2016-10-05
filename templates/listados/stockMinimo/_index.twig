@@ -1,0 +1,16 @@
+<table summary="Tabla de productos del buffet">
+  <tr>
+    <th id="Nombre">NOMBRE</th>
+    <th id="Marca">MARCA</th>
+    <th id="Stock">STOCK</th>
+    <th id="Stock">STOCK MÍNIMO</th>
+  </tr>
+	{% for producto in productos.iterator %}
+		<tr id="{{ producto.id }}">
+			<td>{{ producto.nombre }}</td>
+			<td>{{ producto.marca }}</td>
+			<td>{{ producto.stock }}</td>
+			<td>{{ producto.stock_minimo }}</td>
+		</tr>
+	{% endfor %}
+  </table>

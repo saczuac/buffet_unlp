@@ -169,9 +169,8 @@ $app->group('/productosFaltantes', function() use($app) {
 
 $app->group('/stockMinimo', function() use($app) {
   $app->applyHook('must.be.logueado');
-	$app->get('/', function() use($app){
-		echo $app->view->render('stockMinimo.twig');
-	});
+  $app->get('/', '\Controller\ListadoController:indexActionStockMin')->setParams(array($app));
+  $app->get('/page', '\Controller\ListadoController:indexActionStockMin')->setParams(array($app, $app->request->get('id')));
 });
 
 $app->group('/usuarios', function() use ($app, $userResource) {
