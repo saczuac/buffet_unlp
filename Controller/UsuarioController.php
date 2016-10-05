@@ -1,6 +1,7 @@
 <?php
 
 namespace Controller;
+use Controller\Validator;
 use Model\Entity\Usuario;
 use Model\Resource\UsuarioResource;
 use Model\Entity\Ubicacion;
@@ -15,10 +16,17 @@ class UsuarioController {
 
   public function newUsuario($app,$user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id = null) {
     $app->applyHook('must.be.administrador');
-    if (UsuarioResource::getInstance()->insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id)){
-       $app->flash('success', 'El usuario ha sido dado de alta exitosamente');
-    } else {
-      $app->flash('error', 'No se pudo dar de alta el usuario');
+    $error = false;
+    if (!Validator::hasLength(50, $nombre)) {
+         $error = true;
+         $app->flash('error', 'El nombre debe tener menos de 50 caracteres');
+    }
+    if (!$error) {
+        if (UsuarioResource::getInstance()->insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id)){
+           $app->flash('success', 'El usuario ha sido dado de alta exitosamente');
+       } else {
+          $app->flash('error', 'No se pudo dar de alta el usuario');
+      }
     }
     echo $app->redirect('/usuarios');
   }
