@@ -31,6 +31,10 @@ class Validator {
         return (strlen($value) <= $number);
      }
 
+     public function hasNumbers($value) {
+        return preg_match("#[0-9]+#",$value);
+     }
+
 }
 
 

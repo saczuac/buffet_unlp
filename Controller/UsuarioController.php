@@ -16,36 +16,125 @@ class UsuarioController {
 
   public function newUsuario($app,$user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id = null) {
     $app->applyHook('must.be.administrador');
-    $error = false;
-    if (!Validator::hasLength(50, $nombre)) {
-         $error = true;
-         $app->flash('error', 'El nombre debe tener menos de 50 caracteres');
+    $errors = [];
+    if (!Validator::hasLength(45, $nombre)) {
+         $errors[] = 'El nombre debe tener menos de 45 caracteres';
     }
-    if (!$error) {
+    if (!Validator::hasLength(45, $apellido)) {
+         $errors[] = 'El apellido debe tener menos de 45 caracteres';
+    }
+    if (!Validator::hasLength(45, $user)) {
+         $errors[] = 'El username debe tener menos de 45 caracteres';
+    }
+    if (!Validator::hasLength(20, $pass)) {
+         $errors[] = 'La contraseña debe tener menos de 20 caracteres';
+    }
+    if (!Validator::hasNumbers($pass)) {
+         $errors[] = 'La contraseña debe tener una combinación de números y caracteres';
+    }
+    if(!Validator::isEmail($email)) {
+        $errors[] = 'Debe ser un email válido';
+    }
+    if(!Validator::isNumeric($documento)) {
+        $errors[] = 'El documento debe ser numérico';
+    }
+    if(!Validator::hasLength(8,$documento)) {
+        $errors[] = 'El documento debe tener 8 números';
+    }
+    if(!Validator::isNumeric($telefono)) {
+        $errors[] = 'El teléfono debe ser numérico';
+    }
+    if (sizeof($errors) == 0) {
         if (UsuarioResource::getInstance()->insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id)){
            $app->flash('success', 'El usuario ha sido dado de alta exitosamente');
        } else {
           $app->flash('error', 'No se pudo dar de alta el usuario');
       }
+    } else {
+       $app->flash('errors', $errors);
     }
     echo $app->redirect('/usuarios');
   }
 
   public function editUsuario($app,$user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id = null,$id) {
     $app->applyHook('must.be.administrador');
-    if (UsuarioResource::getInstance()->edit($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id,$id)){
-       $app->flash('success', 'El usuario ha sido modificado exitosamente');
+    $errors = [];
+    if (!Validator::hasLength(45, $nombre)) {
+         $errors[] = 'El nombre debe tener menos de 45 caracteres';
+    }
+    if (!Validator::hasLength(45, $apellido)) {
+         $errors[] = 'El apellido debe tener menos de 45 caracteres';
+    }
+    if (!Validator::hasLength(45, $user)) {
+         $errors[] = 'El username debe tener menos de 45 caracteres';
+    }
+    if (!Validator::hasLength(20, $pass)) {
+         $errors[] = 'La contraseña debe tener menos de 20 caracteres';
+    }
+    if (!Validator::hasNumbers($pass)) {
+         $errors[] = 'La contraseña debe tener una combinación de números y caracteres';
+    }
+    if(!Validator::isEmail($email)) {
+        $errors[] = 'Debe ser un email válido';
+    }
+    if(!Validator::isNumeric($documento)) {
+        $errors[] = 'El documento debe ser numérico';
+    }
+    if(!Validator::hasLength(8,$documento)) {
+        $errors[] = 'El documento debe tener 8 números';
+    }
+    if(!Validator::isNumeric($telefono)) {
+        $errors[] = 'El teléfono debe ser numérico';
+    }
+    if (sizeof($errors) == 0) {
+        if (UsuarioResource::getInstance()->edit($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id,$id)){
+          $app->flash('success', 'El usuario ha sido modificado exitosamente');
+        } else {
+          $app->flash('error', 'No se pudo modificar el usuario');
+        }
     } else {
-      $app->flash('error', 'No se pudo modificar el usuario');
+        $app->flash('errors', $errors);
     }
     echo $app->redirect('/usuarios');
-  }
+    }
 
   public function registrarUsuario($app,$user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id = 2,$email,$ubicacion_id = null ) {
-    if (UsuarioResource::getInstance()->insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id)){
-       $app->flash('success', 'El registro se ha realizado con éxito');
+    $errors = [];
+    if (!Validator::hasLength(45, $nombre)) {
+         $errors[] = 'El nombre debe tener menos de 45 caracteres';
+    }
+    if (!Validator::hasLength(45, $apellido)) {
+         $errors[] = 'El apellido debe tener menos de 45 caracteres';
+    }
+    if (!Validator::hasLength(45, $user)) {
+         $errors[] = 'El username debe tener menos de 45 caracteres';
+    }
+    if (!Validator::hasLength(20, $pass)) {
+         $errors[] = 'La contraseña debe tener menos de 20 caracteres';
+    }
+    if (!Validator::hasNumbers($pass)) {
+         $errors[] = 'La contraseña debe tener una combinación de números y caracteres';
+    }
+    if(!Validator::isEmail($email)) {
+        $errors[] = 'Debe ser un email válido';
+    }
+    if(!Validator::isNumeric($documento)) {
+        $errors[] = 'El documento debe ser numérico';
+    }
+    if(!Validator::hasLength(8,$documento)) {
+        $errors[] = 'El documento debe tener 8 números';
+    }
+    if(!Validator::isNumeric($telefono)) {
+        $errors[] = 'El teléfono debe ser numérico';
+    }
+    if (sizeof($errors) == 0) {
+        if (UsuarioResource::getInstance()->insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id)){
+          $app->flash('success', 'El usuario ha sido registrado exitosamente');
+        } else {
+          $app->flash('error', 'No se pudo registrar el usuario');
+        }
     } else {
-      $app->flash('error', 'No se pudo dar de alta el usuario');
+        $app->flash('errors', $errors);
     }
     echo $app->redirect('/');
   }

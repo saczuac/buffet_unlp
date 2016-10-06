@@ -1,7 +1,6 @@
 {% extends "layout.twig" %}
 
 {% block contenido %}
-
     <div id="new" class="modal">
       <form method="POST" class="modal-content abm-content">
         <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
@@ -45,7 +44,5 @@
     <div class="centered">
   <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')" onkeypress="mostrar('new')" role="button">Nuevo</a>
 </div>
-
 {% include 'usuarios/_index.twig' with {'usuarios' : usuarios} %}
-
 {% endblock %}
