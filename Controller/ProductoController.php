@@ -1,6 +1,7 @@
 <?php
 
 namespace Controller;
+use Controller\Validator;
 use Model\Entity\Producto;
 use Model\Resource\ProductoResource;
 use Model\Entity\Categoria;
@@ -15,20 +16,72 @@ class ProductoController {
 
   public function newProducto($app,$nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion) {
     $app->applyHook('must.be.administrador.or.gestion');
-    if (ProductoResource::getInstance()->insert($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id,$descripcion)){
-       $app->flash('success', 'El producto ha sido dado de alta exitosamente');
+    $errors = [];
+    if (!Validator::hasLength(100, $nombre)) {
+         $errors[] = 'El nombre debe tener menos de 100 caracteres';
+    }
+    if (!Validator::hasLength(45, $marca)) {
+         $errors[] = 'La marca debe tener menos de 45 caracteres';
+    }
+    if (!Validator::isNumeric($stock)) {
+         $errors[] = 'El stock debe ser un valor numérico';
+    }
+    if (!Validator::isNumeric($stock_minimo)) {
+         $errors[] = 'El stock mínimo debe ser un valor numérico';
+    }
+    if (!Validator::isNumeric($precio_venta_unitario)) {
+         $errors[] = 'El precio de venta unitario debe ser un valor numérico';
+    }
+    if (!Validator::hasLength(45, $proovedor)) {
+         $errors[] = 'El nombre del proovedor debe tener menos de 45 caracteres';
+    }
+    if (!Validator::hasLength(255, $descripcion)) {
+         $errors[] = 'La descripcion debe tener menos de 200 caracteres';
+    }
+    if (sizeof($errors) == 0) {
+      if (ProductoResource::getInstance()->insert($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id,$descripcion)){
+        $app->flash('success', 'El producto ha sido dado de alta exitosamente');
+      } else {
+        $app->flash('error', 'No se pudo dar de alta el producto');
+      }
     } else {
-      $app->flash('error', 'No se pudo dar de alta el producto');
+      $app->flash('errors', $errors);
     }
     echo $app->redirect('/productos');
   }
 
   public function editProducto($app,$nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion,$id) {
     $app->applyHook('must.be.administrador.or.gestion');
-    if (ProductoResource::getInstance()->edit($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id,$descripcion,$id)){
-       $app->flash('success', 'El producto ha sido modificado exitosamente');
+    $errors = [];
+    if (!Validator::hasLength(100, $nombre)) {
+         $errors[] = 'El nombre debe tener menos de 100 caracteres';
+    }
+    if (!Validator::hasLength(45, $marca)) {
+         $errors[] = 'La marca debe tener menos de 45 caracteres';
+    }
+    if (!Validator::isNumeric($stock)) {
+         $errors[] = 'El stock debe ser un valor numérico';
+    }
+    if (!Validator::isNumeric($stock_minimo)) {
+         $errors[] = 'El stock mínimo debe ser un valor numérico';
+    }
+    if (!Validator::isNumeric($precio_venta_unitario)) {
+         $errors[] = 'El precio de venta unitario debe ser un valor numérico';
+    }
+    if (!Validator::hasLength(45, $proovedor)) {
+         $errors[] = 'El nombre del proovedor debe tener menos de 45 caracteres';
+    }
+    if (!Validator::hasLength(255, $descripcion)) {
+         $errors[] = 'La descripcion debe tener menos de 200 caracteres';
+    }
+    if (sizeof($errors) == 0) {
+      if (ProductoResource::getInstance()->edit($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id,$descripcion,$id)){
+        $app->flash('success', 'El producto ha sido modificado exitosamente');
+      } else {
+        $app->flash('error', 'No se pudo modificar el producto');
+      }
     } else {
-      $app->flash('error', 'No se pudo modificar el producto');
+      $app->flash('errors', $errors);
     }
     echo $app->redirect('/productos');
   }
