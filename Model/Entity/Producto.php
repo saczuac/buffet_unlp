@@ -3,12 +3,14 @@ namespace Model\Entity;
 
 use Model\Entity;
 use Doctrine\ORM\Mapping;
+use Doctrine\Common\Collections\ArrayCollection;
+use JsonSerializable;
 date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 /**
  * @Entity @Table(name="producto")
  **/
-class Producto
+class Producto implements JsonSerializable
 {
     /**
      * @var integer
@@ -63,6 +65,14 @@ class Producto
      * @var DateTime
      */
     protected $fecha_alta;
+    /**
+     * @OneToMany(targetEntity="EgresoDetalle", mappedBy="producto")
+     */
+    protected $detalles;
+
+    public function __construct() {
+        $this->detalles = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -155,6 +165,27 @@ class Producto
     public function setFecha()
     {
         $this->fecha_alta = new \DateTime("now");
+    }
+
+    public function jsonSerialize()
+    {
+        return array(
+            'nombre' => $this->nombre,
+            'proovedor'=> $this->proovedor,
+            'id'=> $this->id,
+        );
+    }
+
+    public function ingresa($cantidad)
+    {
+        $this->setStock($this->stock+$cantidad);
+        return $this;
+    }
+
+    public function saca($cantidad)
+    {
+        $this->setStock($this->stock-$cantidad);
+        return $this;
     }
 }
 

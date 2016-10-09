@@ -95,6 +95,8 @@ $app->group('/config', function() use($app) {
            array($app, $app->request->post('titleInfo'),$app->request->post('descInfo')));
   $app->post('/setMenu', '\Controller\ConfigController:setMenu')->setParams(
            array($app, $app->request->post('menuTitulo'),$app->request->post('menuInfo')));
+  $app->post('/setHabilitado', '\Controller\ConfigController:setFormHabilitado')->setParams(
+           array($app, $app->request->post('habilitado'),$app->request->post('msg')));
 });
 
 
@@ -201,10 +203,40 @@ $app->group('/usuarios', function() use ($app, $userResource) {
 });
 
 $app->group('/ventas', function() use($app) {
-	$app->get('/', function() use($app){
-    $app->applyHook('must.be.logueado');
-		echo $app->view->render('ventas.twig');
-	});
+  $app->get('/', '\Controller\VentasController:index')->setParams(array($app));
+  $app->post('/new', '\Controller\VentasController:nuevo')->setParams(
+    array($app,$app->request->post('newSellProductName'),
+      $app->request->post('newSellQuantity'),
+      $app->request->post('newSellPrice'),
+      "1",
+      $app->request->post('newSellDate'),
+      $app->request->post('newSellDesc')));
+  $app->get('/edit(/(:id)(/))', '\Controller\VentasController:edit')->setParams(array($app),$app->request()->get('id'));
+  $app->post('/edit', '\Controller\VentasController:editar')->setParams(
+     array($app,$app->request->post('id'),
+      $app->request->post('newSellProductName'),
+      $app->request->post('newSellQuantity'),
+      $app->request->post('newSellPrice'),
+      "1",
+      $app->request->post('newSellDate'),
+      $app->request->post('newSellDesc')));
+    $app->get('/delete(/(:id)(/))', '\Controller\VentasController:delete')->setParams(array($app),$app->request()->get('id'));
+});
+
+$app->group('/compras', function() use($app) {
+  $app->get('/', '\Controller\CompraController:index')->setParams(array($app));
+  $app->post('/new', '\Controller\CompraController:nuevo')->setParams(
+    array($app,$app->request->post('newProveedor'),
+      $app->request->post('newCUIL'),
+      $app->request->post('paramArray')));
+  $app->get('/show(/(:id)(/))', '\Controller\CompraController:show')->setParams(array($app),$app->request()->get('id'));
+  $app->get('/edit(/(:id)(/))', '\Controller\CompraController:edit')->setParams(array($app),$app->request()->get('id'));
+  $app->post('/edit', '\Controller\CompraController:editar')->setParams(
+    array($app,$app->request->post('paramID'),
+      $app->request->post('newProveedor'),
+      $app->request->post('newCUIL'),
+      $app->request->post('paramArray')));
+  $app->get('/delete(/(:id)(/))', '\Controller\CompraController:delete')->setParams(array($app),$app->request()->get('id'));
 });
 
 

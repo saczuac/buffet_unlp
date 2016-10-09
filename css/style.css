@@ -163,6 +163,70 @@ section img {
     background-position: 50%;
 }
 
+.card-forms {
+    opacity: 0.95;
+    margin: 1%;
+    margin-left: 20%;
+    margin-right: 20%;
+    border-radius: 16px;
+    word-wrap: break-word;
+    background-color: #5c8dbd;
+    display: inline-table;
+    padding: 20px 15px 20px 15px;
+    border-bottom: 4px solid #497198;
+    width: 60%;
+
+}
+
+.center{
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 60%;
+}
+
+.modal-content a{
+    padding: 5px 20px;
+  margin-left: 1em;
+  margin-right: 1em;
+  border-radius: 10px;
+  background-color:#003366;
+  font-family: "Lato","sans-serif";
+  font-size: 15px;
+  color: #fff;
+  text-decoration: none;
+
+}
+
+.config input[type="radio"]{
+  float: left;
+  display: inline;
+}
+
+section a {
+  padding: 5px 20px;
+  margin-left: 1em;
+  margin-right: 1em;
+  border-radius: 10px;
+  background-color: #003366;
+  font-family: "Lato","sans-serif";
+  font-size: 15px;
+  color: #FFF;
+  text-decoration: none;
+}
+
+section input {
+  height: 2.1em;
+  border-radius: 4px;
+  width: 90%;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: 2px;
+  text-align: left;
+  display: block;
+  border: solid 1px #dcdcdc;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+
 nav {
     text-align: center;
     font-weight: 500;
@@ -644,9 +708,60 @@ tr {
   transition: box-shadow 0.3s, border 0.3s;
 }
 
-.config .estilotextarea {border: 2px solid #003366;
+.config .estilotextarea {
+  border: 2px solid #003366;
   border-radius: 15px;
 }
+
+input[id^="spoiler"]{
+ display: none;
+}
+input[id^="spoiler"] + label {
+  display: block;
+  background: #fff;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all .6s;
+}
+input[id^="spoiler"]:checked + label {
+  color: #333;
+  background: #ccc;
+}
+input[id^="spoiler"] ~ .spoiler {
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin: 10px auto 0;
+  padding: 10px;
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: all 1.6s;
+}
+input[id^="spoiler"]:checked + label + .spoiler{
+  height: auto;
+  opacity: 1;
+  padding: 10px;
+}
+
+.violet
+{
+  background-color: #C272C2;
+  border-bottom: 5px solid #874f87;
+}
+
+.spoiler a{
+  padding: 5px 20px;
+  margin-left: 1em;
+  margin-right: 1em;
+  border-radius: 10px;
+  background-color:#003366;
+  font-family: "Lato","sans-serif";
+  font-size: 15px;
+  color: #fff;
+  text-decoration: none;}
 
 .config input[type="file"] {
   border: 2px solid #003366;

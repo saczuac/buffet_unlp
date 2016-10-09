@@ -112,6 +112,18 @@ class ProductoResource extends AbstractResource {
       return $paginator;
   }
 
+  public function ingresarStock($id,$cantidad)
+  {
+    $this->getEntityManager()->persist($this->get($id)->ingresa($cantidad));
+    $this->getEntityManager()->flush();
+  }
+
+  public function sacarStock($id,$cantidad)
+  {
+    $this->getEntityManager()->persist($this->get($id)->saca($cantidad));
+    $this->getEntityManager()->flush();
+  }
+
 }
 
 ?>

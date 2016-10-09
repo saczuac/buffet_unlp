@@ -1,0 +1,40 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+  
+    <section class="center">
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+        <h2>Compra</h2>
+        <label for="viewProveedor">Proveedor: </label>
+        <input type="text" name="newProveedor" id="newProveedor" readonly maxlength="20" placeholder="Proveedor" value="{{compra.proveedor}}" required />
+        <label for="viewCUIL">CUIL del Proveedor: </label>
+        <input type="text" name="newCUIL" id="newCUIL" maxlength="20"  readonly placeholder="CUIT" value="{{compra.proveedor_cuit}}" required />
+        <label for="viewFecha">Fecha: </label>
+        <input type="text" name="newCUIL" id="newCUIL" maxlength="20"  readonly value="{{fecha|date('Y-m-d')}}" required />
+        <!--spoiler -->
+
+   </section>
+    <table summary="Tabla de usuarios del buffet">
+  <tr>
+    <th id="Producto">Producto</th>
+    <th id="Cantidad">Cantidad</th>
+    <th id="Fecha">Precio</th>
+  </tr>
+  {% for detalle in compra.detalles %}
+  <tr>
+  <td id=algo style="display:none;">{{ loop.index }}</td>
+    <td>{{detalle.producto.nombre}}</td>
+    <td>{{detalle.cantidad}}</td>
+    <td>{{detalle.preciounitario}}</td>
+    <div id="delete{{loop.index}}" class="modal">
+      <form method="post" class="modal-content abm-content">
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+          <h4> ¿Realmente desea eliminar esta venta?</h4><br>
+        <input type="submit" value="Confirmar"/>
+      </form>
+    </div>
+  </tr>
+  {% endfor %}
+  </table>
+
+{% endblock %}

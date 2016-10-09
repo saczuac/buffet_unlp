@@ -15,7 +15,9 @@ class ConfigController {
       'imgDescripcion' => ($configResource->get('imgDescripcion')),
       'tituloMenu' => ($configResource->get('tituloMenu')),
       'infoMenu' => ($configResource->get('infoMenu')),
-      'imgMenu' => ($configResource->get('imgMenu'))));
+      'imgMenu' => ($configResource->get('imgMenu')),
+      'msg' => ($configResource->get('msgDeshabilitado')),
+      'habilitado' => ($configResource->get('habilitado'))));
   }
 
  public function setPaginacion($app,$value) {
@@ -74,5 +76,21 @@ public function setImgMenu($app) {
   	$this->setImgMenu($app);
     echo $app->redirect('/config');
   }
+  public function setHabilitad($app,$value) {
+    $app->applyHook('must.be.administrador');
+    ConfiguracionResource::getInstance()->edit('msgDeshabilitado',$value);
+  }
+  public function setMsgDeshanilitado($app,$value) {
+    $app->applyHook('must.be.administrador');
+    ConfiguracionResource::getInstance()->edit('msgDeshabilitado',$value);
+  }
+  public function setFormHabilitado($app,$estado,$msg) {
+    $estado=0;
+    $app->applyHook('must.be.administrador');
+    $this->setHabilitad($app,$estado);
+    $this->setMsgDeshanilitado($app,$msg);
+    echo $app->redirect('/config');
+  }
 
 }
+?>

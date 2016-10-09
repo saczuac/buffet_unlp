@@ -20,3 +20,4 @@ class HomeController {
       'imgMenu' => ($configResource->get('imgMenu')), 'ubicaciones' => (UbicacionResource::getInstance()->get())));
   }
 }
+?>

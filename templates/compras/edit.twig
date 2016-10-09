@@ -1,0 +1,58 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+  <script type="text/javascript">
+  var index=0;
+        var json = {{productos|json_encode|raw}};
+  </script>
+    <section class="center">
+      <form name="formEdit" id="formEdit" action="/compras/edit" method="post">
+        <h2>Compra</h2>
+        <label for="viewProveedor">Proveedor: </label>
+        <input type="text" name="newProveedor" id="newProveedor" maxlength="20" placeholder="Proveedor" value="{{compra.proveedor}}" required />
+        <label for="newCUIL">CUIL del Proveedor: </label>
+        <input type="text" name="newCUIL" id="newCUIL" maxlength="20"  placeholder="CUIT" value="{{compra.proveedor_cuit}}" required />
+        <label for="viewFecha">Fecha: </label>
+        <input type="date" name="newfecha" id="newfecha" maxlength="20"  value="{{fecha|date('Y-m-d')}}" required />
+        <!--spoiler -->
+      </form>
+   </section>
+   <section class="center">
+   <div class="centered">
+    <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="agregar()" onkeypress="agregar()" role="button">Nuevo</a>
+  </div>
+        <table>
+        <thead class="table-header">
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Borrar</th>
+          </tr>
+        </thead>
+        <tbody  id=ProductosCompra >
+          {% for detalle in compra.detalles %}
+          <tr>
+          <td id=algo style="display:none;">{{ loop.index }}</td>
+          <td><select name="idProducto">
+          {%for producto in productos %}
+            {% if producto.id==detalle.producto.id %}
+             <option value="{{producto.id}}" selected>{{producto.nombre}}</option>
+             {%else%}
+             <option value="{{producto.id}}">{{producto.nombre}}</option>
+             {%endif%}            
+          {% endfor %}
+          </select>
+          </td>
+            <td><input type="number" name="cantidad" step="1" value="{{detalle.cantidad}}" required> </td>
+            <td><input type="number" name="precioUnitario" step="0.05" value="{{detalle.preciounitario}}" required></td>
+            <td><a href="#" onclick="borrar({{loop.index0}})">X</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        </table>
+
+         <a href="#" onclick="submitEdit({{compra.id}})" title="Abre el enlace">Aceptar</a> 
+        </section>
+
+{% endblock %}

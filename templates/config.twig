@@ -42,4 +42,21 @@
             <input type="submit" value="Guardar"/>
         </form>
     </section>
+    <section>
+        <form method="post" action="config/setHabilitado" class="config">
+            <h2>Paginaci&oacute;n</h2>
+            <textarea class="estilotextarea" rows="17" cols="50" id="textarea-info" name="msg" title="textarea-menu">{{msg.valor}}</textarea>
+            <div class="radio-toolbar">
+            {% if habilitado.valor == 0 %}
+            <input type="checkbox" name="habilitado" id="habilitado" onchange="pr()" value="1">Habilitado:
+            {% else %}
+            <input type="checkbox" name="habilitado" id="habilitado" onchange="pr()" value="1" checked>Habilitado:
+            {% endif %}
+            </div>
+
+            <br>
+            <br>
+            <input type="submit" value="Guardar"/>
+        </form>
+    </section>
     {% endblock %}

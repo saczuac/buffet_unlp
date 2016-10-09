@@ -1,0 +1,91 @@
+
+{% extends "layout.twig" %}
+
+{% block contenido %}
+<script type="text/javascript">
+  function mostrarEdit() {
+    document.location.href="/ventas/edit/"+idSelected;
+}
+  function deleteVenta() {
+    confirmar=confirm("Realmente desea eliminar esta venta ?");
+    if (confirmar){
+    var href="/ventas/delete/"+String(idSelected); 
+    window.location.href=href;}
+  }
+</script>
+    <div id="new" class="modal">
+      <form method="post" class="modal-content abm-content" action="/ventas/new">
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+        <h3>Nueva venta</h3>
+        <label for="newSellProductName">Producto: </label>
+        <select name="newSellProductName" id="newSellProductName">
+          {%for producto in productos %}
+             <option value="{{producto.id}}">{{producto.nombre}}</option>
+          {% endfor %}
+        </select>
+        <label for="newSellPrice">Precio: </label>
+        <input type="number" id="newSellPrice" name="newSellPrice" step="0.05" placeholder="Precio" required />
+        <label for="newSellQuantity">Cantidad: </label>
+        <input type="number" id="newSellQuantity" name="newSellQuantity" value="0" placeholder="Cantidad" required />
+        <label for="newSellDate">Fecha: </label>
+        <input type="date" id="newSellDate" name="newSellDate" required />
+        <label for="newSellDesc">Descripcion:  </label>
+        <input type="text" id="newSellDesc" name="newSellDesc" maxlength=255 placeholder="Descripcion" required />
+        <input type="submit" value="Agregar"/>
+      </form>
+    </div>
+    <div id="edit" class="modal">
+      <form method="post" class="modal-content abm-content">
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+        <h3>Editar venta</h3>
+        <label for="editSellProductName">Nombre: </label>
+        <input type="text" id="editSellProductName" maxlength="20" placeholder="Nombre" value="Bizcochos" required />
+
+        <label for="editSellMarkName">Marca: </label>
+        <input type="text" id="editSellMarkName" maxlength="20" placeholder="Marca" value="Don Saturn" required/>
+        <label for="editSellBarcode">Código: </label>
+        <input type="text" id="editSellBarcode" maxlength="20" placeholder="Código" value="10010011" required />
+        <label for="editSellQuantity">Cantidad: </label>
+        <input type="number" id="editSellQuantity" value="3" placeholder="Cantidad" required/>
+        <label for="editSellMount">Monto: </label>
+        <input type="number" id="editSellMount" value="30" placeholder="Monto" required/>
+        <label for="editSellDate">Fecha: </label>
+        <input type="date" id="editSellDate" required/>
+        <input type="submit" value="Modificar"/>
+      </form>
+    </div>
+    <div id="delete" class="modal">
+      <form method="post" class="modal-content abm-content">
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+          <h4> ¿Realmente desea eliminar esta venta?</h4><br>
+        <input type="submit" value="Confirmar"/>
+      </form>
+    </div>
+    <br>
+  <h1 class="title" id="listado">Listado de Ventas</h1>
+  <div class="centered">
+  <a id="eliminar" href="#" class="action-button shadow animate disabled" onclick="deleteVenta()">Eliminar</a>
+  <a id="editar" href="#" class="action-button shadow animate disabled">Editar</a>
+  <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')" onkeypress="mostrar('new')" role="button">Nuevo</a>
+</div>
+  <table summary="Tabla de usuarios del buffet">
+  <tr>
+    <th id="Producto">PRODUCTO</th>
+    <th id="Cantidad">CANTIDAD</th>
+    <th id="Fecha">Precio Unitario</th>
+    <th id="Monto">fecha</th>
+    <th id="Monto">descripcion</th>
+  </tr>
+    </tr>
+  {% for ingreso in ingresos %}
+  <tr>
+  <td id=algo style="display:none;">{{ ingreso.id }}</td>
+    <td>{{ingreso.producto.nombre}}</td>
+    <td>{{ingreso.cantidad}}</td>
+    <td>{{ingreso.preciounitario}}</td>
+    <td>{{ingreso.fecha|date('Y-m-d')}}</td>
+    <td>{{ingreso.descripcion}}</td>
+  </tr>
+  {% endfor %}
+  </table>
+{% endblock %}
