@@ -10,13 +10,10 @@ use Doctrine\ORM\Mapping;
  **/
 class Categoria
 {
-    /**
-     * @var integer
-     *
-     * @Id
-     * @Column(name="id", type="integer")
-     * @GeneratedValue(strategy="AUTO")
-     */
+  /**
+    * @Id @Column(name="id", type="integer") @GeneratedValue(strategy="AUTO")
+   * @var integer
+  */
     protected $id;
     /**
      * @Column(type="string", length=45)
