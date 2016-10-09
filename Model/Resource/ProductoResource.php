@@ -5,6 +5,7 @@ use Model\Resource\AbstractResource;
 use vendor\doctrine\common\lib\Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Model\Entity\Producto;
+use Model\Resource\CategoriaResource;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 /**
  * Class Resource
@@ -34,7 +35,7 @@ class ProductoResource extends AbstractResource {
             $productos = $this->getEntityManager()->getRepository('Model\Entity\Producto')->findAll();
             $data = $productos;}
          else {
-            $data = $this->getEntityManager()->find('Model\Entity\Producto', $id);
+            $data = $this->getEntityManager()->getRepository('Model\Entity\Producto')->findOneBy(array('id'=> $id));
         }
         return $data;
     }
