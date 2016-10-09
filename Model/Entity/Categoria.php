@@ -11,8 +11,8 @@ use Doctrine\ORM\Mapping;
 class Categoria
 {
   /**
-    * @Id @Column(name="id", type="integer") @GeneratedValue(strategy="AUTO")
-   * @var integer
+    * @Id @Column(name="id", type="integer") @GeneratedValue
+   * @var int
   */
     protected $id;
     /**
