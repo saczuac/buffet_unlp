@@ -29,10 +29,9 @@ abstract class AbstractResource
     public function createEntityManager()
     {
         $path = array('Model/Entity');
-        $devMode = true;
-
+        // $devMode = true;
+        $config->setAutoGenerateProxyClasses(false);
         $config = Setup::createAnnotationMetadataConfiguration($path, $devMode);
-
         // define credentials...
         $connectionOptions = array(
             'driver'   => 'pdo_mysql',
