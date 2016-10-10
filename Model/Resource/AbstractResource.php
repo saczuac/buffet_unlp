@@ -29,7 +29,7 @@ abstract class AbstractResource
     public function createEntityManager()
     {
         $path = array('Model/Entity');
-        $devMode = true;
+        $devMode = false;
         $config = Setup::createAnnotationMetadataConfiguration($path, $devMode);
           $config->setAutoGenerateProxyClasses(false);
         // define credentials...
