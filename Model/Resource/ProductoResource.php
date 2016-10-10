@@ -35,7 +35,7 @@ class ProductoResource extends AbstractResource {
             $productos = $this->getEntityManager()->getRepository('Model\Entity\Producto')->findAll();
             $data = $productos;}
          else {
-            $data = $this->getEntityManager()->getRepository('Model\Entity\Producto')->findOneBy(array('id'=> $id));
+            $data = $this->getEntityManager()->find('Model\Entity\Producto', $id);
         }
         return $data;
     }
