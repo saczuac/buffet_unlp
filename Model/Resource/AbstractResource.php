@@ -31,8 +31,8 @@ abstract class AbstractResource
         $config = new Configuration;
         $driverImpl = $config->newDefaultAnnotationDriver('Model/Entity');
         $config->setMetadataDriverImpl($driverImpl);
-        $config->setProxyDir('uploads/Proxies');
-        $config->setProxyNamespace('uploads\Proxies');
+        $config->setProxyDir('uploads');
+        $config->setProxyNamespace('uploads');
         $config->setAutoGenerateProxyClasses(true);
 
         // define credentials...
