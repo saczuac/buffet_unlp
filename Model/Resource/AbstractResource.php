@@ -30,8 +30,8 @@ abstract class AbstractResource
     {
         $path = array('Model/Entity');
         $devMode = true;
-        $config->setAutoGenerateProxyClasses(false);
         $config = Setup::createAnnotationMetadataConfiguration($path, $devMode);
+          $config->setAutoGenerateProxyClasses(false);
         // define credentials...
         $connectionOptions = array(
             'driver'   => 'pdo_mysql',
