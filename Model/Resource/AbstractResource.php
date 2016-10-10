@@ -4,7 +4,7 @@ namespace Model\Resource;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
-use Doctrine\Common\Proxy\AbstractProxyFactory;
+
 abstract class AbstractResource
 {
     /**
@@ -31,7 +31,7 @@ abstract class AbstractResource
         $path = array('Model/Entity');
         $devMode = true;
         $config = Setup::createAnnotationMetadataConfiguration($path, $devMode);
-          $config->setAutoGenerateProxyClasses(AbstractProxyFactory::AUTOGENERATE_NEVER);
+          $config->setAutoGenerateProxyClasses(false);
         // define credentials...
         $connectionOptions = array(
             'driver'   => 'pdo_mysql',
