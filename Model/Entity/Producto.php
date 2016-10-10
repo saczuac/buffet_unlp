@@ -4,6 +4,7 @@ namespace Model\Entity;
 use Model\Entity;
 use Doctrine\ORM\Mapping;
 use JsonSerializable;
+use Doctrine\Common\Collections\ArrayCollection;
 date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 /**
