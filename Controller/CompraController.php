@@ -55,6 +55,7 @@ public function index($app)
   public function delete($app,$id)
   {
     $app->applyHook('must.be.administrador');
+    CompraResource::getInstance()->deleteAllDetalles($id);    
     CompraResource::getInstance()->delete($id);
     $app->redirect("/compras");
   }

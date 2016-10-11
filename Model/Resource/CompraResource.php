@@ -61,6 +61,7 @@ class CompraResource extends AbstractResource {
         $compra=$this->getEntityManager()->find('Model\Entity\Compra', $id);
         $array=$compra->getDetalles();
         foreach ($array as &$valor) {
+            ProductoResource::getInstance()->sacarStock($valor->getProducto()->getId(),$valor->getCantidad());
             EgresoDetalleResource::getInstance()->delete($valor->getId());
         }
     }

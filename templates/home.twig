@@ -1,6 +1,7 @@
 {% extends "layout.twig" %}
 
 {% block contenido %}
+{% if habilitado == "0" %}
 <section>
     <h2>{{tituloDescripcion.valor}}</h2>
     <p>{{infoDescripcion.valor}}</p>
@@ -13,4 +14,11 @@
     <h2 class="menuday"><br>{{tituloMenu.valor}}</h2>
     <p>{{infoMenu.valor}}</p>
 </section>
+{% else %}
+<section>
+    <h2>Sitio Deshabilitado</h2>
+    <p>{{msgDeshabilitado.valor}}</p>
+
+</section>
+{% endif %}
 {% endblock %}

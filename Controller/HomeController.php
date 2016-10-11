@@ -17,7 +17,9 @@ class HomeController {
       'imgDescripcion' => ($configResource->get('imgDescripcion')),
       'tituloMenu' => ($configResource->get('tituloMenu')),
       'infoMenu' => ($configResource->get('infoMenu')),
-      'imgMenu' => ($configResource->get('imgMenu')), 'ubicaciones' => (UbicacionResource::getInstance()->get())));
+      'imgMenu' => ($configResource->get('imgMenu')),
+      'habilitado' => ($configResource->get('habilitado')),
+      'msgDeshabilitado' => ($configResource->get('msgDeshabilitado')), 'ubicaciones' => (UbicacionResource::getInstance()->get())));
   }
 }
 ?>

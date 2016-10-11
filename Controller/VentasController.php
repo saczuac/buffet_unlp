@@ -23,6 +23,8 @@ public function edit($app,$id)
   public function editar($app,$id,$productoID,$cantidad,$precio,$egresoTipoId,$fecha,$desc)
   {
     $app->applyHook('must.be.administrador');
+    $ingreso=IngresoDetalleResource::getInstance()->get($id);
+    ProductoResource::getInstance()->ingresarStock($ingreso->getProducto()->getId(),$ingreso->cantidad());
     IngresoDetalleResource::getInstance()->edit($id,$productoID,$cantidad,$precio,$egresoTipoId,$fecha,$desc);
     $app->redirect("/ventas");
   }
@@ -30,6 +32,8 @@ public function edit($app,$id)
   public function delete($app,$id)
   {
     $app->applyHook('must.be.administrador');
+        $ingreso=IngresoDetalleResource::getInstance()->get($id);
+    ProductoResource::getInstance()->ingresarStock($ingreso->getProducto()->getId(),$ingreso->getCantidad());
     IngresoDetalleResource::getInstance()->delete($id);
     $app->redirect("/ventas");
   }
