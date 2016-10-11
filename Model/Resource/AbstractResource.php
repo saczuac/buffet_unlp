@@ -3,7 +3,7 @@
 namespace Model\Resource;
 
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\Configuration;
 
 abstract class AbstractResource
 {
@@ -28,10 +28,13 @@ abstract class AbstractResource
      */
     public function createEntityManager()
     {
-        $path = array('Model/Entity');
-        $devMode = true;
-        $config = Setup::createAnnotationMetadataConfiguration($path, $devMode);
-          $config->setAutoGenerateProxyClasses(false);
+        $config = new Configuration;
+        $driverImpl = $config->newDefaultAnnotationDriver('Model/Entity');
+        $config->setMetadataDriverImpl($driverImpl);
+        $config->setProxyDir('uploads');
+        $config->setProxyNamespace('uploads');
+        $config->setAutoGenerateProxyClasses(true);
+
         // define credentials...
         $connectionOptions = array(
             'driver'   => 'pdo_mysql',
