@@ -1,7 +1,7 @@
 {% extends "layout.twig" %}
 
 {% block contenido %}
-{% if habilitado == "0" %}
+{% if habilitado.valor == 0 %}
 <section>
     <h2>{{tituloDescripcion.valor}}</h2>
     <p>{{infoDescripcion.valor}}</p>

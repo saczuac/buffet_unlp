@@ -88,6 +88,8 @@ public function setImgMenu($app) {
     $app->applyHook('must.be.administrador');
     if ($estado!=1) {
       $estado=0;
+    }else{
+      
     }
     $this->setHabilitad($app,$estado);
     $this->setMsgDeshanilitado($app,$msg);
