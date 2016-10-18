@@ -22,9 +22,10 @@
             <a href="{{ baseUrl() }}/config"><i class="fa fa-cog" aria-hidden="true"></i></a>
           {% endif %}
        </h1>
-   {% if habilitado.valor == 0 %}
     {% if session.user is not null %}
+    
       <a href="{{ baseUrl() }}/logout" class="login">Logout</a>
+      {% if habilitado.valor == 0 %}
     </header>
     <nav>
         <ul>
@@ -45,6 +46,7 @@
        </ul>
     </nav>
     <br>
+    {% endif %}
      {% else %}
        <a href="#" onclick ="mostrar('modelLogin')" class="login" role="button">Login </a>
        <a href="#" onclick ="mostrar('new')" class="login" role="button">Registrarse</a>
@@ -92,5 +94,5 @@
     {% endif %}
     {% if flash is not empty %}
       {% include 'components/messages.twig' %}
-    {% endif %}
+    
     {% endif %}
