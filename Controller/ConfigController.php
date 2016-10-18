@@ -16,6 +16,7 @@ class ConfigController {
       'tituloMenu' => ($configResource->get('tituloMenu')),
       'infoMenu' => ($configResource->get('infoMenu')),
       'imgMenu' => ($configResource->get('imgMenu')),
+      'paginacion' => ($configResource->get('paginacion')),
       'msg' => ($configResource->get('msgDeshabilitado')),
       'habilitado' => ($configResource->get('habilitado'))));
   }
