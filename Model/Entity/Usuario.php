@@ -39,10 +39,10 @@ class Usuario
       * @Column(type="string", length=62)
       */
      protected $usuario;
-    /**
-     * @var integer
-     * @Column(type="integer")
-     */
+     /**
+      * @var integer
+      * @Column(type="integer", length=8)
+      */
     protected $rol_id;
     /**
      * @ManyToOne(targetEntity="Ubicacion", inversedBy="users")
@@ -60,6 +60,11 @@ class Usuario
      */
     protected $telefono;
     /**
+     * @var integer
+     * @Column(type="integer", length=1)
+     */
+    protected $habilitado;
+    /**
      * @var string
      * @Column(type="string", length=255)
      */
@@ -67,6 +72,9 @@ class Usuario
 
     public function getId() {
     	return $this->id;
+    }
+    public function getHabilitado() {
+      return $this->habilitado;
     }
     public function getUsuario() {
     	return $this->usuario;
@@ -97,6 +105,9 @@ class Usuario
     }
     public function setId($id) {
         $this->id = $id;
+    }
+    public function setHabilitado($habilitado) {
+        $this->habilitado = $habilitado;
     }
     public function setUsuario($usuario) {
         $this->usuario = $usuario;

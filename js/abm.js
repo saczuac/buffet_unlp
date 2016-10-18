@@ -20,13 +20,19 @@ function deleteTD(td) {
 $(document).ready(function () {
     $('#newRol').change(function() {
         if ($('#newRol option:selected').val() == 2) {
+            document.getElementById("labelHabilitado").style.display = "inline-block";
             document.getElementById("labelUbicacion").style.display = "inline-block";
             document.getElementById("newUbicacion").style.display = "inline-block";
+            document.getElementById("newHabilitado").style.display = "inline-block";
+            $('#newHabilitado').prop('required',true);
             $('#newUbicacion').prop('required',true);
         } else {
             document.getElementById("labelUbicacion").style.display = "none";
+            document.getElementById("labelUbicacion").style.display = "none";
             document.getElementById("newUbicacion").style.display = "none";
+            document.getElementById("newHabilitado").style.display = "none";
             $('#newUbicacion').prop('required',false);
+            $('#newHabilitado').prop('required',false);
         }
     });
 });

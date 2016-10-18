@@ -25,6 +25,12 @@
          <option value="{{ ubicacion.id }}">{{ ubicacion.nombre }} | {{ ubicacion.descripcion }}</option>
          {% endfor %}
         </select>
+        <label for="newHabilitado" id="labelHabilitado">Habilitado: </label>
+        <select id="newHabilitado" name="habilitado">
+          <option value="" selected>Seleccione</option>
+          <option value="1"> Si </option>
+          <option value="0"> No </option>
+        </select>
         <label for="newMail">Mail: </label>
         <input type="email" name="email" id="newMail" placeholder="Email.." required/>
         <label for="newDocumento">Documento: </label>

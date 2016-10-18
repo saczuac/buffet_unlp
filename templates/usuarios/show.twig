@@ -33,10 +33,14 @@
 				<input type="number" name="telefono" id="editTelefono" maxlength="25" value="{{ usuario.telefono }}" required/>
 				<label for="newRol">Rol: </label>
 				<select id="newRol" name="rol_id" required>
-				 <option value="" selected="selected">Seleccione</option>
-				 <option value="1">Administrador</option>
-				 <option value="2">Usuario Online</option>
-				 <option value="3">Gestión</option>
+				 <option value="">Seleccione</option>
+				 {% for rol in roles %}
+				  {% if rol.id== usuario.rol_id %}
+				  <option value="{{rol.id}}" selected>{{rol.nombre}}</option>
+				  {%else%}
+				  <option value="{{rol.id}}">{{rol.nombre}}</option>
+				  {%endif%}
+				 {% endfor %}
 				</select>
 				<label for="newUbicacion" id="labelUbicacion">Ubicación: </label>
 				<select id="newUbicacion" name="ubicacion_id">
@@ -51,8 +55,21 @@
 				<input type="number" name="documento" id="editDocumento" maxlength="8" value="{{ usuario.documento }}" required/>
 				<label for="editUsername">Nombre de usuario: </label>
 				<input type="text" name="user" id="editUsername" maxlength="20" value="{{ usuario.usuario }}" required/>
-				<label for="editPassword">Contraseña: </label>
-				<input type="password" name="pass" id="editPassword" maxlength="20" placeholder="Contraseña" required/>
+      {% if usuario.rol_id== 2 %}
+				<label for="editHabilitado" id="labelHabilitado">Habilitado: </label>
+				<select id="editHabilitado" name="habilitado">
+					<option value="">Seleccione</option>
+					{% if usuario.habilitado == 1 %}
+					<option value="1" selected> Si </option>
+					<option value="0"> No </option>
+					{%else%}
+					<option value="1"> Si </option>
+					<option value="0" selected> No </option>
+					{%endif%}
+				</select>
+		  {% else %}
+				<input type="hidden" name="habilitado" value="1"/>
+		 {% endif %}
 				<input type="hidden" name="userid" value="{{ usuario.id }}"/>
 				 <br><br>
 				<input type="submit" value="Modificar"/>
