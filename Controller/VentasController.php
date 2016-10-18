@@ -24,7 +24,7 @@ public function edit($app,$id)
   {
     $app->applyHook('must.be.administrador');
     $ingreso=IngresoDetalleResource::getInstance()->get($id);
-    ProductoResource::getInstance()->ingresarStock($ingreso->getProducto()->getId(),$ingreso->cantidad());
+    ProductoResource::getInstance()->ingresarStock($ingreso->getProducto()->getId(),$ingreso->getCantidad());
     IngresoDetalleResource::getInstance()->edit($id,$productoID,$cantidad,$precio,$egresoTipoId,$fecha,$desc);
     $app->redirect("/ventas");
   }
