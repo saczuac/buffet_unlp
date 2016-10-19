@@ -12,7 +12,7 @@
 			<td>{{ producto.stock }}</td>
 			<td>
 				<a href="productos/show?id={{ producto.id }}" title="Editar"><i class="fa fa-pencil"></i></a>
-				<a href="productos/delete?id={{ producto.id }}" title="Eliminar"><i class="fa fa-trash-o"></i></a>
+				<a href="productos/delete?id={{ producto.id }}" title="Eliminar" onclick="return confirm('¿Está seguro que desea eliminar este producto?')"><i class="fa fa-trash-o"></i></a>
 			</td>
 		</tr>
 	{% endfor %}

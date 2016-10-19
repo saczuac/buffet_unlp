@@ -27,12 +27,12 @@ $app->hook('must.be.habilitado', function () use ($app, $mensaje) {
     }
 });
 
-$app->hook('must.be.administrador.or.gestion', function () use ($app, $mensaje) {
+$app->hook('must.be.gestion', function () use ($app, $mensaje) {
     if (!isset($_SESSION['rol'])) {
         $app->flash('error', $mensaje);
         $app->redirect('/');
     }else{
-        if ($_SESSION['rol'] == 2) {
+        if ($_SESSION['rol'] !== 3) {
             $app->flash('error', $mensaje);
             $app->redirect('/');
         }

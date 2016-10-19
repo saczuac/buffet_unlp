@@ -1,4 +1,5 @@
 var idSelected =0;
+
 function mostrarEdit() {
     document.location.href="/compras/edit/"+idSelected;
 }

@@ -8,7 +8,7 @@ use Model\Resource\ConfiguracionResource;
 class ListadoController {
 
     public function indexActionStockMin($app,$page = 1) {
-        $app->applyHook('must.be.administrador.or.gestion');
+        $app->applyHook('must.be.gestion');
         $productos = ProductoResource::getInstance()->get();
         $pageSize = ConfiguracionResource::getInstance()->get('paginacion')->getValor();
         $paginator = ProductoResource::getInstance()->getPaginateStockMin($pageSize,$page);
@@ -22,7 +22,7 @@ class ListadoController {
     }
 
     public function indexActionFaltantes($app,$page = 1) {
-        $app->applyHook('must.be.administrador.or.gestion');
+        $app->applyHook('must.be.gestion');
         $productos = ProductoResource::getInstance()->get();
         $pageSize = ConfiguracionResource::getInstance()->get('paginacion')->getValor();
         $paginator = ProductoResource::getInstance()->getPaginateFaltantes($pageSize,$page);
