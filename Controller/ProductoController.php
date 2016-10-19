@@ -10,14 +10,12 @@ use Model\Resource\CategoriaResource;
 class ProductoController {
 
   public function listProductos($app){
-    $app->applyHook('must.be.gestion');
-    $app->applyHook('must.be.administrador');
+    $app->applyHook('must.be.gestion.or.administrador');
     echo $app->view->render( "productos/index.twig", array('productos' => (ProductoResource::getInstance()->get()), 'categorias' => (CategoriaResource::getInstance()->get())));
   }
 
   public function newProducto($app,$nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion) {
-    $app->applyHook('must.be.gestion');
-    $app->applyHook('must.be.administrador');
+  $app->applyHook('must.be.gestion.or.administrador');
     $errors = [];
     if (!Validator::hasLength(100, $nombre)) {
          $errors[] = 'El nombre debe tener menos de 100 caracteres';
@@ -53,8 +51,7 @@ class ProductoController {
   }
 
   public function editProducto($app,$nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion,$id) {
-    $app->applyHook('must.be.gestion');
-    $app->applyHook('must.be.administrador');
+  $app->applyHook('must.be.gestion.or.administrador');
     $errors = [];
     if (!Validator::hasLength(100, $nombre)) {
          $errors[] = 'El nombre debe tener menos de 100 caracteres';
@@ -90,19 +87,21 @@ class ProductoController {
   }
 
   public function deleteProducto($app, $id) {
-    $app->applyHook('must.be.gestion');
-    $app->applyHook('must.be.administrador');
-    if (ProductoResource::getInstance()->delete($id)) {
-      $app->flash('success', 'El producto ha sido eliminado exitosamente.');
-    } else {
-      $app->flash('error', 'No se pudo eliminar el producto');
+  $app->applyHook('must.be.gestion.or.administrador');
+    try {
+      if (ProductoResource::getInstance()->delete($id)) {
+        $app->flash('success', 'El producto ha sido eliminado exitosamente.');
+      } else {
+        $app->flash('error', 'No se pudo eliminar el producto');
+      }
+    } catch (Exception $e) {
+      $app->flash('error', 'No se pudo eliminar el producto, se encuentra asociado en otras entidades');
     }
     $app->redirect('/productos');
   }
 
   public function showProducto($app, $id){
-    $app->applyHook('must.be.gestion');
-    $app->applyHook('must.be.administrador');
+  $app->applyHook('must.be.gestion.or.administrador');
     $producto = ProductoResource::getInstance()->get($id);
     $categoria = ProductoResource::getInstance()->categoria($id);
     echo $app->view->render( "productos/show.twig", array('producto' => ($producto), 'categoriaProd' => ($categoria), 'categorias' => (CategoriaResource::getInstance()->get())));

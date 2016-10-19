@@ -39,6 +39,18 @@ $app->hook('must.be.gestion', function () use ($app, $mensaje) {
     }
 });
 
+$app->hook('must.be.gestion.or.administrador', function () use ($app, $mensaje) {
+    if (!isset($_SESSION['rol'])) {
+        $app->flash('error', $mensaje);
+        $app->redirect('/');
+    }else{
+        if ($_SESSION['rol'] == 2) {
+            $app->flash('error', $mensaje);
+            $app->redirect('/');
+        }
+    }
+});
+
 $app->hook('must.be.logueado', function () use ($app, $mensaje) {
     if (!isset($_SESSION['rol'])) {
         $app->flash('error', $mensaje);
