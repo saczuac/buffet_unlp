@@ -5,6 +5,7 @@
         "slim/twig-view": "^2.0",
         "twig/twig": "^1.22",
         "doctrine/orm": "v2.5.4",
+        "chatwork/slim-json-request": "dev-master",
         "slim/flash": "^0.1.0"
     },
 
