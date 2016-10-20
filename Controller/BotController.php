@@ -1,11 +1,12 @@
 <?php
-require_once '../vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
+use Chatwork\JsonRequestMiddleware;
 
 $app = new \Slim\Slim([
         'debug' => true
     ]);
 
-$app->add(new \Chatwork\JsonRequestMiddleware());
+$app->add(new JsonRequestMiddleware());
 
 $url = 'https://api.telegram.org/bot296497556:AAFlvyDLjO921sqBVHhpTaV1W5D5GoUFRUw/sendMessage';
 $msg = array();
