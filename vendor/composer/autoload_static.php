@@ -37,7 +37,6 @@ class ComposerStaticInit7d8e59127c8db5c46d1b71101ecdaa02
         'C' => 
         array (
             'Controller\\' => 11,
-            'Chatwork\\' => 9,
         ),
     );
 
@@ -90,11 +89,6 @@ class ComposerStaticInit7d8e59127c8db5c46d1b71101ecdaa02
         'Controller\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Controller',
-        ),
-        'Chatwork\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src',
-            1 => __DIR__ . '/..' . '/chatwork/slim-json-request/src',
         ),
     );
 

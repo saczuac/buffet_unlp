@@ -1164,55 +1164,5 @@
         ],
         "description": "Symfony Console Component",
         "homepage": "https://symfony.com"
-    },
-    {
-        "name": "chatwork/slim-json-request",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/chatwork/slim-json-request.git",
-            "reference": "a67099515c8feec2a5ae26b86ee7550d3d173190"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/chatwork/slim-json-request/zipball/a67099515c8feec2a5ae26b86ee7550d3d173190",
-            "reference": "a67099515c8feec2a5ae26b86ee7550d3d173190",
-            "shasum": ""
-        },
-        "require": {
-            "slim/slim": "2.*"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "*",
-            "there4/slim-test-helpers": "dev-master"
-        },
-        "time": "2015-07-08 03:17:16",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-4": {
-                "Chatwork\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "cw-tanaka",
-                "email": "cw-tanaka@gmail.com",
-                "homepage": "https://github.com/cw-tanaka",
-                "role": "Developer"
-            }
-        ],
-        "description": "Slim middleware for supporting json request",
-        "homepage": "https://github.com/chatwork/slim-json-request",
-        "keywords": [
-            "json",
-            "middleware",
-            "slim"
-        ]
     }
 ]

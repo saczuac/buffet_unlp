@@ -4,57 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "44d00b90fafdef6b796a4d8e96a53b84",
-    "content-hash": "373529bb374e13c27a600eeb37c82655",
+    "hash": "ab7266cbaefcf08da61758929354d3c8",
+    "content-hash": "25cef9d9e20bb52201710c42dfcf22e6",
     "packages": [
-        {
-            "name": "chatwork/slim-json-request",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/chatwork/slim-json-request.git",
-                "reference": "a67099515c8feec2a5ae26b86ee7550d3d173190"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/chatwork/slim-json-request/zipball/a67099515c8feec2a5ae26b86ee7550d3d173190",
-                "reference": "a67099515c8feec2a5ae26b86ee7550d3d173190",
-                "shasum": ""
-            },
-            "require": {
-                "slim/slim": "2.*"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "*",
-                "there4/slim-test-helpers": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Chatwork\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "cw-tanaka",
-                    "email": "cw-tanaka@gmail.com",
-                    "homepage": "https://github.com/cw-tanaka",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Slim middleware for supporting json request",
-            "homepage": "https://github.com/chatwork/slim-json-request",
-            "keywords": [
-                "json",
-                "middleware",
-                "slim"
-            ],
-            "time": "2015-07-08 03:17:16"
-        },
         {
             "name": "doctrine/annotations",
             "version": "v1.2.7",
@@ -1187,9 +1139,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "chatwork/slim-json-request": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
