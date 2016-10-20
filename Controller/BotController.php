@@ -1,6 +1,12 @@
 <?php
 namespace Controller;
+require_once '../vendor/autoload.php';
 
+$app = new \Slim\Slim(array(
+  'debug' => true,
+));
+
+$app->post('/', function() use ($app) {
     $returnArray = true;
     $rawData = file_get_contents('php://input');
     $response = json_decode($rawData, $returnArray);
@@ -44,7 +50,7 @@ namespace Controller;
           $msg['text'] .= 'Prueba /help para ver la lista de comandos disponibles';
           break;
       }
-      $url = 'https://api.telegram.org/bot123456780:hakfHFT35kvdkfhkffdgdkgh878sfsfskghs/sendMessage';
+      $url = 'https://api.telegram.org/bot296497556:AAFlvyDLjO921sqBVHhpTaV1W5D5GoUFRUw/sendMessage';
       $options = array(
       'http' => array(
           'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -55,4 +61,6 @@ namespace Controller;
       $context  = stream_context_create($options);
       $result = file_get_contents($url, false, $context);
       exit(0);
+});
+$app->run();
  ?>
