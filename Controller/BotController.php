@@ -1,11 +1,11 @@
 <?php
 namespace Controller;
-
+use Slim\Slim;
 use Chatwork\JsonRequestMiddleware;
 
-$app = new \Slim\Slim([
-        'debug' => true
-    ]);
+$app = new Slim(array(
+  'debug' => true,
+));
 
 $app->add(new JsonRequestMiddleware());
 
