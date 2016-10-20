@@ -7,7 +7,7 @@ $app = new \Slim\Slim([
         'debug' => true
     ]);
 
-$app->add(new JsonRequestMiddleware());
+$app->add(new \Chatwork\JsonRequestMiddleware());
 
 $url = 'https://api.telegram.org/bot296497556:AAFlvyDLjO921sqBVHhpTaV1W5D5GoUFRUw/sendMessage';
 $msg = array();
