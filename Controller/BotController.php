@@ -58,7 +58,6 @@ $app->post('/', function() use ($app) {
     );
     $context  = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
-    exit(0);
 });
 
 $app->run();
