@@ -94,7 +94,6 @@ class ComposerStaticInit7d8e59127c8db5c46d1b71101ecdaa02
         'Chatwork\\' => 
         array (
             0 => __DIR__ . '/..' . '/chatwork/slim-json-request/src',
-            1 => __DIR__ . '/..' . '/chatwork/slim-json-request/src',
         ),
     );
 

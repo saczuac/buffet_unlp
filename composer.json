@@ -8,11 +8,9 @@
         "chatwork/slim-json-request": "dev-master",
         "slim/flash": "^0.1.0"
     },
-
     "autoload": {
     "psr-4": {
         "Model\\": "Model",
-        "Chatwork\\": "vendor/chatwork/slim-json-request/src/",
         "Controller\\": "Controller"
     }
   }
