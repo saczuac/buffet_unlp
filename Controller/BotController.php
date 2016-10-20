@@ -39,8 +39,11 @@ $app->post('/', function() use ($app) {
           $msg['text'] .= '/help Muestra esta ayuda';
           $msg['reply_to_message_id'] = null;
           break;
-      case '/menú':
+      case '/hoy':
           $msg['text']  = 'El menú del día es ensalada tropical';
+          break;
+      case '/manana':
+          $msg['text']  = 'El menú del día de mañana es ensalada tropical';
           break;
       default:
           $msg['text']  = 'Lo siento, no es un comando válido.' . PHP_EOL;
