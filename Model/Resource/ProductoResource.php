@@ -5,6 +5,7 @@ use Model\Resource\AbstractResource;
 use vendor\doctrine\common\lib\Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Model\Entity\Producto;
+use Doctrine\DBAL\DBALException;
 use Model\Resource\CategoriaResource;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 /**
@@ -60,8 +61,12 @@ class ProductoResource extends AbstractResource {
     public function delete($id)
     {
         $producto = $this->getEntityManager()->getReference('Model\Entity\Producto', $id);
-        $this->getEntityManager()->remove($producto);
-        $this->getEntityManager()->flush();
+        try {
+          $this->getEntityManager()->remove($producto);
+          $this->getEntityManager()->flush();
+        } catch (\Doctrine\DBAL\DBALException $e) {
+           return false;
+        }
         return $this->get();
     }
 
