@@ -1,5 +1,5 @@
 <?php
-namespace Controller;
+namespace Chatwork;
 
 require_once 'vendor/autoload.php';
 use Slim\Slim;
