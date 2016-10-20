@@ -1,14 +1,6 @@
 <?php
 namespace Controller;
 
-require_once '../vendor/autoload.php';
-use Slim\Slim;
-
-$app = new Slim(array(
-  'debug' => true,
-));
-
-$app->post('/', function() use ($app) {
   $returnArray = true;
   $rawData = file_get_contents('php://input');
   $response = json_decode($rawData, $returnArray);
@@ -58,7 +50,5 @@ $app->post('/', function() use ($app) {
     );
     $context  = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
-});
-
-$app->run();
+    exit(0);
  ?>
