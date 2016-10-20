@@ -12,7 +12,6 @@
     "autoload": {
     "psr-4": {
         "Model\\": "Model",
-        "Chatwork\\": "Chatwork",
         "Controller\\": "Controller"
     }
   }

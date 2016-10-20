@@ -1,5 +1,7 @@
 <?php
-require '../vendor/autoload.php';
+namespace Chatwork;
+
+require_once '../vendor/autoload.php';
 use Chatwork\JsonRequestMiddleware;
 
 $app = new \Slim\Slim([
