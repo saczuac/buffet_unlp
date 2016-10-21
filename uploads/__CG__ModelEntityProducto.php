@@ -64,10 +64,10 @@ class Producto extends \Model\Entity\Producto implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'nombre', 'marca', 'stock', 'stock_minimo', 'proovedor', 'precio_venta_unitario', 'categoria_id', 'descripcion', 'fecha_alta', 'detalles'];
+            return ['__isInitialized__', 'id', 'nombre', 'marca', 'stock', 'stock_minimo', 'proovedor', 'precio_venta_unitario', 'categoria_id', 'descripcion', 'fecha_alta', 'detalles', 'menus'];
         }
 
-        return ['__isInitialized__', 'id', 'nombre', 'marca', 'stock', 'stock_minimo', 'proovedor', 'precio_venta_unitario', 'categoria_id', 'descripcion', 'fecha_alta', 'detalles'];
+        return ['__isInitialized__', 'id', 'nombre', 'marca', 'stock', 'stock_minimo', 'proovedor', 'precio_venta_unitario', 'categoria_id', 'descripcion', 'fecha_alta', 'detalles', 'menus'];
     }
 
     /**

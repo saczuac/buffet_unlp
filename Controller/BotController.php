@@ -34,9 +34,10 @@ $app->post('/', function() use ($app) {
           break;
       case '/help':
           $msg['text']  = 'Los comandos disponibles son estos:' . PHP_EOL;
-          $msg['text'] .= '/start Inicializa el bot';
-          $msg['text'] .= '/menú Muestra el menú del día';
-          $msg['text'] .= '/help Muestra esta ayuda';
+          $msg['text'] .= '/start --> Inicializa el bot'  . PHP_EOL;
+          $msg['text'] .= '/manana --> Muestra el menú del día de mañana'  . PHP_EOL;
+          $msg['text'] .= '/help --> Muestra esta ayuda'  . PHP_EOL;
+          $msg['text'] .= '/hoy --> Muestra el menú del día de hoy' . PHP_EOL;
           $msg['reply_to_message_id'] = null;
           break;
       case '/hoy':

@@ -110,14 +110,12 @@ $app->group('/gastos', function() use($app) {
 	});
 });
 
-
 $app->group('/menu', function() use($app) {
-	$app->get('/', function() use($app){
-    $app->applyHook('must.be.logueado');
-		echo $app->view->render('menu.twig');
-	});
+  $app->get('/', '\Controller\MenuController:index')->setParams(array($app));
+  $app->post('/new', '\Controller\MenuController:nuevo')->setParams(
+    array($app,$app->request->post('paramArray'),$app->request->post('newFecha'),$app->request->post('habilitado')));
+  // $app->get('/show(/(:id)(/))', '\Controller\MenuController:show')->setParams(array($app),$app->request()->get('id'));
 });
-
 
 $app->group('/pedidos', function() use($app) {
 	$app->get('/', function() use($app){

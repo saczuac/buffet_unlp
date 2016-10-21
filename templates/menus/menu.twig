@@ -1,0 +1,57 @@
+{% extends "layout.twig" %}
+{% block contenido %}
+<script>
+    var comprasjson = {{menus|json_encode|raw}};
+    var json = {{productos|json_encode|raw}};
+  function cargarModal(j) {
+    document.getElementById("formVerDetalles");
+    var vdProveedor=document.getElementById("vdProveedor");
+    var vdCUIL=document.getElementById("vdCUIL");
+  }
+</script>
+    <div id="new" class="modal">
+      <form method="post" id="formNew" action="/menu/new" class="modal-content abm-content">
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+        <h3>Nuevo Menú</h3>
+        <label for="newFecha">Fecha: </label>
+        <input type="date" id="newFecha" name="newFecha" required />
+        <label for="newHabilitado" id="labelHabilitado">Habilitado: </label>
+        <select id="newHabilitado" name="habilitado">
+          <option value="" selected>Seleccione</option>
+          <option value="1"> Si </option>
+          <option value="0"> No </option>
+        </select>
+        <!--spoiler -->
+        <input type="checkbox" id="spoilerNewMenu"></input>
+        <label for="spoilerNewMenu" size="12"><i class="fa fa-sort-desc" aria-hidden="true"></i> Productos </label>
+        <div class="spoiler col col-12">
+        <table >
+        <thead class="table-header">
+          <tr>
+            <th>Producto</th>
+            <th>Borrar</th>
+          </tr>
+        </thead>
+        <tbody id=ProductosMenu>
+        </tbody>
+        </table>
+        <a href="#" onclick="agregar()">Agregar Producto</a>
+      </div>
+ <!--fin spoiler -->
+ <a href="#" onclick="submitNew()" title="Abre el enlace">Aceptar</a>
+      </form>
+    </div>
+    <div id="delete" class="modal">
+      <form method="post" class="modal-content abm-content">
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+          <h4> ¿Realmente desea eliminar esta venta?</h4><br>
+        <input type="submit" value="Confirmar"/>
+      </form>
+    </div>
+    <br>
+  <h1 class="title" id="listado">Menú Semanal</h1>
+  <div class="centered">
+  <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')" onkeypress="mostrar('new')" role="button">Nuevo</a>
+</div>
+{% include 'menus/_index.twig' with {'menus' : menus} %}
+{% endblock %}

@@ -8,9 +8,9 @@
       var selectNombre = document.createElement("select");
       selectNombre.name = "idProducto";
               var option = document.createElement("option");
-              option.text = "elija un producto";
+              option.text = "Elija un producto";
               selectNombre.add(option);
-      for ( i=0; i < json.length; i++) {  
+      for ( i=0; i < json.length; i++) {
               var option = document.createElement("option");
               option.text = json[i].nombre;
               option.value = json[i].id;
@@ -100,6 +100,6 @@
      function deleteCompra() {
     confirmar=confirm("Realmente desea eliminar esta compra ?");
     if (confirmar){
-    var href="/compras/delete/"+String(idSelected); 
+    var href="/compras/delete/"+String(idSelected);
     window.location.href=href;}
   }
