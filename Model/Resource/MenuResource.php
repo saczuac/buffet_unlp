@@ -51,6 +51,34 @@ class MenuResource extends AbstractResource {
         $this->getEntityManager()->flush();
         return $this->get();
     }
+
+  public function producto($id) {
+    $menu = $this->getEntityManager()->getReference('Model\Entity\Menu', $id);
+    $query_string = "
+        SELECT p.nombre FROM Model\Entity\Producto p
+        WHERE p.id = :idProd";
+    $query = $this->getEntityManager()->createQuery($query_string);
+    $idProd = $menu->getProducto_Id();
+    $query->setParameter('idProd',$idProd);
+    return $query->getResult();
+  }
+
+  public function getByFecha($fecha = null) {
+    if ($fecha === null) {
+      $query_string = "
+          SELECT m FROM Model\Entity\Menu m
+          GROUP BY m.fecha";
+      $query = $this->getEntityManager()->createQuery($query_string);
+      return $query->getResult();
+    } else {
+      $query_string = "
+          SELECT m FROM Model\Entity\Menu m
+          WHERE m.fecha = :fecha";
+      $query = $this->getEntityManager()->createQuery($query_string);
+      $query->setParameter('fecha',$fecha);
+      return $query->getResult();
+    }
+  }
 }
 
 ?>

@@ -10,7 +10,17 @@ class MenuController {
 public function index($app)
   {
     $app->applyHook('must.be.gestion.or.administrador');
-    echo $app->view->render("menus/menu.twig", array('menus' => (MenuResource::getInstance()->get()),'productos' => (ProductoResource::getInstance()->get())));
+    echo $app->view->render("menus/menu.twig", array('menus' => (MenuResource::getInstance()->getByFecha()), 'productos' => (ProductoResource::getInstance()->get())));
+  }
+
+  public function showFecha($app, $fecha){
+    $app->applyHook('must.be.gestion.or.administrador');
+    $menus = MenuResource::getInstance()->getByFecha($fecha);
+    $productos=[];
+    foreach ($menus as $menu) {
+      $productos[]= MenuResource::getInstance()->producto($menu->getId());
+    }
+    echo $app->view->render( "menus/show.twig", array('productos' => ($productos), 'fecha' => ($fecha)));
   }
 
 /* TODO: Hacer show de lista de productos con AJAX

@@ -114,7 +114,7 @@ $app->group('/menu', function() use($app) {
   $app->get('/', '\Controller\MenuController:index')->setParams(array($app));
   $app->post('/new', '\Controller\MenuController:nuevo')->setParams(
     array($app,$app->request->post('paramArray'),$app->request->post('newFecha'),$app->request->post('habilitado')));
-  // $app->get('/show(/(:id)(/))', '\Controller\MenuController:show')->setParams(array($app),$app->request()->get('id'));
+    $app->get('/show', '\Controller\MenuController:showFecha')->setParams(array($app, $app->request->get('fecha')));
 });
 
 $app->group('/pedidos', function() use($app) {

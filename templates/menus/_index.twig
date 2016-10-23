@@ -1,15 +1,13 @@
 <table summary="Tabla de menues del buffet">
 <tr>
   <th id="dia">Fecha</th>
-  <th id="menu">Men&uacute;</th>
   <th id="menu">Habilitado</th>
-  <th id="detalles">Productos</th>
+  <th id="ver">Ver Productos</th>
 {% for menu in menus %}
 <tr>
-<td id='algo' style="display:none;">{{ compra.id }}</td>
-  <td>{{compra.proveedor}}</td>
-  <td>{{compra.proveedor_cuit}}</td>
-  <a href="menu/show?id={{ menu.id }}" title="Ver"><i class="fa fa-eye"></i></a>
+  <td>{{ menu.fecha | date('Y-m-d') }}</td>
+  <td>{{ menu.habilitado }}</td>
+  <td><a href="{{ baseUrl() }}/menu/show?fecha={{ menu.fecha | date('Y-m-d') }}" title="Ver"><i class="fa fa-eye"></i></a></td>
 </tr>
 {% endfor %}
 </table>

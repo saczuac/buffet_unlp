@@ -45,7 +45,7 @@ class Menu
     }
 
     public function getProducto_Id() {
-      return $this->$producto_id;
+      return $this->producto_id;
     }
 
     public function setHabilitado($habilitado) {
