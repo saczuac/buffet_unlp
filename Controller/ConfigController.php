@@ -18,6 +18,7 @@ class ConfigController {
       'imgMenu' => ($configResource->get('imgMenu')),
       'paginacion' => ($configResource->get('paginacion')),
       'msg' => ($configResource->get('msgDeshabilitado')),
+      'mail' => ($configResource->get('mail')),
       'habilitado' => ($configResource->get('habilitado'))));
   }
 
@@ -46,10 +47,11 @@ public function setTituloDescripcion($app,$value) {
     }
   }
 
- public function setDescripcion($app,$titulo,$descripcion) {
+ public function setDescripcion($app,$titulo,$descripcion,$mail) {
     $app->applyHook('must.be.administrador');
   	$this->setTituloDescripcion($app,$titulo);
   	$this->setInfoDescripcion($app,$descripcion);
+    $this->setMail($app,$mail);
   	$this->setImgDescripcion($app);
     echo $app->redirect('/config');
  }
@@ -80,6 +82,11 @@ public function setImgMenu($app) {
   public function setHabilitad($app,$value) {
     $app->applyHook('must.be.administrador');
     ConfiguracionResource::getInstance()->edit('habilitado',$value);
+  }
+  public function setMail($app,$value) {
+    $app->applyHook('must.be.administrador');
+    ConfiguracionResource::getInstance()->edit('mail',$value);
+    $app->view->getEnvironment()->addGlobal('mail', $value);
   }
   public function setMsgDeshanilitado($app,$value) {
     $app->applyHook('must.be.administrador');
