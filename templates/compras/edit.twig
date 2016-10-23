@@ -5,7 +5,7 @@
   var index=0;
         var json = {{productos|json_encode|raw}};
   </script>
-    <section class="center">
+    <section class="center" id='contenido'>
       <form name="formEdit" id="formEdit" action="/compras/edit" method="post">
         <h2>Compra</h2>
         <label for="viewProveedor">Proveedor: </label>
@@ -40,7 +40,7 @@
              <option value="{{producto.id}}" selected>{{producto.nombre}}</option>
              {%else%}
              <option value="{{producto.id}}">{{producto.nombre}}</option>
-             {%endif%}            
+             {%endif%}
           {% endfor %}
           </select>
           </td>
@@ -52,7 +52,7 @@
         </tbody>
         </table>
 
-         <a href="#" onclick="submitEdit({{compra.id}})" title="Abre el enlace">Aceptar</a> 
+         <a href="#" onclick="submitEdit({{compra.id}})" title="Abre el enlace">Aceptar</a>
         </section>
 
 {% endblock %}

@@ -17,7 +17,7 @@
         <link rel="icon" type="image/png" href="{{ baseUrl() }}/img/Icon.ico"/>
     </head>
     <body>
-      <header>
+      <header id='header'>
         <h1>Buffet de la Facultad de Informática UNLP
           {% if session.user is not null %}
             <a href="{{ baseUrl() }}/config"><i class="fa fa-cog" aria-hidden="true"></i></a>
@@ -28,7 +28,7 @@
       <a href="{{ baseUrl() }}/logout" class="login">Logout</a>
       {% if habilitado.valor == 0 %}
     </header>
-    <nav>
+    <nav id='nav'>
         <ul>
            <li class="first" ><a href="{{ baseUrl() }}/">Inicio</a></li>
            <li><a href="{{ baseUrl() }}/productos">Productos</a> </li>
