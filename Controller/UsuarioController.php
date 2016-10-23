@@ -16,8 +16,7 @@ class UsuarioController {
     echo $app->view->render( "usuarios/index.twig", array('usuarios' => (UsuarioResource::getInstance()->get()), 'ubicaciones' => (UbicacionResource::getInstance()->get())));
   }
 
-  public function newUsuario($app,$user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id = null, $habilitado = 1) {
-    $app->applyHook('must.be.administrador');
+  public function validarCampos($nombre, $apellido, $user, $pass = null, $email, $documento, $telefono) {
     $errors = [];
     if (!Validator::hasLength(45, $nombre)) {
          $errors[] = 'El nombre debe tener menos de 45 caracteres';
@@ -28,11 +27,13 @@ class UsuarioController {
     if (!Validator::hasLength(45, $user)) {
          $errors[] = 'El username debe tener menos de 45 caracteres';
     }
-    if (!Validator::hasLength(20, $pass)) {
-         $errors[] = 'La contraseña debe tener menos de 20 caracteres';
-    }
-    if (!Validator::hasNumbers($pass)) {
-         $errors[] = 'La contraseña debe tener una combinación de números y caracteres';
+    if ($pass != null) {
+      if (!Validator::hasLength(20, $pass)) {
+          $errors[] = 'La contraseña debe tener menos de 20 caracteres';
+      }
+      if (!Validator::hasNumbers($pass)) {
+          $errors[] = 'La contraseña debe tener una combinación de números y caracteres';
+      }
     }
     if(!Validator::isEmail($email)) {
         $errors[] = 'Debe ser un email válido';
@@ -46,6 +47,12 @@ class UsuarioController {
     if(!Validator::isNumeric($telefono)) {
         $errors[] = 'El teléfono debe ser numérico';
     }
+    return $errors;
+  }
+
+  public function newUsuario($app,$user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id = null, $habilitado = 1) {
+    $app->applyHook('must.be.administrador');
+    $errors = $this->validarCampos($nombre, $apellido, $user, $pass, $email, $documento, $telefono);
     if (sizeof($errors) == 0) {
         if (UsuarioResource::getInstance()->insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id, $habilitado)){
            $app->flash('success', 'El usuario ha sido dado de alta exitosamente');
@@ -60,28 +67,7 @@ class UsuarioController {
 
   public function editUsuario($app,$user,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id = null,$id, $habilitado = 1) {
     $app->applyHook('must.be.administrador');
-    $errors = [];
-    if (!Validator::hasLength(45, $nombre)) {
-         $errors[] = 'El nombre debe tener menos de 45 caracteres';
-    }
-    if (!Validator::hasLength(45, $apellido)) {
-         $errors[] = 'El apellido debe tener menos de 45 caracteres';
-    }
-    if (!Validator::hasLength(45, $user)) {
-         $errors[] = 'El username debe tener menos de 45 caracteres';
-    }
-    if(!Validator::isEmail($email)) {
-        $errors[] = 'Debe ser un email válido';
-    }
-    if(!Validator::isNumeric($documento)) {
-        $errors[] = 'El documento debe ser numérico';
-    }
-    if(!Validator::hasLength(8,$documento)) {
-        $errors[] = 'El documento debe tener 8 números';
-    }
-    if(!Validator::isNumeric($telefono)) {
-        $errors[] = 'El teléfono debe ser numérico';
-    }
+    $errors = $this->validarCampos($nombre, $apellido, $user, null, $email, $documento, $telefono);
     if (sizeof($errors) == 0) {
         if (UsuarioResource::getInstance()->edit($user,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id,$id, $habilitado)){
           $app->flash('success', 'El usuario ha sido modificado exitosamente');
@@ -95,34 +81,7 @@ class UsuarioController {
     }
 
   public function registrarUsuario($app,$user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id = 2,$email,$ubicacion_id = null, $habilitado = 0 ) {
-    $errors = [];
-    if (!Validator::hasLength(45, $nombre)) {
-         $errors[] = 'El nombre debe tener menos de 45 caracteres';
-    }
-    if (!Validator::hasLength(45, $apellido)) {
-         $errors[] = 'El apellido debe tener menos de 45 caracteres';
-    }
-    if (!Validator::hasLength(45, $user)) {
-         $errors[] = 'El username debe tener menos de 45 caracteres';
-    }
-    if (!Validator::hasLength(20, $pass)) {
-         $errors[] = 'La contraseña debe tener menos de 20 caracteres';
-    }
-    if (!Validator::hasNumbers($pass)) {
-         $errors[] = 'La contraseña debe tener una combinación de números y caracteres';
-    }
-    if(!Validator::isEmail($email)) {
-        $errors[] = 'Debe ser un email válido';
-    }
-    if(!Validator::isNumeric($documento)) {
-        $errors[] = 'El documento debe ser numérico';
-    }
-    if(!Validator::hasLength(8,$documento)) {
-        $errors[] = 'El documento debe tener 8 números';
-    }
-    if(!Validator::isNumeric($telefono)) {
-        $errors[] = 'El teléfono debe ser numérico';
-    }
+    $errors = $this->validarCampos($nombre, $apellido, $user, $pass, $email, $documento, $telefono);
     if (sizeof($errors) == 0) {
         if (UsuarioResource::getInstance()->insert($user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id, $habilitado)){
           $app->flash('success', 'El usuario ha sido registrado exitosamente');
