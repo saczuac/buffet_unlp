@@ -32,7 +32,8 @@
       inputPrecioUnitario.setAttribute("required", "true");
       var aDelete =document.createElement("a");
       aDelete.setAttribute("href","#");
-      var st="borrar("+String(index)+")"
+      var st="borrarProducto("+String(index)+")"
+      alert(st);
       aDelete.setAttribute("onclick",st);
       aDelete.innerHTML = "X";
       columnaCantidad.appendChild(inputCantidad);
@@ -93,7 +94,7 @@
     document.getElementById("formEdit").appendChild(inputID);
     document.getElementById("formEdit").submit();
   }
-    function borrar(id) {
+    function borrarProducto(id) {
       var list=document.getElementById("ProductosCompra");
       list.removeChild(list.childNodes[id]);
    }

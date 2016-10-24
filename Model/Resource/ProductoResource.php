@@ -129,6 +129,11 @@ class ProductoResource extends AbstractResource {
     $this->getEntityManager()->persist($this->get($id)->saca($cantidad));
     $this->getEntityManager()->flush();
   }
+    public function hay($id,$cantidad)
+  { return($cantidad >= $this->get($id)->getStock());
+  
+
+  }
 
 }
 

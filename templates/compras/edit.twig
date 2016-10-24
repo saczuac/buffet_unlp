@@ -8,12 +8,12 @@
     <section class="center">
       <form name="formEdit" id="formEdit" action="/compras/edit" method="post">
         <h2>Compra</h2>
-        <label for="viewProveedor">Proveedor: </label>
+        <label for="newProveedor">Proveedor: </label>
         <input type="text" name="newProveedor" id="newProveedor" maxlength="20" placeholder="Proveedor" value="{{compra.proveedor}}" required />
         <label for="newCUIL">CUIL del Proveedor: </label>
         <input type="text" name="newCUIL" id="newCUIL" maxlength="20"  placeholder="CUIT" value="{{compra.proveedor_cuit}}" required />
-        <label for="viewFecha">Fecha: </label>
-        <input type="date" name="newfecha" id="newfecha" maxlength="20"  value="{{fecha|date('Y-m-d')}}" required />
+        <label for="newfecha">Fecha: </label>
+        <input type="date" name="newfecha" id="newfecha" value="{{fecha|date('Y-m-d')}}" required />
         <br>
         <br>
         <br>

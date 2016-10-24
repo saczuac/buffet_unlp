@@ -4,15 +4,15 @@
   
     <section class="center">
         <h2>Compra</h2>
-        <label for="viewProveedor">Proveedor: </label>
+        <label for="newProveedor">Proveedor: </label>
         <input type="text" name="newProveedor" id="newProveedor" readonly maxlength="20" placeholder="Proveedor" value="{{compra.proveedor}}" required />
-        <label for="viewCUIL">CUIL del Proveedor: </label>
+        <label for="newCUIL">CUIL del Proveedor: </label>
         <input type="text" name="newCUIL" id="newCUIL" maxlength="20"  readonly placeholder="CUIT" value="{{compra.proveedor_cuit}}" required />
-        <label for="viewFecha">Fecha: </label>
-        <input type="text" name="newCUIL" id="newCUIL" maxlength="20"  readonly value="{{fecha|date('Y-m-d')}}" required />
+        <label for="fecha">Fecha: </label>
+        <input type="text" name="fecha" id="fecha" maxlength="20"  readonly value="{{fecha|date('Y-m-d')}}" required />
         {% if compra.factura != null %}
         <label for="factura">Factura:</label>
-        <img src="{{ baseUrl() }}/{{compra.factura}}" alt="factura" class="center" id="factura" name="factura" />
+        <img src="{{ baseUrl() }}/{{compra.factura}}" alt="factura" class="center" id="factura"/>
         {% else %}
         <label>Factura:Sin Factura cargada</label>
         {% endif %}
@@ -31,13 +31,6 @@
     <td>{{detalle.producto.nombre}}</td>
     <td>{{detalle.cantidad}}</td>
     <td>{{detalle.preciounitario}}</td>
-    <div id="delete{{loop.index}}" class="modal">
-      <form method="post" class="modal-content abm-content">
-        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
-          <h4> ¿Realmente desea eliminar esta venta?</h4><br>
-        <input type="submit" value="Confirmar"/>
-      </form>
-    </div>
   </tr>
   {% endfor %}
   </table>

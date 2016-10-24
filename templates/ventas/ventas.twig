@@ -26,7 +26,7 @@
         <label for="newSellPrice">Precio: </label>
         <input type="number" id="newSellPrice" name="newSellPrice" step="0.05" placeholder="Precio" required />
         <label for="newSellQuantity">Cantidad: </label>
-        <input type="number" id="newSellQuantity" name="newSellQuantity" value="0" placeholder="Cantidad" required />
+        <input type="number" id="newSellQuantity" name="newSellQuantity" value="1" min="1" placeholder="Cantidad" required />
         <label for="newSellDate">Fecha: </label>
         <input type="date" id="newSellDate" name="newSellDate" required />
         <label for="newSellDesc">Descripcion:  </label>
@@ -72,13 +72,12 @@
     <th id="Cantidad">CANTIDAD</th>
     <th id="Fecha">Precio Unitario</th>
     <th id="Monto">fecha</th>
-    <th id="Monto">descripcion</th>
+    <th id="Descripcion">descripcion</th>
     <th>ACCIONES</th>
   </tr>
-    </tr>
   {% for ingreso in ingresos %}
   <tr>
-  <td id=algo style="display:none;">{{ ingreso.id }}</td>
+  <td style="display:none;">{{ ingreso.id }}</td>
     <td>{{ingreso.producto.nombre}}</td>
     <td>{{ingreso.cantidad}}</td>
     <td>{{ingreso.preciounitario}}</td>
