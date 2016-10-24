@@ -14,7 +14,7 @@
             <br>
             <br>
             <textarea class="estilotextarea" rows="17" cols="30" id="textarea-info" name="descInfo" title="textarea-menu">{{infoDescripcion.valor}}</textarea>
-            <img src="{{imgDescripcion.valor}}" alt="retrato a poner en la portada" />
+            <img src="{{ baseUrl() }}/{{imgDescripcion.valor}}" alt="retrato a poner en la portada" />
             <input type="file" id="myFileInfo" name="myFileInfo" accept="image/*" value="img/empty.jpg">
             <br>
             <br>
@@ -29,7 +29,7 @@
             <br>
             <br>
             <textarea class="estilotextarea" rows="17" cols="30" id="textarea-menu" name="menuInfo" title="textarea-menu"> {{infoMenu.valor}}</textarea>
-            <img src="{{imgMenu.valor}}" alt="representacion del plato subioa" />
+            <img src="{{ baseUrl() }}/{{imgMenu.valor}}" alt="representacion del plato subioa" />
             <input type="file" id="myFileMenu" name="myFileMenu" accept="image/*">
             <br>
             <br>

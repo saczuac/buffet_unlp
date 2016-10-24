@@ -28,7 +28,7 @@ $(document).ready(function () {
             $('#newHabilitado').prop('required',true);
             $('#newUbicacion').prop('required',true);
         } else {
-            document.getElementById("labelUbicacion").style.display = "none";
+            document.getElementById("labelHabilitado").style.display = "none";
             document.getElementById("labelUbicacion").style.display = "none";
             document.getElementById("newUbicacion").style.display = "none";
             document.getElementById("newHabilitado").style.display = "none";

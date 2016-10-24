@@ -30,7 +30,7 @@
 				<label for="editApellido">Apellido: </label>
 				<input type="text" name="apellido" id="editApellido" maxlength="45" value="{{ usuario.apellido }}" required/>
 				<label for="editTelefono">Teléfono: </label>
-				<input type="number" name="telefono" id="editTelefono" maxlength="25" value="{{ usuario.telefono }}" required/>
+				<input type="number" name="telefono" id="editTelefono" value="{{ usuario.telefono }}" required/>
 				<label for="newRol">Rol: </label>
 				<select id="newRol" name="rol_id" required>
 				 <option value="">Seleccione</option>
@@ -46,18 +46,21 @@
 				<select id="newUbicacion" name="ubicacion_id">
 				 <option value="" selected="selected">Seleccione</option>
 				 {% for ubicacion in ubicaciones %}
-				 <option value="{{ ubicacion.id }}">{{ ubicacion.nombre }} | {{ ubicacion.descripcion }}</option>
+				  {% if ubicacion.id== usuario.ubicacion_id.id %}
+				  <option value="{{ ubicacion.id }}" selected>{{ ubicacion.nombre }} | {{ ubicacion.descripcion }}</option>
+				  {%else%}
+				  <option value="{{ ubicacion.id }}">{{ ubicacion.nombre }} | {{ ubicacion.descripcion }}</option>
+				  {%endif%}
 				 {% endfor %}
 				</select>
 				<label for="editMail">Mail: </label>
 				<input type="email" name="email" id="editMail" value="{{ usuario.email }}" required/>
 				<label for="editDocumento">Documento: </label>
-				<input type="number" name="documento" id="editDocumento" maxlength="8" value="{{ usuario.documento }}" required/>
+				<input type="number" name="documento" id="editDocumento" value="{{ usuario.documento }}" required/>
 				<label for="editUsername">Nombre de usuario: </label>
 				<input type="text" name="user" id="editUsername" maxlength="20" value="{{ usuario.usuario }}" required/>
-      {% if usuario.rol_id== 2 %}
-				<label for="editHabilitado" id="labelHabilitado">Habilitado: </label>
-				<select id="editHabilitado" name="habilitado">
+				<label for="newHabilitado" id="labelHabilitado">Habilitado: </label>
+				<select id="newHabilitado" name="habilitado">
 					<option value="">Seleccione</option>
 					{% if usuario.habilitado == 1 %}
 					<option value="1" selected> Si </option>
@@ -67,9 +70,6 @@
 					<option value="0" selected> No </option>
 					{%endif%}
 				</select>
-		  {% else %}
-				<input type="hidden" name="habilitado" value="1"/>
-		 {% endif %}
 				<input type="hidden" name="userid" value="{{ usuario.id }}"/>
 				 <br><br>
 				<input type="submit" value="Modificar"/>

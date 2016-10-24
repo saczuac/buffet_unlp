@@ -14,8 +14,7 @@ class ProductoController {
     echo $app->view->render( "productos/index.twig", array('productos' => (ProductoResource::getInstance()->get()), 'categorias' => (CategoriaResource::getInstance()->get())));
   }
 
-  public function newProducto($app,$nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion) {
-  $app->applyHook('must.be.gestion.or.administrador');
+  public function validarCampos($nombre, $marca, $stock, $stock_minimo, $precio_venta_unitario, $proovedor, $descripcion) {
     $errors = [];
     if (!Validator::hasLength(100, $nombre)) {
          $errors[] = 'El nombre debe tener menos de 100 caracteres';
@@ -38,6 +37,12 @@ class ProductoController {
     if (!Validator::hasLength(255, $descripcion)) {
          $errors[] = 'La descripcion debe tener menos de 200 caracteres';
     }
+    return $errors;
+  }
+
+  public function newProducto($app,$nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion) {
+  $app->applyHook('must.be.gestion.or.administrador');
+    $errors = $this->validarCampos($nombre, $marca, $stock, $stock_minimo, $precio_venta_unitario, $proovedor, $descripcion);
     if (sizeof($errors) == 0) {
       if (ProductoResource::getInstance()->insert($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id,$descripcion)){
         $app->flash('success', 'El producto ha sido dado de alta exitosamente');
@@ -52,28 +57,7 @@ class ProductoController {
 
   public function editProducto($app,$nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion,$id) {
     $app->applyHook('must.be.gestion.or.administrador');
-    $errors = [];
-    if (!Validator::hasLength(100, $nombre)) {
-         $errors[] = 'El nombre debe tener menos de 100 caracteres';
-    }
-    if (!Validator::hasLength(45, $marca)) {
-         $errors[] = 'La marca debe tener menos de 45 caracteres';
-    }
-    if (!Validator::isNumeric($stock)) {
-         $errors[] = 'El stock debe ser un valor numérico';
-    }
-    if (!Validator::isNumeric($stock_minimo)) {
-         $errors[] = 'El stock mínimo debe ser un valor numérico';
-    }
-    if (!Validator::isNumeric($precio_venta_unitario)) {
-         $errors[] = 'El precio de venta unitario debe ser un valor numérico';
-    }
-    if (!Validator::hasLength(45, $proovedor)) {
-         $errors[] = 'El nombre del proovedor debe tener menos de 45 caracteres';
-    }
-    if (!Validator::hasLength(255, $descripcion)) {
-         $errors[] = 'La descripcion debe tener menos de 200 caracteres';
-    }
+    $errors = $this->validarCampos($nombre, $marca, $stock, $stock_minimo, $precio_venta_unitario, $proovedor, $descripcion);
     if (sizeof($errors) == 0) {
       if (ProductoResource::getInstance()->edit($nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id,$descripcion,$id)){
         $app->flash('success', 'El producto ha sido modificado exitosamente');
@@ -97,8 +81,7 @@ class ProductoController {
   }
 
   public function showProducto($app, $id){
-    $app->applyHook('must.be.gestion');
-    $app->applyHook('must.be.administrador');
+    $app->applyHook('must.be.gestion.or.administrador');
     $producto = ProductoResource::getInstance()->get($id);
     $categoria = ProductoResource::getInstance()->categoria($id);
     echo $app->view->render( "productos/show.twig", array('producto' => ($producto), 'categoriaProd' => ($categoria), 'categorias' => (CategoriaResource::getInstance()->get())));

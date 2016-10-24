@@ -10,19 +10,19 @@ class VentasController {
 
 public function index($app)
   {
-    $app->applyHook('must.be.administrador');
+    $app->applyHook('must.be.gestion.or.administrador');
     echo $app->view->render("ventas/ventas.twig",array('ingresos' => (IngresoDetalleResource::getInstance()->get()),'productos' => (ProductoResource::getInstance()->get())));
   }
 
 public function edit($app,$id)
   {
-    $app->applyHook('must.be.administrador');
+    $app->applyHook('must.be.gestion.or.administrador');
     echo $app->view->render( "ventas/edit.twig", array('ingreso' => (IngresoDetalleResource::getInstance()->get($id)),'productos' => (ProductoResource::getInstance()->get())));
   }
 
   public function editar($app,$id,$productoID,$cantidad,$precio,$egresoTipoId,$fecha,$desc)
   {
-    $app->applyHook('must.be.administrador');
+    $app->applyHook('must.be.gestion.or.administrador');
     $ingreso=IngresoDetalleResource::getInstance()->get($id);
     ProductoResource::getInstance()->ingresarStock($ingreso->getProducto()->getId(),$ingreso->getCantidad());
     IngresoDetalleResource::getInstance()->edit($id,$productoID,$cantidad,$precio,$egresoTipoId,$fecha,$desc);
@@ -31,7 +31,7 @@ public function edit($app,$id)
 
   public function delete($app,$id)
   {
-    $app->applyHook('must.be.administrador');
+    $app->applyHook('must.be.gestion.or.administrador');
         $ingreso=IngresoDetalleResource::getInstance()->get($id);
     ProductoResource::getInstance()->ingresarStock($ingreso->getProducto()->getId(),$ingreso->getCantidad());
     IngresoDetalleResource::getInstance()->delete($id);
@@ -44,5 +44,5 @@ public function nuevo($app,$productoID,$cantidad,$precio,$egresoTipoId,$fecha,$d
     ProductoResource::getInstance()->sacarStock($productoID,$cantidad);
     $app->redirect("/ventas");
   }
-  
+
 }
