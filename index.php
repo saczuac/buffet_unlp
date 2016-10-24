@@ -48,7 +48,7 @@ $app->post('/', function() use ($app, $userResource) {
     $user = $userResource->login($name, $pass);
     if ($user) {
       $_SESSION['habilitado'] = $user->getHabilitado();
-      $app->applyHook('must.be.habilitado');
+      if ($user->getRol_Id() == 2) { $app->applyHook('must.be.habilitado'); };
     	$_SESSION['id']=$user->getId();
     	$_SESSION['user']=$user->getUsuario();
     	$_SESSION['rol']=$user->getRol_Id();
