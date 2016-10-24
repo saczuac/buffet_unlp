@@ -3,6 +3,7 @@ namespace Controller;
 require_once '../vendor/autoload.php';
 
 use Model\Resource\MenuResource;
+use Model\Entity\Menu;
 
 $app = new \Slim\Slim(array(
   'debug' => true,

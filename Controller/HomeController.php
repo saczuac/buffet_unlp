@@ -14,20 +14,8 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 class HomeController {
 
    public function showHome($app){
-    $hoy = date("y-m-d");
-    $fecha = new \DateTime($hoy);
     $configResource = ConfiguracionResource::getInstance();
-    $menus = MenuResource::getInstance()->getByFecha($fecha);
-    $productos=[];
-    foreach ($menus as $menu) {
-      $productos[]= MenuResource::getInstance()->producto($menu->getId());
-    }
-    $infoMenu = "";
-    foreach ($productos as $producto) {
-      foreach ($producto as $productoi) {
-        $infoMenu .= '* ' . $productoi["nombre"] . '-' . PHP_EOL;
-      }
-    }
+    $infoMenu = MenuResource::getInstance()->hoy();
     ConfiguracionResource::getInstance()->edit('infoMenu',$infoMenu);
     echo $app->view->render( "home.twig",
      array('tituloDescripcion' => ($configResource->get('tituloDescripcion')),
