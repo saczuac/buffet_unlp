@@ -76,7 +76,7 @@ class MenuResource extends AbstractResource {
     $infoMenu = "";
     foreach ($productos as $producto) {
       foreach ($producto as $productoi) {
-        $infoMenu .= '* ' . $productoi["nombre"] . '-' . "\n";
+        $infoMenu .= '* ' . $productoi["nombre"] . '-' . PHP_EOL;;
       }
     }
     return $infoMenu;
