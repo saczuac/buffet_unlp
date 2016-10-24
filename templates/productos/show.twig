@@ -2,7 +2,7 @@
 
 {% block contenido %}
 
-<div class="container" id='contenido'>
+<div class="container">
 	<div class="col col-6-center card">
 		<h2 class="title">
 			<span class="icon">
@@ -10,7 +10,7 @@
 			</span>
 			{{ producto.nombre }}
 		</h2>
-		<div class="user-data">
+		<div class="user-data" id='contenido'>
 				<span class="field">Marca: {{ producto.marca }}</span>
 				<span class="field">Stock: {{ producto.stock }} </span>
 				<span class="field">Stock mínimo:	{{ producto.stock_minimo }}</span>
