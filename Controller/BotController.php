@@ -2,6 +2,8 @@
 namespace Controller;
 require_once '../vendor/autoload.php';
 
+use Model\Resource\MenuResource;
+
 $app = new \Slim\Slim(array(
   'debug' => true,
 ));
@@ -41,7 +43,7 @@ $app->post('/', function() use ($app) {
           $msg['reply_to_message_id'] = null;
           break;
       case '/hoy':
-          $msg['text']  = 'El menú del día es ensalada tropical';
+          $msg['text']  = MenuResource::getInstance()->hoy();
           break;
       case '/manana':
           $msg['text']  = 'El menú del día de mañana es ensalada tropical';

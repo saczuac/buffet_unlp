@@ -4,6 +4,8 @@ namespace Model\Resource;
 use Model\Resource\AbstractResource;
 use Model\Entity\Menu;
 
+date_default_timezone_set('America/Argentina/Buenos_Aires');
+
 /**
  * Class Resource
  * @package Model
@@ -61,6 +63,23 @@ class MenuResource extends AbstractResource {
     $idProd = $menu->getProducto_Id();
     $query->setParameter('idProd',$idProd);
     return $query->getResult();
+  }
+
+  public function hoy() {
+    $hoy = date("y-m-d");
+    $fecha = new \DateTime($hoy);
+    $menus = $this->getByFecha($fecha);
+    $productos=[];
+    foreach ($menus as $menu) {
+      $productos[]= $this->producto($menu->getId());
+    }
+    $infoMenu = "";
+    foreach ($productos as $producto) {
+      foreach ($producto as $productoi) {
+        $infoMenu .= '* ' . $productoi["nombre"] . '-' . PHP_EOL;
+      }
+    }
+    return $infoMenu;
   }
 
   public function getByFecha($fecha = null) {
