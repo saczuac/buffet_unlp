@@ -30,7 +30,7 @@
 				<label for="editApellido">Apellido: </label>
 				<input type="text" name="apellido" id="editApellido" maxlength="45" value="{{ usuario.apellido }}" required/>
 				<label for="editTelefono">Teléfono: </label>
-				<input type="number" name="telefono" id="editTelefono" maxlength="25" value="{{ usuario.telefono }}" required/>
+				<input type="number" name="telefono" id="editTelefono" value="{{ usuario.telefono }}" required/>
 				<label for="newRol">Rol: </label>
 				<select id="newRol" name="rol_id" required>
 				 <option value="">Seleccione</option>
@@ -52,7 +52,7 @@
 				<label for="editMail">Mail: </label>
 				<input type="email" name="email" id="editMail" value="{{ usuario.email }}" required/>
 				<label for="editDocumento">Documento: </label>
-				<input type="number" name="documento" id="editDocumento" maxlength="8" value="{{ usuario.documento }}" required/>
+				<input type="number" name="documento" id="editDocumento" value="{{ usuario.documento }}" required/>
 				<label for="editUsername">Nombre de usuario: </label>
 				<input type="text" name="user" id="editUsername" maxlength="20" value="{{ usuario.usuario }}" required/>
       {% if usuario.rol_id== 2 %}
