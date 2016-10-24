@@ -33,7 +33,6 @@
       var aDelete =document.createElement("a");
       aDelete.setAttribute("href","#");
       var st="borrarProducto("+String(index)+")"
-      alert(st);
       aDelete.setAttribute("onclick",st);
       aDelete.innerHTML = "X";
       columnaCantidad.appendChild(inputCantidad);
