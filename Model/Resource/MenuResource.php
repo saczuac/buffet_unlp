@@ -82,6 +82,23 @@ class MenuResource extends AbstractResource {
     return $infoMenu;
   }
 
+  public function manana() {
+    $manana = date("d-m-Y", time()+86400);
+    $fecha = new \DateTime($manana);
+    $menus = $this->getByFecha($fecha);
+    $productos=[];
+    foreach ($menus as $menu) {
+      $productos[]= $this->producto($menu->getId());
+    }
+    $infoMenu = "";
+    foreach ($productos as $producto) {
+      foreach ($producto as $productoi) {
+        $infoMenu .= '* ' . $productoi["nombre"] . '-' . PHP_EOL;;
+      }
+    }
+    return $infoMenu;
+  }
+
   public function getByFecha($fecha = null) {
     if ($fecha === null) {
       $query_string = "

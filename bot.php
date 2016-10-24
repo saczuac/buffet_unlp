@@ -38,10 +38,12 @@ use Model\Resource\MenuResource;
           $msg['reply_to_message_id'] = null;
           break;
       case '/hoy':
+          $msg['text'] .= 'El menú del día es:' . PHP_EOL;
           $msg['text']  = $menu->hoy();
           break;
       case '/manana':
-          $msg['text']  = 'El menú del día de mañana es ensalada tropical';
+      $msg['text'] .= 'El menú de mañana es:' . PHP_EOL;
+      $msg['text']  = $menu->manana();
           break;
       default:
           $msg['text']  = 'Lo siento, no es un comando válido.' . PHP_EOL;
