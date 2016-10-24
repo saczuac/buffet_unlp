@@ -1,9 +1,10 @@
 <?php
 namespace Controller;
 
-use Model\Resource\MenuResource;
 use Model\Entity\Menu;
+use Model\Resource\MenuResource;
 
+    $menu = MenuResource::getInstance();
     $returnArray = true;
     $rawData = file_get_contents('php://input');
     $response = json_decode($rawData, $returnArray);
@@ -38,7 +39,7 @@ use Model\Entity\Menu;
           $msg['reply_to_message_id'] = null;
           break;
       case '/hoy':
-          $msg['text']  = MenuResource::getInstance()->hoy();
+          $msg['text']  = $menu->hoy();
           break;
       case '/manana':
           $msg['text']  = 'El menú del día de mañana es ensalada tropical';
