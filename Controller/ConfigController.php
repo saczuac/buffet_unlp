@@ -4,6 +4,7 @@ namespace Controller;
 use Model\Entity\Usuario;
 use Model\Resource\ConfiguracionResource;
 
+
 class ConfigController {
 
    public function showConfig($app){
@@ -36,7 +37,7 @@ public function setTituloDescripcion($app,$value) {
   public function setInfoDescripcion($app,$value) {
     $app->applyHook('must.be.administrador');
     ConfiguracionResource::getInstance()->edit('infoDescripcion',$value);
-  }
+  }    ConfiguracionResource::getInstance()->setInfoMenu($app, $infoMenu);
 
   public function setImgDescripcion($app) {
     $app->applyHook('must.be.administrador');
@@ -97,7 +98,7 @@ public function setImgMenu($app) {
     if ($estado!=1) {
       $estado=0;
     }else{
-      
+
     }
     $this->setHabilitad($app,$estado);
     $this->setMsgDeshanilitado($app,$msg);
