@@ -1,0 +1,51 @@
+<form action="" method="POST">
+	<input type="hidden" name="_METHOD" value="PUT"/>
+	
+	<div class="input-group">
+		<label for="nombre">Nombre</label>
+		<input type="text" name="nombre" value="{{ responsable.nombre }}" required>
+	</div>
+	
+	<div class="input-group">
+		<label for="apellido">Apellido</label>
+		<input type="text" name="apellido" value="{{ responsable.apellido }}" required>
+	</div>
+	
+	<div class="input-group">
+		<label for="fecha_nacimiento">Fecha Nacimiento</label>
+		<input type="datepicker" name="fecha_nacimiento" value="{{ responsable.getFechaNacimiento | date('d-m-Y') }}" required>
+	</div>
+	
+	<div class="input-group">
+		<label for="sexo">Sexo</label>
+		<input type="radio" name="sexo" value="masculino">Masculino
+		<input type="radio" name="sexo" value="femenino">Femenino
+	</div>
+
+	<div class="input-group">
+		<label for="tipo">Tipo</label>
+		<input type="radio" name="tipo" value="padre">Padre
+		<input type="radio" name="tipo" value="madre">Madre
+		<input type="radio" name="tipo" value="tutor">Tutor
+	</div>
+	
+	<div class="input-group">
+		<label for="email">Email</label>
+		<input type="text" name="email" value="{{ responsable.email }}" required>
+	</div>
+	
+	<div class="input-group">
+		<label for="telefono">Telefono</label>
+		<input type="number" name="telefono" value="{{ responsable.telefono }}" required>
+	</div>
+	
+	<div class="input-group">
+		<label for="direccion">Direccion</label>
+		<input type="text" name="direccion" value="{{ responsable.direccion }}" required>
+	</div>
+	
+	<button class="btn btn-primary">
+		<i class="fa fa-check"></i>
+		<input type="submit" value="Editar Responsable"/>
+	</button>
+</form>

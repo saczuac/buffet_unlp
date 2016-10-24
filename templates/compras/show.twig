@@ -1,9 +1,8 @@
 {% extends "layout.twig" %}
 
 {% block contenido %}
-
+  
     <section class="center">
-        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
         <h2>Compra</h2>
         <label for="viewProveedor">Proveedor: </label>
         <input type="text" name="newProveedor" id="newProveedor" readonly maxlength="20" placeholder="Proveedor" value="{{compra.proveedor}}" required />
@@ -11,10 +10,16 @@
         <input type="text" name="newCUIL" id="newCUIL" maxlength="20"  readonly placeholder="CUIT" value="{{compra.proveedor_cuit}}" required />
         <label for="viewFecha">Fecha: </label>
         <input type="text" name="newCUIL" id="newCUIL" maxlength="20"  readonly value="{{fecha|date('Y-m-d')}}" required />
+        {% if compra.factura != null %}
+        <label for="factura">Factura:</label>
+        <img src="{{ baseUrl() }}/{{compra.factura}}" alt="factura" class="center" id="factura" name="factura" />
+        {% else %}
+        <label>Factura:Sin Factura cargada</label>
+        {% endif %}
         <!--spoiler -->
 
    </section>
-    <table summary="Tabla de usuarios del buffet" id='contenido'>
+    <table summary="Tabla de usuarios del buffet">
   <tr>
     <th id="Producto">Producto</th>
     <th id="Cantidad">Cantidad</th>

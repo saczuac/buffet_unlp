@@ -1,0 +1,34 @@
+		<form id="recorridos_form" action="alumnos/recorridos" method="post">
+<table>
+	<thead class="table-header">
+		<tr>
+			<th>Cliente</th>
+			<th>Proyecto</th>
+			<th>Item</th>
+			<th>Descripcion</th>
+			<th>Editar</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for item in items %}
+			<tr class="table-data-row">
+				<td>
+						<a href="/clientes/show/{{ item.cliente.id }}">{{ item.cliente.nombreCliente }}</a>
+				</td>
+				<td>
+						<a href="/proyectos/show/{{ item.proyecto.id }}">{{ item.proyecto.nombreProyecto }}</a>
+				</td>
+				<td>
+						<a href="/item/show/{{ item.id }}">{{ item.nombreItem }}</a>
+				</td>
+				<td>{{ item.descripcion }}</td>
+				<td><a href="item/edit/{{item.id}}" title="Editar"><i class="fa fa-pencil"></i></a></td>
+			</tr>
+		{% endfor %}
+	</tbody>
+	</table>
+	<div class="right">
+
+	
+</div>
+</form>

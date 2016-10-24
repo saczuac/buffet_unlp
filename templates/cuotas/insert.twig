@@ -1,0 +1,18 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+
+<div class="container">
+	<div class="col-6 form-centered">
+		<div class="listado">
+			<div class="container">
+				<a href="/cuotas"><i class="fa fa-chevron-left icon"></i>Atras</a>
+				<h2 class="title">
+					Nueva Cuota
+				</h2>
+			{% include 'cuotas/_new.twig' %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

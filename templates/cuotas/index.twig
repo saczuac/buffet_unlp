@@ -1,0 +1,18 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+<div class="container">
+	<div class="main-header">
+		<span class="icon">
+			<i class="fa fa-folder fa-lg"></i>
+		</span>
+		<h2 class="title">Listado de cuotas</h2>
+		<p class="main-description">A continuaci&oacute;n se ve el listado de las cuotas que est&aacute;n actualmente en el sistema.</p>
+		<a href="cuotas/insert" class="btn btn-primary"><i class="fa fa-plus-circle fa-lg"></i>Nueva cuota</a>
+	</div>
+	<div class="listado">
+		{% include 'cuotas/_index.twig' with { 'cuotas' : cuotas } %}
+	</div>
+</div>	
+
+{% endblock %}

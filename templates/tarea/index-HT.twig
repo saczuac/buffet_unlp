@@ -1,0 +1,27 @@
+		<form id="recorridos_form" action="alumnos/recorridos" method="post">
+<table>
+	<thead class="table-header">
+		<tr>					
+			<th>Nombre</th>
+			<th>Descripcion</th>
+			<th>Horas totales</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for tarea in tareas %}
+			<tr class="table-data-row">
+				<td>
+						<a href="/tarea/show/{{ tarea.id }}">{{ tarea.nombre}}</a>
+				</td>
+				<td>{{tarea.descripcion}}</td>
+				<td>{{tarea.ht}}</td>
+
+			</tr>
+		{% endfor %}
+	</tbody>
+	</table>
+	<div class="right">
+
+	
+</div>
+</form>

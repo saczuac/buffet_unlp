@@ -1,0 +1,52 @@
+{% extends 'layout.twig' %}
+
+{% block contenido %}	
+
+<div class="container">
+	<div class="col col-12 listado formulario">
+		<div class="container">
+			<h2 class="title">
+			<span class="icon">
+				<i class="fa fa-user"></i>
+			</span>
+			{{ tarea.cliente.nombreCliente }}->{{ tarea.proyecto.nombreProyecto }}->{{tarea.item.nombreItem}}
+
+		</h2>
+
+				<div class="student-data">
+			
+				<div class="input-group">
+		<label for="tarea">Nombre tarea</label>
+		<textarea name="tarea" cols="40" rows="3"  maxlength="100" required>{{ tarea.nombreTarea }}</textarea>
+		<br />
+	</div>
+		</div>
+		<form id="alumnos_new" action="/tarea/edit/{{tarea.id}} " method="POST">
+		<div class="input-group">
+		<label for="numero_documento">Horas estimadas</label>
+		<input type="number" class="field" name="horas" min="0.5" step="0.5" value="{{ tarea.horasEstimadas }}"required>
+		<br />
+	</div>
+
+	<div class="input-group">
+		<label for="descripcion">Direccion de la carpeta</label>
+		<textarea name="direccion" cols="40" rows="5" maxlength="255"   required>{{ tarea.direccion }}</textarea>
+		<br />
+	</div>
+
+	<div class="input-group">
+		<label for="descripcion">Descripcion</label>
+		<textarea name="descripcion" cols="40" rows="5" maxlength="255"   >{{ tarea.descripcion }}</textarea>
+		<br/>
+	</div>
+	<span class="btn btn-primary">
+		<i class="fa fa-check"></i>
+		<input type="submit" value="Editar item"/>
+	</span>
+
+</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

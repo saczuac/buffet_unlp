@@ -1,0 +1,31 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+
+<div id="map-modal" class="modal__overlay">
+	<div class="modal__map__wrap">
+		<div class="col col-12 listado">
+			<span id="close-modal" class="right toggle-modal">&#10006;</span>
+			<h2>Recorridos</h2>
+			<div id="pathsMap">
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+
+	<div class="main-header">
+		<span class="icon">
+			<i class="fa fa-tasks fa-3x"></i>
+		</span>
+		<h2 class="title">Listado de Tareas</h2>
+		<p class="main-description">A continuaci&oacute;n se ve el listado de los Tareas .</p>
+		<a href="tarea/new" class="btn btn-primary"><i class="fa fa-plus-circle fa-lg"></i>Nueva tarea</a>
+	</div>
+	<div class="listado">
+ {% include 'tarea/index-HT.twig' with {'tareas' : tareas} %}
+	</div>
+</div>	
+
+{% endblock %}

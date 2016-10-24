@@ -25,7 +25,6 @@ $view->parserOptions = ['debug' => true];
 $view->parserExtensions = [new \Slim\Views\TwigExtension()];
 $view->getEnvironment()->addGlobal('session', $_SESSION);
 $view->getEnvironment()->addGlobal('server', $_SERVER);
-$view->getEnvironment()->addGlobal('mail',ConfiguracionResource::getInstance()->get('mail'));
 // <------ END SLIM CONFIGURATION---------->
 
 $userResource = UsuarioResource::getInstance();
@@ -95,7 +94,7 @@ $app->group('/config', function() use($app) {
   $app->post('/setPaginacion', '\Controller\ConfigController:setPaginacion')->setParams(
            array($app, $app->request->post('paginacionInt')));
   $app->post('/setDescripcion', '\Controller\ConfigController:setDescripcion')->setParams(
-           array($app, $app->request->post('titleInfo'),$app->request->post('descInfo'),$app->request->post('mail')));
+           array($app, $app->request->post('titleInfo'),$app->request->post('descInfo')));
   $app->post('/setMenu', '\Controller\ConfigController:setMenu')->setParams(
            array($app, $app->request->post('menuTitulo'),$app->request->post('menuInfo')));
   $app->post('/setHabilitado', '\Controller\ConfigController:setFormHabilitado')->setParams(
@@ -239,6 +238,9 @@ $app->group('/compras', function() use($app) {
       $app->request->post('newCUIL'),
       $app->request->post('paramArray')));
   $app->get('/delete(/(:id)(/))', '\Controller\CompraController:delete')->setParams(array($app),$app->request()->get('id'));
+  $app->post('/factura', '\Controller\CompraController:addFactura')->setParams(array($app,
+    $app->request->post('idCompra')));
+  $app->get('/factura(/(:id)(/))', '\Controller\CompraController:factura')->setParams(array($app),$app->request()->get('id'));
 });
 
 

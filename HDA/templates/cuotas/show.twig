@@ -1,0 +1,40 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+
+<div class="container">
+	<div class="col col-6 card">
+		<h2 class="title">
+			<span class="icon">
+				<i class="fa fa-user"></i>
+			</span>
+			{{ cuota.anio }} {{ cuota.mes }}
+		</h2>
+		<div class="student-data">
+			<p><span class="field">Numero: </span>{{ cuota.numero }}</p>
+			<p><span class="field">Monto: </span>{{ cuota.monto }}</p>
+			<p><span class="field">Tipo: </span>{{ cuota.tipo}}</p>
+			<p><span class="field">comision del cobrador: </span>{{ cuota.comisionCobrador}}</p>
+			<p><span class="field">Fecha de alta: </span>{{ cuota.fechaAlta}}</p>
+		</div>
+		<div class="right">
+			<a href="#"><button class="btn"><i class="fa fa-pencil"></i>Modificar</button></a>
+			<a href="#"><button class="btn btn-danger"><i class="fa fa-trash-o fa"></i>Eliminar</button></a>
+		</div>
+	</div>
+
+	<div class="col col-6 card">
+		<h2 class="title">
+			<span class="icon">
+				<i class="fa fa-money"></i>
+			</span>
+			Becas
+		</h2>
+		<p>Este alumno no tiene becas asignadas.</p>
+		<div class="right">
+			<button class="btn"><i class="fa fa-plus-circle"></i><a href="#">Asignar Beca</a></button>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

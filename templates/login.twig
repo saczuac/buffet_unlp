@@ -1,0 +1,15 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+
+	<form action="/login" method="POST">
+		<div class="style-5 card">
+			<h1>Usuario o password incorrecta</h1>
+			<h3>intente nuevamente</h3>
+			Nombre de usuario: <input type="text" name="name" required><br>
+			Pasword <input type="text" name="password" required><br>
+			<button class="btn btn-primary" type="submit">Entrar</button>
+		</div>
+	</form>
+{% endblock %}
+

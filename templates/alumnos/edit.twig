@@ -1,0 +1,17 @@
+{% extends 'layout.twig' %}
+
+{% block contenido %}	
+
+<div class="container">
+	<div class="col col-12 listado formulario">
+		<div class="container">
+			<a href="/alumnos/{{ alumno.id }}"><i class="fa fa-chevron-left icon"></i>Atras</a>
+			<h2 class="title">
+				Editar Alumno
+			</h2>
+			{% include 'alumnos/_edit.twig' with { 'alumno': alumno }%}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+<table>
+	<thead class="table-header">
+		<tr>
+			<th>Nombre y Apellido</th>
+			<th>Tipo</th>
+			<th>Email</th>
+			<th>Tel.</th>
+			<th>Acciones</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for responsable in responsables %}
+			<tr class="table-data-row">
+				<td>
+					<a href="/responsable/{{ responsable.id }}">
+						{{responsable.nombre  }} {{ responsable.apellido }}
+					</a>
+				</td>
+				<td>{{ responsable.tipo }}</td>
+				<td>{{ responsable.email }}</td>
+				<td>{{ responsable.telefono }}</td>
+				<td>
+					<a href="alumnos/{{ responsable.id }}/edit"><i class="fa fa-pencil"></i></a>
+					<a href="{{ responsable.id }}"><i class="fa fa-trash-o"></i></a>
+				</td>
+			</tr>	
+		{% endfor %}
+	</tbody>
+</table>

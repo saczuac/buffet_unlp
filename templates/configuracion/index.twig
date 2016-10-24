@@ -1,0 +1,93 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+<script>
+function onTestChange() {
+    var key = window.event.keyCode;
+
+    // If the user has pressed enter
+    if (key == 13) {
+        document.getElementById("contenido").value =document.getElementById("contenido").value + "\n*";
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+</script>
+<div class="container">
+{% for conf in configuracion %}
+	<div class="main-header">
+		<span class="icon">
+			<i class="fa fa-cog fa-2x fa-spin"></i>
+		</span>
+		<h2 class="title">Configuraci&oacute;n</h2>
+		<p class="main-description">A continuaci&oacute;n podra configurar la pagina principal de la pagina web.</p>
+		{% if conf.habilitado=='1' %}
+			<p>
+				<span class="icon">
+				<i class="fa fa-check fa-2x"></i>El sitio esta habilitado
+				</span>
+			</p>
+			<div class="modal1">
+						        <input id="modal__trigger" type="checkbox">
+						        <label for="modal__trigger"><i class="fa fa-times fa-lg"></i>Deshabilitar sitio</label>
+						        <div class="modal__overlay">
+									<div class="modal__wrap">
+										
+										<div class="container">
+											<label class="right toggle-modal" for="modal__trigger">&#10006;</label>
+											<form action="/configuracion/deshabilitar" method="POST">
+												<div class="col-12 listado">
+													<h2 class="title">Mensaje de deshabilitado </h2>
+													<div class="input-group">
+														<textarea name="mensaje" row="7" cols="25" required>{{ conf.contenido}}</textarea>
+													</div>
+													<input class="btn" type="submit">
+														
+												</div>
+											</form>	
+										</div>							
+									</div>
+						        </div>
+						    </div>
+		{% else %}
+			<p>
+				<span class="icon">
+				<i class="fa fa-times fa-2x"></i>El sitio esta deshabilitado
+				</span>
+			</p>
+			<p>
+				<span class="icon">
+				<a href="/configuracion/habilitar"><i class="fa fa-check fa-lg"></i>Habilitar sitio</a>
+				</span>
+			</p>
+		{% endif %}
+	</div>
+
+	<div class="col col-12 card">
+		<form action="/configuracion" method="POST">
+			<p><span class="field">Titulo: </span><textarea maxlength="64" name="titulo" id ="titulo" title="titulo" rows="1" cols="64" >{{ conf.titulo }}</textarea><br></p>
+			<div class="parrafo">
+			{% for parr in parrafo %}
+			<p >{{ parr.parrafo }}</p><span class="icon">
+			<a href="/parrafo/editar/{{parr.id}}"><i class="fa fa-pencil fa-lg"></i></a>
+			<a href="/parrafo/eliminar/{{parr.id}}"><i class="fa fa-trash-o fa-lg"></i></a>
+		</span>
+			{% endfor %}
+			</div>
+			<br />
+			<a href="parrafo/insert" class="btn btn-primary"><i class="fa fa-plus-circle fa-lg"></i>Agregar parrafo</a>
+
+			<script>
+</script>
+			<p><span class="field">Email: </span><textarea maxlength="128" name="email" title="email" rows="1" cols="64" >{{ conf.email }}</textarea><br></p>
+			<p><span class="field">paginacion: </span><input type="number" name="paginacion" min="1" max="100" value="{{ conf.paginado }}" required><br></p>			
+
+			<input class="btn" type="submit" value="Aplicar Cambios">
+</form>
+	</div>{% endfor %}
+
+</div>	
+
+{% endblock %}

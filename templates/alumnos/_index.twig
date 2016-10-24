@@ -1,0 +1,40 @@
+<form id="recorridos_form" action="alumnos/recorridos" method="post">
+<table>
+	<thead class="table-header">
+		<tr>
+			<th></th>
+			<th>Nombre</th>
+			<th>Tipo Doc.</th>
+			<th>N° Doc.</th>
+			<th>Responsables</th>
+			<th>Fecha Nac.</th>
+			{% if editable %}
+				<th>Acciones</th>
+			{% endif %}
+		</tr>
+	</thead>
+	<tbody>
+		{% for cliente in clientes %}
+			<tr class="table-data-row">
+				<td>
+					<input type="checkbox" name="alumnos[]" value="{{ alumno.id }}">
+				</td>
+				<td>
+						{{ cliente.nombreCliente }}
+				</td>
+				<td>aa</td>
+				<td>aa</td>
+				<td>aa</td>
+				<td>aa</td>
+				{% if editable %}
+					<td>
+						<a href="alumnos/{{ alumno.id }}/edit" title="Editar"><i class="fa fa-pencil"></i></a>
+						<a href="alumnos/{{ alumno.id }}/delete" title="Eliminar"><i class="fa fa-trash-o"></i></a>
+					</td>
+				{% endif %}
+			</tr>
+		{% endfor %}
+	</tbody>
+	</table>
+	<span class="btn btn-primary right"><i class="fa fa-map-marker"></i><input type="submit" value="Ver Recorridos"></span>
+</form>

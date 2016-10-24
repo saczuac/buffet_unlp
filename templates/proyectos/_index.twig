@@ -1,0 +1,30 @@
+		<form id="recorridos_form" action="alumnos/recorridos" method="post">
+<table>
+	<thead class="table-header">
+		<tr>
+			<th>Cliente</th>
+			<th>Proyecto</th>
+			<th>Descripcion</th>
+			<th>Editar</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for proyecto in proyectos %}
+			<tr class="table-data-row">
+				<td>
+						<a href="/clientes/show/{{ proyecto.cliente.id }}">{{ proyecto.cliente.nombreCliente }}</a>
+				</td>
+				<td>
+						<a href="/proyectos/show/{{ proyecto.id }}">{{ proyecto.nombreProyecto }}</a>
+				</td>
+				<td>{{ proyecto.descripcion }}</td>
+				<td><a href="proyectos/edit/{{proyecto.id}}" title="Editar"><i class="fa fa-pencil"></i></a></td>
+			</tr>
+		{% endfor %}
+	</tbody>
+	</table>
+	<div class="right">
+
+	
+</div>
+</form>

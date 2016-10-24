@@ -1,0 +1,82 @@
+{% extends 'layout.twig' %}
+
+{% block contenido %}	
+
+<div class="container">
+	<div class="col col-12 listado formulario">
+		<div class="container">
+		<div class="input-group">
+			<form id="alumnos_new" action="/item/new" method="POST">
+		<label for="cliente">Cliente</label>
+		<select name="cliente" id="mySelect" onchange="myFunction()">
+			{% if ((selected == null)) %}
+			<option value="aa" selected >elija un cliente</option>
+			{% endif %}	
+		{% for cliente in clientes %}
+			{% if ((cliente.id == selected)) %}
+			<option value="{{ cliente.id }}" selected >{{ cliente.nombreCliente }}</option>
+			{% else %}			
+				
+			<option value="{{ cliente.id }}">{{ cliente.nombreCliente }}</option>
+			{% endif %}
+		{% endfor %}
+	</select>
+		<br />
+	</div>
+	<script>
+		function myFunction() {
+		    var x = document.getElementById("mySelect").value;
+		    window.location.href ="/item/new/" + x;
+		}
+	</script>
+	<div class="input-group">
+		<label for="proyecto">Proyectos</label>
+		<select name="proyecto" id="proyecto" onchange="myFunction2()">
+			{% if ((selectedp == null)) %}
+			<option value="aa" selected >elija un proyecto</option>
+			{% endif %}	
+			{% for proyecto in proyectos %}
+				{% if ((proyecto.id == selectedp)) %}
+				<option value="{{ proyecto.id }}" selected>{{ proyecto.nombreProyecto }}</option>
+				{% else %}			
+				<option value="{{ proyecto.id }}">{{ proyecto.nombreProyecto }}</option>
+				{% endif %}
+
+			{% endfor %}
+			</select>
+		<br />
+	</div>
+
+
+	<div class="input-group">
+		<label for="item">Nombre Item</label>
+		<textarea name="item" cols="40" rows="3"  maxlength="100" required></textarea>
+		<br />
+	</div> 
+	<div class="input-group">
+		<label for="fechaInicio">Fecha inicio</label>
+		<input type="datepicker" name="fechaInicio">
+		<br />
+	</div>
+	<div class="input-group">
+		<label for="fechafin">Fecha fin</label>
+		<input type="datepicker" name="fechafin">
+		<br />
+	</div>
+	<div class="input-group">
+		<label for="descripcion">Descripcion</label>
+		<textarea name="descripcion" cols="40" rows="5" maxlength="255" required></textarea>
+		<br />
+	</div>
+
+
+	<span class="btn btn-primary">
+		<i class="fa fa-check"></i>
+		<input type="submit" value="Agregar item"/>
+	</span>
+</form>
+		</div>
+		</div>
+	</div>
+
+{% endblock %}

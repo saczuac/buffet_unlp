@@ -1,0 +1,44 @@
+{% extends 'layout.twig' %}
+
+{% block contenido %}	
+
+<div class="container">
+	<div class="col col-12 listado formulario">
+		<div class="container">
+			<a href="/clientes"><i class="fa fa-chevron-left icon"></i>Atras</a>
+			<h2 class="title">
+				Nuevo cliente
+			</h2>
+			<form id="alumnos_new" action="/clientes/new" method="POST">
+	
+	<div class="input-group">
+		<label for="cliente">Cliente</label>
+		<textarea name="cliente" cols="40" rows="3"  maxlength="100" required></textarea>
+		<br />
+	</div>
+
+	<div class="input-group">
+		<label for="descripcion">Descripcion</label>
+		<textarea name="descripcion" cols="40" rows="5" maxlength="255" required></textarea>
+		<br />
+	</div>
+
+
+	<div class="input-group">
+		<label for="fecha">Fecha</label>
+		<input type="datepicker" name="fecha">
+		<br />
+	</div>
+
+
+
+	<span class="btn btn-primary">
+		<i class="fa fa-check"></i>
+		<input type="submit" value="Agregar cliente"/>
+	</span>
+</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

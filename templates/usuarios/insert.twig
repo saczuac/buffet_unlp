@@ -1,0 +1,30 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+
+<div class="container">
+	<div class="col col-12 card">
+		<h2 class="title">
+			<span class="icon">
+				<i class="fa fa-user"></i>
+			</span>
+		</h2>
+		<form action="insert" method="POST">
+
+			<p><span class="field">Usuario: </span><input type="text" name="user" required><br></p>
+			<p><span class="field">Contraseña: </span><input type="password" name="pass" required><br></p>
+			<p><span class="field">Nombre: </span><input type="text" name="name" required><br></p>
+			<p><span class="field">Email: </span><input type="text" name="email" required><br></p>
+			<p><span class="field">Rol: </span><select name="rol">
+			  <option value="1">Consulta</option>
+			  <option value="2">Administracion</option>
+			  <option value="3">Gestion</option>
+			</select></p>
+			<input class="btn" type="submit" value="Submit">
+
+		</form>
+	</div>
+
+</div>
+
+{% endblock %}

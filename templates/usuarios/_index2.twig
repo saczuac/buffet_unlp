@@ -1,0 +1,28 @@
+		<form id="recorridos_form" action="alumnos/recorridos" method="post">
+<table>
+	<thead class="table-header">
+		<tr>
+			<th>Username</th>	
+			<th>Nombre</th>
+			<th>E-mail</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		{% for usuario in usuarios %}
+			<tr class="table-data-row">
+
+				<td>
+						<a href="/item/show/{{ usuario.id }}">{{ usuario.username }}</a>
+				</td>
+				<td>{{ usuario.name }}</td>
+				<td>{{ usuario.email }}</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+	</table>
+	<div class="right">
+
+	
+</div>
+</form>

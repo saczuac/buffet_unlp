@@ -1,0 +1,19 @@
+{% extends 'layout.twig' %}
+
+{% block contenido %}	
+
+<div class="container">
+	<div class="col-6 form-centered">
+		<div class="listado">
+			<div class="container">
+				<a href="/alumnos"><i class="fa fa-chevron-left icon"></i>Atras</a>
+				<h2 class="title">
+					Editar Responsable
+				</h2>
+				{% include 'responsable/_edit.twig' with { 'responsable': responsable } %}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

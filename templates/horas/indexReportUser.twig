@@ -1,0 +1,53 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+
+<div id="map-modal" class="modal__overlay">
+	<div class="modal__map__wrap">
+		<div class="col col-12 listado">
+			<span id="close-modal" class="right toggle-modal">&#10006;</span>
+			<h2>Recorridos</h2>
+			<div id="pathsMap">
+			</div>
+		</div>
+	</div>
+</div>
+			<form id="alumnos_new" action="/report/user" method="POST">
+<div class="container">
+
+	<div class="main-header">
+		<span class="icon">
+			<i class="fa fa-bars fa-3x"></i>
+		</span>
+		<h2 class="title">Reporte de usuario</h2>
+				<select name="cliente" id="mySelect">
+			{% if ((selected == null)) %}
+			<option value="aa" selected >elija un usuario</option>
+			{% endif %}	
+		{% for usuario in usuarios %}
+			<option value="{{ usuario.id }}">{{ usuario.name }}</option>
+		{% endfor %}
+		</select>
+		<br />
+<br />
+<br />
+
+		<label for="fecha">Fecha desde</label>
+		<input type="datepicker" name="fechaDesde">
+
+		<label for="fecha">Fecha hasta</label>
+		<input type="datepicker" name="fechaHasta">
+		<br />
+		<br />
+			<span class="btn btn-primary">
+		<i class="fa fa-check"></i>
+		<input type="submit" value="Agregar cliente"/>
+	</span>
+</form>
+	
+	</div>
+
+
+</div>	
+
+{% endblock %}

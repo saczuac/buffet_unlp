@@ -1,0 +1,44 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+
+<div class="container">
+
+	<div class="main-header">
+		<span class="icon">
+			<i class="fa fa-users fa-lg"></i>
+		</span>
+		<h2 class="title">Listado de alumnos</h1>
+		<p class="main-description">A continuaci&oacute;n se ve el listado de los alumnos que est&aacute;n actualmente en el sistema.</p>
+		<button class="btn"><i class="fa fa-plus-circle fa-lg"></i><a href="#">Nuevo Alumno</a></button>
+	</div>
+	<div class="listado">
+		<table>
+			<thead class="table-header">
+				<tr>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>DNI</th>
+					<th>Fecha Nac.</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for alumno in alumnos %}
+					<tr class="table-data-row">
+						<td><a href="alumnos/{{ alumno.id }}">{{ alumno.nombre }}</a></td>
+						<td>{{ alumno.apellido }}</td>
+						<td>{{ alumno.numero_documento }}</td>
+						<td>{{ alumno.fecha_nacimiento | date("d/m/Y") }}</td>
+						<td>
+							<a href="#"><i class="fa fa-pencil"></i></a>
+							<a href=""><i class="fa fa-trash-o"></i></a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>	
+
+{% endblock %}

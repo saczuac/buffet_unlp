@@ -34,6 +34,11 @@ class Compra implements JsonSerializable
      * @OneToMany(targetEntity="EgresoDetalle", mappedBy="compra", cascade={"merge"})
      **/
     protected $detalles;
+    /**
+     * @Column(type="string", length=255)
+     * @var string
+    */
+    protected $factura;
     protected $monto;
 
     public function __construct()
@@ -166,6 +171,30 @@ class Compra implements JsonSerializable
             'fecha'=>$this->fecha,
             'detalles'=> $this->getDetalles(),
         );
+    }
+
+    /**
+     * Gets the value of factura.
+     *
+     * @return string
+     */
+    public function getFactura()
+    {
+        return $this->factura;
+    }
+
+    /**
+     * Sets the value of factura.
+     *
+     * @param string $factura the factura
+     *
+     * @return self
+     */
+    public function setFactura($factura)
+    {
+        $this->factura = $factura;
+
+        return $this;
     }
 }
 

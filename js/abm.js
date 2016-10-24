@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
          document.getElementById("eliminar").className += "action-button shadow animate disabled";
          document.getElementById("eliminar").removeEventListener("click", mostrarDelete);}
          if (document.getElementById("detalles")!= null) {
-        document.getElementById("detalles").className += "action-button shadow animate disabled";
+        document.getElementById("detalles").className = "action-button shadow animate disabled";
         document.getElementById("detalles").addEventListener("click", mostrarDetalles);}
         if (document.getElementById("eliminarFila")!= null) {
         document.getElementById("eliminarFila").className += "action-button shadow animate disabled";
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.getElementById("eliminar").className += "action-button shadow animate red active";
         }
         if (document.getElementById("detalles")!= null) {
-        document.getElementById("detalles").className += "action-button shadow animate violet active";
+        document.getElementById("detalles").className = "action-button shadow animate violet active";
         document.getElementById("detalles").addEventListener("click", mostrarDetalles);
         }
         if (document.getElementById("eliminarFila")!= null) {

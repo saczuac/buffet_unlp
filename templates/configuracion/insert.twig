@@ -1,0 +1,20 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+
+<div class="container">
+	<div class="col col-12 card">
+		<form action="/parrafo/insert" method="POST">
+			<p>
+				<span class="field">Contenido: </span>
+				<textarea maxlength="1024" name="parrafo" title="parrafo" id="parrafo" rows="30" cols="58" onkeydown="if(event.keyCode == 13) return false;"
+				></textarea>
+				<br>
+			</p>
+			<input class="btn" type="submit" value="Crear Parrafo">
+		</form>
+	</div> 
+
+</div>
+
+{% endblock %}

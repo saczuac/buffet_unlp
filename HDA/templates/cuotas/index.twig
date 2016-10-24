@@ -1,0 +1,48 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+
+<div class="container">
+
+	<div class="main-header">
+		<span class="icon">
+			<i class="fa fa-folder fa-lg"></i>
+		</span>
+		<h2 class="title">Listado de cuotas</h1>
+		<p class="main-description">A continuaci&oacute;n se ve el listado de las cuotas que est&aacute;n actualmente en el sistema.</p>
+		<button class="btn"><i class="fa fa-plus-circle fa-lg"></i><a href="cuotas/insert">Nueva cuota</a></button>
+	</div>
+	<div class="listado">
+		<table>
+			<thead class="table-header">
+				<tr>
+					<th>Año</th>
+					<th>Mes</th>
+					<th>Numero</th>
+					<th>Monto</th>
+					<th>Tipo</th>
+					<th>Fecha de alta</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for cuota in cuotas %}
+					<tr class="table-data-row">
+						<td>{{ cuota.anio }}</td>
+						<td>{{ cuota.mes }}</td>
+						<td>{{ cuota.numero }}</td>
+						<td>{{ cuota.monto }}</td>
+						<td>{{ cuota.tipo }}</td>
+						<td>{{ cuota.fechaAlta | date("d/m/Y") }}</td>
+						<td>
+							<a href="cuotas/editar/{{ cuota.id}}"><i class="fa fa-pencil"></i></a>
+							<a href= javascript:preguntar({{ cuota.id }},"cuotas/eliminar/") ><i class="fa fa-trash-o"></i></a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>	
+
+{% endblock %}

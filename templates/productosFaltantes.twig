@@ -1,0 +1,35 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+
+    <br>
+  <h1 class="title" id="listado">listado de Productos Faltantes</h1>
+  <table summary="Tabla de productos faltantes del buffet">
+  <tr>
+    <th id="Producto">Producto</th>
+    <th id="Stock">Stock</th>
+    <th id="minimo">Stock minimo</th>
+  </tr>
+  <tr>
+    <td>Caf&eacute;</td>
+    <td>12</td>
+    <td>20</td>
+  </tr>
+  <tr>
+    <td>Bizcochos</td>
+    <td>24</td>
+    <td>30</td>
+  </tr>
+  <tr>
+    <td>Alfajor</td>
+    <td>39</td>
+    <td>40</td>
+  </tr>
+  <tr>
+    <td>Chocolate</td>
+    <td>5</td>
+    <td>10</td>
+  </tr>
+  </table>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+
+<div class="container">
+	<div class="col col-12 listado">
+		<h2>Alumnos</h2>
+		<table>
+			<thead class="table-header">
+				<tr>
+					<td>Nombre</td>
+					<td>Apellido</td>
+					<td>Documento</td>
+					<td>Pagos</td>
+				</tr>
+			</thead>
+			<tbody>
+				{% for alumno in alumnos %}
+					<tr class="table-data-row">
+						<td>{{ alumno.nombre }}</td>
+						<td>{{ alumno.apellido }}</td>
+						<td>{{ alumno.getNumeroDocumento }}</td>
+						<td><a href="pagos/{{ alumno.id }}">Ver pagos/becas</a></td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+{% endblock %}

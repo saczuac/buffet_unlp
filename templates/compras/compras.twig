@@ -38,13 +38,13 @@
 
         </tbody>
         </table>
-        <a href="#" onclick="agregar()">Agregar Producto</a>
+        <a href="#" onclick="agregarProducto()">Agregar Producto</a>
       </div>
  <!--fin spoiler -->
- <a href="#" onclick="submitNew()" title="Abre el enlace">Aceptar</a>
+ <a href="#" onclick="submitNew()" title="Abre el enlace">Aceptar</a> 
       </form>
     </div>
- <a href="#" onclick="submitNew()" title="Abre el enlace">Aceptar</a>
+ <a href="#" onclick="submitNew()" title="Abre el enlace">Aceptar</a> 
       </form>
     </div>
     <div id="delete" class="modal">
@@ -54,19 +54,27 @@
         <input type="submit" value="Confirmar"/>
       </form>
     </div>
+    <div id="facturaForm" name="facturaForm" class="modal" enctype="multipart/form-data">
+      <form method="post" class="modal-content abm-content" action="/compras/factura">
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+            <label for="factura">Factura: </label>
+            <input type="file" id="factura" name="factura" accept="image/*">
+            <input type="hidden" name="idCompra" id="idCompra">
+        <input type="submit" value="Confirmar"/>
+      </form>
+    </div>
     <br>
   <h1 class="title" id="listado">Listado de Compras</h1>
   <div class="centered">
-  <a id="eliminar" href="#" class="action-button shadow animate disabled" onclick="deleteCompra()">Eliminar</a>
-  <a id="editar" href="#" class="action-button shadow animate disabled">Editar</a>
   <a id="detalles" href="#" class="action-button shadow animate disabled" >Detalles</a>
   <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')" onkeypress="mostrar('new')" role="button">Nuevo</a>
 </div>
-  <table summary="Tabla de usuarios del buffet" id='contenido'>
+  <table summary="Tabla de usuarios del buffet">
   <tr>
     <th id="Producto">Proovedor</th>
     <th id="Cantidad">CUIL del Proovedor</th>
     <th id="Fecha">Fecha</th>
+    <th>ACCIONES</th>
   </tr>
   {% for compra in compras %}
   <tr>
@@ -74,6 +82,11 @@
     <td>{{compra.proveedor}}</td>
     <td>{{compra.proveedor_cuit}}</td>
     <td>{{compra.fecha|date('Y-m-d')}}</td>
+    <td>
+        <a href="/compras/edit/{{ compra.id }}" title="Editar"><i class="fa fa-pencil"></i></a>
+        <a href="/compras/delete/{{ compra.id }}" title="Eliminar"><i class="fa fa-trash-o"></i></a>
+        <a href="/compras/factura/{{ compra.id }}" title="Factura"><i class="fa fa-file-o"></i></a>
+    </td>
   </tr>
   {% endfor %}
   </table>

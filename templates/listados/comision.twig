@@ -1,0 +1,36 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+
+<div class="container">
+
+	<div class="main-header">
+		<span class="icon">
+			<i class="fa fa-list fa-lg"></i>
+		</span>
+		<h2 class="title">Comision {{ session.user }}</h2>
+		<a href="exportar_comision" class="btn btn-primary"><i class="fa fa-plus-circle fa-lg"></i>Exportar a pdf</a>
+	</div>
+	<div class="listado">
+		<table>
+	<thead class="table-header">
+		<tr>
+			<td>Año</td>
+			<td>Mes</td>
+			<td>Comision</td>
+		</tr>
+	</thead>
+	<tbody>
+		{% for item in listado %}
+			<tr class="table-data-row">
+				<td>{{ item.anio }}</td>
+				<td>{{ item.mes }}</td>
+				<td>{{ item.comision|number_format(2, ',', '.') }}</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+	</div>
+</div>	
+
+{% endblock contenido %}

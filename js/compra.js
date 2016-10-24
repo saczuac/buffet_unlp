@@ -1,5 +1,5 @@
   var index=0;
-  function agregar() {
+  function agregarProducto() {
       var fila = document.createElement("TR");
       index=index+1;
       fila.setAttribute("id",index);

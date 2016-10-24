@@ -1,0 +1,35 @@
+<table>
+	<thead class="table-header">
+		<tr>
+			<th>Cliente</th>
+			<th>Proyecto</th>
+			<th>Fecha</th>
+			<th>Horas</th>
+			<th>Tarea</th>
+			<th>Descripcion</th>
+			{% if editable %}
+				<th>Acciones</th>
+			{% endif %}
+		</tr>
+	</thead>
+	<tbody>
+		{% for hora in horas %}
+			<tr class="table-data-row">
+
+				<td>{{ hora.cliente.nombreCliente }}</td>
+				<td>{{ hora.proyecto.nombreProyecto }}</td>
+				<td>{{hora.fecha| date("d/m/Y")}}</td>
+				<td>{{ hora.horas }}</td>
+				<td>{{ hora.tarea.nombreTarea }}</td>
+				<td>{{ hora.usuario.name }}</td>
+				<td>{{cliente.descripcion}}</td>
+				{% if editable %}
+					<td>
+						<a href="alumnos/{{ alumno.id }}/edit" title="Editar"><i class="fa fa-pencil"></i></a>
+						<a href="alumnos/{{ alumno.id }}/delete" title="Eliminar"><i class="fa fa-trash-o"></i></a>
+					</td>
+				{% endif %}
+			</tr>
+		{% endfor %}
+	</tbody>
+	</table>

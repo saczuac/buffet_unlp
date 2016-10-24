@@ -1,0 +1,26 @@
+<form action={{ cuota.id }} method="POST">
+	<div class="input-group">
+		<span class="field">Numero: </span>
+		<input type="number" name="numero" min="1" max="99999999999" value={{ cuota.numero }}>
+		<br>
+	</div>
+
+	<div class="input-group">
+		<span class="field">Monto: </span>
+		<input type="number" name="monto" min="1" max="99999999999" value={{ cuota.monto }}>
+		<br>
+	</div>
+
+	<div class="input-group">
+		<label class="field" for="tipo">Tipo</label>
+		<input type="radio" id="tipo" name="tipo" value ="mensual" checked>Mensual<br>
+		<input type="radio" name="tipo" value="matricula" >Matricula<br>
+	</div>
+
+	<div class="input-group">
+		<span class="field">Comision cobrador: </span>
+		<input type="number" name="comco" min="1" max="99999999999" value={{ cuota.comisioncobrador }}>
+		<br>
+	</div>
+	<input class="btn" type="submit" value="Editar cuota">
+</form>

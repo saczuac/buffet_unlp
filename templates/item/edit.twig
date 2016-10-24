@@ -1,0 +1,48 @@
+{% extends 'layout.twig' %}
+
+{% block contenido %}	
+
+<div class="container">
+	<div class="col col-12 listado formulario">
+		<div class="container">
+			<h2 class="title">
+				<span class="icon">
+					<i class="fa fa-bullseye"></i>
+				</span>
+				{{ item.cliente.nombreCliente }}->{{ item.proyecto.nombreProyecto }}->{{item.nombreItem}}
+
+			</h2>
+	<form id="alumnos_new" action="/item/edit/{{item.id}}" method="POST">
+	<div class="input-group">
+		<label for="item">Nombre Item</label>
+		<textarea name="item" cols="40" rows="3"  maxlength="100" required>{{item.nombreItem}}</textarea>
+		<br />
+	</div> 
+	<div class="input-group">
+		<label for="fechaInicio">Fecha inicio</label>
+		<input type="datepicker" name="fechaInicio" value="{{ item.fechaInicio| date('d-m-Y')  }}">
+		<br />
+	</div>
+	<div class="input-group">
+		<label for="fechafin">Fecha fin</label>
+		<input type="datepicker" name="fechafin" value="{{ item.fechaFin| date('d-m-Y')  }}">
+		<br />
+	</div>
+
+	<div class="input-group">
+		<label for="descripcion">Descripcion</label>
+		<textarea name="descripcion" cols="40" rows="5" maxlength="255" required>{{ item.descripcion }}</textarea>
+		<br />
+	</div>
+
+
+	<span class="btn btn-primary">
+		<i class="fa fa-check"></i>
+		<input type="submit" value="Agregar item"/>
+	</span>
+</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

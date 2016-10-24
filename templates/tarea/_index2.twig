@@ -1,0 +1,31 @@
+		<form id="recorridos_form" action="alumnos/recorridos" method="post">
+<table>
+	<thead class="table-header">
+		<tr>
+			<th>Nombreee</th>
+			<th>Fecha ingreso</th>
+			<th>acciones</th>
+			{% if editable %}
+				<th>Acciones</th>
+			{% endif %}
+		</tr>
+	</thead>
+	<tbody>
+		{% for tarea in tareas %}
+			<tr class="table-data-row">
+				<td>
+						<a href="/tarea/show/{{ tarea.id }}">{{ tarea.nombreTarea }}</a>
+				</td>
+				<td>aa</td>
+					<td>
+						<a href="{{ tarea.id }}/proyecto/{{ proyecto.id }}/quit" title="Eliminar"><i class="fa fa-trash-o"></i></a>
+					</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+	</table>
+	<div class="right">
+
+	
+</div>
+</form>

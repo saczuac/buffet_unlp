@@ -1,0 +1,43 @@
+{% extends 'layout.twig' %}
+
+{% block contenido %}	
+
+<div class="container">
+	<div class="col-6 form-centered">
+		<div class="listado">
+			<div class="container">
+				<h2 class="title">
+					{{ responsable.nombre }} {{ responsable.apellido }}
+				</h2>
+				<div class="student-data">
+					<p>
+						<span class="field">Tipo: </span>
+						{{ responsable.getTipo | capitalize}}
+					</p>
+					<p>
+						<span class="field">Fecha Nacimiento: </span>
+						{{ responsable.fecha_nacimiento | date("d-m-Y") }}
+					</p>
+					<p>
+						<span class="field">Sexo: </span>
+						{{ responsable.sexo | capitalize}}
+					</p>
+					<p>
+						<span class="field">Alta: </span>
+						{{ responsable.fecha_alta | date("d-m-Y") }}
+					</p>
+					<p>
+						<span class="field">Email: </span>
+						<a href="mailto: {{ responsable.email }}">{{ responsable.email }}</a>
+					</p>
+					<p>
+						<span class="field">Direcci&oacute;n: </span>
+						{{ responsable.direccion }}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

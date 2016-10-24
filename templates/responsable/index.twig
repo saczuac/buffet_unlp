@@ -1,0 +1,34 @@
+<table>
+	<thead class="table-header">
+		<tr>
+			<th>Nombre y Apellido</th>
+			<th>Tipo</th>
+			<th>Email</th>
+			<th>Tel.</th>
+			<th>Acciones</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for responsable in alumno.responsables %}
+			<tr class="table-data-row">
+				<td>
+					<a href="/responsable/{{ responsable.id }}">
+						{{responsable.nombre  }} {{ responsable.apellido }}
+					</a>
+				</td>
+				<td>{{ responsable.tipo | capitalize }}</td>
+				<td>{{ responsable.email }}</td>
+				<td>{{ responsable.telefono }}</td>
+				<td>
+					<a href="{{ alumno.id }}/responsables/{{ responsable.id }}/edit" title="Editar"><i class="fa fa-pencil"></i></a>
+					<a href="{{ alumno.id }}/responsables/{{ responsable.id }}/detach" title="Desasignar"><i class="fa fa-times-circle"></i></a>
+				</td>
+			</tr>	
+		{% endfor %}
+	</tbody>
+</table>
+<div class="right">
+	<a href="{{ alumno.id }}/responsables/new" class="btn btn-primary">
+		<i class="fa fa-plus-circle"></i>Agregar
+	</a>
+</div>

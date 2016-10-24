@@ -1,0 +1,12 @@
+<form action="#" method="post">
+	<input type="hidden" name="_METHOD" value="PUT"/>
+	<input type="hidden" name="id_usuario" value="{{ usuario.id }}">
+	<select name="id_responsable">
+		{% for responsable in responsables %}
+			<option value="{{ responsable.id }}">
+				{{responsable.nombre}} {{responsable.apellido}}
+			</option>
+		{% endfor %}
+	</select>
+	<br /><input type="submit" value="Asignar" style="cursor:inherit;">
+</form>

@@ -51,8 +51,8 @@ class CompraResource extends AbstractResource {
         $this->getEntityManager()->flush();
         return $compra;
     }
-    public function insert($proveedor,$proveedor_cuit){
-        $nuevaCompra=$this->Nuevo($proveedor,$proveedor_cuit);
+    public function insert($proveedor,$proveedor_cuit,$factura){
+        $nuevaCompra=$this->Nuevo($proveedor,$proveedor_cuit,$factura);
         $this->getEntityManager()->persist($nuevaCompra);
         $this->getEntityManager()->flush();
         return $nuevaCompra;
@@ -68,6 +68,13 @@ class CompraResource extends AbstractResource {
     public function delete($id){
         $compra = $this->getEntityManager()->find('Model\Entity\Compra', $id);
         $this->getEntityManager()->remove($compra);
+        $this->getEntityManager()->flush();
+        return true;
+    }
+    public function addFactura($id,$urlFac){
+        $compra = $this->getEntityManager()->find('Model\Entity\Compra', $id);
+        $compra->setFactura($urlFac);
+        $this->getEntityManager()->persist($compra);
         $this->getEntityManager()->flush();
         return true;
     }

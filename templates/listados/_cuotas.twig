@@ -1,0 +1,42 @@
+<table>
+	<thead class="table-header">
+		<tr>
+			<td>Año</td>
+			<td>Mes</td>
+			<td>Numero</td>
+			<td>Monto</td>
+			<td>Tipo</td>
+			<td>Beca/Pago</td>
+			<td>Comision (%)</td>
+			<td>Nombre</td>
+			<td>Apellido</td>
+			<td>Numero Doc.</td>
+			<td>Email</td>
+			<td>Fecha Nacimiento</td>
+		</tr>
+	</thead>
+	<tbody>
+		{% for item in listado %}
+			<tr class="table-data-row">
+				<td>{{ item.anio }}</td>
+				<td>{{ item.mes }}</td>
+				<td>{{ item.numero }}</td>
+				<td>{{ item.monto }}</td>
+				<td>{{ item.tipo | capitalize}}</td>
+				<td>
+					{% if item.becado %}
+						{{ 'Beca' }}
+					{% else  %}
+						{{ 'Pago'}}
+					{% endif %}
+				</td>
+				<td>{{ item.comisionCobrador }}</td>
+				<td>{{ item.nombre }}</td>
+				<td>{{ item.apellido }}</td>
+				<td>{{ item.numero_documento }}</td>
+				<td>{{ item.email }}</td>
+				<td>{{ item.fecha_nacimiento | date('d-m-Y') }}</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
