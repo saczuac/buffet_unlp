@@ -9,17 +9,17 @@ class CompraController {
 
 public function index($app)
   {
-    $app->applyHook('must.be.administrador');
+    $app->applyHook('must.be.gestion.or.administrador');
     echo $app->view->render( "compras/compras.twig", array('compras' => (CompraResource::getInstance()->get()),'productos' => (ProductoResource::getInstance()->get()),'comprad' => (CompraResource::getInstance()->get(50))));
   }
   public function show($app,$id)
   {
-    $app->applyHook('must.be.administrador');
+    $app->applyHook('must.be.gestion.or.administrador');
     echo $app->view->render( "compras/show.twig", array('compra' => (CompraResource::getInstance()->get($id))));
   }
   public function edit($app,$id)
   {
-    $app->applyHook('must.be.administrador');
+    $app->applyHook('must.be.gestion.or.administrador');
     echo $app->view->render( "compras/edit.twig", array('compra' => (CompraResource::getInstance()->get($id)),'productos' => (ProductoResource::getInstance()->get())));
   }
   public function nuevo($app,$proveedor,$cuil,$paramArray)
@@ -31,7 +31,7 @@ public function index($app)
 
 		ProductoResource::getInstance()->ingresarStock($algo[$i*(3)],$algo[($i*(3))+1]);
 
-	}	
+	}
   	$this->index($app);
   }
   public function borrarMisDetalles($id)
@@ -49,13 +49,13 @@ public function index($app)
 
     ProductoResource::getInstance()->ingresarStock($algo[$i*(3)],$algo[($i*(3))+1]);
 
-  } 
+  }
     $this->index($app);
   }
   public function delete($app,$id)
   {
-    $app->applyHook('must.be.administrador');
-    CompraResource::getInstance()->deleteAllDetalles($id);    
+    $app->applyHook('must.be.gestion.or.administrador');
+    CompraResource::getInstance()->deleteAllDetalles($id);
     CompraResource::getInstance()->delete($id);
     $app->redirect("/compras");
   }
