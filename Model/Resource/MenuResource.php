@@ -67,8 +67,7 @@ class MenuResource extends AbstractResource {
 
   public function hoy() {
     $hoy = date("y-m-d");
-    $fecha = new \DateTime($hoy);
-    $menus = $this->getByFecha($fecha);
+    $menus = $this->getByFecha($hoy);
     $productos=[];
     foreach ($menus as $menu) {
       $productos[]= $this->producto($menu->getId());
