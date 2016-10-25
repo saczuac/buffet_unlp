@@ -2,8 +2,15 @@
 
 require_once 'vendor/autoload.php';
 use Model\Resource\MenuResource;
+session_start();
 
-    $menu = MenuResource::getInstance();
+$app = new \Slim\Slim([
+        'debug' => true,
+    ]);
+
+$menuResource = MenuResource::getInstance();
+
+$app->post('/', function() use ($app, $menuResource) {
     $returnArray = true;
     $rawData = file_get_contents('php://input');
     $response = json_decode($rawData, $returnArray);
@@ -35,15 +42,20 @@ use Model\Resource\MenuResource;
           $msg['text'] .= '/manana --> Muestra el menú del día de mañana'  . PHP_EOL;
           $msg['text'] .= '/help --> Muestra esta ayuda'  . PHP_EOL;
           $msg['text'] .= '/hoy --> Muestra el menú del día de hoy' . PHP_EOL;
+          $msg['text'] .= '/sub --> Permite suscribirse a las notificaciones del bot' . PHP_EOL;
+          $msg['text'] .= '/unsub --> No recibir más las notificaciones del bot' . PHP_EOL;
           $msg['reply_to_message_id'] = null;
           break;
       case '/hoy':
           $msg['text'] = 'El menú del día es:' . PHP_EOL;
-          $msg['text'] .= $menu->hoy();
+          $msg['text'] .= $menuResource->hoy();
           break;
       case '/manana':
       $msg['text'] = 'El menú de mañana es:' . PHP_EOL;
-      $msg['text'] .= $menu->manana();
+      $msg['text'] .= $menuResource->manana();
+          break;
+      case '/manana':
+          $msg['text'] = 'Ha sido subscripto exitosamente' . PHP_EOL;
           break;
       default:
           $msg['text']  = 'Lo siento, no es un comando válido.' . PHP_EOL;
@@ -60,5 +72,6 @@ use Model\Resource\MenuResource;
       );
       $context  = stream_context_create($options);
       $result = file_get_contents($url, false, $context);
-      exit(0);
+    });
+    exit(0);
  ?>
