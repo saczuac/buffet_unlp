@@ -1,9 +1,7 @@
 <?php
 
 require_once 'vendor/autoload.php';
-use Model\Resource\MenuResource;
-
-$menuResource = MenuResource::getInstance();
+use Controller\BotController;
 
     $returnArray = true;
     $rawData = file_get_contents('php://input');
@@ -42,14 +40,25 @@ $menuResource = MenuResource::getInstance();
           break;
       case '/hoy':
           $msg['text'] = 'El menú del día es:' . PHP_EOL;
-          $msg['text'] .= $menuResource->hoy();
+          $msg['text'] .= (BotController::getInstance()->hoy());
           break;
       case '/manana':
       $msg['text'] = 'El menú de mañana es:' . PHP_EOL;
-      $msg['text'] .= $menuResource->manana();
+      $msg['text'] .= (BotController::getInstance()->manana());
           break;
-      case '/manana':
-          $msg['text'] = 'Ha sido subscripto exitosamente' . PHP_EOL;
+      case '/sub':
+          if (BotController::getInstance()->sub()) {
+            $msg['text'] = 'Ha sido subscripto exitosamente' . PHP_EOL;
+          } else {
+            $msg['text'] = 'No se pudo subscribir' . PHP_EOL;
+          }
+          break;
+      case '/unsub':
+        if (BotController::getInstance()->unsub()) {
+          $msg['text'] = 'Ya no está subscripto a las notificaciones' . PHP_EOL;
+        } else {
+          $msg['text'] = 'No se pudo efectuar la operación' . PHP_EOL;
+        }
           break;
       default:
           $msg['text']  = 'Lo siento, no es un comando válido.' . PHP_EOL;
