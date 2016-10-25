@@ -5,6 +5,7 @@ require_once 'Model/Resource/UsuarioResource.php';
 use Model\Entity\Usuario;
 use Model\Resource\UsuarioResource;
 use Controller\UsuarioController;
+use Controller\BotController;
 use Model\Resource\ConfiguracionResource;
 
 session_start();
@@ -28,6 +29,7 @@ $view->getEnvironment()->addGlobal('server', $_SERVER);
 // <------ END SLIM CONFIGURATION---------->
 
 $userResource = UsuarioResource::getInstance();
+$botController = BotController::getInstance();
 
 require_once 'permissions.php';
 
@@ -243,6 +245,14 @@ $app->group('/compras', function() use($app) {
   $app->get('/factura(/(:id)(/))', '\Controller\CompraController:factura')->setParams(array($app),$app->request()->get('id'));
 });
 
+$app->get('/bot', function() use ($app, $botController) {
+    if ($botController->notificar()) {
+      $app->flash('success', 'Se han realizado las notificaciones correctamente');
+    } else {
+      $app->flash('error', 'No se pudo notificar a los subscriptos');
+    }
+    //$app->redirect('/menu');
+});
 
 $app->run();
 ?>

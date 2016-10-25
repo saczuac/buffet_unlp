@@ -52,6 +52,7 @@
   <h1 class="title" id="listado">Menú Semanal</h1>
   <div class="centered">
   <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')" onkeypress="mostrar('new')" role="button">Nuevo</a>
+  <a id="notificar" href="{{ baseUrl() }}/bot" class="action-button shadow animate violet active" onclick="return confirm('Esta función notificará el menú del día a todos los usuarios subscriptos al bot de telegram. ¿Está seguro que quiere hacerlo?')" role="button">Notificar</a>
 </div>
 {% include 'menus/_index.twig' with {'menus' : menus} %}
 {% endblock %}
