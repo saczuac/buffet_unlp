@@ -251,7 +251,7 @@ $app->get('/bot', function() use ($app, $botController) {
     } else {
       $app->flash('error', 'No se pudo notificar a los subscriptos');
     }
-    //$app->redirect('/menu');
+    $app->redirect('/menu');
 });
 
 $app->run();
