@@ -2,15 +2,9 @@
 
 require_once 'vendor/autoload.php';
 use Model\Resource\MenuResource;
-session_start();
-
-$app = new \Slim\Slim([
-        'debug' => true,
-    ]);
 
 $menuResource = MenuResource::getInstance();
 
-$app->post('/', function() use ($app, $menuResource) {
     $returnArray = true;
     $rawData = file_get_contents('php://input');
     $response = json_decode($rawData, $returnArray);
@@ -72,6 +66,5 @@ $app->post('/', function() use ($app, $menuResource) {
       );
       $context  = stream_context_create($options);
       $result = file_get_contents($url, false, $context);
-    });
     exit(0);
  ?>
