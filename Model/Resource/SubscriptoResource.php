@@ -46,8 +46,12 @@ class SubscriptoResource extends AbstractResource {
     }
 
   public function sub($chat_id) {
-    $this->getEntityManager()->persist($this->Nuevo($chat_id));
-    $this->getEntityManager()->flush();
+    try {
+      $this->getEntityManager()->persist($this->Nuevo($chat_id));
+      $this->getEntityManager()->flush();
+    } catch (\Doctrine\DBAL\DBALException $e) {
+     return false;
+    }
     return $this->get();
   }
 
