@@ -6,7 +6,6 @@ use Controller\BotController;
     $returnArray = true;
     $rawData = file_get_contents('php://input');
     $response = json_decode($rawData, $returnArray);
-    $id_del_chat = $response['message']['chat']['id'];
     $regExp = '#^(\/[a-zA-Z0-9\/]+?)(\ .*?)$#i';
     $tmp = preg_match($regExp, $response['message']['text'], $aResults);
     if (isset($aResults[1])) {
@@ -47,14 +46,14 @@ use Controller\BotController;
       $msg['text'] .= (BotController::getInstance()->manana());
           break;
       case '/sub':
-          if (BotController::getInstance()->sub()) {
+          if (BotController::getInstance()->sub($msg['chat_id'])) {
             $msg['text'] = 'Ha sido subscripto exitosamente' . PHP_EOL;
           } else {
             $msg['text'] = 'No se pudo subscribir' . PHP_EOL;
           }
           break;
       case '/unsub':
-        if (BotController::getInstance()->unsub()) {
+        if (BotController::getInstance()->unsub($msg['chat_id'])) {
           $msg['text'] = 'Ya no está subscripto a las notificaciones' . PHP_EOL;
         } else {
           $msg['text'] = 'No se pudo efectuar la operación' . PHP_EOL;

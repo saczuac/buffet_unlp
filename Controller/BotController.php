@@ -25,5 +25,12 @@ class BotController {
     return MenuResource::getInstance()->manana();
   }
 
+  public function sub($chat_id) {
+    return (SubscriptoResource::getInstance()->sub($chat_id));
+  }
+
+  public function unsub($chat_id) {
+    return (SubscriptoResource::getInstance()->unsub($chat_id));
+  }
 
 }
