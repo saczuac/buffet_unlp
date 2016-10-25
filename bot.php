@@ -49,7 +49,7 @@ use Controller\BotController;
           if (BotController::getInstance()->sub($msg['chat_id'])) {
             $msg['text'] = 'Ha sido subscripto exitosamente' . PHP_EOL;
           } else {
-            $msg['text'] = 'No se pudo subscribir' . PHP_EOL;
+            $msg['text'] = 'No se pudo subscribir o usted ya se encuentra subscripto' . PHP_EOL;
           }
           break;
       case '/unsub':
