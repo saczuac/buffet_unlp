@@ -35,6 +35,7 @@ class BotController {
 
   public function notificar() {
     $subscriptos = SubscriptoResource::getInstance()->get();
+    try {
     foreach ($subscriptos as $sub) {
       $msg = array();
       $msg['chat_id'] = ($sub->getChat_Id());
@@ -54,5 +55,9 @@ class BotController {
       $context  = stream_context_create($options);
       $result = file_get_contents($url, false, $context);
     }
+  } catch {
+    return false;
+  }
+  return true;
   }
 }
