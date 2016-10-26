@@ -120,10 +120,10 @@ $app->group('/menu', function() use($app) {
 });
 
 $app->group('/pedidos', function() use($app) {
-	$app->get('/', function() use($app){
-    $app->applyHook('must.be.logueado');
-		echo $app->view->render('pedidos.twig');
-	});
+  $app->get('/', '\Controller\PedidoController:index')->setParams(array($app));
+  $app->post('/new', '\Controller\PedidoController:nuevo')->setParams(
+    array($app,$app->request->post('paramArray'),$_SESSION['id'], null, $app->request->post('observacion')));
+    $app->get('/show', '\Controller\PedidoController:show')->setParams(array($app, $app->request->get('fecha')));
 });
 
 

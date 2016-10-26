@@ -1,0 +1,17 @@
+{% extends "layout.twig" %}
+{% block contenido %}
+<h1 class="title" id="listado">Productos del pedido</h1>
+<table summary="Tabla de productos del buffet" id='contenido'>
+<tr>
+  <th id="dia">Producto</th>
+	<th id="dia">Cantidad</th>
+{% for producto in productos %}
+	{% for productoi in producto %}
+		<tr>
+  	<td>{{ productoi.nombre }}</td>
+		<td>{{ productoi.cantidad }}</td>
+		</tr>
+	{% endfor %}
+{% endfor %}
+</table>
+{% endblock %}

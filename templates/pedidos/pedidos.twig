@@ -1,0 +1,46 @@
+{% extends "layout.twig" %}
+{% block contenido %}
+<script>
+    var comprasjson = {{menus|json_encode|raw}};
+    var json = {{productos|json_encode|raw}};
+  function cargarModal(j) {
+    document.getElementById("formVerDetalles");
+    var vdProveedor=document.getElementById("vdProveedor");
+    var vdCUIL=document.getElementById("vdCUIL");
+  }
+</script>
+    <div id="new" class="modal">
+      <form method="post" id="formNew" action="{{ baseUrl() }}/pedidos/new" class="modal-content abm-content">
+        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+        <h3>Nuevo Pedido</h3>
+        <label for="newObservacion">Observaciones: </label>
+        <input type="text" name="observacion" id="newObservacion" maxlength="255" placeholder="Observacion" required />
+        <!--spoiler -->
+        <input type="checkbox" id="spoilerNewMenu"></input>
+        <label for="spoilerNewMenu" size="12"><i class="fa fa-sort-desc" aria-hidden="true"></i> Productos del Menú del día </label>
+        <div class="spoiler col col-12">
+        <table >
+        <thead class="table-header">
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Borrar</th>
+          </tr>
+        </thead>
+        <tbody id=ProductosPedido>
+        </tbody>
+        </table>
+        <a href="#" onclick="agregarPedido()">Agregar Producto</a>
+      </div>
+ <!--fin spoiler -->
+ <a href="#" onclick="submitNew()" title="Abre el enlace">Aceptar</a>
+      </form>
+    </div>
+    <br>
+  <h1 class="title" id="listado">Menú del día - Productos</h1>
+  <div class="centered">
+  <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')" onkeypress="mostrar('new')" role="button">Nuevo</a>
+</div>
+{% include 'pedidos/_index.twig' with {'pedidos' : pedidos, 'productos' : productos } %}
+{% endblock %}

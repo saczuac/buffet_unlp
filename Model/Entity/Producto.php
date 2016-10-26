@@ -73,9 +73,14 @@ class Producto implements JsonSerializable
      * @OneToMany(targetEntity="Menu", mappedBy="producto_id")
     */
      protected $menus;
+     /**
+      * @OneToMany(targetEntity="PedidoDetalle", mappedBy="pedido_id")
+      **/
+     protected $detalles_prod;
 
     public function __construct() {
         $this->detalles = new ArrayCollection();
+        $this->detalles_prod = new ArrayCollection();
         $this->menus = new ArrayCollection();
     }
 

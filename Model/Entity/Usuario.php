@@ -3,6 +3,7 @@ namespace Model\Entity;
 
 use Model\Entity;
 use Doctrine\ORM\Mapping;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  *
@@ -69,6 +70,15 @@ class Usuario
      * @Column(type="string", length=255)
      */
     protected $email;
+    /**
+     * @OneToMany(targetEntity="Pedido", mappedBy="usuario_id")
+    */
+     protected $pedidos;
+
+     public function __construct()
+     {
+         $this->pedidos = new ArrayCollection();
+     }
 
     public function getId() {
     	return $this->id;

@@ -1,0 +1,40 @@
+<table summary="Tabla de productos del buffet" id='contenido'>
+  <tr>
+    <th id="Nombre">NOMBRE</th>
+    <th id="Marca">MARCA</th>
+    <th id="Stock">CATEGORIA</th>
+    <th id="Stock">PRECIO</th>
+    <th id="Stock">STOCK</th>
+  </tr>
+  {% for producto in productos %}
+  	{% for productoi in producto %}
+		<tr id="{{ productoi.id }}">
+			<td>{{ productoi.nombre }}</td>
+			<td>{{ productoi.marca }}</td>
+      <td>{{ productoi.categoria_id.nombre }}</td>
+      <td>{{ productoi.precio_venta_unitario }}</td>
+			<td>{{ productoi.stock }}</td>
+		</tr>
+    {% endfor %}
+	{% endfor %}
+  </table>
+<br><br>
+{% if session.rol == 1 or session.rol == 3   %}
+<h1 class="title">Tabla de Pedidos</h1>
+<table summary="Tabla de pedidos" id='contenido2'>
+  <tr>
+    <th id="Fecha">FECHA</th>
+    <th id="Estado">ESTADO</th>
+    <th id="Estado">USUARIO</th>
+    <th id="Descripcion">ACCIONES</th>
+  </tr>
+	{% for pedido in pedidos %}
+		<tr id="{{ pedido.id }}">
+			<td>{{ pedido.fecha_alta }}</td>
+			<td>{{ pedido.estado }}</td>
+      <td><a href="{{ baseUrl() }}/usuarios/show?id={{ pedido.usuario_id }}">{{ pedido.usuario }}</a></td>
+			<td><a href="{{ baseUrl() }}/pedidos/show?id={{ pedido.id }}" title="Ver Detalles"><i class="fa fa-eye"></i></a></td>
+		</tr>
+	{% endfor %}
+  </table>
+{% endif %}

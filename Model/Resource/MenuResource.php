@@ -65,6 +65,17 @@ class MenuResource extends AbstractResource {
     return $query->getResult();
   }
 
+  public function productoEntero($id) {
+    $menu = $this->getEntityManager()->getReference('Model\Entity\Menu', $id);
+    $query_string = "
+        SELECT p FROM Model\Entity\Producto p
+        WHERE p.id = :idProd";
+    $query = $this->getEntityManager()->createQuery($query_string);
+    $idProd = $menu->getProducto_Id();
+    $query->setParameter('idProd',$idProd);
+    return $query->getResult();
+  }
+
   public function hoy() {
     $hoy = date("y-m-d");
     $fecha = new \DateTime($hoy);
