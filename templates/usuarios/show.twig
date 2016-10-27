@@ -18,7 +18,11 @@
 				{% for ubicacion in ubicacionUser %}
 				<span class="field">Ubicación: {{ ubicacion.nombre }} | {{ ubicacion.descripcion }} </span>
 				{% endfor %}
-				<span class="field">Rol del Usuario: {{ usuario.rol_id }} </span>
+				{% for rol in roles %}
+				 {% if rol.id== usuario.rol_id %}
+				 <span class="field">Rol del Usuario: {{ rol.nombre }} </span>
+				 {%endif%}
+				{% endfor %}
 				<span class="field">Teléfono: {{ usuario.telefono }} </span>
 		</div>
 		<div id="edit" class="modal">
