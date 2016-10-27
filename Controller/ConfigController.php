@@ -36,8 +36,7 @@ public function setTituloDescripcion($app,$value) {
 
   public function setInfoDescripcion($app,$value) {
     $app->applyHook('must.be.administrador');
-    ConfiguracionResource::getInstance()->edit('infoDescripcion',$value);
-  }    ConfiguracionResource::getInstance()->setInfoMenu($app, $infoMenu);
+    ConfiguracionResource::getInstance()->edit('infoDescripcion',$value);}    
 
   public function setImgDescripcion($app) {
     $app->applyHook('must.be.administrador');
