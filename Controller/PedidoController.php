@@ -28,9 +28,10 @@ public function index($app)
   	$this->index($app);
   }
 
-  public function nuevo($app, $paramArray, $usuario_id, $estado_id = 1, $observacion)
+  public function nuevo($app, $paramArray, $estado_id = 1, $observacion)
   {
     /*TODO: terminar detalle */
+    $usuario_id = (isset($_SESSION['id'])) ? $_SESSION['id'] : null ;
     $app->applyHook('must.be.online');
     $pedido = PedidoResource::getInstance()->insert($usuario_id, 1, $observacion);
   	$algo=explode(",", $paramArray);
