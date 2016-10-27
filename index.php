@@ -26,6 +26,7 @@ $view->parserOptions = ['debug' => true];
 $view->parserExtensions = [new \Slim\Views\TwigExtension()];
 $view->getEnvironment()->addGlobal('session', $_SESSION);
 $view->getEnvironment()->addGlobal('server', $_SERVER);
+$view->getEnvironment()->addGlobal('mail', ConfiguracionResource::getInstance()->get('mail'));
 // <------ END SLIM CONFIGURATION---------->
 
 $userResource = UsuarioResource::getInstance();
