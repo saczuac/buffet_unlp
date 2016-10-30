@@ -77,10 +77,8 @@ $app->post('/registrar', '\Controller\UsuarioController:registrarUsuario')->setP
 );
 
 $app->group('/balanceGastos', function() use($app) {
-	$app->get('/', function() use($app){
-      $app->applyHook('must.be.logueado');
-		echo $app->view->render('balanceGastos.twig');
-	});
+	$app->get('/','\Controller\BalanceController:ganancias')->setParams(
+        array($app,'10-10-2016','30-10-2016'));
 });
 
 

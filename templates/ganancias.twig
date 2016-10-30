@@ -1,0 +1,26 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+
+  <table summary="Tabla de gastos del buffet">
+  <tr>
+    <th id="Gastos">Gasto</th>
+    <th id="Descripcion">Descripcion</th>
+    <th id="Fecha">Fecha</th>
+    <th id="Monto">Monto</th>
+  </tr>
+  <script type="text/javascript">
+$(function () {
+    Highcharts.chart('container',{{ganancias|json_encode|raw}});
+  })
+  </script>
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+  {% for ganancia in ganancias %}
+  <tr>
+    <td>{{ganancia.fecha|date('Y-m-d')}}</td>
+    <td>{{ganancia.dato}}</td>
+  </tr>
+  {% endfor %}
+
+  </table>
+{% endblock %}

@@ -73,5 +73,20 @@ class IngresoDetalleResource extends AbstractResource {
         $this->getEntityManager()->flush();
         return true;
     }
+    public function getSumIngresos($desde,$hasta)
+    {
+        $query_string = "
+            SELECT sum(i.precio_unitario * i.cantidad) as y, i.fecha as name
+            FROM Model\Entity\IngresoDetalle i
+            WHERE i.fecha between :desde AND :hasta
+            GROUP BY i.fecha
+            ORDER by i.fecha";
+
+        $query = $this->getEntityManager()->createQuery($query_string);
+        $query->setParameter('desde', new \DateTime($desde));
+        $query->setParameter('hasta', new \DateTime($hasta));
+
+        return $query->getResult();
+    }
 }
 ?>

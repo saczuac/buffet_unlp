@@ -62,5 +62,19 @@ class EgresoDetalleResource extends AbstractResource {
         $this->getEntityManager()->flush();
         return true;
     }
+        public function getSumEgresontre($desde,$hasta)
+    {
+        $query_string = "
+            SELECT sum(e.precio_unitario * e.cantidad) as y, e.fecha as name
+            FROM Model\Entity\EgresoDetalle e
+            WHERE e.fecha between :desde AND :hasta
+            GROUP BY e.fecha
+            ORDER by e.fecha asc ";
+
+        $query = $this->getEntityManager()->createQuery($query_string);
+        $query->setParameter('desde', new \DateTime($desde));
+        $query->setParameter('hasta', new \DateTime($hasta));
+        return $query->getResult();
+    }
 }
 ?>
