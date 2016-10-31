@@ -88,5 +88,20 @@ class IngresoDetalleResource extends AbstractResource {
 
         return $query->getResult();
     }
+    public function getVentasEntre($desde,$hasta)
+    {
+        $query_string = "
+            SELECT sum(i.cantidad) as y, CONCAT(p.nombre,'-',p.marca) as name
+            FROM Model\Entity\IngresoDetalle i JOIN Model\Entity\Producto p
+            WHERE i.producto=p.id AND i.fecha between :desde AND :hasta 
+            GROUP By i.producto
+            ";
+
+        $query = $this->getEntityManager()->createQuery($query_string);
+        $query->setParameter('desde', new \DateTime($desde));
+        $query->setParameter('hasta', new \DateTime($hasta));
+
+        return $query->getResult();
+    }
 }
 ?>

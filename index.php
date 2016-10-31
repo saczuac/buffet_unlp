@@ -77,7 +77,7 @@ $app->post('/registrar', '\Controller\UsuarioController:registrarUsuario')->setP
 );
 
 $app->group('/balanceGastos', function() use($app) {
-	$app->get('/','\Controller\BalanceController:ganancias')->setParams(
+	$app->get('/','\Controller\BalanceController:ventas')->setParams(
         array($app,'10-10-2016','30-10-2016'));
 });
 

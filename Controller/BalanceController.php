@@ -21,9 +21,9 @@ public function ganancias($app,$desde,$hasta)
       /*$valor['name']=$valor['name']->format('Y-m-d');*/
     }
     $app->applyHook('must.be.gestion.or.administrador');
-    echo $app->view->render( "ganancias.twig", array('ganancias' => $this->armoJson($params)));
+    echo $app->view->render( "ganancias.twig", array('ganancias' => $this->armoJsonGanancias($params)));
   }
-public function armoJson($values=null)
+public function armoJsonGanancias($values)
 {
 
   $arregloJson=
@@ -54,14 +54,14 @@ public function armoJson($values=null)
                 'borderWidth'=>0,
                 'dataLabels'=>array(
                     'enabled'=>true,
-                    'format'=>'{point.y:.1f}'
+                    'format'=>'${point.y:.1f}'
                 )
             )
         ),
 
         'tooltip'=>array(
             'headerFormat'=>'<span style="font-size:11px">{series.name}</span><br>',
-            'pointFormat'=>'<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+            'pointFormat'=>'<span style="color:{point.color}">{point.name}</span>: <b>${point.y:.2f}</b><br/>'
         ),
 
         'series'=>[array(
@@ -75,12 +75,51 @@ public function armoJson($values=null)
 
 }
 
+public function armoJsonVentas($values)
+{
+
+  $arregloJson=
+        array(
+            'chart'=>array(
+                'plotBackgroundColor'=>null,
+                'plotBorderWidth'=>null,
+                'plotShadow'=>false,
+                'type'=>'pie'
+            ),
+            'title'=>array(
+                'text'=>'Browser market shares January, 2015 to May, 2015'
+            ),
+            'tooltip'=>array(
+                'pointFormat'=>'{series.name}: <b>{point.percentage:.1f}%</b>'
+            ),
+            'plotOptions'=>array(
+                'pie'=>array(
+                    'allowPointSelect'=>true,
+                    'cursor'=>'pointer',
+                    'dataLabels'=>array(
+                        'enabled'=>false
+                    ),
+                    'showInLegend'=>true
+                )
+            ),
+          'series'=>[array(
+            'name'=>'Brands',
+            'colorByPoint'=>true,
+            'data'=>$values)
+      ])
+    ;
+
+  return $arregloJson;
+
+
+}
+
 public function myMerge($ingresos,$egresos)
 {   foreach ($ingresos as &$ingreso) {
       foreach ($egresos as $key=>&$egreso) {
         if ($ingreso['name']==$egreso['name']) {
           $ingreso['y']=$ingreso['y']-$egreso['y'];
-          unset($egresos[$key + 1]);
+          unset($egresos[$key]);
         }
       }
     }
@@ -90,4 +129,14 @@ public function myMerge($ingresos,$egresos)
     }
     return $ingresos;
 }
+public function ventas($app,$desde,$hasta)
+  {
+    $ingresos=IngresoDetalleResource::getInstance()->getVentasEntre($desde,$hasta);
+    foreach ($ingresos as &$valor) {
+      $valor['y']=(float)$valor['y'];
+      /*$valor['name']=$valor['name']->format('Y-m-d');*/
+    }
+    $app->applyHook('must.be.gestion.or.administrador');
+    echo $app->view->render( "ganancias.twig", array('ganancias' => $this->armoJsonVentas($ingresos)));
+  }
 }
