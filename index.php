@@ -254,7 +254,7 @@ $app->get('/bot', function() use ($app, $botController) {
     if ($botController->notificar()) {
       $app->flash('success', 'Se han realizado las notificaciones correctamente');
     } else {
-      $app->flash('error', 'No se pudo notificar a los subscriptos');
+      $app->flash('error', 'No se pudo notificar a los subscriptos o no hay menu habilitado para hoy');
     }
     $app->redirect('/menu');
 });

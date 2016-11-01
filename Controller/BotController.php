@@ -36,24 +36,28 @@ class BotController {
   public function notificar() {
     $subscriptos = SubscriptoResource::getInstance()->get();
     try {
-    foreach ($subscriptos as $sub) {
-      $msg = array();
-      $msg['chat_id'] = ($sub->getChat_Id());
-      $msg['text'] = 'El menú del día es:' . PHP_EOL;
-      $msg['text'] .= ($this->hoy());
-      $msg['disable_web_page_preview'] = true;
-      $msg['reply_to_message_id'] = null;
-      $msg['reply_markup'] = null;
-      $url = 'https://api.telegram.org/bot296497556:AAFlvyDLjO921sqBVHhpTaV1W5D5GoUFRUw/sendMessage';
-      $options = array(
-      'http' => array(
-          'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-          'method'  => 'POST',
-          'content' => http_build_query($msg)
-          )
-      );
-      $context  = stream_context_create($options);
-      $result = file_get_contents($url, false, $context);
+    if ($this->hoy() == '') {
+      return false;
+    } else {
+      foreach ($subscriptos as $sub) {
+        $msg = array();
+        $msg['chat_id'] = ($sub->getChat_Id());
+        $msg['text'] = 'El menú del día es:' . PHP_EOL;
+        $msg['text'] .= ($this->hoy());
+        $msg['disable_web_page_preview'] = true;
+        $msg['reply_to_message_id'] = null;
+        $msg['reply_markup'] = null;
+        $url = 'https://api.telegram.org/bot296497556:AAFlvyDLjO921sqBVHhpTaV1W5D5GoUFRUw/sendMessage';
+        $options = array(
+          'http' => array(
+            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+            'method'  => 'POST',
+            'content' => http_build_query($msg)
+            )
+        );
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+      }
     }
   } catch (Exception $e) {
     return false;
