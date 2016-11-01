@@ -56,6 +56,15 @@ class PedidoDetalleResource extends AbstractResource {
         return $nuevoPedido;
     }
 
+    public function getByPedidoId ($id) {
+      $query_string = "
+          SELECT p FROM Model\Entity\PedidoDetalle p
+          WHERE p.pedido_id = :idPedido";
+      $query = $this->getEntityManager()->createQuery($query_string);
+      $query->setParameter('idPedido',$id);
+      return $query->getResult();
+    }
+
 }
 
 ?>

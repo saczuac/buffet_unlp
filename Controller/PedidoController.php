@@ -23,22 +23,19 @@ public function index($app)
     echo $app->view->render("pedidos/pedidos.twig", array('pedidos' => (PedidoResource::getInstance()->get()), 'productos' => ($productos)));
   }
 
-  public function showPedido($app, $id){
-/* TODO: showPedido */
-  	$this->index($app);
+  public function show($app, $id){
+    $detalles = PedidoDetalleResource::getInstance()->getByPedidoId($id);
+    echo $app->view->render("pedidos/show.twig", array('detalles' => ($detalles)));
   }
 
   public function nuevo($app, $paramArray, $estado_id = 1, $observacion)
   {
-    /*TODO: terminar detalle */
     $usuario_id = (isset($_SESSION['id'])) ? $_SESSION['id'] : null ;
     $app->applyHook('must.be.online');
     $pedido = PedidoResource::getInstance()->insert($usuario_id, 1, $observacion);
   	$algo=explode(",", $paramArray);
-    if (count($algo)>=3) {
-        for ($i = 0; $i < (count($algo)/3) ; $i++) {
-        //  $nuevoDetalle=PedidoDetalleResource::getInstance()->insert($pedido,$algo[$i*(3)],$algo[($i*(3))+1]);
-        }
+    for ($i = 0; $i < (count($algo)) ; $i++) {
+     $nuevoDetalle=PedidoDetalleResource::getInstance()->insert($pedido,array_shift($algo),array_shift($algo));
     }
   	$this->index($app);
   }

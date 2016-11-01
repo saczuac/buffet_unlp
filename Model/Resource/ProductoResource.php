@@ -110,6 +110,15 @@ class ProductoResource extends AbstractResource {
       return $paginator;
   }
 
+  public function getStock(){
+      $em = $this->getEntityManager();
+      $query_string = "
+          SELECT p FROM Model\Entity\Producto p
+          WHERE p.stock > 0";
+      $query = $this->getEntityManager()->createQuery($query_string);
+      return $query->getResult();
+  }
+
   public function getPaginateFaltantes($pageSize,$currentPage){
       $em = $this->getEntityManager();
       $dql = "SELECT p FROM Model\Entity\Producto p WHERE p.stock = 0";
@@ -131,7 +140,7 @@ class ProductoResource extends AbstractResource {
   }
     public function hay($id,$cantidad)
   { return($cantidad >= $this->get($id)->getStock());
-  
+
 
   }
 

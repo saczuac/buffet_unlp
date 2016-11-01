@@ -34,13 +34,15 @@
         <a href="#" onclick="agregarPedido()">Agregar Producto</a>
       </div>
  <!--fin spoiler -->
- <a href="#" onclick="submitNew()" title="Abre el enlace">Aceptar</a>
+ <a href="#" onclick="submitNewPedido()" title="Abre el enlace">Aceptar</a>
       </form>
     </div>
     <br>
   <h1 class="title" id="listado">Menú del día - Productos</h1>
   <div class="centered">
-  <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')" onkeypress="mostrar('new')" role="button">Nuevo</a>
+  {% if session.rol == 2 %}
+    <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="mostrar('new')" onkeypress="mostrar('new')" role="button">Nuevo</a>
+  {% endif %}
 </div>
 {% include 'pedidos/_index.twig' with {'pedidos' : pedidos, 'productos' : productos } %}
 {% endblock %}

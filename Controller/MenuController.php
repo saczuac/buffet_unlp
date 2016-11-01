@@ -10,7 +10,7 @@ class MenuController {
 public function index($app)
   {
     $app->applyHook('must.be.gestion.or.administrador');
-    echo $app->view->render("menus/menu.twig", array('menus' => (MenuResource::getInstance()->getByFecha()), 'productos' => (ProductoResource::getInstance()->get())));
+    echo $app->view->render("menus/menu.twig", array('menus' => (MenuResource::getInstance()->getByFecha()), 'productos' => (ProductoResource::getInstance()->getStock())));
   }
 
   public function showFecha($app, $fecha){

@@ -5,13 +5,11 @@
 <tr>
   <th id="dia">Producto</th>
 	<th id="dia">Cantidad</th>
-{% for producto in productos %}
-	{% for productoi in producto %}
+{% for detalle in detalles %}
 		<tr>
-  	<td>{{ productoi.nombre }}</td>
-		<td>{{ productoi.cantidad }}</td>
+  	<td>{{ detalle.producto_id.nombre }}</td>
+		<td>{{ detalle.cantidad }}</td>
 		</tr>
-	{% endfor %}
 {% endfor %}
 </table>
 {% endblock %}

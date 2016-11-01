@@ -35,18 +35,19 @@ function agregarPedido() {
     fila.appendChild(columnaCantidad);
     fila.appendChild(columnaDelete);
 }
-function submitNew() {
+
+function submitNewPedido() {
   document.getElementById("formNew");
   var y=[];
   var ids = document.getElementsByName("idProducto");
   var cants = document.getElementsByName("cantidad");
   for (var i = 0; i < ids.length; i++) {
     if ((ids[i].value!= "") && (cants[i].value!= "")){
-    y[i*(3)]=ids[i].value;
-    y[(i*(3))+1]=cants[i].value;
+      y.push(ids[i].value);
+      y.push(cants[i].value);
   }
  }
-  h=y.toString();
+  h = y.toString();
   var inputArray = document.createElement( "input" );
   inputArray.setAttribute( "name", "paramArray" );
   inputArray.setAttribute( "type", "hidden" );

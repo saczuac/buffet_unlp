@@ -30,9 +30,15 @@
   </tr>
 	{% for pedido in pedidos %}
 		<tr id="{{ pedido.id }}">
-			<td>{{ pedido.fecha_alta }}</td>
-			<td>{{ pedido.estado }}</td>
-      <td><a href="{{ baseUrl() }}/usuarios/show?id={{ pedido.usuario_id }}">{{ pedido.usuario }}</a></td>
+			<td>{{ pedido.fecha_alta | date('Y-m-d') }}</td>
+      {% if pedido.estado_id.id == 1 %}
+			   <td>Pendiente</td>
+      {% elseif pedido.estado_id.id == 2 %}
+         <td>Entregado</td>
+      {% else %}
+       <td>Cancelado</td>
+      {% endif %}
+      <td><a href="{{ baseUrl() }}/usuarios/show?id={{ pedido.usuario_id.id }}">{{ pedido.usuario_id.nombre }}</a></td>
 			<td><a href="{{ baseUrl() }}/pedidos/show?id={{ pedido.id }}" title="Ver Detalles"><i class="fa fa-eye"></i></a></td>
 		</tr>
 	{% endfor %}
