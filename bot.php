@@ -39,12 +39,22 @@ use Controller\BotController;
           break;
       case '/hoy':
           $msg['text'] = 'El menú del día es:' . PHP_EOL;
-          $msg['text'] .= (BotController::getInstance()->hoy());
+          $hoy = BotController::getInstance()->hoy();
+          if ($hoy == '') {
+            $msg['text'] .= 'Lo sentimos, no hay menu del dia habilitado para hoy';
+          } else {
+            $msg['text'] .= $hoy;
+          }
           break;
       case '/manana':
-      $msg['text'] = 'El menú de mañana es:' . PHP_EOL;
-      $msg['text'] .= (BotController::getInstance()->manana());
-          break;
+        $msg['text'] = 'El menú de mañana es:' . PHP_EOL;
+        $manana = BotController::getInstance()->manana();
+        if ($manana == '') {
+          $msg['text'] .= 'Lo sentimos, no hay menu del dia habilitado para mañana';
+        } else {
+            $msg['text'] .= $manana;
+        }
+      break;
       case '/sub':
           if (BotController::getInstance()->sub($msg['chat_id'])) {
             $msg['text'] = 'Ha sido subscripto exitosamente' . PHP_EOL;

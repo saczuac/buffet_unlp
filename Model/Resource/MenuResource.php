@@ -101,7 +101,9 @@ class MenuResource extends AbstractResource {
     $menus = $this->getByFecha($fecha);
     $productos=[];
     foreach ($menus as $menu) {
-      $productos[]= $this->producto($menu->getId());
+      if ($menu->getHabilitado() == 1) {
+        $productos[]= $this->producto($menu->getId());
+      }
     }
     $infoMenu = "";
     foreach ($productos as $producto) {
