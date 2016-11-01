@@ -23,21 +23,36 @@ public function index($app)
     echo $app->view->render( "menus/show.twig", array('productos' => ($productos), 'fecha' => ($fecha)));
   }
 
-/* TODO: Hacer show de lista de productos con AJAX
-  public function show($app,$id)
+  public function showEdit($app,$id)
   {
     $app->applyHook('must.be.gestion.or.administrador');
-    echo $app->view->render( "menus/show.twig", array('compra' => (CompraResource::getInstance()->get($id))));
+    $menu = MenuResource::getInstance()->get($id);
+    $menus = MenuResource::getInstance()->getByFecha($menu->getFecha());
+    $productos=[];
+    foreach ($menus as $menu) {
+      $productos[]= MenuResource::getInstance()->productoEntero($menu->getId());
+    }
+    echo $app->view->render( "menus/edit.twig", array('menu' => ($menu),'productos' => ($productos), 'allProductos' => (ProductoResource::getInstance()->get())));
   }
-*/
 
-  public function nuevo($app,$productos, $fecha, $habilitado)
+  public function nuevo($app, $productos, $fecha, $habilitado)
   {
     $algo=explode(",", $productos);
 	  for ($i = 0; $i < (count($algo)/3) ; $i++) {
       $menu = MenuResource::getInstance()->insert($algo[$i*(3)], $fecha, $habilitado);
 	   }
   	$this->index($app);
+  }
+
+  public function deleteMenu($app, $fecha) {
+    MenuResource::getInstance()->deleteByFecha($fecha);
+    $this->index($app);
+  }
+
+  public function edit($app,$productos,$fecha,$habilitado)
+  {
+    MenuResource::getInstance()->deleteByFecha($fecha);
+    $this->nuevo($app, $productos, $fecha, $habilitado);
   }
 
 }

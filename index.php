@@ -115,6 +115,10 @@ $app->group('/gastos', function() use($app) {
 
 $app->group('/menu', function() use($app) {
   $app->get('/', '\Controller\MenuController:index')->setParams(array($app));
+    $app->get('/delete', '\Controller\MenuController:deleteMenu')->setParams(array($app, $app->request->get('fecha')));
+  $app->get('/edit', '\Controller\MenuController:showEdit')->setParams(array($app ,$app->request()->get('id')));
+  $app->post('/edit', '\Controller\MenuController:edit')->setParams(
+    array($app,$app->request->post('paramArray'),$app->request->post('editFecha'),$app->request->post('habilitado')));
   $app->post('/new', '\Controller\MenuController:nuevo')->setParams(
     array($app,$app->request->post('paramArray'),$app->request->post('newFecha'),$app->request->post('habilitado')));
     $app->get('/show', '\Controller\MenuController:showFecha')->setParams(array($app, $app->request->get('fecha')));

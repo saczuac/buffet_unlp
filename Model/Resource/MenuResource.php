@@ -82,7 +82,9 @@ class MenuResource extends AbstractResource {
     $menus = $this->getByFecha($fecha);
     $productos=[];
     foreach ($menus as $menu) {
-      $productos[]= $this->producto($menu->getId());
+      if ($menu->getHabilitado() == 1) {
+        $productos[]= $this->producto($menu->getId());
+      }
     }
     $infoMenu = "";
     foreach ($productos as $producto) {
@@ -125,6 +127,15 @@ class MenuResource extends AbstractResource {
       $query->setParameter('fecha',$fecha);
       return $query->getResult();
     }
+  }
+
+  public function deleteByFecha($fecha) {
+      $query_string = "
+          DELETE FROM Model\Entity\Menu m
+          WHERE m.fecha = :fecha";
+      $query = $this->getEntityManager()->createQuery($query_string);
+      $query->setParameter('fecha',$fecha);
+      return $query->getResult();
   }
 }
 

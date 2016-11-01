@@ -1,0 +1,55 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+  <script type="text/javascript">
+  var index=0;
+        var json = {{allProductos|json_encode|raw}};
+  </script>
+    <section class="center">
+      <form name="formEdit" id="formEdit" action="{{ baseUrl() }}/menu/edit" method="post">
+        <h3>Editar Menú</h3>
+        <label for="editFecha">Fecha: </label>
+        <input type="date" id="editFecha" name="editFecha" value="{{ menu.fecha | date('Y-m-d') }}" />
+        <label for="editHabilitado" id="labelHabilitado">Habilitado: </label>
+        <select id="editHabilitado" name="habilitado">
+          {% if menu.habilitado == 1 %}
+          <option value="1" selected> Si </option>
+          <option value="0"> No </option>
+          {% else %}
+          <option value="1"> Si </option>
+          <option value="0"selected> No </option>
+          {% endif %}
+        </select>
+        <!--spoiler -->
+      </form>
+   </section>
+   <section class="center">
+   <div class="centered">
+    <a id="nuevo" href="#" class="action-button shadow animate green active" onclick ="agregarMenu()" onkeypress="agregarProducto()" role="button">Nuevo</a>
+  </div>
+        <table>
+        <thead class="table-header">
+          <tr>
+            <th>Producto</th>
+            <th>Borrar</th>
+          </tr>
+        </thead>
+        <tbody  id=ProductosMenu >
+        {% for producto in productos %}
+        	{% for productoi in producto %}
+              <tr>
+              <td id=algo style="display:none;">{{ loop.index }}</td>
+              <td>
+                <select name="idProducto">
+                  <option value="{{productoi.id}}" selected>{{productoi.nombre}}</option>
+                </select>
+              </td>
+              <td><a href="#" onclick="borrar({{ loop.index }})">X</a></td>
+            </tr>
+        	{% endfor %}
+        {% endfor %}
+        </tbody>
+        </table>
+         <a href="#" onclick="submitEditMenu({{menu.id}})" title="Abre el enlace">Aceptar</a>
+        </section>
+{% endblock %}

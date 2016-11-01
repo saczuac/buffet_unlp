@@ -1,5 +1,5 @@
 var index=0;
-function agregar() {
+function agregarMenu() {
     var fila = document.createElement("TR");
     index=index+1;
     fila.setAttribute("id",index);
@@ -50,3 +50,21 @@ function borrar(id) {
     var list=document.getElementById("ProductosMenu");
     list.removeChild(list.childNodes[id]);
  }
+
+function submitEditMenu(id) {
+  document.getElementById("formEdit");
+  var y=[];
+  var ids = document.getElementsByName("idProducto");
+  for (var i = 0; i < ids.length; i++) {
+    if (ids[i].value!= ""){
+      y[i*(3)]=ids[i].value;
+    }
+  }
+  h = y.toString();
+  var inputArray = document.createElement( "input" );
+  inputArray.setAttribute( "name", "paramArray" );
+  inputArray.setAttribute( "type", "hidden" );
+  inputArray.setAttribute( "value", h );
+    document.getElementById("formEdit").appendChild(inputArray);
+    document.getElementById("formEdit").submit();
+}

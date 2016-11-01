@@ -2,12 +2,20 @@
 <tr>
   <th id="dia">Fecha</th>
   <th id="menu">Habilitado</th>
-  <th id="ver">Ver Productos</th>
+  <th id="ver">Acciones</th>
 {% for menu in menus %}
 <tr>
   <td>{{ menu.fecha | date('Y-m-d') }}</td>
-  <td>{{ menu.habilitado }}</td>
-  <td><a href="{{ baseUrl() }}/menu/show?fecha={{ menu.fecha | date('Y-m-d') }}" title="Ver"><i class="fa fa-eye"></i></a></td>
+  {% if menu.habilitado == 1 %}
+    <td>Si</td>
+  {% else %}
+    <td>No</td>
+  {% endif %}
+  <td>
+  <a href="{{ baseUrl() }}/menu/show?fecha={{ menu.fecha | date('Y-m-d') }}" title="Ver productos"><i class="fa fa-eye"></i></a>
+  <a href="{{ baseUrl() }}/menu/edit?id={{ menu.id }}" title="Editar"><i class="fa fa-pencil"></i></a>
+<a href="{{ baseUrl() }}/menu/delete?fecha={{ menu.fecha | date('Y-m-d') }}" title="Eliminar" onclick="return confirm('¿Está seguro que desea eliminar este menu?')"><i class="fa fa-trash-o"></i></a>
+  </td>
 </tr>
 {% endfor %}
 </table>
