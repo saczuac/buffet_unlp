@@ -18,8 +18,10 @@ public function index($app)
     $menus = MenuResource::getInstance()->getByFecha($fecha);
     $productos=[];
     foreach ($menus as $menu) {
-      $productos[]= MenuResource::getInstance()->productoEntero($menu->getId());
-    }
+      if ($menu->getHabilitado() == 1) {
+        $productos[]= MenuResource::getInstance()->productoEntero($menu->getId());
+      }
+     }
     echo $app->view->render("pedidos/pedidos.twig", array('pedidos' => (PedidoResource::getInstance()->get()), 'productos' => ($productos)));
   }
 
@@ -30,6 +32,7 @@ public function index($app)
 
   public function nuevo($app, $paramArray, $estado_id = 1, $observacion)
   {
+  try {
     $usuario_id = (isset($_SESSION['id'])) ? $_SESSION['id'] : null ;
     $app->applyHook('must.be.online');
     $pedido = PedidoResource::getInstance()->insert($usuario_id, 1, $observacion);
@@ -37,6 +40,9 @@ public function index($app)
     for ($i = 0; $i < (count($algo)) ; $i++) {
      $nuevoDetalle=PedidoDetalleResource::getInstance()->insert($pedido,array_shift($algo),array_shift($algo));
     }
-  	$this->index($app);
+  } catch (\Doctrine\DBAL\DBALException $e) {
+      $app->flash('error', 'No se pudo dar de alta el pedido');
+  }
+  $this->index($app);
   }
 }
