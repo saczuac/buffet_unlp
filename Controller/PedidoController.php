@@ -11,9 +11,10 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 class PedidoController {
 
-public function index($app)
+public function index($app, $misPedidos = null)
   {
     $hoy = date("y-m-d");
+    $usuario_id = (isset($_SESSION['id'])) ? $_SESSION['id'] : null ;
     $fecha = new \DateTime($hoy);
     $menus = MenuResource::getInstance()->getByFecha($fecha);
     $productos=[];
@@ -22,7 +23,16 @@ public function index($app)
         $productos[]= MenuResource::getInstance()->productoEntero($menu->getId());
       }
      }
-    echo $app->view->render("pedidos/pedidos.twig", array('pedidos' => (PedidoResource::getInstance()->get()), 'productos' => ($productos)));
+    if ($misPedidos == null) {
+       $misPedidos = PedidoResource::getInstance()->getPedidosDelUsuario($usuario_id);
+    }
+    echo $app->view->render("pedidos/pedidos.twig", array('pedidos' => (PedidoResource::getInstance()->get()),'pedidosMios' => ($misPedidos) ,'productos' => ($productos)));
+  }
+
+  public function search($app, $desde, $hasta) {
+    $usuario_id = (isset($_SESSION['id'])) ? $_SESSION['id'] : null ;
+    $misPedidos = PedidoResource::getInstance()->getPedidosDelUsuarioEntreFechas($usuario_id, new \DateTime($desde), new \DateTime($hasta));
+    $this->index($app, $misPedidos);
   }
 
   public function show($app, $id){

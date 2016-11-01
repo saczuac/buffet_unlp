@@ -126,6 +126,7 @@ $app->group('/menu', function() use($app) {
 
 $app->group('/pedidos', function() use($app) {
   $app->get('/', '\Controller\PedidoController:index')->setParams(array($app));
+  $app->post('/search', '\Controller\PedidoController:search')->setParams(array($app, $app->request->post('desde'), $app->request->post('hasta')));
   $app->post('/new', '\Controller\PedidoController:nuevo')->setParams(
     array($app,$app->request->post('paramArray'), null, $app->request->post('observacion')));
     $app->get('/show', '\Controller\PedidoController:show')->setParams(array($app, $app->request->get('id')));

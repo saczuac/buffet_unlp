@@ -40,6 +40,30 @@ class PedidoResource extends AbstractResource {
         return $data;
     }
 
+    public function getPedidosDelUsuario ($id) {
+      $query_string = "
+          SELECT p FROM Model\Entity\Pedido p
+          WHERE p.usuario_id = :idUser";
+      $query = $this->getEntityManager()->createQuery($query_string);
+      $query->setParameter('idUser',$id);
+      return $query->getResult();
+    }
+
+    public function getPedidosDelUsuarioEntreFechas($id, \Datetime $desde, \DateTime $hasta) {
+      $f = new \DateTime($desde->format("Y-m-d")." 00:00:00");
+      $h = new \DateTime($hasta->format("Y-m-d")." 23:59:59");
+      $qb = $this->getEntityManager()->createQueryBuilder();
+      $qb->select('p')
+        ->from('Model\Entity\Pedido', 'p')
+        ->where('p.fecha_alta >= :desde')
+        ->andWhere('p.fecha_alta <= :hasta')
+        ->andWhere('p.usuario_id <= :idUser')
+        ->setParameter('desde', $f)
+        ->setParameter('idUser', $id)
+        ->setParameter('hasta', $h);
+      return ($qb->getQuery()->getResult() == null);
+    }
+
     public function Nuevo ($usuario_id, $estado_id = 1, $observacion){
         $pedido = new Pedido();
         $usuario = UsuarioResource::getInstance()->get($usuario_id);

@@ -43,4 +43,34 @@
 		</tr>
 	{% endfor %}
   </table>
+{% else %}
+<h1 class="title">Mis Pedidos</h1>
+<form method="post" id="formNew" action="{{ baseUrl() }}/pedidos/search" class="modal-content abm-content">
+<h3> Buscador entre fechas </h3>
+<label for="desde">Desde</label>
+<input type="date" name="desde">
+<label for="hasta">Hasta</label>
+<input type="date" name="hasta">
+<input type="submit" value="Filtrar">
+</form>
+<table summary="Tabla de pedidos mios" id='contenido3'>
+  <tr>
+    <th id="Fecha">FECHA</th>
+    <th id="Estado">ESTADO</th>
+    <th id="Descripcion">ACCIONES</th>
+  </tr>
+	{% for pedido in pedidosMios %}
+		<tr id="{{ pedido.id }}">
+			<td>{{ pedido.fecha_alta | date('Y-m-d') }}</td>
+      {% if pedido.estado_id.id == 1 %}
+			   <td>Pendiente</td>
+      {% elseif pedido.estado_id.id == 2 %}
+         <td>Entregado</td>
+      {% else %}
+       <td>Cancelado</td>
+      {% endif %}
+			<td><a href="#" title="Cancelar pedido">Cancelar</a></td>
+		</tr>
+	{% endfor %}
+  </table>
 {% endif %}
