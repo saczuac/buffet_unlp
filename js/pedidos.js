@@ -60,3 +60,12 @@ function submitNewPedido() {
     var list=document.getElementById("ProductosPedido");
     list.removeChild(list.childNodes[id]);
  }
+ function cerrarPedido(id) {
+      modal = document.getElementById('cerrar');
+      modal.style.display = "block";
+      document.getElementById('idPedido').value=id;
+ }
+  function cerrarMP() {
+      modal = document.getElementById('cerrar');
+      modal.style.display = "none";
+ }

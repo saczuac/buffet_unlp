@@ -37,7 +37,20 @@
  <a href="#" onclick="submitNewPedido()" title="Abre el enlace">Aceptar</a>
       </form>
     </div>
+<!--modal para cerrar -->
+    <div id="cerrar" class="modal">
+      <form method="post" id="formNew" action="{{ baseUrl() }}/pedidos/cancelar" class="modal-content abm-content">
+        <a class="close" onclick="cerrarMP()" onkeypress="cerrar()" role="button">×</a>
+        <h3>Cerrar Pedido</h3>
+        <label for="comentario">Observaciones: </label>
+        <input type="text" name="comentario" id="comentario" maxlength="255" placeholder="comentario" required />
+        <input type="hidden" name="idPedido" id="idPedido">
+ <a href="#" onclick="submitNewPedido()" title="Abre el enlace">Aceptar</a>
+      </form>
+    </div>
+  <!-- fin del modal-->
     <br>
+
   <h1 class="title" id="listado">Menú del día - Productos</h1>
   <div class="centered">
   {% if session.rol == 2 %}
