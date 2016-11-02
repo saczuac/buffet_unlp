@@ -81,6 +81,14 @@ class PedidoResource extends AbstractResource {
         $this->getEntityManager()->flush();
         return $nuevoPedido;
     }
+    public function cancelar($id,$comentario)
+    {
+      $pedido=$this->get($id);
+      $pedido->cancelar($comentario);
+      $this->getEntityManager()->persist($pedido);
+      $this->getEntityManager()->flush();
+      return $pedido;
+    }
 }
 
 ?>

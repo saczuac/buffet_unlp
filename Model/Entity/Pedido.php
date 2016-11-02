@@ -44,7 +44,11 @@ class Pedido
      * @OneToMany(targetEntity="PedidoDetalle", mappedBy="pedido_id")
      **/
     protected $detalles;
-
+    /**
+     * @var string
+     * @Column(type="string", length=255)
+     */
+    protected $comentario;
     public function __construct()
     {
         $this->detalles = new ArrayCollection();
@@ -76,6 +80,22 @@ class Pedido
     }
     public function setObservacion($obs) {
         $this->observacion = $obs;
+    }
+  
+    public function getComentario()
+    {
+        return $this->comentario;
+    }
+
+    public function setComentario($comentario)
+    {
+        $this->comentario = $comentario;
+
+        return $this;
+    }
+    public function cancelar($comentario) {
+        $this->setComentario = $comentario;
+        $this->setEstado_Id=3;
     }
 }
  ?>

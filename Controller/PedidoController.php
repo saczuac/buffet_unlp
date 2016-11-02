@@ -55,4 +55,8 @@ public function index($app, $misPedidos = null)
   }
   $this->index($app);
   }
+  public function cancelar($app,$id,$comentario){
+    PedidoResource::getInstance()->cancelar($id,$comentario);
+    echo $app->redirect('/pedidos');
+  }
 }
