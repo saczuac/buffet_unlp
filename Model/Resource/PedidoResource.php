@@ -102,7 +102,7 @@ class PedidoResource extends AbstractResource {
     {
       $pedido=$this->get($id);
       foreach ($pedido->getDetalles() as $detalle) {
-        ProductoResource::getInstance()->sacarStock($detalle->getPedido_Id(),$detalle->getCantidad());
+        ProductoResource::getInstance()->sacarStock($detalle->getProducto_Id(),$detalle->getCantidad());
       }
       return $pedido;
     }
