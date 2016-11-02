@@ -41,7 +41,7 @@
       <td><a href="{{ baseUrl() }}/usuarios/show?id={{ pedido.usuario_id.id }}">{{ pedido.usuario_id.nombre }}</a></td>
 			<td><a href="{{ baseUrl() }}/pedidos/show?id={{ pedido.id }}" title="Ver Detalles"><i class="fa fa-eye"></i></a>
       {% if pedido.estado_id.id == 1 %}
-      <a href="#" title="Aceptar"><i class="fa fa-check"></i></a>
+      <a href="{{ baseUrl() }}/pedidos/aceptar?id={{ pedido.id }}" title="Aceptar"><i class="fa fa-check"></i></a>
       <a href="{{ baseUrl() }}/pedidos/cancelar?id={{ pedido.id }}" title="Cancelar"><i class="fa fa-times"></i></td></a>
       {% endif %}
 		</tr>

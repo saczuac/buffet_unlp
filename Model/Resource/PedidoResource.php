@@ -84,9 +84,26 @@ class PedidoResource extends AbstractResource {
     public function cancelar($id,$comentario)
     {
       $pedido=$this->get($id);
-      $pedido->cancelar($comentario);
+      $pedido->cancelar(EstadoResource::getInstance()->get(3),$comentario);
       $this->getEntityManager()->persist($pedido);
       $this->getEntityManager()->flush();
+      return $pedido;
+    }
+    public function aceptar($id)
+    {
+      $pedido=$this->get($id);
+      $pedido->setEstado_Id(EstadoResource::getInstance()->get(2));
+      $this->sacarMiStock($id);
+      $this->getEntityManager()->persist($pedido);
+      $this->getEntityManager()->flush();
+      return $pedido;
+    }
+    public function sacarMiStock($id)
+    {
+      $pedido=$this->get($id);
+      foreach ($pedido->getDetalles() as $detalle) {
+        ProductoResource::getInstance()->sacarStock($detalle->getPedido_Id(),$detalle->getCantidad());
+      }
       return $pedido;
     }
 }

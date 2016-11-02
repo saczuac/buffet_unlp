@@ -3,6 +3,7 @@
 namespace Controller;
 use Model\Entity\Pedido;
 use Model\Entity\PedidoDetalle;
+use Model\Resource\ProductoResource;
 use Model\Resource\PedidoResource;
 use Model\Resource\PedidoDetalleResource;
 use Model\Resource\MenuResource;
@@ -57,6 +58,10 @@ public function index($app, $misPedidos = null)
   }
   public function cancelar($app,$id,$comentario){
     PedidoResource::getInstance()->cancelar($id,$comentario);
+    echo $app->redirect('/pedidos');
+  }
+  public function aceptar($app,$id){
+    PedidoResource::getInstance()->aceptar($id);
     echo $app->redirect('/pedidos');
   }
 }

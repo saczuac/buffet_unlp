@@ -1,6 +1,7 @@
 <?php
 namespace Model\Entity;
 
+
 use Model\Entity;
 use Doctrine\ORM\Mapping;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -69,6 +70,10 @@ class Pedido
     public function getObservacion() {
         return $this->observacion;
     }
+    public function getDetalles()
+    {
+        return $this->detalles;
+    }
     public function setEstado_Id($id) {
         $this->estado_id = $id;
     }
@@ -93,9 +98,9 @@ class Pedido
 
         return $this;
     }
-    public function cancelar($comentario) {
-        $this->setComentario = $comentario;
-        $this->setEstado_Id=3;
+    public function cancelar($estadoCerrado,$comentario) {
+        $this->setComentario($comentario);
+        $this->setEstado_Id($estadoCerrado);
     }
 }
  ?>
