@@ -2,6 +2,7 @@
 // Initialize Slim (the router/micro framework used)
 require_once 'vendor/autoload.php';
 require_once 'Model/Resource/UsuarioResource.php';
+require_once 'mpdf/mpdf.php';
 use Model\Entity\Usuario;
 use Model\Resource\UsuarioResource;
 use Controller\UsuarioController;
@@ -77,17 +78,19 @@ $app->post('/registrar', '\Controller\UsuarioController:registrarUsuario')->setP
 );
 
 $app->group('/balanceGastos', function() use($app) {
-	$app->get('/','\Controller\BalanceController:ventas')->setParams(
+	$app->get('/:desde/:hasta','\Controller\BalanceController:ganancias')->setParams(
+        array($app,$app->request->get('desde'),$app->request->get('hasta')));
+  $app->get('/exportar','\Controller\BalanceController:exportGanancias')->setParams(
         array($app,'10-10-2016','30-10-2016'));
 });
 
 
 $app->group('/balanceIngresos', function() use($app) {
-	$app->get('/', function() use($app){
-      $app->applyHook('must.be.logueado');
-		echo $app->view->render('balanceIngresos.twig');
+  $app->get('/','\Controller\BalanceController:ventas')->setParams(
+        array($app,'10-10-2016','30-10-2016'));
+    $app->get('/exportar','\Controller\BalanceController:exportVentas')->setParams(
+        array($app,'10-10-2016','30-10-2016'));
 	});
-});
 
 
 $app->group('/config', function() use($app) {

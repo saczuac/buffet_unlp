@@ -1,12 +1,12 @@
 <?php
 
 namespace Controller;
+use mpdf;
 use Model\Resource\EgresoDetalleResource;
 use Model\Resource\IngresoDetalleResource;
 class BalanceController {
-
-public function ganancias($app,$desde,$hasta)
-  {
+public function valoresGanancias($app,$desde,$hasta)
+{
     $egresos=EgresoDetalleResource::getInstance()->getSumEgresontre($desde,$hasta);
     $ingresos=IngresoDetalleResource::getInstance()->getSumIngresos($desde,$hasta);
     foreach ($egresos as &$valor) {
@@ -20,9 +20,46 @@ public function ganancias($app,$desde,$hasta)
       $valor['y']=(float)$valor['y'];
       /*$valor['name']=$valor['name']->format('Y-m-d');*/
     }
+    return $params;
+}
+
+public function ganancias($app,$desde,$hasta)
+  {
+
     $app->applyHook('must.be.gestion.or.administrador');
-    echo $app->view->render( "ganancias.twig", array('ganancias' => $this->armoJsonGanancias($params)));
+    echo $app->view->render( "ganancias.twig", array('json' => $this->armoJsonGanancias($this->valoresGanancias($app,$desde,$hasta)),'ganancias' => $params));
   }
+  public function exportGanancias($app,$desde,$hasta)
+{ 
+    $mpdf=new mPDF('');
+    $listado=$this->valoresGanancias($app,$desde,$hasta);
+    $html .= "
+    <div style=\"font-family:arialunicodems;\">
+    <table border=\"1\">
+    <thead>
+    <tr style=\"text-rotate:0\">
+            <th>Dia  </th>
+            <th>Ganancia</th>
+    </tr>
+    </thead>
+    ";
+    foreach($listado as $row) {
+            $html .= "<tr>";
+      $html .= '<td style="font-family: arial;">'.$row['name'].'</td>';
+      $html .= '<td style="font-family: arial;">'.$row['y'].'</td>';
+      $html .= "</tr>
+    ";
+    }
+    $html .= "</table>
+    </div>
+    ";
+    $html = utf8_encode($html);
+    if ($_REQUEST['html']) { echo $html; exit; }
+    $mpdf->WriteHTML($html);
+    $mpdf->Output('nombre.pdf','D'); exit;
+    $app->flash('success', 'El responsable a sido desasignado exitosamente.');
+    header("Refresh:0");
+      }
 public function armoJsonGanancias($values)
 {
 
@@ -137,6 +174,38 @@ public function ventas($app,$desde,$hasta)
       /*$valor['name']=$valor['name']->format('Y-m-d');*/
     }
     $app->applyHook('must.be.gestion.or.administrador');
-    echo $app->view->render( "ganancias.twig", array('ganancias' => $this->armoJsonVentas($ingresos)));
+    echo $app->view->render( "balanceIngresos.twig", array('json' => $this->armoJsonVentas($ingresos),'ventas'=>$ingresos));
   }
+public function exportVentas($app,$desde,$hasta)
+{ 
+    $mpdf=new mPDF('');
+    $listado=IngresoDetalleResource::getInstance()->getVentasEntre($desde,$hasta);
+    $html .= "
+    <div style=\"font-family:arialunicodems;\">
+    <table border=\"1\">
+    <thead>
+    <tr style=\"text-rotate:0\">
+            <th>Producto  </th>
+            <th>Cantidad</th>
+    </tr>
+    </thead>
+    ";
+    foreach($listado as $row) {
+      $html .= "<tr>";
+      $html .= '<td style="font-family: arial;">'.$row['name'].'</td>';
+      $html .= '<td style="font-family: arial;">'.$row['y'].'</td>';
+      $html .= "</tr>
+    ";
+    }
+    $html .= "</table>
+    </div>
+    ";
+    $html = utf8_encode($html);
+    if ($_REQUEST['html']) { echo $html; exit; }
+    $mpdf->WriteHTML($html);
+    $mpdf->Output('nombre.pdf','D'); exit;
+    $app->flash('success', 'El responsable a sido desasignado exitosamente.');
+    header("Refresh:0");
+      }
 }
+

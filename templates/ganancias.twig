@@ -11,14 +11,14 @@
   </tr>
   <script type="text/javascript">
 $(function () {
-    Highcharts.chart('container',{{ganancias|json_encode|raw}});
+    Highcharts.chart('container',{{json|json_encode|raw}});
   })
   </script>
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
   {% for ganancia in ganancias %}
   <tr>
-    <td>{{ganancia.fecha|date('Y-m-d')}}</td>
-    <td>{{ganancia.dato}}</td>
+    <td>{{ganancia.name|date('Y-m-d')}}</td>
+    <td>{{ganancia.y}}</td>
   </tr>
   {% endfor %}
 
