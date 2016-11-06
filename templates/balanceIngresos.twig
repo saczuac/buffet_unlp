@@ -8,15 +8,14 @@ $(function () {
   </script>
   <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
   <section>
-  <i class="fa fa-bars" aria-hidden="true"></i>
+  <a href="/balanceIngresos/exportar/?desde={{desde|date('d-m-Y')}}&hasta={{hasta|date('d-m-Y')}}"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
 
   <table summary="Tabla de gastos del buffet">
   <tr>
     <th id="Gastos">Gasto</th>
     <th id="Descripcion">Descripcion</th>
   </tr>
-
-  {% for venta in ventas %}<i class="fa fa-bars" aria-hidden="true"></i>
+  {% for venta in ventas %}
   <tr>
     <td>{{venta.name}}</td>
     <td>{{venta.y}}</td>

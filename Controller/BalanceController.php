@@ -5,8 +5,11 @@ use mpdf;
 use Model\Resource\EgresoDetalleResource;
 use Model\Resource\IngresoDetalleResource;
 class BalanceController {
+    private $paramDesde;
+    private $paramHasta;
 public function valoresGanancias($app,$desde,$hasta)
 {
+
     $egresos=EgresoDetalleResource::getInstance()->getSumEgresontre($desde,$hasta);
     $ingresos=IngresoDetalleResource::getInstance()->getSumIngresos($desde,$hasta);
     foreach ($egresos as &$valor) {
@@ -27,10 +30,11 @@ public function ganancias($app,$desde,$hasta)
   {
 
     $app->applyHook('must.be.gestion.or.administrador');
-    echo $app->view->render( "ganancias.twig", array('json' => $this->armoJsonGanancias($this->valoresGanancias($app,$desde,$hasta)),'ganancias' => $params));
+    echo $app->view->render( "ganancias.twig", array('json' => $this->armoJsonGanancias($this->valoresGanancias($app,$desde,$hasta)),'ganancias' => $this->valoresGanancias($app,$desde,$hasta),'desde'=>$desde,'hasta'=>$hasta));
   }
   public function exportGanancias($app,$desde,$hasta)
-{ 
+{   
+    $app->applyHook('must.be.gestion.or.administrador');
     $mpdf=new mPDF('');
     $listado=$this->valoresGanancias($app,$desde,$hasta);
     $html .= "
@@ -168,16 +172,18 @@ public function myMerge($ingresos,$egresos)
 }
 public function ventas($app,$desde,$hasta)
   {
+    $app->applyHook('must.be.gestion.or.administrador');
     $ingresos=IngresoDetalleResource::getInstance()->getVentasEntre($desde,$hasta);
     foreach ($ingresos as &$valor) {
       $valor['y']=(float)$valor['y'];
       /*$valor['name']=$valor['name']->format('Y-m-d');*/
     }
     $app->applyHook('must.be.gestion.or.administrador');
-    echo $app->view->render( "balanceIngresos.twig", array('json' => $this->armoJsonVentas($ingresos),'ventas'=>$ingresos));
+    echo $app->view->render( "balanceIngresos.twig", array('json' => $this->armoJsonVentas($ingresos),'ventas'=>$ingresos,'desde'=>$desde,'hasta'=>$hasta));
   }
 public function exportVentas($app,$desde,$hasta)
 { 
+    $app->applyHook('must.be.gestion.or.administrador');
     $mpdf=new mPDF('');
     $listado=IngresoDetalleResource::getInstance()->getVentasEntre($desde,$hasta);
     $html .= "

@@ -78,19 +78,18 @@ $app->post('/registrar', '\Controller\UsuarioController:registrarUsuario')->setP
 );
 
 $app->group('/balanceGastos', function() use($app) {
-	$app->get('/:desde/:hasta','\Controller\BalanceController:ganancias')->setParams(
-        array($app,$app->request->get('desde'),$app->request->get('hasta')));
-  $app->get('/exportar','\Controller\BalanceController:exportGanancias')->setParams(
-        array($app,'10-10-2016','30-10-2016'));
+	$app->post('/','\Controller\BalanceController:ganancias')->setParams(
+        array($app,$app->request->post('fechaDesde'),$app->request->post('fechaHasta')));
+  $app->get('/exportar/','\Controller\BalanceController:exportGanancias')->setParams(array($app,$app->request->get('desde'),$app->request->get('hasta')));
 });
 
 
 $app->group('/balanceIngresos', function() use($app) {
-  $app->get('/','\Controller\BalanceController:ventas')->setParams(
-        array($app,'10-10-2016','30-10-2016'));
-    $app->get('/exportar','\Controller\BalanceController:exportVentas')->setParams(
-        array($app,'10-10-2016','30-10-2016'));
-	});
+  $app->post('/','\Controller\BalanceController:ventas')->setParams(
+        array($app,$app->request->post('fechaDesde'),$app->request->post('fechaHasta')));
+    $app->get('/exportar/','\Controller\BalanceController:exportVentas')->setParams(
+        array($app,$app->request->get('desde'),$app->request->get('hasta')));
+  });
 
 
 $app->group('/config', function() use($app) {
