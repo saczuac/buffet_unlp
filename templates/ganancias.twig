@@ -1,0 +1,28 @@
+{% extends "layout.twig" %}
+
+{% block contenido %}
+
+  <script type="text/javascript">
+$(function () {
+    Highcharts.chart('container',{{json|json_encode|raw}});
+  })
+  </script>
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<section>
+  <a href="/balanceGastos/exportar/?desde={{desde|date('d-m-Y')}}&hasta={{hasta|date('d-m-Y')}}"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
+  
+  <table summary="Tabla de gastos del buffet">
+  <tr>
+    <th id="Gastos">Fecha</th>
+    <th id="Descripcion">Ganancia</th>
+  </tr>
+  {% for ganancia in ganancias %}
+  <tr>
+    <td>{{ganancia.name}}</td>
+    <td>{{ganancia.y}}</td>
+  </tr>
+  {% endfor %}
+
+  </table>
+</section>
+{% endblock %}

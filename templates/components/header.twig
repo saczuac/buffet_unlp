@@ -10,6 +10,11 @@
         <script type="text/javascript" src="{{ baseUrl() }}/js/compra.js"></script>
         <script type="text/javascript" src="{{ baseUrl() }}/js/pedidos.js"></script>
         <script type="text/javascript" src="{{ baseUrl() }}/js/menus.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+<script src="http://code.highcharts.com/modules/offline-exporting.js"></script>
+<script src = "http://code.highcharts.com/modules/exporting.js"> </script> 
         <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
@@ -42,13 +47,16 @@
                 <ul>
                    <li><a href="{{ baseUrl() }}/productosFaltantes">Productos Faltantes</a> </li>
                    <li><a href="{{ baseUrl() }}/stockMinimo">Stock Minimo</a> </li>
-                   <li><a href="{{ baseUrl() }}/balanceIngresos">Ingresos</a> </li>
-                   <li><a href="{{ baseUrl() }}/balanceGastos">Gastos</a> </li>
+                   <li><a href="#" onclick ="mostrar('modalIngresos')">Ingresos</a> </li>
+                   <li><a href="#" onclick ="mostrar('modalGastos')">Gastos</a> </li>
                 </ul></li>
        </ul>
     </nav>
     <br>
     {% endif %}
+    {% include 'components/reportModal.twig' with { 'id' : 'modalIngresos','action' : '/balanceIngresos','titulo' : 'Ingresos' } %}
+    {% include 'components/reportModal.twig' with { 'id' : 'modalGastos','action' : '/balanceGastos','titulo' : 'Gastos' } %}
+
      {% else %}
        <a href="#" onclick ="mostrar('modelLogin')" class="login" role="button">Login </a>
        <a href="#" onclick ="mostrar('new')" class="login" role="button">Registrarse</a>
@@ -92,6 +100,7 @@
        <input type="submit" id="login-submit" name="submit" value="Ingresar" onkeypress="logued()" role="button" >
      </form>
      </div>
+
      <br><br><br>
     {% endif %}
     {% if flash is not empty %}
