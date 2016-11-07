@@ -73,7 +73,9 @@
       {% else %}
        <td>Cancelado</td>
       {% endif %}
+      {% if pedido.estado_id.id == 1 %}
 			<td><a href="/pedidos/cancelarOnline/?id={{pedido.id}}" title="Cancelar pedido">Cancelar</a></td>
+      {% endif %}
 		</tr>
 	{% endfor %}
   </table>

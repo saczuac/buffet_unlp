@@ -4,6 +4,7 @@ namespace Controller;
 use mpdf;
 use Model\Resource\EgresoDetalleResource;
 use Model\Resource\IngresoDetalleResource;
+use Model\Resource\PedidoResource;
 class BalanceController {
     private $paramDesde;
     private $paramHasta;
@@ -12,13 +13,18 @@ public function valoresGanancias($app,$desde,$hasta)
 
     $egresos=EgresoDetalleResource::getInstance()->getSumEgresontre($desde,$hasta);
     $ingresos=IngresoDetalleResource::getInstance()->getSumIngresos($desde,$hasta);
+    $pedidos=PedidoResource::getInstance()->getSumPedidos($desde,$hasta);
+    foreach ($pedidos as &$valor) {
+        $valor['name']=$valor['name']->format('Y-m-d');
+    }
     foreach ($egresos as &$valor) {
         $valor['name']=$valor['name']->format('Y-m-d');
     }
         foreach ($ingresos as &$valor) {
         $valor['name']=$valor['name']->format('Y-m-d');
     }
-    $params=$this->myMerge($ingresos,$egresos);
+    $params=$this->myMergeMas($ingresos,$pedidos);
+    $params=$this->myMergeMenos($params,$egresos);
     foreach ($params as &$valor) {
       $valor['y']=(float)$valor['y'];
       /*$valor['name']=$valor['name']->format('Y-m-d');*/
@@ -155,7 +161,7 @@ public function armoJsonVentas($values)
 
 }
 
-public function myMerge($ingresos,$egresos)
+public function myMergeMenos($ingresos,$egresos)
 {   foreach ($ingresos as &$ingreso) {
       foreach ($egresos as $key=>&$egreso) {
         if ($ingreso['name']==$egreso['name']) {
@@ -167,6 +173,20 @@ public function myMerge($ingresos,$egresos)
     foreach ($egresos as &$egreso) {
       $egreso['y']=$egreso['y']*-1;
       array_push($ingresos,$egreso);
+    }
+    return $ingresos;
+}
+public function myMergeMas($ingresos,$pedidos)
+{   foreach ($ingresos as &$ingreso) {
+      foreach ($pedidos as $key=>&$pedido) {
+        if ($ingreso['name']==$pedido['name']) {
+          $ingreso['y']=$ingreso['y']+$pedido['y'];
+          unset($egresos[$key]);
+        }
+      }
+    }
+    foreach ($pedidos as &$pedido) {
+      array_push($ingresos,$pedido);
     }
     return $ingresos;
 }
