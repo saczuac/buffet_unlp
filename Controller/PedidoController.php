@@ -27,6 +27,7 @@ public function index($app, $misPedidos = null)
     if ($misPedidos == null) {
        $misPedidos = PedidoResource::getInstance()->getPedidosDelUsuario($usuario_id);
     }
+
     echo $app->view->render("pedidos/pedidos.twig", array('pedidos' => (PedidoResource::getInstance()->get()),'pedidosMios' => ($misPedidos) ,'productos' => ($productos)));
   }
 
@@ -47,14 +48,26 @@ public function index($app, $misPedidos = null)
     $usuario_id = (isset($_SESSION['id'])) ? $_SESSION['id'] : null ;
     $app->applyHook('must.be.online');
     $pedido = PedidoResource::getInstance()->insert($usuario_id, 1, $observacion);
+    setcookie('PEDIDO',$pedido->getId(), time() + 1800);
   	$algo=explode(",", $paramArray);
     for ($i = 0; $i < (count($algo)) ; $i++) {
      $nuevoDetalle=PedidoDetalleResource::getInstance()->insert($pedido,array_shift($algo),array_shift($algo));
+
     }
   } catch (\Doctrine\DBAL\DBALException $e) {
       $app->flash('error', 'No se pudo dar de alta el pedido');
   }
   $this->index($app);
+  }
+  public function cancelarOnline($app,$id){
+    $pedido = (isset($_COOKIE['PEDIDO'])) ? $_COOKIE['PEDIDO'] : -1 ;
+    if (isset($_COOKIE['PEDIDO'])&&($pedido==$id)){
+        PedidoResource::getInstance()->cancelar($id,"cancelado por el usuario");
+        unset($_COOKIE['PEDIDO']);
+      }else{
+        $app->flash('error', 'No puede cancelar este pedido '.$_COOKIE['PEDIDO']."-".$id);
+      }
+      echo $app->redirect('/pedidos');
   }
   public function cancelar($app,$id,$comentario){
     PedidoResource::getInstance()->cancelar($id,$comentario);

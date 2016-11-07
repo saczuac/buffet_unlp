@@ -131,6 +131,7 @@ $app->group('/pedidos', function() use($app) {
     array($app,$app->request->post('paramArray'), null, $app->request->post('observacion')));
   $app->get('/show', '\Controller\PedidoController:show')->setParams(array($app, $app->request->get('id')));
   $app->post('/cancelar', '\Controller\PedidoController:cancelar')->setParams(array($app, $app->request->post('idPedido'),$app->request->post('comentario')));
+  $app->get('/cancelarOnline/', '\Controller\PedidoController:cancelarOnline')->setParams(array($app, $app->request->get('id')));
   $app->get('/aceptar', '\Controller\PedidoController:aceptar')->setParams(array($app, $app->request->get('id')));
 });
 
