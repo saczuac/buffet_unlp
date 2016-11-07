@@ -14,6 +14,7 @@ public function valoresGanancias($app,$desde,$hasta)
     $egresos=EgresoDetalleResource::getInstance()->getSumEgresontre($desde,$hasta);
     $ingresos=IngresoDetalleResource::getInstance()->getSumIngresos($desde,$hasta);
     $pedidos=PedidoResource::getInstance()->getSumPedidos($desde,$hasta);
+    var_dump($pedidos);
     foreach ($pedidos as &$valor) {
         $valor['name']=$valor['name']->format('Y-m-d');
     }
