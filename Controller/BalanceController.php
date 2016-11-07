@@ -181,7 +181,7 @@ public function myMergeMas($ingresos,$pedidos)
       foreach ($pedidos as $key=>&$pedido) {
         if ($ingreso['name']==$pedido['name']) {
           $ingreso['y']=$ingreso['y']+$pedido['y'];
-          unset($egresos[$key]);
+          unset($pedido[$key]);
         }
       }
     }
