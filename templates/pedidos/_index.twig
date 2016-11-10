@@ -26,6 +26,7 @@
     <th id="Fecha">FECHA</th>
     <th id="Estado">ESTADO</th>
     <th id="Estado">USUARIO</th>
+    <th id="Descripcion">UBICACION</th>
     <th id="Descripcion">ACCIONES</th>
   </tr>
 	{% for pedido in pedidos %}
@@ -39,7 +40,8 @@
        <td>Cancelado</td>
       {% endif %}
       <td><a href="{{ baseUrl() }}/usuarios/show?id={{ pedido.usuario_id.id }}">{{ pedido.usuario_id.nombre }}</a></td>
-			<td><a href="{{ baseUrl() }}/pedidos/show?id={{ pedido.id }}" title="Ver Detalles"><i class="fa fa-eye"></i></a>
+      <td>{{ pedido.usuario_id.ubicacion_id.nombre }}</td>
+      <td><a href="{{ baseUrl() }}/pedidos/show?id={{ pedido.id }}" title="Ver Detalles"><i class="fa fa-eye"></i></a>
       {% if pedido.estado_id.id == 1 %}
       <a href="{{ baseUrl() }}/pedidos/aceptar?id={{ pedido.id }}" title="Aceptar"><i class="fa fa-check"></i></a>
       <a href="#" onclick="cerrarPedido({{pedido.id}})" title="Cancelar"><i class="fa fa-times"></i></td></a>
