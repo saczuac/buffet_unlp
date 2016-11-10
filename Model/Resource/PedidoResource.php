@@ -111,7 +111,7 @@ class PedidoResource extends AbstractResource {
         $query_string = "
             SELECT sum(pr.precio_venta_unitario * i.cantidad) as y, p.fecha_alta as name
             FROM Model\Entity\PedidoDetalle i join i.pedido_id p join i.producto_id pr  
-            WHERE p.fecha_alta between :desde AND :hasta
+            WHERE p.estado_id='2' AND p.fecha_alta between :desde AND :hasta
             GROUP BY p.fecha_alta
             ORDER by p.fecha_alta";
 
