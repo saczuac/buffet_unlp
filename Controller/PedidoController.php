@@ -85,6 +85,7 @@ public function index($app, $misPedidos = null)
             $app->flash('error', 'No hay suficiente stock');
         }else{
           PedidoResource::getInstance()->aceptar($id);
+          var_dump($error);
           echo $app->redirect('/pedidos'); }            
   }
 }
