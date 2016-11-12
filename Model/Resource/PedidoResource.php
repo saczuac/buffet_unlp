@@ -93,10 +93,16 @@ class PedidoResource extends AbstractResource {
     {
       $pedido=$this->get($id);
       $pedido->setEstado_Id(EstadoResource::getInstance()->get(2));
-      $this->sacarMiStock($id);
-      $this->getEntityManager()->persist($pedido);
-      $this->getEntityManager()->flush();
+      if ($this->controlarMiStock($id)=0) {
+            $this->sacarMiStock($id);
+            $this->getEntityManager()->persist($pedido);
+            $this->getEntityManager()->flush();
       return $pedido;
+      } else {
+        return false;
+      }
+      
+
     }
     public function sacarMiStock($id)
     {
@@ -105,6 +111,19 @@ class PedidoResource extends AbstractResource {
         ProductoResource::getInstance()->sacarStock($detalle->getProducto_Id(),$detalle->getCantidad());
       }
       return $pedido;
+    }
+    public function controlarMiStock($id)
+    {
+      $error=0;
+      $pedido=$this->get($id);
+      foreach ($pedido->getDetalles() as $detalle) {
+        if (ProductoResource::getInstance()->hay($detalle->getProducto_Id(),$detalle->getCantidad())) {
+        }else{
+          $error==1;
+          break;
+        }  
+      }
+      return $error;
     }
         public function getSumPedidos($desde,$hasta)
     {
