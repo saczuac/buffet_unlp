@@ -65,7 +65,7 @@ public function index($app, $misPedidos = null)
         PedidoResource::getInstance()->cancelar($id,"cancelado por el usuario");
         unset($_COOKIE['PEDIDO']);
       }else{
-        $app->flash('error', 'No puede cancelar este pedido '.$_COOKIE['PEDIDO']."-".$id);
+        $app->flash('error', 'No puede cancelar este pedido ');
       }
       echo $app->redirect('/pedidos');
   }
@@ -74,18 +74,10 @@ public function index($app, $misPedidos = null)
     echo $app->redirect('/pedidos');
   }
   public function aceptar($app,$id){
-        $error=0;
-        $pedidoDetalles=PedidoResource::getInstance()->get($id);
-        foreach ($pedidoDetalles as $pedidoDetalle) {
-            if ($pedidoDetalle->getCantidad() >= ProductoResource::getInstance()->get($pedidoDetalle->getProducto_Id())->getStock()){
-              $error=1;
-              break;
-          }}
-        if ($error==1) {
-            $app->flash('error', 'No hay suficiente stock');
-        }else{
-          PedidoResource::getInstance()->aceptar($id);
-          var_dump($error);
-          echo $app->redirect('/pedidos'); }            
+    if (PedidoResource::getInstance()->aceptar($id)){
+      echo $app->redirect('/pedidos');}
+    else{
+        $app->flash('error', 'No hay estock suficiente');
+    }
   }
 }
