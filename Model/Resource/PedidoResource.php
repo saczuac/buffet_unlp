@@ -93,7 +93,8 @@ class PedidoResource extends AbstractResource {
     {
       $pedido=$this->get($id);
       $pedido->setEstado_Id(EstadoResource::getInstance()->get(2));
-      if ($this->controlarMiStock($id)=0) {
+      $hay=$this->controlarMiStock($id);
+      if ($hay=0) {
             $this->sacarMiStock($id);
             $this->getEntityManager()->persist($pedido);
             $this->getEntityManager()->flush();
