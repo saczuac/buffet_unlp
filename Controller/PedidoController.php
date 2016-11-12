@@ -74,7 +74,17 @@ public function index($app, $misPedidos = null)
     echo $app->redirect('/pedidos');
   }
   public function aceptar($app,$id){
-    PedidoResource::getInstance()->aceptar($id);
-    echo $app->redirect('/pedidos');
+        $error=0;
+        $pedidoDetalles=PedidoResource::getInstance($id)->getDetalles();
+        foreach ($pedidoDetalles as $pedidoDetalle) {
+            if ($pedidoDetalle->getCantidad() >= ProductoResource::getInstance()->get($pedidoDetalle->getProducto_Id())->getStock()){
+              $error=1;
+              break;
+          }}
+        if ($error==1) {
+            $app->flash('error', 'No hay suficiente stock');
+        }else{
+          PedidoResource::getInstance()->aceptar($id);
+          echo $app->redirect('/pedidos'); }            
   }
 }

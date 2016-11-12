@@ -194,12 +194,18 @@ public function ventas($app,$desde,$hasta)
   {
     $app->applyHook('must.be.gestion.or.administrador');
     $ingresos=IngresoDetalleResource::getInstance()->getVentasEntre($desde,$hasta);
+    $pedidos=PedidoResource::getInstance()->getSumPedidos($desde,$hasta);
     foreach ($ingresos as &$valor) {
       $valor['y']=(float)$valor['y'];
       /*$valor['name']=$valor['name']->format('Y-m-d');*/
     }
+    foreach ($pedidos as &$valor) {
+      $valor['y']=(float)$valor['y'];
+      /*$valor['name']=$valor['name']->format('Y-m-d');*/
+    }
+    $params=$this->myMergeMas($ingresos,$pedidos);
     $app->applyHook('must.be.gestion.or.administrador');
-    echo $app->view->render( "balanceIngresos.twig", array('json' => $this->armoJsonVentas($ingresos),'ventas'=>$ingresos,'desde'=>$desde,'hasta'=>$hasta));
+    echo $app->view->render( "balanceIngresos.twig", array('json' => $this->armoJsonVentas($params),'ventas'=>$params,'desde'=>$desde,'hasta'=>$hasta));
   }
 public function exportVentas($app,$desde,$hasta)
 { 
