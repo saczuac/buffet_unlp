@@ -194,7 +194,7 @@ public function ventas($app,$desde,$hasta)
   {
     $app->applyHook('must.be.gestion.or.administrador');
     $ingresos=IngresoDetalleResource::getInstance()->getVentasEntre($desde,$hasta);
-    $pedidos=PedidoResource::getInstance()->getSumPedidos($desde,$hasta);
+    $pedidos=PedidoResource::getInstance()->getVentasEntre($desde,$hasta);
     foreach ($ingresos as &$valor) {
       $valor['y']=(float)$valor['y'];
       /*$valor['name']=$valor['name']->format('Y-m-d');*/

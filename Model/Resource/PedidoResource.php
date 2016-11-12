@@ -122,6 +122,21 @@ class PedidoResource extends AbstractResource {
         return $query->getResult();
     }
 
+    public function getVentasEntre($desde,$hasta)
+    {
+        $query_string = "
+            SELECT sum(d.cantidad) as y, CONCAT(p.nombre,'-',p.marca) as name
+            FROM Model\Entity\Pedido i JOIN i.detalles d join d.producto_id p
+            WHERE p.estado_id='2' AND d.producto=p.id AND i.fecha between :desde AND :hasta 
+            GROUP By i.producto
+            ";
+
+        $query = $this->getEntityManager()->createQuery($query_string);
+        $query->setParameter('desde', new \DateTime($desde));
+        $query->setParameter('hasta', new \DateTime($hasta));
+
+        return $query->getResult();
+    }
 }
 
 ?>
