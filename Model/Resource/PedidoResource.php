@@ -128,7 +128,7 @@ class PedidoResource extends AbstractResource {
             SELECT sum(d.cantidad) as y, CONCAT(p.nombre,'-',p.marca) as name
             FROM Model\Entity\Pedido i JOIN i.detalles d join d.producto_id p
             WHERE i.estado_id='2' AND d.producto_id=p.id AND i.fecha_alta between :desde AND :hasta 
-            GROUP By i.producto
+            GROUP By d.producto_id
             ";
 
         $query = $this->getEntityManager()->createQuery($query_string);
