@@ -74,8 +74,6 @@ public function index($app, $misPedidos = null)
     echo $app->redirect('/pedidos');
   }
   public function aceptar($app,$id){
-    public function controlarMiStock($id)
-    {
       $error=0;
       $pedido=$this->get($id);
       foreach ($pedido->getDetalles() as $detalle) {
@@ -87,7 +85,6 @@ public function index($app, $misPedidos = null)
         }  
       }
       
-    }
     /*if (PedidoResource::getInstance()->aceptar($id)){
         $app->flash('success', 'El pedido fue entregado');}
     else{
