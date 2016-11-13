@@ -75,7 +75,7 @@ public function index($app, $misPedidos = null)
   }
   public function aceptar($app,$id){
     if (PedidoResource::getInstance()->aceptar($id)){
-      $app->flash('success', 'El pedido fue entregado');}
+        $app->flash('success', 'El pedido fue entregado');}
     else{
         $app->flash('error', 'No hay estock suficiente');
     }

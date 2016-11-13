@@ -118,12 +118,12 @@ class PedidoResource extends AbstractResource {
       $error=0;
       $pedido=$this->get($id);
       foreach ($pedido->getDetalles() as $detalle) {
-        $app->flash('error', ProductoResource::getInstance()->get($detalle->getProducto_Id())->getStock());
-        var_dump(ProductoResource::getInstance()->get($detalle->getProducto_Id())->getStock());
+        var_dump((int)ProductoResource::getInstance()->get($detalle->getProducto_Id())->getStock());
         var_dump($detalle->getCantidad());
-        if (ProductoResource::getInstance()->get($detalle->getProducto_Id())->getStock() >= $detalle->getCantidad()) {
+        if (intval(ProductoResource::getInstance()->get($detalle->getProducto_Id())->getStock()) >= intval($detalle->getCantidad())) {
+          $error=0;
         }else{
-          $error==1;
+          $error=1;
           break;
         }  
       }
