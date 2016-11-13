@@ -118,10 +118,7 @@ class PedidoResource extends AbstractResource {
       $error=0;
       $pedido=$this->get($id);
       foreach ($pedido->getDetalles() as $detalle) {
-        var_dump((int)ProductoResource::getInstance()->get($detalle->getProducto_Id())->getStock());
-        var_dump($detalle->getCantidad());
-        if (intval(ProductoResource::getInstance()->get($detalle->getProducto_Id())->getStock()) >= intval($detalle->getCantidad())) {
-          $error=0;
+        if (ProductoResource::getInstance()->hay($detalle->getProducto_Id(),intval($detalle->getCantidad()))) {
         }else{
           $error=1;
           break;
