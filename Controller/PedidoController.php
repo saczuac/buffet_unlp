@@ -78,19 +78,18 @@ public function index($app, $misPedidos = null)
       $pedido=PedidoResource::getInstance()->get($id);
       foreach ($pedido->getDetalles() as $detalle) {
         if (intval($detalle->getCantidad()) < ProductoResource::getInstance()->get($detalle->getProducto_Id())->getStock()) {
-          $app->flash('error', 'No hay estock suficiente'.intval($detalle->getCantidad()).ProductoResource::getInstance()->get($detalle->getProducto_Id())->getStock());
         }else{
-          $app->flash('error', 'No hay estock suficiente'.intval($detalle->getCantidad()).ProductoResource::getInstance()->get($detalle->getProducto_Id())->getStock());
           $error=1;
           break;
         }  
       }
       
-    /*if (PedidoResource::getInstance()->aceptar($id)){
+    if ($error==0){
+        PedidoResource::getInstance()->aceptar($id)
         $app->flash('success', 'El pedido fue entregado');}
     else{
         $app->flash('error', 'No hay estock suficiente');
-    }*/
+    }
         echo $app->redirect('/pedidos');
   }
 }
