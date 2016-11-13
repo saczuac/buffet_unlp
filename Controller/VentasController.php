@@ -46,7 +46,7 @@ public function nuevo($app,$productoID,$cantidad,$precio,$egresoTipoId,$fecha,$d
           ProductoResource::getInstance()->sacarStock($productoID,$cantidad);
           $app->redirect("/ventas");
     } else {
-      $app->flash('error', 'No hay suficiente stock');
+      
     }
     $app->redirect("/ventas");
     
