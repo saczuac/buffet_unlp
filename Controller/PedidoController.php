@@ -78,6 +78,7 @@ public function index($app, $misPedidos = null)
       $pedido=PedidoResource::getInstance()->get($id);
       foreach ($pedido->getDetalles() as $detalle) {
         if (intval($detalle->getCantidad()) < ProductoResource::getInstance()->get($detalle->getProducto_Id())->getStock()) {
+          $app->flash('error', 'No hay estock suficiente'.intval($detalle->getCantidad()).ProductoResource::getInstance()->get($detalle->getProducto_Id())->getStock());
         }else{
           $app->flash('error', 'No hay estock suficiente'.intval($detalle->getCantidad()).ProductoResource::getInstance()->get($detalle->getProducto_Id())->getStock());
           $error=1;
