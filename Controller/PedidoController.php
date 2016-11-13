@@ -75,7 +75,7 @@ public function index($app, $misPedidos = null)
   }
   public function aceptar($app,$id){
       $error=0;
-      $pedido=$this->get($id);
+      $pedido=PedidoResource::getInstance()->get($id);
       foreach ($pedido->getDetalles() as $detalle) {
         if (intval($detalle->getCantidad()) < ProductoResource::getInstance()->get($detalle->getProducto_Id())->getStock()) {
         }else{
