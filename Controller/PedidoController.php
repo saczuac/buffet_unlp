@@ -47,13 +47,17 @@ public function index($app, $misPedidos = null)
   try {
     $usuario_id = (isset($_SESSION['id'])) ? $_SESSION['id'] : null ;
     $app->applyHook('must.be.online');
+    $check = $this->checkStock($paramArray);
+  if ($check) { 
     $pedido = PedidoResource::getInstance()->insert($usuario_id, 1, $observacion);
     setcookie('PEDIDO',$pedido->getId(), time() + 1800);
   	$algo=explode(",", $paramArray);
     for ($i = 0; $i < (count($algo)) ; $i++) {
      $nuevoDetalle=PedidoDetalleResource::getInstance()->insert($pedido,array_shift($algo),array_shift($algo));
-
     }
+  } else {
+    $app->flash('error', 'La cantidad debe ser menor que el stock');
+  }
   } catch (\Doctrine\DBAL\DBALException $e) {
       $app->flash('error', 'No se pudo dar de alta el pedido');
   }
@@ -69,6 +73,24 @@ public function index($app, $misPedidos = null)
       }
       echo $app->redirect('/pedidos');
   }
+
+  public function checkStock($paramArray) {
+    $algo=explode(",", $paramArray);
+    $e = true;
+    for ($i = 0; $i < (count($algo)) ; $i++) {
+      $check = $this->checkProducto(array_shift($algo),array_shift($algo));
+      if ($check) { 
+        $e = false;
+      }
+    }
+    return $e;
+  }
+
+  public function checkProducto($id, $cantidad) {
+    $producto = ProductoResource::getInstance()->get($id);
+    return ($cantidad > $producto->getStock());
+  }
+
   public function cancelar($app,$id,$comentario){
     PedidoResource::getInstance()->cancelar($id,$comentario);
     echo $app->redirect('/pedidos');

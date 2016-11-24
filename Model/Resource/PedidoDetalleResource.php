@@ -7,6 +7,7 @@ use Model\Resource\PedidoResource;
 use vendor\doctrine\common\lib\Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Model\Entity\PedidoDetalle;
+use Exception;
 /**
  * Class Resource
  * @package Model
