@@ -18,7 +18,7 @@ $(function () {
   </tr>
   {% for ganancia in ganancias %}
   <tr>
-    <td>{{ganancia.name}}</td>
+    <td>{{ganancia.name|date('d-m-Y')}}</td>
     <td>{{ganancia.y}}</td>
   </tr>
   {% endfor %}
