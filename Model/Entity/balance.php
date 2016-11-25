@@ -9,9 +9,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  *
  * @Entity
- * @Table(name="pedido")
+ * @Table(name="v_balance")
  */
-class Pedido
+class v_balance
 {
     /**
      * @var Date
