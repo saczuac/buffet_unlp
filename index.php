@@ -171,12 +171,16 @@ $app->group('/productos', function() use ($app, $userResource) {
 $app->group('/productosFaltantes', function() use($app) {
   $app->get('/', '\Controller\ListadoController:indexActionFaltantes')->setParams(array($app));
   $app->get('/page', '\Controller\ListadoController:indexActionFaltantes')->setParams(array($app, $app->request->get('id')));
+  $app->get('/goprev', '\Controller\ListadoController:faltantesPrev')->setParams(array($app));
+  $app->get('/gonext', '\Controller\ListadoController:faltantesNext')->setParams(array($app));
 });
 
 
 $app->group('/stockMinimo', function() use($app) {
   $app->get('/', '\Controller\ListadoController:indexActionStockMin')->setParams(array($app));
   $app->get('/page', '\Controller\ListadoController:indexActionStockMin')->setParams(array($app, $app->request->get('id')));
+  $app->get('/goprev', '\Controller\ListadoController:stockMinPrev')->setParams(array($app));
+  $app->get('/gonext', '\Controller\ListadoController:stockMinNext')->setParams(array($app));
 });
 
 $app->group('/usuarios', function() use ($app, $userResource) {

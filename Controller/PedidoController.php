@@ -7,6 +7,7 @@ use Model\Resource\ProductoResource;
 use Model\Resource\PedidoResource;
 use Model\Resource\PedidoDetalleResource;
 use Model\Resource\MenuResource;
+use Exception;
 
 date_default_timezone_set('America/Argentina/Buenos_Aires');
 
@@ -58,10 +59,12 @@ public function index($app, $misPedidos = null)
   } else {
     $app->flash('error', 'La cantidad debe ser menor que el stock');
   }
+  } catch (Exception $e){
+    $app->flash('error', 'Se debe seleccionar algun producto');
   } catch (\Doctrine\DBAL\DBALException $e) {
       $app->flash('error', 'No se pudo dar de alta el pedido');
   }
-  $this->index($app);
+   echo $app->redirect('/pedidos');
   }
   public function cancelarOnline($app,$id){
     $pedido = (isset($_COOKIE['PEDIDO'])) ? $_COOKIE['PEDIDO'] : -1 ;
@@ -88,6 +91,9 @@ public function index($app, $misPedidos = null)
 
   public function checkProducto($id, $cantidad) {
     $producto = ProductoResource::getInstance()->get($id);
+    if ($producto == null) { 
+      throw new Exception("No se seleccionaron productos", 1);
+    }
     return ($cantidad > $producto->getStock());
   }
 
