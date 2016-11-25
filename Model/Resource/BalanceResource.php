@@ -28,7 +28,7 @@ class BalanceResource extends AbstractResource {
 public function gananciasEntre($desde,$hasta)
   {
         $query_string = "
-              SELECT fecha,ingresos from Balance
+              SELECT fecha,ingresos from Model\Entity\Balance
               WHERE fecha between :desde AND :hasta) 
 ";
 
