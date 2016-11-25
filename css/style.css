@@ -25,9 +25,9 @@ ul, li {
   background-color: white ;
 }
 
-#login-title {
-  text-align: left;
-  margin-left: 0.6em;
+.login-title {
+    text-align: left;
+    margin-left: 0.6em;
 }
 
 .price {
@@ -574,7 +574,7 @@ tr {
   font-size: 0.9em;
 }
 
-#login-submit {
+.login-submit {
   margin-left: 1em;
   margin-top: 1em;
 }

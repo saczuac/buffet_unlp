@@ -2,9 +2,9 @@
     <br><br><br><br>
      <form method="post" action={{action}} class="modal-content login-content">
        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
-       <h3 id="login-title">{{titulo}}</h3>
-       <input type="date" placeholder="Fecha desde" name="fechaDesde" id="fechaDesde" title="Fecha desde" required>
-       <input type="date" placeholder="Fecha hasta" name="fechaHasta" id="fechaHasta" title="Fecha Hasta" required>
-       <input type="submit" id="login-submit" name="submit" value="Ingresar" role="button" >
+       <h3 class="login-title">{{titulo}}</h3>
+       <input type="date" name="fechaDesde" title="Fecha desde" required>
+       <input type="date" name="fechaHasta" title="Fecha Hasta" required>
+       <input type="submit" class="login-submit" name="submit" value="Ingresar" >
      </form>
      </div>
