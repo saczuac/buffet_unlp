@@ -3,8 +3,8 @@
 <h1 class="title" id="listado">Productos del pedido</h1>
 <table summary="Tabla de productos del buffet" id='contenido'>
 <tr>
-  <th id="dia">Producto</th>
-	<th id="dia">Cantidad</th>
+  	<th>Producto</th>
+	<th>Cantidad</th>
 {% for detalle in detalles %}
 		<tr>
   	<td>{{ detalle.producto_id.nombre }}</td>
