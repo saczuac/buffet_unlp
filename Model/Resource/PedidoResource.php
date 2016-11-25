@@ -160,7 +160,7 @@ class PedidoResource extends AbstractResource {
     public function cancelable($id)
     {
       $pedido=$this->get($id);
-      $ahora=date();
+      $ahora=date('Y-m-d H:i:s');
       if ($pedido->getFecha_Alta()+(30*60)>date()){
         return true;
       }else{
