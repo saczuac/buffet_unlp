@@ -110,7 +110,7 @@ public function armoJsonGanancias($values)
 
         'tooltip'=>array(
             'headerFormat'=>'<span style="font-size:11px">{series.name}</span><br>',
-            'pointFormat'=>'<span style="color:{point.color}">{point.name}</span>: <b>${point.y:.2f}</b><br/>'
+            'pointFormat'=>'<span style="color:{point.color}">{point.name.date('d-m-Y')}</span>: <b>${point.y:.2f}</b><br/>'
         ),
 
         'series'=>[array(
