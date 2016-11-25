@@ -48,7 +48,6 @@
 				</select>
 				<label for="newUbicacion" id="labelUbicacion">Ubicación: </label>
 				<select id="newUbicacion" name="ubicacion_id">
-				 <option value="" selected="selected">Seleccione</option>
 				 {% for ubicacion in ubicaciones %}
 				  {% if ubicacion.id== usuario.ubicacion_id.id %}
 				  <option value="{{ ubicacion.id }}" selected>{{ ubicacion.nombre }} | {{ ubicacion.descripcion }}</option>
