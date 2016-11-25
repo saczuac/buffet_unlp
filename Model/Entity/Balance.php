@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @Entity
  * @Table(name="v_balance")
  */
-class v_balance
+class Balance
 {
     /**
      * @var Date

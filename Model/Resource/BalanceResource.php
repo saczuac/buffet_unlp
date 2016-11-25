@@ -1,7 +1,7 @@
 <?php
 
 namespace Model\Resource;
-use Model\Entity\v_balance;
+use Model\Entity\Balance;
 /**
  * Class Resource
  * @package Model
@@ -28,7 +28,7 @@ class BalanceResource extends AbstractResource {
 public function gananciasEntre($desde,$hasta)
   {
         $query_string = "
-              SELECT fecha,ingresos from v_balance
+              SELECT fecha,ingresos from Balance
               WHERE fecha between :desde AND :hasta) 
 ";
 
