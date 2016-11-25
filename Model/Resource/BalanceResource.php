@@ -1,7 +1,7 @@
 <?php
 
 namespace Model\Resource;
-use Model\Entity\Categoria;
+use Model\Entity\v_balance;
 /**
  * Class Resource
  * @package Model
