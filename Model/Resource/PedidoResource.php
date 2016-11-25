@@ -161,7 +161,7 @@ class PedidoResource extends AbstractResource {
     {
       $pedido=$this->get($id);
       $ahora=date('Y-m-d H:i:s');
-      if ($pedido->getFecha_Alta()+(30*60)>date()){
+      if ($pedido->getFecha_Alta()+(30*60)>$ahora){
         return true;
       }else{
         return false;
