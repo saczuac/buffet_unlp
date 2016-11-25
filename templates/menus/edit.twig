@@ -38,7 +38,7 @@
         {% for producto in productos %}
         	{% for productoi in producto %}
               <tr>
-              <td id=algo style="display:none;">{{ loop.index }}</td>
+              <td style="display:none;">{{ loop.index }}</td>
               <td>
                 <select name="idProducto">
                   <option value="{{productoi.id}}" selected>{{productoi.nombre}}</option>

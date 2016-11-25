@@ -16,8 +16,8 @@
         <label for="newObservacion">Observaciones: </label>
         <input type="text" name="observacion" id="newObservacion" maxlength="255" placeholder="Observacion" required />
         <!--spoiler -->
-        <input type="checkbox" id="spoilerNewMenu"></input>
-        <label for="spoilerNewMenu" size="12"><i class="fa fa-sort-desc" aria-hidden="true"></i> Productos del Menú del día </label>
+        <input type="checkbox" id="spoilerNewMenu">
+        <label for="spoilerNewMenu"><i class="fa fa-sort-desc" aria-hidden="true"></i> Productos del Menú del día </label>
         <div class="spoiler col col-12">
         <table >
         <thead class="table-header">
@@ -38,7 +38,7 @@
     </div>
 <!--modal para cerrar -->
     <div id="cerrar" class="modal">
-      <form method="post" id="formNew" action="{{ baseUrl() }}/pedidos/cancelar" class="modal-content abm-content">
+      <form method="post" action="{{ baseUrl() }}/pedidos/cancelar" class="modal-content abm-content">
         <a class="close" onclick="cerrarMP()" onkeypress="cerrar()" role="button">×</a>
         <h3>Cerrar Pedido</h3>
         <label for="comentario">Observaciones: </label>
