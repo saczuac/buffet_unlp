@@ -7,7 +7,6 @@ use Model\Resource\ProductoResource;
 use Model\Resource\PedidoResource;
 use Model\Resource\PedidoDetalleResource;
 use Model\Resource\MenuResource;
-use Exception;
 
 date_default_timezone_set('America/Argentina/Buenos_Aires');
 
@@ -48,55 +47,26 @@ public function index($app, $misPedidos = null)
   try {
     $usuario_id = (isset($_SESSION['id'])) ? $_SESSION['id'] : null ;
     $app->applyHook('must.be.online');
-    $check = $this->checkStock($paramArray);
-  if ($check) { 
     $pedido = PedidoResource::getInstance()->insert($usuario_id, 1, $observacion);
     setcookie('PEDIDO',$pedido->getId(), time() + 1800);
   	$algo=explode(",", $paramArray);
     for ($i = 0; $i < (count($algo)) ; $i++) {
      $nuevoDetalle=PedidoDetalleResource::getInstance()->insert($pedido,array_shift($algo),array_shift($algo));
+
     }
-  } else {
-    $app->flash('error', 'La cantidad debe ser menor que el stock');
-  }
-  } catch (Exception $e){
-    $app->flash('error', 'Se debe seleccionar algun producto');
   } catch (\Doctrine\DBAL\DBALException $e) {
       $app->flash('error', 'No se pudo dar de alta el pedido');
   }
-   echo $app->redirect('/pedidos');
+  $this->index($app);
   }
   public function cancelarOnline($app,$id){
-    $pedido = (isset($_COOKIE['PEDIDO'])) ? $_COOKIE['PEDIDO'] : -1 ;
-    if (isset($_COOKIE['PEDIDO'])&&($pedido==$id)){
+    if (PedidoResource::getInstance()->cancelable($id){
         PedidoResource::getInstance()->cancelar($id,"cancelado por el usuario");
-        unset($_COOKIE['PEDIDO']);
       }else{
         $app->flash('error', 'No puede cancelar este pedido ');
       }
       echo $app->redirect('/pedidos');
   }
-
-  public function checkStock($paramArray) {
-    $algo=explode(",", $paramArray);
-    $e = true;
-    for ($i = 0; $i < (count($algo)) ; $i++) {
-      $check = $this->checkProducto(array_shift($algo),array_shift($algo));
-      if ($check) { 
-        $e = false;
-      }
-    }
-    return $e;
-  }
-
-  public function checkProducto($id, $cantidad) {
-    $producto = ProductoResource::getInstance()->get($id);
-    if ($producto == null) { 
-      throw new Exception("No se seleccionaron productos", 1);
-    }
-    return ($cantidad > $producto->getStock());
-  }
-
   public function cancelar($app,$id,$comentario){
     PedidoResource::getInstance()->cancelar($id,$comentario);
     echo $app->redirect('/pedidos');
