@@ -5,6 +5,7 @@ use mpdf;
 use Model\Resource\EgresoDetalleResource;
 use Model\Resource\IngresoDetalleResource;
 use Model\Resource\PedidoResource;
+use Model\Resource\BalanceResource;
 class BalanceController {
     private $paramDesde;
     private $paramHasta;
@@ -36,7 +37,8 @@ public function ganancias($app,$desde,$hasta)
   {
 
     $app->applyHook('must.be.gestion.or.administrador');
-    echo $app->view->render( "ganancias.twig", array('json' => $this->armoJsonGanancias($this->valoresGanancias($app,$desde,$hasta)),'ganancias' => $this->valoresGanancias($app,$desde,$hasta),'desde'=>$desde,'hasta'=>$hasta));
+
+    echo $app->view->render( "ganancias.twig", array('json' => $this->armoJsonGanancias(BalanceResource::getInstance()->gananciasEntre($desde,$hasta)),'ganancias' => BalanceResource::getInstance()->gananciasEntre($desde,$hasta),'desde'=>$desde,'hasta'=>$hasta));
   }
   public function exportGanancias($app,$desde,$hasta)
 {   
