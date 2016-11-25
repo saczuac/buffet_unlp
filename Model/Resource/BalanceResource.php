@@ -28,8 +28,8 @@ class BalanceResource extends AbstractResource {
 public function gananciasEntre($desde,$hasta)
   {
         $query_string = "
-              SELECT fecha,ingresos from Model\Entity\Balance
-              WHERE fecha between :desde AND :hasta) 
+              SELECT fecha,ingresos FROM Model\Entity\Balance
+              WHERE fecha between :desde AND :hasta 
 ";
 
         $query = $this->getEntityManager()->createQuery($query_string);
