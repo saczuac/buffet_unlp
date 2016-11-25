@@ -74,7 +74,9 @@ public function ganancias($app,$desde,$hasta)
       }
 public function armoJsonGanancias($values)
 {
-
+    foreach ($values as &$valor) {
+        $valor['name']=$valor['name']->format('Y-m-d');
+    }
   $arregloJson=
         array(
         'chart'=>array(
@@ -110,7 +112,7 @@ public function armoJsonGanancias($values)
 
         'tooltip'=>array(
             'headerFormat'=>'<span style="font-size:11px">{series.name}</span><br>',
-            'pointFormat'=>'<span style="color:{point.color}">{point.name.date('d-m-Y')}</span>: <b>${point.y:.2f}</b><br/>'
+            'pointFormat'=>'<span style="color:{point.color}">{point.name.date}</span>: <b>${point.y:.2f}</b><br/>'
         ),
 
         'series'=>[array(
