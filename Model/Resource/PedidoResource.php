@@ -1,5 +1,6 @@
 <?php
 
+namespace Model\Resource;
 use Model\Resource\AbstractResource;
 use Model\Resource\UsuarioResource;
 use Model\Resource\EstadoResource;
@@ -159,8 +160,8 @@ class PedidoResource extends AbstractResource {
     public function cancelable($id)
     {
       $pedido=$this->get($id);
-      $ahora=new Datetime();
-      if ($pedido->getFecha_Alta()->diff($ahora)->minutes>30){
+      $ahora=date('Y-m-d H:i:s');
+      if ($pedido->getFecha_Alta()->diff(strtotime($ahora))->minutes>30){
         return true;
       }else{
         return false;
