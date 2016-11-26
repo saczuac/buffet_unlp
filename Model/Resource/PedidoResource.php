@@ -1,6 +1,5 @@
 <?php
 
-namespace Model\Resource;
 use Model\Resource\AbstractResource;
 use Model\Resource\UsuarioResource;
 use Model\Resource\EstadoResource;
