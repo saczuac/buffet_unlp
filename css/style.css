@@ -857,7 +857,7 @@ ul.pagination li a:hover {background-color: #003366; color: white}
     border-bottom-right-radius: 5px;
 }
 
-@media only screen and (max-width: 1900px) and (min-width: 1082px) {
+@media only screen and (min-width: 1082px) {
   footer {
       position: relative;
   }
