@@ -44,7 +44,7 @@ public function ventaProductosEntre($desde,$hasta)
         $query_string = "
               SELECT CONCAT(p.nombre,'-',p.marca) as name,sum(v.cantidad) as y FROM Model\Entity\VentaProductos v join v.producto p
               WHERE v.fecha between :desde AND :hasta 
-              GROUP BY v.producto
+              GROUP BY p.id
 ";
 
         $query = $this->getEntityManager()->createQuery($query_string);
