@@ -164,7 +164,7 @@ class PedidoResource extends AbstractResource {
       $hora=strtotime($pedido->getFecha_Alta()->format('Y-m-d H:i:s'));
       $caduca=date("Y/m/d h:i:s", strtotime("+5 minutes",$hora));
       $ahora=date("Y/m/d h:i:s", strtotime("now"));
-      if ($caduca<$ahora){
+      if ($caduca>$ahora){
         return true;
       }else{
         return false;
