@@ -26,7 +26,7 @@ function agregarPedido() {
     inputCantidad.setAttribute("required", "true");
     var aDelete =document.createElement("a");
     aDelete.setAttribute("href","#");
-    var st="borrarProducto("+String(index)+")"
+    var st="borrarProductoPedido("+String(index)+")"
     aDelete.setAttribute("onclick",st);
     aDelete.innerHTML = "X";
     columnaCantidad.appendChild(inputCantidad);
@@ -56,7 +56,7 @@ function submitNewPedido() {
   document.getElementById("formNew").submit();
 }
 
-  function borrarProducto(id) {
+  function borrarProductoPedido(id) {
     var list=document.getElementById("ProductosPedido");
     list.removeChild(list.childNodes[id]);
  }
