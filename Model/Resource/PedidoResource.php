@@ -161,7 +161,7 @@ class PedidoResource extends AbstractResource {
     {
 
       $pedido=$this->get($id);
-      $hora=strtotime($pedido->getFecha_Alta())
+      $hora=strtotime($pedido->getFecha_Alta());
       $caduca=date("Y/m/d h:i:s", strtotime("+30 minutes",$hora));
       $ahora=date("Y/m/d h:i:s", strtotime("now"));
       if ($pedido->getFecha_Alta()){
