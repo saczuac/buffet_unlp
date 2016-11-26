@@ -159,9 +159,11 @@ class PedidoResource extends AbstractResource {
     }
     public function cancelable($id)
     {
+
       $pedido=$this->get($id);
-      $ahora=date('Y-m-d H:i:s');
-      if ($pedido->getFecha_Alta()->diff(strtotime($ahora))->minutes>30){
+      $caduca=date("Y/m/d h:i:s", strtotime("+30 minutes",$pedido->getFecha_Alta()));
+      $ahora=date("Y/m/d h:i:s", strtotime("now"));
+      if ($pedido->getFecha_Alta()){
         return true;
       }else{
         return false;
