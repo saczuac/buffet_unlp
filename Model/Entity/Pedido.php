@@ -102,5 +102,9 @@ class Pedido
         $this->setComentario($comentario);
         $this->setEstado_Id($estadoCerrado);
     }
+    public function pendiente()
+    {
+        return ($this->estado_id==1);
+    }
 }
  ?>
