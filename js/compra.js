@@ -43,7 +43,7 @@
       fila.appendChild(columnaPrecioUnitario);
       fila.appendChild(columnaDelete);
   }
-  function submitNew() {
+  function submitNewCompra() {
     document.getElementById("formNew");
     var y=[];
     var ids = document.getElementsByName("idProducto");
