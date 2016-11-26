@@ -68,7 +68,12 @@ public function index($app, $misPedidos = null)
       echo $app->redirect('/pedidos');
   }
   public function cancelar($app,$id,$comentario){
-    PedidoResource::getInstance()->cancelar($id,$comentario);
+    
+        if (PedidoResource::getInstance()->cancelar($id,$comentario)){
+        $app->flash('success', 'El pedido fue Cancelado');}
+    else{
+        $app->flash('error', 'No se puede cancelar este pedido');
+    }
     echo $app->redirect('/pedidos');
   }
   public function aceptar($app,$id){

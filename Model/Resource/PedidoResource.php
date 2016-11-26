@@ -84,10 +84,15 @@ class PedidoResource extends AbstractResource {
     public function cancelar($id,$comentario)
     {
       $pedido=$this->get($id);
-      $pedido->cancelar(EstadoResource::getInstance()->get(3),$comentario);
-      $this->getEntityManager()->persist($pedido);
-      $this->getEntityManager()->flush();
-      return $pedido;
+      if ($pedido->getEstado_Id()==1) {
+            $pedido->cancelar(EstadoResource::getInstance()->get(3),$comentario);
+            $this->getEntityManager()->persist($pedido);
+            $this->getEntityManager()->flush();
+            return true;
+    }else{
+      return false;
+    }
+
     }
     public function aceptar($id)
     {
@@ -164,7 +169,7 @@ class PedidoResource extends AbstractResource {
       $hora=strtotime($pedido->getFecha_Alta()->format('Y-m-d H:i:s'));
       $caduca=date("Y/m/d h:i:s", strtotime("+5 minutes",$hora));
       $ahora=date("Y/m/d h:i:s", strtotime("now"));
-      if ($caduca>$ahora){
+      if ($caduca<$ahora){
         return true;
       }else{
         return false;
