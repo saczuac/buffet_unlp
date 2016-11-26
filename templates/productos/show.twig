@@ -35,7 +35,7 @@
         <input type="number" name="stock_minimo" id="editStockMin" value="{{ producto.stock_minimo }}" required />
         <label for="editCategory">Categoría: </label>
         <select id="editCategory" name="categoria_id" required>
-         <option value="" selected="selected">Seleccione</option>
+         <option value="">Seleccione</option>
          {% for categoria in categorias %}
 					{% if categoria.id== producto.categoria_id.id %}
 					<option value="{{ categoria.id }}" selected>{{ categoria.nombre }}</option>
