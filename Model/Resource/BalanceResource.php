@@ -42,7 +42,7 @@ public function gananciasEntre($desde,$hasta)
 public function ventaProductosEntre($desde,$hasta)
   {
         $query_string = "
-              SELECT CONCAT(p.nombre,'-',p.marca) as name,v.cantidad as y FROM Model\Entity\VentaProductos v join v.producto p
+              SELECT CONCAT(p.nombre,'-',p.marca) as name,sum(v.cantidad) as y FROM Model\Entity\VentaProductos v join v.producto p
               WHERE v.fecha between :desde AND :hasta 
               GROUP BY v.producto
 ";
