@@ -161,7 +161,6 @@ class PedidoResource extends AbstractResource {
     {
       $pedido=$this->get($id);
       $ahora=date('Y-m-d H:i:s');
-      $minutos = ceil((strtotime($ahora) - strtotime($pedido->getFecha_Alta()) / 60);
       if ($pedido->getFecha_Alta()+(30*60)->diff($ahora)->minutes>30){
         return true;
       }else{
