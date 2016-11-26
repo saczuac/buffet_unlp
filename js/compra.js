@@ -43,17 +43,23 @@
       fila.appendChild(columnaPrecioUnitario);
       fila.appendChild(columnaDelete);
   }
-  function submitNewCompra() {
+  function submitNewCompras() {
     document.getElementById("formNew");
     var y=[];
     var ids = document.getElementsByName("idProducto");
     var cants = document.getElementsByName("cantidad");
     var pus = document.getElementsByName("precioUnitario");
+    var productosError=0;
     for (var i = 0; i < ids.length; i++) {
-      if ((ids[i].value!= "") && (cants[i].value!= "") && (pus[i].value!= "")){
+      if ((ids[i].value!= "") && ((cants[i].value!= "")&&(cants[i].value>0)) && ((pus[i].value!= "")&&(pus[i].value>0))){
       y[i*(3)]=ids[i].value;
       y[(i*(3))+1]=cants[i].value;
-      y[(i*(3))+2]=pus[i].value;}
+      y[(i*(3))+2]=pus[i].value;
+      }else{productosError=productosError+1;}
+    }
+    if (productosError>0){
+      alert("tiene productos con errores");
+      return;
     }
     h=y.toString();
     var inputArray = document.createElement( "input" );

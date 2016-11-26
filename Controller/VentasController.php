@@ -40,13 +40,12 @@ public function edit($app,$id)
 
 public function nuevo($app,$productoID,$cantidad,$precio,$egresoTipoId,$fecha,$desc)
   {$app->applyHook('must.be.gestion.or.administrador');
-    if ($cantidad < ProductoResource::getInstance()->get($productoID)->getStock()) {
-        $app->flash('error', $cantidad >= ProductoResource::getInstance()->get($productoID)->getStock());
+    if ($cantidad <= ProductoResource::getInstance()->get($productoID)->getStock()) {
           IngresoDetalleResource::getInstance()->insert($productoID,$cantidad,$precio,$egresoTipoId,$fecha,$desc);
           ProductoResource::getInstance()->sacarStock($productoID,$cantidad);
           $app->redirect("/ventas");
     } else {
-      
+              $app->flash('error', "no hay estock suficiente");
     }
     $app->redirect("/ventas");
     
