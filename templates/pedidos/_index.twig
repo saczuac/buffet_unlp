@@ -8,7 +8,7 @@
   </tr>
   {% for producto in productos %}
   	{% for productoi in producto %}
-		<tr id="{{ productoi.id }}">
+		<tr>
 			<td>{{ productoi.nombre }}</td>
 			<td>{{ productoi.marca }}</td>
       <td>{{ productoi.categoria_id.nombre }}</td>
