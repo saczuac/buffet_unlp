@@ -5,7 +5,7 @@ namespace Model\Entity;
 use Model\Entity;
 use Doctrine\ORM\Mapping;
 use Doctrine\Common\Collections\ArrayCollection;
-
+use Model\Resource\EstadoResource;
 /**
  *
  * @Entity
@@ -104,7 +104,7 @@ class Pedido
     }
     public function pendiente()
     {
-        return ($this->estado_id==1);
+        return ($this->estado_id==EstadoResource::getInstance()->get(1));
     }
 }
  ?>
