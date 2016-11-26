@@ -66,7 +66,7 @@ function submitNewPedido() {
       document.getElementById('idPedido').value=id;
  }
   function cerrarPedidoOnline(id) {
-      modal = document.getElementById('cerrar');
+      modal = document.getElementById('cerrarOnline');
       modal.style.display = "block";
       document.getElementById('idPedido').value=id;
  }
