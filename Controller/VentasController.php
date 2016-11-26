@@ -5,7 +5,7 @@ use Model\Entity\Compra;
 use Model\Resource\CompraResource;
 use Model\Resource\ProductoResource;
 use Model\Resource\IngresoDetalleResource;
-
+use Controller\Validator;
 class VentasController {
 
 public function index($app)
@@ -40,6 +40,9 @@ public function edit($app,$id)
 
 public function nuevo($app,$productoID,$cantidad,$precio,$egresoTipoId,$fecha,$desc)
   {$app->applyHook('must.be.gestion.or.administrador');
+  $errors = $this->validarCampos($cantidad,$precio);
+  $app->flash('errors', sizeof($errors) );
+  if (sizeof($errors) == 0) {
     if ($cantidad <= ProductoResource::getInstance()->get($productoID)->getStock()) {
           IngresoDetalleResource::getInstance()->insert($productoID,$cantidad,$precio,$egresoTipoId,$fecha,$desc);
           ProductoResource::getInstance()->sacarStock($productoID,$cantidad);
@@ -47,9 +50,22 @@ public function nuevo($app,$productoID,$cantidad,$precio,$egresoTipoId,$fecha,$d
     } else {
               $app->flash('error', "no hay estock suficiente");
     }
+     }else {
+       $app->flash('errors', $errors);
+    }
     $app->redirect("/ventas");
     
 
+  }
+    public function validarCampos($cantidad,$precio) {
+    $errors = [];
+    if (!Validator::isPositive($cantidad)) {
+         $errors[] = 'cantidad debe ser mayor a 0';
+    }
+    if (!Validator::isPositive($precio)) {
+         $errors[] = 'precio debe ser mayor a 0';
+    }
+    return $errors;
   }
 
 }

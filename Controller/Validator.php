@@ -26,6 +26,10 @@ class Validator {
      public function isNumeric ($value) {
          return is_numeric($value);
      }
+     public function isPositive($value)
+     {
+         return (Validator::isNumeric($value)&&($value>0));
+     }
 
      public function hasLength($number,$value) {
         return (strlen($value) <= $number);
