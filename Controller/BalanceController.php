@@ -128,7 +128,10 @@ public function armoJsonGanancias($values)
 
 public function armoJsonVentas($values)
 {
-
+    foreach ($values as &$valor) {
+      $valor['y']=(float)$valor['y'];
+      /*$valor['name']=$valor['name']->format('Y-m-d');*/
+    }
   $arregloJson=
         array(
             'chart'=>array(
