@@ -5,7 +5,7 @@ namespace Model\Entity;
 use Model\Entity;
 use Doctrine\ORM\Mapping;
 use Doctrine\Common\Collections\ArrayCollection;
-use Model\Entity\Pedido;
+use Model\Resource\EstadoResource;
 /**
  *
  * @Entity
