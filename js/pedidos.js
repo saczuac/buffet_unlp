@@ -68,7 +68,7 @@ function submitNewPedido() {
   function cerrarPedidoOnline(id) {
       modal = document.getElementById('cerrarOnline');
       modal.style.display = "block";
-      document.getElementById('idPedido').value=id;
+      document.getElementById('idPedidoOnline').value=id;
  }
   function cerrarMP() {
       modal = document.getElementById('cerrar');
