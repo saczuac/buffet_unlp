@@ -209,7 +209,7 @@ public function ventas($app,$desde,$hasta)
     }
     $params=$this->myMergeMas($ingresos,$pedidos);
     $app->applyHook('must.be.gestion.or.administrador');
-    echo $app->view->render( "balanceIngresos.twig", array('json' => $this->armoJsonVentas($params),'ventas'=>$params,'desde'=>$desde,'hasta'=>$hasta));
+    echo $app->view->render( "balanceIngresos.twig", array('json' => $this->armoJsonVentas(BalanceResource::getInstance()->ventaProductosEntre($desde,$hasta)),'ventas'=>BalanceResource::getInstance()->ventaProductosEntre($desde,$hasta),'desde'=>$desde,'hasta'=>$hasta));
   }
 public function exportVentas($app,$desde,$hasta)
 { 
