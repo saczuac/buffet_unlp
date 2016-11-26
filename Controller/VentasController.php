@@ -23,9 +23,14 @@ public function edit($app,$id)
   public function editar($app,$id,$productoID,$cantidad,$precio,$egresoTipoId,$fecha,$desc)
   {
     $app->applyHook('must.be.gestion.or.administrador');
+      $errors = $this->validarCampos($cantidad,$precio);
+  if (sizeof($errors) == 0) {
     $ingreso=IngresoDetalleResource::getInstance()->get($id);
     ProductoResource::getInstance()->ingresarStock($ingreso->getProducto()->getId(),$ingreso->getCantidad());
     IngresoDetalleResource::getInstance()->edit($id,$productoID,$cantidad,$precio,$egresoTipoId,$fecha,$desc);
+     }else {
+       $app->flash('errors', $errors);
+    }
     $app->redirect("/ventas");
   }
 
@@ -41,7 +46,6 @@ public function edit($app,$id)
 public function nuevo($app,$productoID,$cantidad,$precio,$egresoTipoId,$fecha,$desc)
   {$app->applyHook('must.be.gestion.or.administrador');
   $errors = $this->validarCampos($cantidad,$precio);
-  $app->flash('errors', sizeof($errors) );
   if (sizeof($errors) == 0) {
     if ($cantidad <= ProductoResource::getInstance()->get($productoID)->getStock()) {
           IngresoDetalleResource::getInstance()->insert($productoID,$cantidad,$precio,$egresoTipoId,$fecha,$desc);
