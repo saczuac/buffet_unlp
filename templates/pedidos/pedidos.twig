@@ -48,6 +48,18 @@
       </form>
     </div>
   <!-- fin del modal-->
+  <!--modal para cerrar -->
+    <div id="cerrarOnline" class="modal">
+      <form method="post" action="{{ baseUrl() }}/pedidos/cancelarOnline" class="modal-content abm-content">
+        <a class="close" onclick="cerrarMP()" onkeypress="cerrar()" role="button">×</a>
+        <h3>Cerrar Pedido</h3>
+        <label for="comentario">Observaciones: </label>
+        <input type="text" name="comentario" id="comentario" maxlength="255" placeholder="comentario" required />
+        <input type="hidden" name="idPedido" id="idPedido">
+  <input type="submit" name="aceptar">
+      </form>
+    </div>
+  <!-- fin del modal-->
     <br>
 
   <h1 class="title" id="listado">Menú del día - Productos</h1>

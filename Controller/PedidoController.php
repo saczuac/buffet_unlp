@@ -59,9 +59,9 @@ public function index($app, $misPedidos = null)
   }
   $this->index($app);
   }
-  public function cancelarOnline($app,$id){
+  public function cancelarOnline($app,$id,$comentario){
     if (PedidoResource::getInstance()->cancelable($id)){
-        PedidoResource::getInstance()->cancelar($id,"cancelado por el usuario");
+        PedidoResource::getInstance()->cancelar($id,$comentario);
       }else{
         $app->flash('error', 'No puede cancelar este pedido ');
       }
