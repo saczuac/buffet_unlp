@@ -3,9 +3,9 @@
 {% block contenido %}
 
     <section class="center">
+    	<h3>Factura </h3>
             <form method="post" action="/compras/factura" enctype="multipart/form-data">
         <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
-            <label for="factura">Factura: </label>
             <input type="file" id="myFileMenu" name="myFileMenu" accept="image/*">
             <input type="hidden" name="idCompra" id="idCompra" value="{{compra.id}}">
         <input type="submit" value="Confirmar"/>
