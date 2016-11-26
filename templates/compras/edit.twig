@@ -49,8 +49,8 @@
           {% endfor %}
           </select>
           </td>
-            <td><input type="number" name="cantidad" step="1" value="{{detalle.cantidad}}" required> </td>
-            <td><input type="number" name="precioUnitario" step="0.05" value="{{detalle.preciounitario}}" required></td>
+            <td><input type="number" name="cantidad" step="1" min="1" value="{{detalle.cantidad}}" required> </td>
+            <td><input type="number" name="precioUnitario" step="0.05" min="0.05" value="{{detalle.preciounitario}}" required></td>
             <td><a href="#" onclick="borrar({{loop.index0}})">X</a></td>
           </tr>
           {% endfor %}
