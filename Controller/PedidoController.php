@@ -40,6 +40,7 @@ public function index($app, $misPedidos = null)
   }
 
   public function show($app, $id){
+    $app->applyHook('must.be.gestion.or.administrador');
     $detalles = PedidoDetalleResource::getInstance()->getByPedidoId($id);
     echo $app->view->render("pedidos/show.twig", array('detalles' => ($detalles)));
   }
