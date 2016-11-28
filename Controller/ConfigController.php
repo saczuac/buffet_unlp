@@ -7,7 +7,7 @@ use Model\Resource\ConfiguracionResource;
 
 class ConfigController {
 
-   public function showConfig($app){
+   public function showConfig($app,$token){
       $app->applyHook('must.be.administrador');
       $configResource = ConfiguracionResource::getInstance();
       echo $app->view->render( "config.twig",
@@ -20,17 +20,22 @@ class ConfigController {
       'paginacion' => ($configResource->get('paginacion')),
       'msg' => ($configResource->get('msgDeshabilitado')),
       'mail' => ($configResource->get('mail')),
-      'habilitado' => ($configResource->get('habilitado'))));
+      'habilitado' => ($configResource->get('habilitado')),
+      'token' => $token ));
   }
 
- public function setPaginacion($app,$value) {
+ public function setPaginacion($app,$value,$token) {
     $app->applyHook('must.be.administrador');
+    $_SESSION['token_received']=$token;
+    $app->applyHook('must.be.checked');
     ConfiguracionResource::getInstance()->edit('paginacion',$value);
     echo $app->redirect('/config');
   }
 
 public function setTituloDescripcion($app,$value) {
     $app->applyHook('must.be.administrador');
+    $_SESSION['token_received']=$token;
+    $app->applyHook('must.be.checked');
     ConfiguracionResource::getInstance()->edit('tituloDescripcion',$value);
  }
 
@@ -47,8 +52,11 @@ public function setTituloDescripcion($app,$value) {
     }
   }
 
- public function setDescripcion($app,$titulo,$descripcion,$mail) {
+ public function setDescripcion($app,$titulo,$descripcion,$mail,$token) {
+    $_SESSION['token_received']=$token;
+    $app->applyHook('must.be.checked');
     $app->applyHook('must.be.administrador');
+    
   	$this->setTituloDescripcion($app,$titulo);
   	$this->setInfoDescripcion($app,$descripcion);
     $this->setMail($app,$mail);
@@ -72,7 +80,7 @@ public function setImgMenu($app) {
     ConfiguracionResource::getInstance()->edit('imgMenu',$target_file);
 	}
   }
-  public function setMenu($app,$titulo,$descripcion) {
+  public function setMenu($app,$titulo,$descripcion,$token) {
     $app->applyHook('must.be.administrador');
   	$this->setTituloMenu($app,$titulo);
   	$this->setInfoMenu($app,$descripcion);
@@ -92,8 +100,10 @@ public function setImgMenu($app) {
     $app->applyHook('must.be.administrador');
     ConfiguracionResource::getInstance()->edit('msgDeshabilitado',$value);
   }
-  public function setFormHabilitado($app,$estado,$msg) {
+  public function setFormHabilitado($app,$estado,$msg,$token) {
     $app->applyHook('must.be.administrador');
+        $_SESSION['token_received']=$token;
+    $app->applyHook('must.be.checked');
     if ($estado!=1) {
       $estado=0;
     }else{

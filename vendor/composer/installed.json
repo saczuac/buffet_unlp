@@ -1164,5 +1164,61 @@
         ],
         "description": "Symfony Console Component",
         "homepage": "https://symfony.com"
+    },
+    {
+        "name": "schnittstabil/csrf-twig-helpers",
+        "version": "1.1.1",
+        "version_normalized": "1.1.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/schnittstabil/csrf-twig-helpers.git",
+            "reference": "36cf8f3a28dd8408f8e5194613fbc429388ea65d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/schnittstabil/csrf-twig-helpers/zipball/36cf8f3a28dd8408f8e5194613fbc429388ea65d",
+            "reference": "36cf8f3a28dd8408f8e5194613fbc429388ea65d",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.6.0",
+            "twig/twig": "^1.24"
+        },
+        "require-dev": {
+            "codeclimate/php-test-reporter": "^0.3.0",
+            "fabpot/php-cs-fixer": "^1.10",
+            "halleck45/phpmetrics": "^1.9",
+            "phpmd/phpmd": "^2.4",
+            "satooshi/php-coveralls": "^1.0.1",
+            "schnittstabil/sugared-phpunit": "^0.2.0",
+            "squizlabs/php_codesniffer": "^2.6",
+            "vladahejda/phpunit-assert-exception": "^1.0"
+        },
+        "time": "2016-04-08 16:03:31",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Schnittstabil\\Csrf\\Twig\\Helpers\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Michael Mayer",
+                "email": "michael@schnittstabil.de"
+            }
+        ],
+        "description": "CSRF (Cross-Site Request Forgery) protection helpers for the Twig templating engine.",
+        "homepage": "https://github.com/schnittstabil/csrf-twig-helpers",
+        "keywords": [
+            "cross-site request forgery",
+            "csrf",
+            "session riding",
+            "xsrf"
+        ]
     }
 ]

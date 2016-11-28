@@ -18,6 +18,7 @@ class ComposerStaticInit7d8e59127c8db5c46d1b71101ecdaa02
             'Symfony\\Component\\Console\\' => 26,
             'Slim\\Views\\' => 11,
             'Slim\\Flash\\' => 11,
+            'Schnittstabil\\Csrf\\Twig\\Helpers\\' => 32,
         ),
         'P' => 
         array (
@@ -61,6 +62,10 @@ class ComposerStaticInit7d8e59127c8db5c46d1b71101ecdaa02
         'Slim\\Flash\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/flash/src',
+        ),
+        'Schnittstabil\\Csrf\\Twig\\Helpers\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/schnittstabil/csrf-twig-helpers/src',
         ),
         'Psr\\Log\\' => 
         array (

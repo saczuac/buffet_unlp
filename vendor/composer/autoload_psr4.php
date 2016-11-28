@@ -11,6 +11,7 @@ return array(
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
     'Slim\\Views\\' => array($vendorDir . '/slim/views', $vendorDir . '/slim/twig-view/src'),
     'Slim\\Flash\\' => array($vendorDir . '/slim/flash/src'),
+    'Schnittstabil\\Csrf\\Twig\\Helpers\\' => array($vendorDir . '/schnittstabil/csrf-twig-helpers/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'Model\\' => array($baseDir . '/Model'),

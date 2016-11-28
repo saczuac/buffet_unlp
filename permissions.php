@@ -69,5 +69,11 @@ $app->hook('must.be.logueado', function () use ($app, $mensaje) {
         $app->redirect('/');
     }
 });
+$app->hook('must.be.checked', function () use ($app, $token) {
+    if ($_SESSION['csrf_token']!=$_SESSION['token_received']) {
+        $app->flash('error', "No esta seguro".$token);
+        $app->redirect('/logout');
+    }
+});
 
  ?>

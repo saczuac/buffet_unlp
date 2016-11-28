@@ -21,6 +21,7 @@ $app = new \Slim\Slim([
 // and define the engine used for the view @see http://twig.sensiolabs.org
 $app->view = new \Slim\Views\Twig();
 $app->view->setTemplatesDirectory("templates");
+
 // Twig configuration
 $view = $app->view();
 $view->parserOptions = ['debug' => true];
@@ -28,6 +29,8 @@ $view->parserExtensions = [new \Slim\Views\TwigExtension()];
 $view->getEnvironment()->addGlobal('session', $_SESSION);
 $view->getEnvironment()->addGlobal('server', $_SERVER);
 $view->getEnvironment()->addGlobal('mail', ConfiguracionResource::getInstance()->get('mail'));
+
+
 // <------ END SLIM CONFIGURATION---------->
 
 $userResource = UsuarioResource::getInstance();
@@ -50,6 +53,7 @@ $app->post('/', function() use ($app, $userResource) {
     $pass = $app->request->post('pass');
     $user = $userResource->login($name, $pass);
     if ($user) {
+      $_SESSION['csrf_token'] = rand(0,999999);
       $_SESSION['habilitado'] = $user->getHabilitado();
       if ($user->getRol_Id() == 2) { $app->applyHook('must.be.habilitado'); };
     	$_SESSION['id']=$user->getId();
@@ -93,15 +97,15 @@ $app->group('/balanceIngresos', function() use($app) {
 
 
 $app->group('/config', function() use($app) {
-  $app->get('/', '\Controller\ConfigController:showConfig')->setParams(array($app));
+  $app->get('/', '\Controller\ConfigController:showConfig')->setParams(array($app,$_SESSION['csrf_token']));
   $app->post('/setPaginacion', '\Controller\ConfigController:setPaginacion')->setParams(
-           array($app, $app->request->post('paginacionInt')));
+           array($app, $app->request->post('paginacionInt'),$app->request->post('token')));
   $app->post('/setDescripcion', '\Controller\ConfigController:setDescripcion')->setParams(
-           array($app, $app->request->post('titleInfo'),$app->request->post('descInfo'),$app->request->post('mail')));
+           array($app, $app->request->post('titleInfo'),$app->request->post('descInfo'),$app->request->post('mail'),$app->request->post('token')));
   $app->post('/setMenu', '\Controller\ConfigController:setMenu')->setParams(
-           array($app, $app->request->post('menuTitulo'),$app->request->post('menuInfo')));
+           array($app, $app->request->post('menuTitulo'),$app->request->post('menuInfo'),$app->request->post('token')));
   $app->post('/setHabilitado', '\Controller\ConfigController:setFormHabilitado')->setParams(
-           array($app, $app->request->post('habilitado'),$app->request->post('msg')));
+           array($app, $app->request->post('habilitado'),$app->request->post('msg'),$app->request->post('token')));
 });
 
 
