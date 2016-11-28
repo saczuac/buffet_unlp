@@ -310,7 +310,7 @@ p {
 }
 
 footer {
-   position:absolute;
+   position:relative;
    right: 0;
    opacity: 0.95;
    left: 0;
