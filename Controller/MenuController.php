@@ -46,7 +46,7 @@ public function index($app,$token)
 
   public function deleteMenu($app, $fecha) {
     MenuResource::getInstance()->deleteByFecha($fecha);
-    $this->index($app);
+    $this->index($app,$_SESSION['csrf_token']);
   }
 
   public function edit($app,$productos,$fecha,$habilitado,$token)
