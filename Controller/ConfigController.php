@@ -3,7 +3,7 @@
 namespace Controller;
 use Model\Entity\Usuario;
 use Model\Resource\ConfiguracionResource;
-
+use Controller\CSRF;
 
 class ConfigController {
 
@@ -26,8 +26,7 @@ class ConfigController {
 
  public function setPaginacion($app,$value,$token) {
     $app->applyHook('must.be.administrador');
-    $_SESSION['token_received']=$token;
-    $app->applyHook('must.be.checked');
+    CSRF::getInstance()->control($app,$token);
     ConfiguracionResource::getInstance()->edit('paginacion',$value);
     echo $app->redirect('/config');
   }
@@ -53,10 +52,8 @@ public function setTituloDescripcion($app,$value) {
   }
 
  public function setDescripcion($app,$titulo,$descripcion,$mail,$token) {
-    $_SESSION['token_received']=$token;
-    $app->applyHook('must.be.checked');
+    CSRF::getInstance()->control($app,$token);
     $app->applyHook('must.be.administrador');
-    
   	$this->setTituloDescripcion($app,$titulo);
   	$this->setInfoDescripcion($app,$descripcion);
     $this->setMail($app,$mail);
@@ -81,6 +78,7 @@ public function setImgMenu($app) {
 	}
   }
   public function setMenu($app,$titulo,$descripcion,$token) {
+    CSRF::getInstance()->control($app,$token);
     $app->applyHook('must.be.administrador');
   	$this->setTituloMenu($app,$titulo);
   	$this->setInfoMenu($app,$descripcion);
@@ -88,6 +86,7 @@ public function setImgMenu($app) {
     echo $app->redirect('/config');
   }
   public function setHabilitad($app,$value) {
+    CSRF::getInstance()->control($app,$token);
     $app->applyHook('must.be.administrador');
     ConfiguracionResource::getInstance()->edit('habilitado',$value);
   }
@@ -101,9 +100,8 @@ public function setImgMenu($app) {
     ConfiguracionResource::getInstance()->edit('msgDeshabilitado',$value);
   }
   public function setFormHabilitado($app,$estado,$msg,$token) {
+    CSRF::getInstance()->control($app,$token);
     $app->applyHook('must.be.administrador');
-        $_SESSION['token_received']=$token;
-    $app->applyHook('must.be.checked');
     if ($estado!=1) {
       $estado=0;
     }else{

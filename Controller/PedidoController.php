@@ -13,7 +13,7 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 class PedidoController {
 
-public function index($app, $misPedidos = null)
+public function index($app,$token, $misPedidos = null)
   {
     $app->applyHook('must.be.logueado');
     $hoy = date("y-m-d");
@@ -30,7 +30,7 @@ public function index($app, $misPedidos = null)
        $misPedidos = PedidoResource::getInstance()->getPedidosDelUsuario($usuario_id);
     }
 
-    echo $app->view->render("pedidos/pedidos.twig", array('pedidos' => (PedidoResource::getInstance()->get()),'pedidosMios' => ($misPedidos) ,'productos' => ($productos)));
+    echo $app->view->render("pedidos/pedidos.twig", array('pedidos' => (PedidoResource::getInstance()->get()),'pedidosMios' => ($misPedidos) ,'productos' => ($productos),'token'=>$token));
   }
 
   public function search($app, $desde, $hasta) {
@@ -45,8 +45,8 @@ public function index($app, $misPedidos = null)
     echo $app->view->render("pedidos/show.twig", array('detalles' => ($detalles)));
   }
 
-  public function nuevo($app, $paramArray, $estado_id = 1, $observacion)
-  {
+  public function nuevo($app, $paramArray, $estado_id = 1, $observacion,$token)
+  {CSRF::getInstance()->control($app,$token);
   try {
     $usuario_id = (isset($_SESSION['id'])) ? $_SESSION['id'] : null ;
     $app->applyHook('must.be.online');

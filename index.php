@@ -54,6 +54,7 @@ $app->post('/', function() use ($app, $userResource) {
     $user = $userResource->login($name, $pass);
     if ($user) {
       $_SESSION['csrf_token'] = rand(0,999999);
+      $_SESSION['token_received'] = 0;
       $_SESSION['habilitado'] = $user->getHabilitado();
       if ($user->getRol_Id() == 2) { $app->applyHook('must.be.habilitado'); };
     	$_SESSION['id']=$user->getId();
@@ -118,21 +119,21 @@ $app->group('/gastos', function() use($app) {
 });
 
 $app->group('/menu', function() use($app) {
-  $app->get('/', '\Controller\MenuController:index')->setParams(array($app));
+  $app->get('/', '\Controller\MenuController:index')->setParams(array($app,$_SESSION['csrf_token']));
     $app->get('/delete', '\Controller\MenuController:deleteMenu')->setParams(array($app, $app->request->get('fecha')));
-  $app->get('/edit', '\Controller\MenuController:showEdit')->setParams(array($app ,$app->request()->get('id')));
+  $app->get('/edit', '\Controller\MenuController:showEdit')->setParams(array($app ,$app->request()->get('id'),$_SESSION['csrf_token']));
   $app->post('/edit', '\Controller\MenuController:edit')->setParams(
-    array($app,$app->request->post('paramArray'),$app->request->post('editFecha'),$app->request->post('habilitado')));
+    array($app,$app->request->post('paramArray'),$app->request->post('editFecha'),$app->request->post('habilitado'),$app->request->post('token')));
   $app->post('/new', '\Controller\MenuController:nuevo')->setParams(
-    array($app,$app->request->post('paramArray'),$app->request->post('newFecha'),$app->request->post('habilitado')));
+    array($app,$app->request->post('paramArray'),$app->request->post('newFecha'),$app->request->post('habilitado'),$app->request->post('token')));
     $app->get('/show', '\Controller\MenuController:showFecha')->setParams(array($app, $app->request->get('fecha')));
 });
 
 $app->group('/pedidos', function() use($app) {
-  $app->get('/', '\Controller\PedidoController:index')->setParams(array($app));
+  $app->get('/', '\Controller\PedidoController:index')->setParams(array($app,$_SESSION['csrf_token']));
   $app->post('/search', '\Controller\PedidoController:search')->setParams(array($app, $app->request->post('desde'), $app->request->post('hasta')));
   $app->post('/new', '\Controller\PedidoController:nuevo')->setParams(
-    array($app,$app->request->post('paramArray'), null, $app->request->post('observacion')));
+    array($app,$app->request->post('paramArray'), null, $app->request->post('observacion'),$app->request->post('token')));
   $app->get('/show', '\Controller\PedidoController:show')->setParams(array($app, $app->request->get('id')));
   $app->post('/cancelar', '\Controller\PedidoController:cancelar')->setParams(array($app, $app->request->post('idPedido'),$app->request->post('comentario')));
   $app->Post('/cancelarOnline/', '\Controller\PedidoController:cancelarOnline')->setParams(array($app, $app->request->post('idPedidoOnline'),$app->request->post('comentario')));
