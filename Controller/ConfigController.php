@@ -33,8 +33,6 @@ class ConfigController {
 
 public function setTituloDescripcion($app,$value) {
     $app->applyHook('must.be.administrador');
-    $_SESSION['token_received']=$token;
-    $app->applyHook('must.be.checked');
     ConfiguracionResource::getInstance()->edit('tituloDescripcion',$value);
  }
 
@@ -52,7 +50,7 @@ public function setTituloDescripcion($app,$value) {
   }
 
  public function setDescripcion($app,$titulo,$descripcion,$mail,$token) {
-    CSRF::getInstance()->control($app,$token);
+  CSRF::getInstance()->control($app,$token);
     $app->applyHook('must.be.administrador');
   	$this->setTituloDescripcion($app,$titulo);
   	$this->setInfoDescripcion($app,$descripcion);
