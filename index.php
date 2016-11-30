@@ -131,7 +131,7 @@ $app->group('/menu', function() use($app) {
 
 $app->group('/pedidos', function() use($app) {
   $app->get('/', '\Controller\PedidoController:index')->setParams(array($app,$_SESSION['csrf_token']));
-  $app->post('/search', '\Controller\PedidoController:search')->setParams(array($app, $app->request->post('desde'), $app->request->post('hasta')));
+  $app->post('/search', '\Controller\PedidoController:search')->setParams(array($app, $app->request->post('desde'), $app->request->post('hasta'),$_SESSION['csrf_token']));
   $app->post('/new', '\Controller\PedidoController:nuevo')->setParams(
     array($app,$app->request->post('paramArray'), null, $app->request->post('observacion'),$app->request->post('token')));
   $app->get('/show', '\Controller\PedidoController:show')->setParams(array($app, $app->request->get('id')));
@@ -143,7 +143,7 @@ $app->group('/pedidos', function() use($app) {
 
 $app->group('/productos', function() use ($app, $userResource) {
     // Listar
-    $app->get('/', '\Controller\ProductoController:listProductos')->setParams(array($app));
+    $app->get('/', '\Controller\ProductoController:listProductos')->setParams(array($app,$_SESSION['csrf_token']));
     // Alta
     $app->post('/', '\Controller\ProductoController:newProducto')->setParams(
             array($app, $app->request->post('nombre'),
@@ -153,12 +153,13 @@ $app->group('/productos', function() use ($app, $userResource) {
             $app->request->post('proovedor'),
             $app->request->post('precio_venta_unitario'),
             $app->request->post('categoria_id'),
-            $app->request->post('descripcion'))
+            $app->request->post('descripcion'),
+            $app->request->post('token'))
     );
    // Baja
     $app->get('/delete', '\Controller\ProductoController:deleteProducto')->setParams(array($app, $app->request->get('id')));
    // Show
-   $app->get('/show', '\Controller\ProductoController:showProducto')->setParams(array($app, $app->request->get('id')));
+   $app->get('/show', '\Controller\ProductoController:showProducto')->setParams(array($app, $app->request->get('id'),$_SESSION['csrf_token']));
    // Editar
    $app->post('/show', '\Controller\ProductoController:editProducto')->setParams(
         array($app, $app->request->post('nombre'),
@@ -169,7 +170,8 @@ $app->group('/productos', function() use ($app, $userResource) {
             $app->request->post('precio_venta_unitario'),
             $app->request->post('categoria_id'),
             $app->request->post('descripcion'),
-            $app->request->post('prodid'))
+            $app->request->post('prodid'),
+            $app->request->post('token'))
    );
 });
 
@@ -190,7 +192,7 @@ $app->group('/stockMinimo', function() use($app) {
 
 $app->group('/usuarios', function() use ($app, $userResource) {
     // Listar
-    $app->get('/', '\Controller\UsuarioController:listUsuarios')->setParams(array($app));
+    $app->get('/', '\Controller\UsuarioController:listUsuarios')->setParams(array($app,$_SESSION['csrf_token']));
     // Alta
     $app->post('/', '\Controller\UsuarioController:newUsuario')->setParams(
             array($app, $app->request->post('user'),
@@ -202,12 +204,13 @@ $app->group('/usuarios', function() use ($app, $userResource) {
             $app->request->post('rol_id'),
             $app->request->post('email'),
             $app->request->post('ubicacion_id'),
-            $app->request->post('habilitado'))
+            $app->request->post('habilitado'),
+            $app->request->post('token'))
     );
    // Baja
     $app->get('/delete', '\Controller\UsuarioController:deleteUsuario')->setParams(array($app, $app->request->get('id')));
    // Show
-   $app->get('/show', '\Controller\UsuarioController:showUsuario')->setParams(array($app, $app->request->get('id')));
+   $app->get('/show', '\Controller\UsuarioController:showUsuario')->setParams(array($app, $app->request->get('id'),$_SESSION['csrf_token']));
    // Editar
    $app->post('/show', '\Controller\UsuarioController:editUsuario')->setParams(
            array($app, $app->request->post('user'),
@@ -219,20 +222,22 @@ $app->group('/usuarios', function() use ($app, $userResource) {
            $app->request->post('email'),
            $app->request->post('ubicacion_id'),
            $app->request->post('userid'),
-           $app->request->post('habilitado'))
+           $app->request->post('habilitado'),
+           $app->request->post('token'))
    );
 });
 
 $app->group('/ventas', function() use($app) {
-  $app->get('/', '\Controller\VentasController:index')->setParams(array($app));
+  $app->get('/', '\Controller\VentasController:index')->setParams(array($app,$_SESSION['csrf_token']));
   $app->post('/new', '\Controller\VentasController:nuevo')->setParams(
     array($app,$app->request->post('newSellProductName'),
       $app->request->post('newSellQuantity'),
       $app->request->post('newSellPrice'),
       "1",
       $app->request->post('newSellDate'),
-      $app->request->post('newSellDesc')));
-  $app->get('/edit(/(:id)(/))', '\Controller\VentasController:edit')->setParams(array($app),$app->request()->get('id'));
+      $app->request->post('newSellDesc'),
+      $app->request->post('token')));
+  $app->get('/edit(/(:id)(/))', '\Controller\VentasController:edit')->setParams(array($app,$app->request()->get('id'),$_SESSION['csrf_token']));
   $app->post('/edit', '\Controller\VentasController:editar')->setParams(
      array($app,$app->request->post('id'),
       $app->request->post('newSellProductName'),
@@ -240,7 +245,8 @@ $app->group('/ventas', function() use($app) {
       $app->request->post('newSellPrice'),
       "1",
       $app->request->post('newSellDate'),
-      $app->request->post('newSellDesc')));
+      $app->request->post('newSellDesc'),
+      $app->request->post('token')));
     $app->get('/delete(/(:id)(/))', '\Controller\VentasController:delete')->setParams(array($app),$app->request()->get('id'));
 });
 

@@ -11,9 +11,9 @@ use Model\Resource\UbicacionResource;
 
 class UsuarioController {
 
-  public function listUsuarios($app){
+  public function listUsuarios($app,$token){
     $app->applyHook('must.be.administrador');
-    echo $app->view->render( "usuarios/index.twig", array('usuarios' => (UsuarioResource::getInstance()->get()), 'ubicaciones' => (UbicacionResource::getInstance()->get())));
+    echo $app->view->render( "usuarios/index.twig", array('usuarios' => (UsuarioResource::getInstance()->get()), 'ubicaciones' => (UbicacionResource::getInstance()->get()),'token'=>$token));
   }
 
   public function validarCampos($nombre, $apellido, $user, $pass = null, $email, $documento, $telefono) {
@@ -50,7 +50,8 @@ class UsuarioController {
     return $errors;
   }
 
-  public function newUsuario($app,$user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id = null, $habilitado = 1) {
+  public function newUsuario($app,$user,$pass,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id = null, $habilitado = 1,$token) {
+    CSRF::getInstance()->control($app,$token);
     $app->applyHook('must.be.administrador');
     $errors = $this->validarCampos($nombre, $apellido, $user, $pass, $email, $documento, $telefono);
     if (sizeof($errors) == 0) {
@@ -65,7 +66,8 @@ class UsuarioController {
     echo $app->redirect('/usuarios');
   }
 
-  public function editUsuario($app,$user,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id = null,$id, $habilitado = 1) {
+  public function editUsuario($app,$user,$nombre,$apellido,$documento,$telefono,$rol_id,$email,$ubicacion_id = null,$id, $habilitado = 1,$token) {
+    CSRF::getInstance()->control($app,$token);
     $app->applyHook('must.be.administrador');
     $errors = $this->validarCampos($nombre, $apellido, $user, null, $email, $documento, $telefono);
     if (sizeof($errors) == 0) {
@@ -104,12 +106,12 @@ class UsuarioController {
     $app->redirect('/usuarios');
   }
 
-  public function showUsuario($app, $id){
+  public function showUsuario($app, $id,$token){
     $app->applyHook('must.be.administrador');
     $roles = RolResource::getInstance()->get();
     $user = UsuarioResource::getInstance()->get($id);
     $ubicacion = UsuarioResource::getInstance()->ubicacion($id);
-    echo $app->view->render( "usuarios/show.twig", array('usuario' => ($user), 'ubicacionUser' => ($ubicacion), 'roles' => ($roles), 'ubicaciones' => (UbicacionResource::getInstance()->get())));
+    echo $app->view->render( "usuarios/show.twig", array('usuario' => ($user), 'ubicacionUser' => ($ubicacion), 'roles' => ($roles), 'ubicaciones' => (UbicacionResource::getInstance()->get()),'token'=>$token));
   }
 
 }

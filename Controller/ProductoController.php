@@ -9,9 +9,9 @@ use Model\Resource\CategoriaResource;
 
 class ProductoController {
 
-  public function listProductos($app){
+  public function listProductos($app,$token){
     $app->applyHook('must.be.gestion.or.administrador');
-    echo $app->view->render( "productos/index.twig", array('productos' => (ProductoResource::getInstance()->get()), 'categorias' => (CategoriaResource::getInstance()->get())));
+    echo $app->view->render( "productos/index.twig", array('productos' => (ProductoResource::getInstance()->get()), 'categorias' => (CategoriaResource::getInstance()->get()),'token'=>$token));
   }
 
   public function validarCampos($nombre, $marca, $stock, $stock_minimo, $precio_venta_unitario, $proovedor, $descripcion) {
@@ -40,7 +40,8 @@ class ProductoController {
     return $errors;
   }
 
-  public function newProducto($app,$nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion) {
+  public function newProducto($app,$nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion,$token) {
+    CSRF::getInstance()->control($app,$token);
   $app->applyHook('must.be.gestion.or.administrador');
     $errors = $this->validarCampos($nombre, $marca, $stock, $stock_minimo, $precio_venta_unitario, $proovedor, $descripcion);
     if (sizeof($errors) == 0) {
@@ -55,7 +56,8 @@ class ProductoController {
     echo $app->redirect('/productos');
   }
 
-  public function editProducto($app,$nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion,$id) {
+  public function editProducto($app,$nombre,$marca,$stock,$stock_minimo,$proovedor,$precio_venta_unitario,$categoria_id = null,$descripcion,$id,$token) {
+    CSRF::getInstance()->control($app,$token);
     $app->applyHook('must.be.gestion.or.administrador');
     $errors = $this->validarCampos($nombre, $marca, $stock, $stock_minimo, $precio_venta_unitario, $proovedor, $descripcion);
     if (sizeof($errors) == 0) {
@@ -80,11 +82,11 @@ class ProductoController {
     $app->redirect('/productos');
   }
 
-  public function showProducto($app, $id){
+  public function showProducto($app, $id,$token){
     $app->applyHook('must.be.gestion.or.administrador');
     $producto = ProductoResource::getInstance()->get($id);
     $categoria = ProductoResource::getInstance()->categoria($id);
-    echo $app->view->render( "productos/show.twig", array('producto' => ($producto), 'categoriaProd' => ($categoria), 'categorias' => (CategoriaResource::getInstance()->get())));
+    echo $app->view->render( "productos/show.twig", array('producto' => ($producto), 'categoriaProd' => ($categoria), 'categorias' => (CategoriaResource::getInstance()->get()),'token'=>$token));
   }
 
 }
