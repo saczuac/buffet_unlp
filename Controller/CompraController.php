@@ -73,7 +73,7 @@ public function index($app,$token)
     ProductoResource::getInstance()->ingresarStock($algo[$i*(3)],$algo[($i*(3))+1]);
 
   }
-    $this->index($app);
+    $this->index($app,$_SESSION['csrf_token']);
   }
   public function delete($app,$id)
   {
