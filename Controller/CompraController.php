@@ -55,7 +55,7 @@ public function index($app,$token)
     }
   }
     
-  	$this->index($app);
+  	$this->index($app,$_SESSION['csrf_token']);
   }
   public function borrarMisDetalles($id)
   {
