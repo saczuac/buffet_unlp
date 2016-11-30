@@ -16,7 +16,7 @@
         <input type="date" name="newfecha" id="newfecha" value="{{fecha|date('Y-m-d')}}" required />
         <br>
         <br>
-        <br>
+        <br><input type="hidden" name="token" value={{token}}>
         <a href="/compras/factura/{{compra.id}}" class="center">Agregar Factura</a>
         <!--spoiler -->
       </form>

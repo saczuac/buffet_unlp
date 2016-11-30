@@ -86,7 +86,7 @@
     <td>{{ingreso.fecha|date('Y-m-d')}}</td>
     <td>{{ingreso.descripcion}}</td>
           <td>
-        <a href="/ventas/edit/{{ ingreso.id }}" title="Editar"><i class="fa fa-pencil"></i></a>
+        <a href="/ventas/edit?id={{ ingreso.id }}" title="Editar"><i class="fa fa-pencil"></i></a>
         <a href="/ventas/delete/{{ ingreso.id }}" title="Eliminar"><i class="fa fa-trash-o"></i></a>
       </td>
   </tr>

@@ -7,23 +7,23 @@ use Model\Resource\ProductoResource;
 use Model\Resource\EgresoDetalleResource;
 class CompraController {
 
-public function index($app)
+public function index($app,$token)
   {
     $app->applyHook('must.be.gestion.or.administrador');
-    echo $app->view->render( "compras/compras.twig", array('compras' => (CompraResource::getInstance()->get()),'productos' => (ProductoResource::getInstance()->get()),'comprad' => (CompraResource::getInstance()->get(50))));
+    echo $app->view->render( "compras/compras.twig", array('compras' => (CompraResource::getInstance()->get()),'productos' => (ProductoResource::getInstance()->get()),'comprad' => (CompraResource::getInstance()->get(50)),'token'=>$token));
   }
-  public function show($app,$id)
+  public function show($app,$id,$token)
   {
     $app->applyHook('must.be.gestion.or.administrador');
-    echo $app->view->render( "compras/show.twig", array('compra' => (CompraResource::getInstance()->get($id))));
+    echo $app->view->render( "compras/show.twig", array('compra' => (CompraResource::getInstance()->get($id)),'token'=>$token));
   }
-  public function edit($app,$id)
+  public function edit($app,$id,$token)
   {
     $app->applyHook('must.be.gestion.or.administrador');
-    echo $app->view->render( "compras/edit.twig", array('compra' => (CompraResource::getInstance()->get($id)),'productos' => (ProductoResource::getInstance()->get())));
+    echo $app->view->render( "compras/edit.twig", array('compra' => (CompraResource::getInstance()->get($id)),'productos' => (ProductoResource::getInstance()->get()),'token'=>$token));
   }
-  public function addFactura($app,$id)
-  {
+  public function addFactura($app,$id,$token)
+  {CSRF::getInstance()->control($app,$token);
     if (isset($_FILES["myFileMenu"])){
          $target_path = "uploads/";
           $target_path = $target_path . basename( $_FILES["myFileMenu"]['name']);
@@ -37,8 +37,8 @@ public function index($app)
     $app->applyHook('must.be.administrador');
     echo $app->view->render( "compras/factura.twig", array('compra' => (CompraResource::getInstance()->get($id))));
   }
-  public function nuevo($app,$proveedor,$cuil,$paramArray)
-  {
+  public function nuevo($app,$proveedor,$cuil,$paramArray,$token)
+  {CSRF::getInstance()->control($app,$token);
     $target_file ="";
     if (isset($_FILES["factura"])) {
         $target_dir = "uploads/";
@@ -61,8 +61,8 @@ public function index($app)
   {
 
   }
-  public function editar($app,$id,$proveedor,$cuil,$paramArray)
-  {
+  public function editar($app,$id,$proveedor,$cuil,$paramArray,$token)
+  {CSRF::getInstance()->control($app,$token);
     $compra=CompraResource::getInstance()->get($id);
     $algo=explode(",", $paramArray);
     CompraResource::getInstance()->edit($id,$proveedor,$cuil);

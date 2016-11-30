@@ -38,6 +38,7 @@
 
         </tbody>
         </table>
+        <input type="hidden" name="token" value={{token}}>
         <a href="#" onclick="agregarProducto()">Agregar Producto</a>
       </div>
  <!--fin spoiler -->
@@ -80,9 +81,9 @@
     <td>{{compra.proveedor_cuit}}</td>
     <td>{{compra.fecha|date('Y-m-d')}}</td>
     <td>
-        <a href="/compras/edit/{{ compra.id }}" title="Editar"><i class="fa fa-pencil"></i></a>
+        <a href="/compras/edit?id={{ compra.id }}" title="Editar"><i class="fa fa-pencil"></i></a>
         <a href="/compras/delete/{{ compra.id }}" title="Eliminar"><i class="fa fa-trash-o"></i></a>
-        <a href="/compras/factura/{{ compra.id }}" title="Factura"><i class="fa fa-file-o"></i></a>
+        <a href="/compras/factura?id={{ compra.id }}" title="Factura"><i class="fa fa-file-o"></i></a>
     </td>
   </tr>
   {% endfor %}

@@ -8,20 +8,21 @@ use Model\Resource\IngresoDetalleResource;
 use Controller\Validator;
 class VentasController {
 
-public function index($app)
+public function index($app,$token)
   {
     $app->applyHook('must.be.gestion.or.administrador');
-    echo $app->view->render("ventas/ventas.twig",array('ingresos' => (IngresoDetalleResource::getInstance()->get()),'productos' => (ProductoResource::getInstance()->get())));
+    echo $app->view->render("ventas/ventas.twig",array('ingresos' => (IngresoDetalleResource::getInstance()->get()),'productos' => (ProductoResource::getInstance()->get()),'token'=>$token));
   }
 
-public function edit($app,$id)
+public function edit($app,$id,$token)
   {
     $app->applyHook('must.be.gestion.or.administrador');
-    echo $app->view->render( "ventas/edit.twig", array('ingreso' => (IngresoDetalleResource::getInstance()->get($id)),'productos' => (ProductoResource::getInstance()->get())));
+    echo $app->view->render( "ventas/edit.twig", array('ingreso' => (IngresoDetalleResource::getInstance()->get($id)),'productos' => (ProductoResource::getInstance()->get()),'token'=>$token));
   }
 
-  public function editar($app,$id,$productoID,$cantidad,$precio,$egresoTipoId,$fecha,$desc)
+  public function editar($app,$id,$productoID,$cantidad,$precio,$egresoTipoId,$fecha,$desc,$token)
   {
+    CSRF::getInstance()->control($app,$token);
     $app->applyHook('must.be.gestion.or.administrador');
       $errors = $this->validarCampos($cantidad,$precio);
   if (sizeof($errors) == 0) {
@@ -43,8 +44,9 @@ public function edit($app,$id)
     $app->redirect("/ventas");
   }
 
-public function nuevo($app,$productoID,$cantidad,$precio,$egresoTipoId,$fecha,$desc)
-  {$app->applyHook('must.be.gestion.or.administrador');
+public function nuevo($app,$productoID,$cantidad,$precio,$egresoTipoId,$fecha,$desc,$token)
+  {CSRF::getInstance()->control($app,$token);
+    $app->applyHook('must.be.gestion.or.administrador');
   $errors = $this->validarCampos($cantidad,$precio);
   if (sizeof($errors) == 0) {
     if ($cantidad <= ProductoResource::getInstance()->get($productoID)->getStock()) {

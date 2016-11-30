@@ -237,7 +237,7 @@ $app->group('/ventas', function() use($app) {
       $app->request->post('newSellDate'),
       $app->request->post('newSellDesc'),
       $app->request->post('token')));
-  $app->get('/edit(/(:id)(/))', '\Controller\VentasController:edit')->setParams(array($app,$app->request()->get('id'),$_SESSION['csrf_token']));
+  $app->get('/edit', '\Controller\VentasController:edit')->setParams(array($app,$app->request()->get('id'),$_SESSION['csrf_token']));
   $app->post('/edit', '\Controller\VentasController:editar')->setParams(
      array($app,$app->request->post('id'),
       $app->request->post('newSellProductName'),
@@ -251,22 +251,24 @@ $app->group('/ventas', function() use($app) {
 });
 
 $app->group('/compras', function() use($app) {
-  $app->get('/', '\Controller\CompraController:index')->setParams(array($app));
+  $app->get('/', '\Controller\CompraController:index')->setParams(array($app,$_SESSION['csrf_token']));
   $app->post('/new', '\Controller\CompraController:nuevo')->setParams(
     array($app,$app->request->post('newProveedor'),
       $app->request->post('newCUIL'),
-      $app->request->post('paramArray')));
-  $app->get('/show(/(:id)(/))', '\Controller\CompraController:show')->setParams(array($app),$app->request()->get('id'));
-  $app->get('/edit(/(:id)(/))', '\Controller\CompraController:edit')->setParams(array($app),$app->request()->get('id'));
+      $app->request->post('paramArray'),
+      $app->request->post('token')));
+  $app->get('/show(/(:id)(/))', '\Controller\CompraController:show')->setParams(array($app,$app->request()->get('id'),$_SESSION['csrf_token']));
+  $app->get('/edit', '\Controller\CompraController:edit')->setParams(array($app,$app->request()->get('id'),$_SESSION['csrf_token']));
   $app->post('/edit', '\Controller\CompraController:editar')->setParams(
     array($app,$app->request->post('paramID'),
       $app->request->post('newProveedor'),
       $app->request->post('newCUIL'),
-      $app->request->post('paramArray')));
+      $app->request->post('paramArray'),
+      $app->request->post('token')));
   $app->get('/delete(/(:id)(/))', '\Controller\CompraController:delete')->setParams(array($app),$app->request()->get('id'));
   $app->post('/factura', '\Controller\CompraController:addFactura')->setParams(array($app,
     $app->request->post('idCompra')));
-  $app->get('/factura(/(:id)(/))', '\Controller\CompraController:factura')->setParams(array($app),$app->request()->get('id'));
+  $app->get('/factura', '\Controller\CompraController:factura')->setParams(array($app,$app->request()->get('id'),$_SESSION['csrf_token']));
 });
 
 $app->get('/bot', function() use ($app, $botController) {
