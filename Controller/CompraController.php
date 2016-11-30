@@ -32,10 +32,10 @@ public function index($app,$token)
     }
     $app->redirect("/compras");
   }
-    public function factura($app,$id)
+    public function factura($app,$id,$token)
   {
     $app->applyHook('must.be.administrador');
-    echo $app->view->render( "compras/factura.twig", array('compra' => (CompraResource::getInstance()->get($id))));
+    echo $app->view->render( "compras/factura.twig", array('compra' => (CompraResource::getInstance()->get($id)),'token'=>$token));
   }
   public function nuevo($app,$proveedor,$cuil,$paramArray,$token)
   {CSRF::getInstance()->control($app,$token);
