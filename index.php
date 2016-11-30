@@ -267,7 +267,8 @@ $app->group('/compras', function() use($app) {
       $app->request->post('token')));
   $app->get('/delete(/(:id)(/))', '\Controller\CompraController:delete')->setParams(array($app),$app->request()->get('id'));
   $app->post('/factura', '\Controller\CompraController:addFactura')->setParams(array($app,
-    $app->request->post('idCompra')));
+    $app->request->post('idCompra'),
+    $app->request->post('token')));
   $app->get('/factura', '\Controller\CompraController:factura')->setParams(array($app,$app->request()->get('id'),$_SESSION['csrf_token']));
 });
 
