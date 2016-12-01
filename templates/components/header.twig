@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <title>Buffet - FI</title>
         <link rel="stylesheet" type="text/css" href= "{{ baseUrl() }}/css/style.css">
-        <script type="text/javascript" src="{{ baseUrl() }}/js/jquery-3.1.1.min.js"></script>
+         <link rel="stylesheet" href="{{ baseUrl() }}/js/jquery-ui/jquery-ui.css">
+        <script src="{{ baseUrl() }}/js/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script type="text/javascript" src="{{ baseUrl() }}/js/modal.js"></script>
         <script type="text/javascript" src="{{ baseUrl() }}/js/abm.js"></script>
         <script type="text/javascript" src="{{ baseUrl() }}/js/compra.js"></script>
@@ -21,6 +23,25 @@
         <link href='https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{{ baseUrl() }}/css/font-awesome-4.6.3/css/font-awesome.min.css">
         <link rel="icon" type="image/png" href="{{ baseUrl() }}/img/Icon.ico"/>
+        <script>
+        $(document).ready(function(){
+          $("#desde").datepicker();
+          $("#hasta").datepicker();
+          $("#newfecha").datepicker();
+          $("#newFecha").datepicker();
+          $("#editFecha").datepicker();
+          $("#desdePedidos").datepicker();
+          $("#hastaPedidos").datepicker();
+          $("#newSellDate").datepicker();
+          $("#newSellDate2").datepicker();
+          $("#editSellDate").datepicker();
+          $("#filterFrom").datepicker();
+          $("#filterUntil").datepicker();
+          $("#newSpendingDate").datepicker();
+          $("#editSpendingDate").datepicker();
+
+        });
+         </script>
     </head>
     <body>
       <header id='header'>

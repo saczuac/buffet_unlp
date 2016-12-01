@@ -21,7 +21,7 @@
         <label for="newSellQuantity">Cantidad: </label>
         <input type="number" id="newSellQuantity" name="newSellQuantity" value="{{ingreso.cantidad}}" placeholder="Cantidad" required />
         <label for="newSellDate">Fecha: </label>
-        <input type="date" id="newSellDate" name="newSellDate" value="{{ingreso.fecha|date('Y-m-d')}}" required />
+        <input type="text" id="newSellDate" name="newSellDate" value="{{ingreso.fecha|date('Y-m-d')}}" required />
         <label for="newSellDesc">Descripcion:  </label>
         <input type="text" id="newSellDesc" name="newSellDesc" value="{{ingreso.descripcion}}" maxlength=255 placeholder="Descripcion" required />
         <input type="hidden" name="token" value={{token}}>

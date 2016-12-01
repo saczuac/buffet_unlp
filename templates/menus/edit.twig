@@ -9,7 +9,7 @@
       <h3>Editar Menú</h3>
       <form name="formEdit" id="formEdit" action="{{ baseUrl() }}/menu/edit" method="post">
         <label for="editFecha">Fecha: </label>
-        <input type="date" id="editFecha" name="editFecha" value="{{ menu.fecha | date('Y-m-d') }}" />
+        <input type="text" id="editFecha" name="editFecha" value="{{ menu.fecha | date('Y-m-d') }}" />
         <label for="editHabilitado" id="labelHabilitado">Habilitado: </label>
         <select id="editHabilitado" name="habilitado">
           {% if menu.habilitado == 1 %}

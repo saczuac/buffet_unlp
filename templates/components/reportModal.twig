@@ -3,8 +3,8 @@
      <form method="post" action={{action}} class="modal-content login-content">
        <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
        <h3 class="login-title">{{titulo}}</h3>
-       <input type="date" name="fechaDesde" title="Fecha desde" required>
-       <input type="date" name="fechaHasta" title="Fecha Hasta" required>
+       <input id="desde" type="text" name="fechaDesde" title="Fecha desde" required>
+       <input id="hasta" type="text" name="fechaHasta" title="Fecha Hasta" required>
        <input type="submit" class="login-submit" name="submit" value="Ingresar" >
      </form>
      </div>
