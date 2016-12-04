@@ -1,0 +1,11 @@
+    <div id={{id}} class="modal">
+    <br><br><br><br>
+     <form method="post" action={{action}} class="modal-content login-content">
+       <a class="close" onclick="cerrar()" onkeypress="cerrar()" role="button">×</a>
+       <h3 class="login-title">{{titulo}}</h3>
+       <input id="desdeM" type="text" name="fechaDesde" title="Fecha desde" required>
+       <input id="hastaM" type="text" name="fechaHasta" title="Fecha Hasta" required>
+       <input type="hidden" name="token" value={{session.csrf_token}}>
+       <input type="submit" class="login-submit" name="submit" value="Ingresar" >
+     </form>
+     </div>

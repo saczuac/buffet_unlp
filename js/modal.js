@@ -3,7 +3,7 @@ function mostrar(paramModal) {
   modal.style.display = "block";
   document.getElementById("header").className = "borroso";
   document.getElementById("nav").className = "borroso";
-  document.getElementById("contenido").className = "borroso";
+ // document.getElementById("contenido").className = "borroso";
 }
 
 function cerrar() {

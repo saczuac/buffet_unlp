@@ -26,7 +26,9 @@
         <script>
         $(document).ready(function(){
           $("#desde").datepicker();
-          $("#hasta").datepicker();
+          $("#hasta").datepicker(); 
+          $("#desdeM").datepicker();
+          $("#hastaM").datepicker();
           $("#newfecha").datepicker();
           $("#newFecha").datepicker();
           $("#editFecha").datepicker();
@@ -76,7 +78,7 @@
     <br>
     {% endif %}
     {% include 'components/reportModal.twig' with { 'id' : 'modalIngresos','action' : '/balanceIngresos','titulo' : 'Ingresos' } %}
-    {% include 'components/reportModal.twig' with { 'id' : 'modalGastos','action' : '/balanceGastos','titulo' : 'Gastos' } %}
+    {% include 'components/gastosModal.twig' with { 'id' : 'modalGastos','action' : '/balanceGastos','titulo' : 'Gastos' } %}
 
      {% else %}
        <a href="#" onclick ="mostrar('modelLogin')" class="login" role="button">Login </a>
