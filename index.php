@@ -84,14 +84,14 @@ $app->post('/registrar', '\Controller\UsuarioController:registrarUsuario')->setP
 
 $app->group('/balanceGastos', function() use($app) {
 	$app->post('/','\Controller\BalanceController:ganancias')->setParams(
-        array($app,$app->request->post('fechaDesde'),$app->request->post('fechaHasta')));
+        array($app,$app->request->post('fechaDesde'),$app->request->post('fechaHasta'),$app->request->post('token')));
   $app->get('/exportar/','\Controller\BalanceController:exportGanancias')->setParams(array($app,$app->request->get('desde'),$app->request->get('hasta')));
 });
 
 
 $app->group('/balanceIngresos', function() use($app) {
   $app->post('/','\Controller\BalanceController:ventas')->setParams(
-        array($app,$app->request->post('fechaDesde'),$app->request->post('fechaHasta')));
+        array($app,$app->request->post('fechaDesde'),$app->request->post('fechaHasta'),$app->request->post('token')));
     $app->get('/exportar/','\Controller\BalanceController:exportVentas')->setParams(
         array($app,$app->request->get('desde'),$app->request->get('hasta')));
   });

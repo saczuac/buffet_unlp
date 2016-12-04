@@ -38,6 +38,12 @@ class Validator {
      public function hasNumbers($value) {
         return preg_match("#[0-9]+#",$value);
      }
+      public function isDate($value) {
+        $fechaExplode=explode("/",$value);
+        if (sizeof($fechaExplode)==3){
+            return (checkdate($fechaExplode[0],$fechaExplode[1],$fechaExplode[2]));
+        }else{return false;}
+     }
 
 }
 

@@ -6,6 +6,7 @@ use Model\Resource\EgresoDetalleResource;
 use Model\Resource\IngresoDetalleResource;
 use Model\Resource\PedidoResource;
 use Model\Resource\BalanceResource;
+use Controller\Validator;
 class BalanceController {
     private $paramDesde;
     private $paramHasta;
@@ -33,12 +34,17 @@ public function valoresGanancias($app,$desde,$hasta)
     return $params;
 }
 
-public function ganancias($app,$desde,$hasta)
+public function ganancias($app,$desde,$hasta,$token)
   {
-
+    CSRF::getInstance()->control($app,$token);
     $app->applyHook('must.be.gestion.or.administrador');
-
-    echo $app->view->render( "ganancias.twig", array('json' => $this->armoJsonGanancias(BalanceResource::getInstance()->gananciasEntre($desde,$hasta)),'ganancias' => BalanceResource::getInstance()->gananciasEntre($desde,$hasta),'desde'=>$desde,'hasta'=>$hasta));
+    $errors=$this->validarFechas($desde,$hasta);
+    if (sizeof($errors) == 0) {
+        echo $app->view->render( "ganancias.twig", array('json' => $this->armoJsonGanancias(BalanceResource::getInstance()->gananciasEntre($desde,$hasta)),'ganancias' => BalanceResource::getInstance()->gananciasEntre($desde,$hasta),'desde'=>$desde,'hasta'=>$hasta));
+    }else{
+        $app->flash('errors', $errors);
+        echo $app->redirect('/');
+    }
   }
   public function exportGanancias($app,$desde,$hasta)
 {   
@@ -197,9 +203,11 @@ public function myMergeMas($ingresos,$pedidos)
     }
     return $ingresos;
 }
-public function ventas($app,$desde,$hasta)
-  {
+public function ventas($app,$desde,$hasta,$token)
+  {CSRF::getInstance()->control($app,$token);
     $app->applyHook('must.be.gestion.or.administrador');
+    $errors=$this->validarFechas($desde,$hasta);
+    if (sizeof($errors) == 0) {
     $ingresos=IngresoDetalleResource::getInstance()->getVentasEntre($desde,$hasta);
     $pedidos=PedidoResource::getInstance()->getVentasEntre($desde,$hasta);
     foreach ($ingresos as &$valor) {
@@ -213,6 +221,10 @@ public function ventas($app,$desde,$hasta)
     $params=$this->myMergeMas($ingresos,$pedidos);
     $app->applyHook('must.be.gestion.or.administrador');
     echo $app->view->render( "balanceIngresos.twig", array('json' => $this->armoJsonVentas(BalanceResource::getInstance()->ventaProductosEntre($desde,$hasta)),'ventas'=>BalanceResource::getInstance()->ventaProductosEntre($desde,$hasta),'desde'=>$desde,'hasta'=>$hasta));
+    }else{
+        $app->flash('errors', $errors);
+        echo $app->redirect('/');
+    }
   }
 public function exportVentas($app,$desde,$hasta)
 { 
@@ -246,5 +258,15 @@ public function exportVentas($app,$desde,$hasta)
     $app->flash('success', 'El responsable a sido desasignado exitosamente.');
     header("Refresh:0");
       }
+public function validarFechas($desde,$hasta) {
+    $errors = [];
+    if (!Validator::isDate($desde)) {
+         $errors[] = 'Fecha desde incorrecta';
+    }
+    if (!Validator::isDate($hasta)) {
+         $errors[] = 'Fecha hasta incorrecta';
+    }
+    return $errors;
+  }
 }
 
